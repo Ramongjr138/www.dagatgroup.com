@@ -788,6 +788,160 @@
       align-items: center;
     }
 
+    /* Estilos para calendario de capacitaciones */
+    .calendar-container {
+      height: 600px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    /* Estilos para blog */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .resource-download {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .resource-download h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .download-btn:hover {
+      background: var(--secondary);
+    }
+
+    /* Estilos para contacto */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-item i {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .contact-item h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Estilos para pagos */
+    .payment-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .payment-option {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .payment-option:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .payment-option.selected {
+      border-color: var(--accent);
+      background: rgba(255, 87, 34, 0.05);
+    }
+
+    .payment-option i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .nav-container {
@@ -895,6 +1049,22 @@
       .logo i {
         font-size: 2.2rem;
       }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-container {
+        height: 400px;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-options {
+        grid-template-columns: 1fr;
+      }
     }
     
     @media (max-width: 480px) {
@@ -927,6 +1097,10 @@
       }
       
       .auth-container {
+        padding: 1.5rem;
+      }
+
+      .payment-container {
         padding: 1.5rem;
       }
     }
@@ -1237,7 +1411,430 @@
     </div>
   </section>
 
-  <!-- Resto del código se mantiene igual... -->
+  <!-- Sección Cotización -->
+  <section id="cotizar" class="bg-light">
+    <h2>Solicitar Cotización</h2>
+    <div class="section-intro">
+      <p>Complete el formulario y nos contactaremos con usted en menos de 24 horas</p>
+    </div>
+
+    <div class="form-container">
+      <form id="cotizacionForm">
+        <div class="form-group">
+          <label for="nombre">Nombre Completo</label>
+          <input type="text" id="nombre" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="servicio">Servicio de Interés</label>
+          <select id="servicio" class="form-control" required>
+            <option value="">Seleccione un servicio</option>
+            <option value="sistemas-incendio">Sistemas Contra Incendio</option>
+            <option value="capacitaciones">Capacitaciones</option>
+            <option value="sst">Salud Ocupacional (SST)</option>
+            <option value="consultoria">Consultoría Especializada</option>
+            <option value="ingenieria">Ingeniería de Proyectos</option>
+            <option value="mantenimiento">Mantenimiento Preventivo</option>
+            <option value="contabilidad">Servicios Contables</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Detalles del Requerimiento</label>
+          <textarea id="mensaje" class="form-control" rows="5" placeholder="Describa su requerimiento, especificaciones técnicas, cantidad de participantes, etc."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Adjuntar Archivos (Opcional)</label>
+          <div class="file-upload" id="fileUpload">
+            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+            <p>Arrastre archivos aquí o haga clic para seleccionar</p>
+            <p class="small">(Planos, especificaciones técnicas, fotos, etc.)</p>
+            <input type="file" id="archivos" style="display: none;" multiple>
+          </div>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%;">
+          <span id="btnText">Enviar Solicitud</span>
+          <div id="btnLoader" class="loader" style="display: none;"></div>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Sección Capacitaciones -->
+  <section id="capacitaciones">
+    <h2>Próximas Capacitaciones</h2>
+    <div class="section-intro">
+      <p>Programa de capacitaciones certificadas para su personal</p>
+    </div>
+
+    <div class="calendar-container">
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLima&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&src=Y19hY2lkZGUwMGQ5ZmVmYzVlODQ3YjJhY2FlZjQ4ZDdlYzJlZDEyM2JjYzU2YzE0YmFkYjU5ZDI3M2Q3YjQ3YzY2QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000" style="border-width:0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+    <div class="payment-container">
+      <h3>Pagar Capacitación</h3>
+      <p>Seleccione el método de pago para su capacitación</p>
+      
+      <div class="payment-options">
+        <div class="payment-option" data-method="transferencia">
+          <i class="fas fa-university"></i>
+          <h4>Transferencia Bancaria</h4>
+          <p>Pago mediante transferencia interbancaria</p>
+        </div>
+        
+        <div class="payment-option" data-method="yape">
+          <i class="fas fa-mobile-alt"></i>
+          <h4>Yape / Plin</h4>
+          <p>Pago rápido con Yape o Plin</p>
+        </div>
+        
+        <div class="payment-option" data-method="efectivo">
+          <i class="fas fa-money-bill-wave"></i>
+          <h4>Efectivo</h4>
+          <p>Pago en nuestras oficinas</p>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="montoPago">Monto a Pagar (S/)</label>
+        <input type="number" id="montoPago" class="form-control" placeholder="Ingrese el monto" min="0" step="0.01">
+      </div>
+      
+      <div class="form-group">
+        <label for="detallePago">Detalle del Pago</label>
+        <input type="text" id="detallePago" class="form-control" placeholder="Ej: Curso de Extintores - Juan Pérez">
+      </div>
+      
+      <button id="procesarPago" class="btn btn-success" style="width: 100%;">
+        <i class="fas fa-credit-card"></i> Proceder al Pago
+      </button>
+    </div>
+  </section>
+
+  <!-- Sección Blog -->
+  <section id="blog" class="bg-light">
+    <h2>Blog Técnico</h2>
+    <div class="section-intro">
+      <p>Artículos, noticias y recursos sobre seguridad industrial y normativas</p>
+    </div>
+
+    <div class="blog-grid">
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Normativas NFPA">
+        <div class="blog-content">
+          <h3>Actualizaciones NFPA 2024: Lo que necesita saber</h3>
+          <p class="blog-date">15 Junio 2024</p>
+          <p>Resumen de los cambios más importantes en las normativas NFPA para sistemas contra incendios este año.</p>
+          
+          <div class="resource-download">
+            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
+            <a href="#" class="download-btn">
+              <i class="fas fa-file-pdf"></i> Guía NFPA 10 - Extintores
+            </a>
+            <a href="#" class="download-btn" style="margin-left: 0.5rem;">
+              <i class="fas fa-file-pdf"></i> Resumen NFPA 72
+            </a>
+          </div>
+          
+          <a href="#" class="btn btn-outline">Leer Artículo</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1581093057923-005b6c73d72e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mantenimiento sistemas">
+        <div class="blog-content">
+          <h3>Mantenimiento Preventivo para Sistemas de Incendio</h3>
+          <p class="blog-date">2 Mayo 2024</p>
+          <p>Guía completa sobre los protocolos de mantenimiento que toda empresa debería implementar.</p>
+          
+          <div class="resource-download">
+            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
+            <a href="#" class="download-btn">
+              <i class="fas fa-file-pdf"></i> Checklist Mantenimiento
+            </a>
+            <a href="#" class="download-btn" style="margin-left: 0.5rem;">
+              <i class="fas fa-file-excel"></i> Planificador Anual
+            </a>
+          </div>
+          
+          <a href="#" class="btn btn-outline">Leer Artículo</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1581094487235-cee1ad15b7f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SST en Perú">
+        <div class="blog-content">
+          <h3>Nuevas Obligaciones en SST para 2025</h3>
+          <p class="blog-date">18 Abril 2024</p>
+          <p>Análisis de las modificaciones al reglamento de seguridad y salud en el trabajo en Perú.</p>
+          
+          <div class="resource-download">
+            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
+            <a href="#" class="download-btn">
+              <i class="fas fa-file-pdf"></i> Ley 29783 Actualizada
+            </a>
+            <a href="#" class="download-btn" style="margin-left: 0.5rem;">
+              <i class="fas fa-file-pdf"></i> Reglamento SST
+            </a>
+          </div>
+          
+          <a href="#" class="btn btn-outline">Leer Artículo</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Primeros auxilios">
+        <div class="blog-content">
+          <h3>Protocolos de Primeros Auxilios en el Trabajo</h3>
+          <p class="blog-date">10 Marzo 2024</p>
+          <p>Guía práctica para implementar protocolos efectivos de primeros auxilios en el entorno laboral.</p>
+          
+          <div class="resource-download">
+            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
+            <a href="#" class="download-btn">
+              <i class="fas fa-file-pdf"></i> Manual Primeros Auxilios
+            </a>
+            <a href="#" class="download-btn" style="margin-left: 0.5rem;">
+              <i class="fas fa-file-pdf"></i> Protocolo RCP
+            </a>
+          </div>
+          
+          <a href="#" class="btn btn-outline">Leer Artículo</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipos protección">
+        <div class="blog-content">
+          <h3>Selección y Uso Correcto de EPP</h3>
+          <p class="blog-date">25 Febrero 2024</p>
+          <p>Cómo seleccionar los equipos de protección personal adecuados para cada riesgo laboral.</p>
+          
+          <div class="resource-download">
+            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
+            <a href="#" class="download-btn">
+              <i class="fas fa-file-pdf"></i> Guía EPP por Riesgo
+            </a>
+            <a href="#" class="download-btn" style="margin-left: 0.5rem;">
+              <i class="fas fa-file-pdf"></i> Checklist Verificación EPP
+            </a>
+          </div>
+          
+          <a href="#" class="btn btn-outline">Leer Artículo</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Simulacros">
+        <div class="blog-content">
+          <h3>Planificación de Simulacros de Emergencia</h3>
+          <p class="blog-date">15 Enero 2024</p>
+          <p>Metodología para planificar y ejecutar simulacros de emergencia efectivos en su empresa.</p>
+          
+          <div class="resource-download">
+            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
+            <a href="#" class="download-btn">
+              <i class="fas fa-file-pdf"></i> Plan de Simulacros
+            </a>
+            <a href="#" class="download-btn" style="margin-left: 0.5rem;">
+              <i class="fas fa-file-excel"></i> Formato Evaluación
+            </a>
+          </div>
+          
+          <a href="#" class="btn btn-outline">Leer Artículo</a>
+        </div>
+      </article>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="#" class="btn">Ver Todos los Artículos</a>
+    </div>
+  </section>
+
+  <!-- Sección Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <div class="section-intro">
+      <p>Estamos disponibles para atender sus consultas y brindarle la mejor solución</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h3>Oficina Principal</h3>
+            <p>Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Oficina 301<br>Ate, Lima - Perú</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h3>Teléfonos</h3>
+            <p>+51 992132260</p>
+            <p>+51 987654321</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h3>Correo Electrónico</h3>
+            <p>info@dagatgroup.com<br>ingenieria@dagatgroup.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <i class="fas fa-calculator"></i>
+          <div>
+            <h3>Servicios Contables</h3>
+            <p>contabilidad.reyes@dagatgroup.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h3>Horario de Atención</h3>
+            <p>Lunes a Viernes: 8:30 am - 5:00 pm<br>Sábados: 9:00 am - 1:00 pm</p>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <h3>Envíanos un Mensaje</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="contactName">Nombre Completo</label>
+            <input type="text" id="contactName" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail">Correo Electrónico</label>
+            <input type="email" id="contactEmail" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactPhone">Teléfono</label>
+            <input type="tel" id="contactPhone" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject">Asunto</label>
+            <select id="contactSubject" class="form-control" required>
+              <option value="">Seleccione un asunto</option>
+              <option value="cotizacion">Solicitud de Cotización</option>
+              <option value="capacitacion">Información de Capacitaciones</option>
+              <option value="contabilidad">Servicios Contables</option>
+              <option value="certificados">Verificación de Certificados</option>
+              <option value="general">Consulta General</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Mensaje</label>
+            <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.965949656279!2d-77.0365427!3d-12.0463258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAyJzQ2LjgiUyA3N8KwMDInMTEuNiJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/51992132260?text=Hola%20DAGAT%20SAC,%20quisiera%20más%20información" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <i class="fas fa-fire-extinguisher"></i>
+          <span>DAGAT SAC</span>
+        </div>
+        <p>Expertos en ingeniería de seguridad, protección contra incendios, salud ocupacional y consultoría contable en Perú.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Servicios</h3>
+        <ul>
+          <li><a href="#">Sistemas Contra Incendio</a></li>
+          <li><a href="#">Capacitaciones</a></li>
+          <li><a href="#">Salud Ocupacional</a></li>
+          <li><a href="#">Consultoría Especializada</a></li>
+          <li><a href="#">Ingeniería de Proyectos</a></li>
+          <li><a href="#contabilidad">Servicios Contables</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contabilidad">Contabilidad</a></li>
+          <li><a href="#certificados">Certificados</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Contacto</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> +51 992132260</li>
+          <li><i class="fas fa-envelope"></i> info@dagatgroup.com</li>
+          <li><i class="fas fa-calculator"></i> contabilidad.reyes@dagatgroup.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Ate, Lima</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2025 DAGAT SAC. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <!-- Overlay de autenticación -->
   <div class="auth-overlay" id="authOverlay" style="display: none;">
@@ -1561,6 +2158,150 @@
         if (window.innerWidth <= 768) {
           navLinks.classList.remove('active');
           mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+    });
+
+    // Formulario de cotización
+    document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const btnText = document.getElementById('btnText');
+      const btnLoader = document.getElementById('btnLoader');
+      
+      btnText.textContent = 'Enviando...';
+      btnLoader.style.display = 'inline-block';
+      
+      // Simular envío
+      setTimeout(() => {
+        alert('✅ Solicitud enviada. Nos contactaremos pronto.');
+        this.reset();
+        btnText.textContent = 'Enviar Solicitud';
+        btnLoader.style.display = 'none';
+      }, 2000);
+    });
+
+    // Formulario de contacto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('✅ Mensaje enviado. Nos contactaremos pronto.');
+      this.reset();
+    });
+
+    // Sistema de pagos
+    document.querySelectorAll('.payment-option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Remover selección anterior
+        document.querySelectorAll('.payment-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        
+        // Agregar selección actual
+        this.classList.add('selected');
+      });
+    });
+
+    // Procesar pago
+    document.getElementById('procesarPago').addEventListener('click', function() {
+      const selectedMethod = document.querySelector('.payment-option.selected');
+      const monto = document.getElementById('montoPago').value;
+      const detalle = document.getElementById('detallePago').value;
+      
+      if (!selectedMethod) {
+        alert('❌ Por favor seleccione un método de pago');
+        return;
+      }
+      
+      if (!monto || monto <= 0) {
+        alert('❌ Por favor ingrese un monto válido');
+        return;
+      }
+      
+      if (!detalle) {
+        alert('❌ Por favor ingrese el detalle del pago');
+        return;
+      }
+      
+      const method = selectedMethod.dataset.method;
+      let message = '';
+      
+      switch(method) {
+        case 'transferencia':
+          message = `💰 Transferencia Bancaria\n\n` +
+                   `Banco: BCP\n` +
+                   `Cuenta: 123-456789-0-12\n` +
+                   `CCI: 00212312345678901234\n` +
+                   `Titular: DAGAT SAC\n` +
+                   `Monto: S/ ${monto}\n` +
+                   `Concepto: ${detalle}\n\n` +
+                   `Envíe el comprobante a contabilidad.reyes@dagatgroup.com`;
+          break;
+        case 'yape':
+          message = `📱 Yape / Plin\n\n` +
+                   `Número: 992132260\n` +
+                   `Monto: S/ ${monto}\n` +
+                   `Concepto: ${detalle}\n\n` +
+                   `Envíe el comprobante por WhatsApp al mismo número`;
+          break;
+        case 'efectivo':
+          message = `💵 Pago en Efectivo\n\n` +
+                   `Dirección: Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Oficina 301, Ate\n` +
+                   `Horario: Lunes a Viernes 8:30am - 5:00pm\n` +
+                   `Monto: S/ ${monto}\n` +
+                   `Concepto: ${detalle}`;
+          break;
+      }
+      
+      alert(message);
+    });
+
+    // Subida de archivos
+    const fileUpload = document.getElementById('fileUpload');
+    const fileInput = document.getElementById('archivos');
+    
+    fileUpload.addEventListener('click', () => {
+      fileInput.click();
+    });
+    
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        fileUpload.innerHTML = `<i class="fas fa-check" style="color: green;"></i>
+                               <p>${fileInput.files.length} archivo(s) seleccionado(s)</p>`;
+      }
+    });
+
+    // Navegación suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Cambiar clase activa en navegación
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 60) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
         }
       });
     });
