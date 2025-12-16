@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DAGAT SAC - Ingeniería en Seguridad, Protección Contra Incendios y Consultoría Integral</title>
-    <meta name="description" content="Expertos en sistemas contra incendio (NFPA), consultoría en seguridad y salud ocupacional (SST), capacitaciones y servicios contables en Perú. Soluciones integrales de ingeniería.">
-    
-    <link rel="canonical" href="https://www.dagatgroup.com/">
+    <title>DAGAT | Servicios en Ingeniería, Seguridad y Consultoría Integral</title>
+    <meta name="description" content="DAGAT - Expertos en sistemas contra incendio (NFPA), consultoría en seguridad y salud ocupacional (SST), capacitaciones y soluciones de ingeniería en Perú.">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
     
     <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -19,18 +15,18 @@
 
     <style>
         :root {
-            /* Colores basados en el logo final: Azul Marino/Ingeniería, Naranja/Accento, Verde/SST/WhatsApp */
+            /* Colores de Marca */
             --primary: #172459; /* Azul Marino (Ingeniería/Confianza) */
             --secondary: #2E407C; /* Azul Intermedio */
             --accent: #FF7043; /* Naranja/Rojo (Fuego/Alerta/Acción) */
-            --whatsapp: #25d366; /* Verde WhatsApp */
-            --accounting: #00897b; /* Verde-Azul (Finanzas/Estabilidad) */
+            --whatsapp: #25d366; 
+            --accounting: #00897b; 
             --success: #4caf50;
             --danger: #f44336;
             --dark: #212529;
             --light: #f8f9fa;
             --shadow: 0 6px 15px rgba(0,0,0,0.1);
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva de transición más suave */
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
         }
 
         * {
@@ -47,7 +43,6 @@
             overflow-x: hidden;
         }
 
-        /* Utilidades de Diseño */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -58,21 +53,22 @@
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 2.5rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
+        /* FONDO: IMAGEN ADJUNTA */
         .header-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Uso del logo conceptual como patrón de fondo muy sutil */
-            background: url('https://res.cloudinary.com/dam4utzn2/image/upload/v1741138072/Logo_dagat_kog53k.jpg') center/cover;
-            opacity: 0.08; /* Opacidad más baja para hacerlo muy sutil */
+            background: url('image_47485e.jpg') center/cover; /* Usando imagen de ingeniería */
+            background-blend-mode: multiply; 
+            opacity: 0.15; 
             z-index: 1;
         }
 
@@ -80,26 +76,35 @@
             position: relative;
             z-index: 2;
         }
-
+        
+        /* Logo Principal */
         .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .logo i {
-            color: var(--accent);
-            margin-right: 15px;
-            font-size: 2.8rem;
+        .logo img {
+            /* RUTA LOCAL DEL LOGO ADJUNTO */
+            height: 100px; 
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+            margin-bottom: 10px;
         }
         
-        .header-content p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            opacity: 0.9;
+        .logo span {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .logo-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
         }
 
         /* Navegación */
@@ -152,11 +157,19 @@
             z-index: 101;
         }
 
-        /* Secciones */
+        /* Secciones y animación */
         section {
             padding: 5rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
@@ -188,48 +201,14 @@
             color: var(--dark);
         }
         
-        /* Animación Fade In (Mejora) */
-        section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        section.fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         /* Hero Section */
         .hero {
-            /* Imagen más temática de ingeniería y seguridad */
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1549032304-44b024b33560?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
-            background-attachment: fixed; /* Efecto Parallax */
+            /* IMAGEN ADJUNTA EN HERO */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('image_47485e.jpg') center/cover;
+            background-attachment: fixed;
             color: white;
             padding: 8rem 1rem;
             text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         /* Cards de Servicios */
@@ -243,7 +222,7 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra más sutil */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
             transition: var(--transition);
             border: 1px solid #e0e0e0;
         }
@@ -258,26 +237,6 @@
             height: 220px;
             object-fit: cover;
             transition: all 0.6s ease;
-        }
-        
-        .service-card:hover .service-img {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        .service-content {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .service-content h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .service-content p {
-            margin-bottom: 1.5rem;
         }
 
         /* Botones */
@@ -299,133 +258,61 @@
             box-shadow: 0 4px 6px rgba(255,112,67,0.3);
         }
 
-        .btn:hover {
+        /* Contacto Info */
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
             background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(23, 36, 89, 0.4);
-        }
-
-        /* Estilos específicos de botones mejorados */
-        .btn-whatsapp {
-            background-color: var(--whatsapp);
-            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-            box-shadow: 0 6px 10px rgba(18, 140, 126, 0.5);
-        }
-        
-        .btn-accounting {
-            background-color: var(--accounting);
-            box-shadow: 0 4px 6px rgba(0, 137, 123, 0.3);
-        }
-
-        .btn-accounting:hover {
-            background-color: var(--primary);
-            box-shadow: 0 6px 10px rgba(0, 137, 123, 0.5);
-        }
-        
-        /* Contabilidad (Ajuste de estilos) */
-        .accounting-header h2 {
-            color: var(--accounting);
-        }
-
-        .accounting-header h2::after {
-            background-color: var(--accounting);
-        }
-        
-        .accounting-service {
-            border-left-color: var(--accounting) !important;
-        }
-        
-        .accounting-service h4 {
-            color: var(--accounting) !important;
-        }
-
-        /* Notificaciones */
-        #notificationContainer {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .notification {
-            padding: 15px 20px;
-            border-radius: 8px;
             color: white;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transform: translateX(100%);
-            opacity: 0;
+        }
+
+        .footer-logo img {
+            /* RUTA LOCAL DEL LOGO ADJUNTO */
+            height: 40px; 
+            width: auto;
+            margin-right: 10px;
+            filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 112, 67, 0.5)); 
         }
         
-        .notification.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .notification.info { background-color: var(--primary); }
-        .notification.success { background-color: var(--success); }
-        .notification.error { background-color: var(--danger); }
-        
-        /* Aplicar la misma transición a los otros elementos para la consistencia */
-        .alert, .form-container, .verification-form, .certificate-result, .admin-panel, .map-container, .payment-container, .blog-card, .footer-container {
-            transition: var(--transition);
-        }
-
-        /* Estilos de contacto - Mejorado */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr; /* Dar más espacio al formulario */
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding-right: 1.5rem;
-        }
-
-        .contact-item i {
-            color: var(--accent); /* Color de acento para los iconos */
-            font-size: 1.8rem;
-            margin-top: 0.2rem;
-        }
-        
-        .contact-item h3 {
-            font-size: 1.2rem;
+        .footer-logo span {
+            font-weight: 700;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 1rem;
-            }
-        }
-        
         @media (max-width: 768px) {
             /* Menú Móvil */
-            .nav-container {
-                align-items: center;
-            }
-            
             .nav-links {
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
-                background-color: var(--primary); /* Fondo más oscuro para el menú */
+                background-color: var(--primary);
                 flex-direction: column;
                 max-height: 0;
                 overflow: hidden;
@@ -438,16 +325,8 @@
                 padding: 1rem 0;
             }
             
-            .nav-links a {
-                padding: 1rem 2rem;
-                width: 100%;
-                justify-content: center;
-                border-radius: 0;
-            }
-
             .mobile-menu-btn {
                 display: block;
-                /* Mover el botón al final del nav-container para mejor UX */
                 order: 1; 
             }
             
@@ -455,44 +334,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero {
-                padding: 5rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            section {
-                padding: 3rem 1rem;
-            }
-            
             .servicios-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .verification-container {
-                grid-template-columns: 1fr;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                padding-right: 0;
-            }
-            
-            .map-container {
-                height: 300px;
             }
         }
     </style>
@@ -505,10 +348,12 @@
         <div class="header-overlay"></div>
         <div class="header-content">
             <div class="logo">
-                <i class="fas fa-helmet-safety"></i> <span>DAGAT SAC</span>
+                <img src="Logo final 2 dagat.jpg" alt="Logo DAGAT SAC">
+                <span>DAGAT</span>
+                <span class="logo-subtitle">SERVICIOS EN INGENIERÍA</span>
             </div>
-            <h1>Soluciones Integrales de Ingeniería y Seguridad</h1>
-            <p>Protección contra incendios, sistemas de gestión SST y consultoría especializada con la calidad de **Servicios en Ingeniería**.</p>
+            <h1>Soluciones Integrales de Ingeniería, Tecnología y Seguridad</h1>
+            <p>Diseño, implementación y mantenimiento de sistemas críticos de seguridad industrial, TI y gestión ocupacional. **Experiencia certificada y cumplimiento NFPA y Ley 29783**.</p>
         </div>
     </header>
 
@@ -522,9 +367,7 @@
             
             <div class="nav-links" id="navLinks">
                 <a href="#inicio" class="active"><i class="fas fa-home"></i> Inicio</a>
-                <a href="#nosotros"><i class="fas fa-industry"></i> Nosotros</a>
                 <a href="#servicios"><i class="fas fa-toolbox"></i> Servicios</a>
-                <a href="#contabilidad"><i class="fas fa-chart-bar"></i> Contabilidad</a>
                 <a href="#capacitaciones"><i class="fas fa-chalkboard-teacher"></i> Capacitaciones</a>
                 <a href="#certificados"><i class="fas fa-medal"></i> Certificados</a>
                 <a href="#cotizar"><i class="fas fa-paper-plane"></i> Cotizar</a>
@@ -539,39 +382,7 @@
             <p>Diseño, implementación y mantenimiento de sistemas críticos de seguridad industrial y gestión ocupacional. **Experiencia certificada y cumplimiento NFPA y Ley 29783**.</p>
             <div class="hero-buttons">
                 <a href="#servicios" class="btn"><i class="fas fa-cogs"></i> Ver Soluciones</a>
-                <a href="#cotizar" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Cotización Rápida</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="nosotros">
-        <h2>Ingeniería y Experiencia</h2>
-        <div class="section-intro">
-            <p>Con más de una década en el sector, somos su aliado estratégico para garantizar un entorno laboral seguro y legalmente conforme.</p>
-        </div>
-
-        <div class="about-content">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-                <div>
-                    <h3><i class="fas fa-history" style="color: var(--accent);"></i> Nuestra Trayectoria</h3>
-                    <p>Fundada en Agosto del 2014, DAGAT SAC ha evolucionado hasta convertirse en un referente nacional en sistemas de **Ingeniería de Seguridad y Salud Ocupacional**. Nuestro equipo está compuesto por ingenieros **certificados** y profesionales altamente capacitados comprometidos con la excelencia.</p>
-                    
-                    <h3><i class="fas fa-eye" style="color: var(--accent);"></i> Visión</h3>
-                    <p>Ser reconocidos como la empresa líder en ingeniería de seguridad en Perú, **expandiendo nuestra operación a soluciones de T.I. y consultoría integral** a nivel regional.</p>
-                </div>
-                
-                <div>
-                    <h3><i class="fas fa-bullseye" style="color: var(--accent);"></i> Misión</h3>
-                    <p>Proveer soluciones innovadoras y técnicamente superiores en seguridad industrial que protejan vidas, activos y el medio ambiente, cumpliendo con los más altos estándares internacionales (**NFPA, OSHA, Ley 29783**).</p>
-                    
-                    <h3><i class="fas fa-hand-holding-heart" style="color: var(--accent);"></i> Nuestros Valores</h3>
-                    <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
-                        <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i> **Integridad y Ética**</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i> **Excelencia Técnica**</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i> **Innovación Sostenible**</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i> **Compromiso con el Cliente**</li>
-                    </ul>
-                </div>
+                <a href="#cotizar" class="btn btn-whatsapp" style="background-color: var(--whatsapp);"><i class="fab fa-whatsapp"></i> Cotización Rápida</a>
             </div>
         </div>
     </section>
@@ -584,7 +395,7 @@
 
         <div class="servicios-grid">
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1596707328574-8b634892c908?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sistemas contra incendio" class="service-img" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1543888566-bf5f74786d11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHxmaXJlJTIwc3lzdGVtcyUyMG5mcGF8ZW58MHx8fHwxNjY1MTk4MTE4&ixlib=rb-1.2.1&q=80&w=1080" alt="Sistemas contra incendio NFPA" class="service-img" loading="lazy">
                 <div class="service-content">
                     <h3><i class="fas fa-fire-extinguisher"></i> Sistemas Contra Incendio</h3>
                     <p>Diseño, instalación y mantenimiento de sistemas de detección, alarma y supresión de incendios (Sprinklers, CO2, Agentes Limpios), cumpliendo rigurosamente con la **normativa NFPA**.</p>
@@ -593,25 +404,16 @@
             </div>
 
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Consultoría SST" class="service-img" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1579782522774-a6962322306d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHxkb2N1bWVudCUyMHRyYWluaW5nfGVufDB8fHx8MTY2NTQzMzIwNA&ixlib=rb-1.2.1&q=80&w=1080" alt="Consultoría SST" class="service-img" loading="lazy">
                 <div class="service-content">
-                    <h3><i class="fas fa-user-shield"></i> Seguridad y Salud Ocupacional (SST)</h3>
+                    <h3><i class="fas fa-user-shield"></i> Auditorías y SST</h3>
                     <p>Auditorías, implementación de Sistemas de Gestión de SST (Ley 29783), elaboración de IPERC, planes de emergencia y monitoreos ocupacionales.</p>
                     <a href="#contacto" class="btn btn-sm">Solicitar Auditoría</a>
                 </div>
             </div>
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Capacitaciones SST y Primeros Auxilios" class="service-img" loading="lazy">
-                <div class="service-content">
-                    <h3><i class="fas fa-hands-helping"></i> Capacitaciones y Asesorías</h3>
-                    <p>Programas de formación certificada en primeros auxilios, materiales peligrosos (**HAZMAT**), lucha contra incendios, evacuación y liderazgo en seguridad.</p>
-                    <a href="#capacitaciones" class="btn btn-sm">Ver Calendario</a>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1531767228892-d698f1211e40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Soluciones de TI y Sistemas" class="service-img" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1550063873-ab792945009e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHxjb21wdXRlciUyMG5ldHdvcmslMjBhbmQlMjBzZXJ2ZXJ8ZW58MHx8fHwxNjY1MTk4Mjgx&ixlib=rb-1.2.1&q=80&w=1080" alt="Soluciones de TI y Sistemas" class="service-img" loading="lazy">
                 <div class="service-content">
                     <h3><i class="fas fa-microchip"></i> Soluciones de Software y TI</h3>
                     <p>Servicios de consultoría computacional, implementación de sistemas de gestión documental (SG-SST) y desarrollo de soluciones tecnológicas a medida.</p>
@@ -620,70 +422,79 @@
             </div>
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Consultoría Técnica" class="service-img" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1542435503-911b3334241e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHNlYXJjaHwzfHxtYWludGVuYW5jZSUyMHRlY2huaWNpYW58ZW58MHx8fHwxNjY1MTk4NDQ1&ixlib=rb-1.2.1&q=80&w=1080" alt="Mantenimiento" class="service-img" loading="lazy">
                 <div class="service-content">
-                    <h3><i class="fas fa-hard-hat"></i> Consultoría y Asesoría Técnica</h3>
-                    <p>Asesoramiento técnico-legal, estudios de riesgos y elaboración de planes de seguridad para proyectos de ingeniería y obtención de licencias municipales.</p>
-                    <a href="#contacto" class="btn btn-sm">Consultar Experto</a>
+                    <h3><i class="fas fa-wrench"></i> Mantenimiento Preventivo</h3>
+                    <p>Planes de mantenimiento preventivo y correctivo para sistemas de seguridad, equipos contra incendios y auditorías de *compliance*.</p>
+                    <a href="#contacto" class="btn btn-sm">Solicitar Plan</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1554224155-ac28a1c97b83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHNlYXJjaHwzfHxhY2NvdW50aW5nJTIwd29ya3BsYWNlfGVufDB8fHx8MTY2NTI1MDQ4MQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Servicios Contables" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3><i class="fas fa-chart-bar"></i> Servicios Contables</h3>
+                    <p>Contabilidad general, planificación tributaria, gestión de nóminas, auditoría y consultoría financiera. (Partner Oficial).</p>
+                    <a href="mailto:contabilidad.reyes@dagatgroup.com?subject=Consulta%20Servicios%20Contables%20desde%20la%20Web" class="btn btn-sm" style="background-color: var(--accounting);">Contactar Contable</a>
                 </div>
             </div>
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1581093554160-5232d30282b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mantenimiento" class="service-img" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1533038590840-1cde6e632207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHxlbmdpbmVlcmFzJTIwZGVzaWduJTIwYW5kJTIwcHJvamVjdHN8ZW58MHx8fHwxNjY1MTk4MzM1&ixlib=rb-1.2.1&q=80&w=1080" alt="Ingeniería de Proyectos" class="service-img" loading="lazy">
                 <div class="service-content">
-                    <h3><i class="fas fa-wrench"></i> Mantenimiento de Sistemas</h3>
-                    <p>Planes de mantenimiento preventivo y correctivo para sistemas de seguridad, equipos contra incendios y auditorías de *compliance*.</p>
-                    <a href="#contacto" class="btn btn-sm">Solicitar Plan</a>
+                    <h3><i class="fas fa-hard-hat"></i> Ingeniería de Proyectos</h3>
+                    <p>Diseño y ejecución de proyectos de ingeniería especializada, estudios de riesgos y asesoría para obtención de licencias municipales.</p>
+                    <a href="#cotizar" class="btn btn-sm">Cotizar Proyecto</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contabilidad" class="accounting-section">
+    <section id="contabilidad" class="accounting-section" style="background-color: #f0f9f0;">
         <div class="container">
             <div class="accounting-header">
-                <div class="partner-badge">
+                <div class="partner-badge" style="display: inline-block; background-color: var(--accounting); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; margin-bottom: 1rem;">
                     <i class="fas fa-handshake"></i> Partner Oficial
                 </div>
                 <h2>Servicios Contables y Asesoría Financiera</h2>
                 <p class="section-intro">Servicio profesional contable y tributario a cargo de nuestro partner especializado.</p>
             </div>
             
-            <div class="accounting-services">
-                <div class="accounting-service">
+            <div class="accounting-services" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div class="accounting-service" style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--accounting);">
                     <h4><i class="fas fa-file-invoice-dollar"></i> Contabilidad General</h4>
                     <p>Mantenimiento de libros, estados financieros y conciliaciones bancarias.</p>
                 </div>
                 
-                <div class="accounting-service">
+                <div class="accounting-service" style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--accounting);">
                     <h4><i class="fas fa-chart-line"></i> Planificación Tributaria</h4>
                     <p>Optimización de impuestos (Renta, IGV) y cumplimiento de obligaciones SUNAT.</p>
                 </div>
                 
-                <div class="accounting-service">
+                <div class="accounting-service" style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--accounting);">
                     <h4><i class="fas fa-users"></i> Nóminas y Planillas</h4>
                     <p>Gestión completa de planillas, beneficios sociales y liquidaciones laborales.</p>
                 </div>
                 
-                <div class="accounting-service">
+                <div class="accounting-service" style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--accounting);">
                     <h4><i class="fas fa-calculator"></i> Declaraciones Juradas</h4>
                     <p>Preparación y presentación de declaraciones mensuales y anuales.</p>
                 </div>
                 
-                <div class="accounting-service">
+                <div class="accounting-service" style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--accounting);">
                     <h4><i class="fas fa-balance-scale"></i> Auditoría Contable</h4>
                     <p>Revisión exhaustiva y emisión de informes de auditoría financiera.</p>
                 </div>
                 
-                <div class="accounting-service">
+                <div class="accounting-service" style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--accounting);">
                     <h4><i class="fas fa-briefcase"></i> Consultoría Financiera</h4>
                     <p>Análisis, proyecciones y asesoría estratégica para la toma de decisiones.</p>
                 </div>
             </div>
             
-            <div class="accounting-contact">
+            <div class="accounting-contact" style="text-align: center; margin-top: 2rem; padding: 1.5rem; background-color: white; border-radius: 10px; box-shadow: var(--shadow);">
                 <h3>Solicite una Consulta sin Compromiso</h3>
-                <p><strong>Email directo:</strong> <a href="mailto:contabilidad.reyes@dagatgroup.com">contabilidad.reyes@dagatgroup.com</a></p>
+                <p><strong>Email directo:</strong> <a href="mailto:contabilidad.reyes@dagatgroup.com" style="color: var(--accounting); font-weight: 600; text-decoration: none;">contabilidad.reyes@dagatgroup.com</a></p>
                 <a href="#cotizar" class="btn btn-accounting">
                     <i class="fas fa-envelope"></i> Contactar al Área Contable
                 </a>
@@ -692,46 +503,47 @@
     </section>
 
     <section id="capacitaciones">
-        <h2>Calendario de Capacitaciones Certificadas</h2>
+        <h2>Próximas Capacitaciones Certificadas</h2>
         <div class="section-intro">
             <p>Formación especializada en SST, Primeros Auxilios, Lucha Contra Incendios y Manejo de Materiales Peligrosos. Cursos disponibles de forma virtual y presencial.</p>
         </div>
 
-        <div class="calendar-container">
+        <div class="calendar-container" style="height: 500px; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 3rem;">
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLima&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&src=Y19hY2lkZGUwMGQ5ZmVmYzVlODQ3YjJhY2FlZjQ4ZDdlYzJlZDEyM2JjYzU2YzE0YmFkYjU5ZDI3M2Q3YjQ3YzY2QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000" style="border-width:0" width="100%" height="100%" frameborder="0" scrolling="no" loading="lazy"></iframe>
         </div>
 
-        <div class="payment-container">
+        <div class="payment-container" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); max-width: 600px; margin: 0 auto;">
             <h3>Pagar y Reservar Cupo</h3>
             <p>Seleccione un método de pago e ingrese los detalles de su reserva.</p>
             
-            <div class="payment-options">
-                <div class="payment-option selected" data-method="mercadopago"> <i class="fas fa-credit-card"></i>
+            <div class="payment-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div class="payment-option selected" data-method="mercadopago" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; border: 2px solid var(--accent); cursor: pointer;">
+                    <i class="fas fa-credit-card" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h4>Pago en Línea</h4>
-                    <p>Tarjetas de crédito, débito y saldo Mercado Pago.</p>
+                    <p>Tarjetas de crédito/débito.</p>
                 </div>
                 
-                <div class="payment-option" data-method="transferencia">
-                    <i class="fas fa-university"></i>
+                <div class="payment-option" data-method="transferencia" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; border: 2px solid transparent; cursor: pointer;">
+                    <i class="fas fa-university" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h4>Transferencia Bancaria</h4>
-                    <p>BCP, BBVA, Interbank, Scotiabank.</p>
+                    <p>BCP, BBVA, etc.</p>
                 </div>
                 
-                <div class="payment-option" data-method="yape">
-                    <i class="fas fa-mobile-alt"></i>
+                <div class="payment-option" data-method="yape" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; border: 2px solid transparent; cursor: pointer;">
+                    <i class="fas fa-mobile-alt" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h4>Yape / Plin</h4>
-                    <p>Pago rápido vía móvil (Perú).</p>
+                    <p>Pago rápido móvil.</p>
                 </div>
             </div>
             
             <div class="form-group">
                 <label for="montoPago">Monto a Pagar (S/)</label>
-                <input type="number" id="montoPago" class="form-control" placeholder="Ingrese el monto S/ 0.00" min="0" step="0.01">
+                <input type="number" id="montoPago" class="form-control" placeholder="Ingrese el monto S/ 0.00" min="0" step="0.01" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             
             <div class="form-group">
                 <label for="detallePago">Detalle del Pago</label>
-                <input type="text" id="detallePago" class="form-control" placeholder="Ej: Curso Extintores - Nombre Participante">
+                <input type="text" id="detallePago" class="form-control" placeholder="Ej: Curso Extintores - Nombre Participante" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             
             <button id="procesarPago" class="btn btn-success" style="width: 100%;">
@@ -740,38 +552,38 @@
         </div>
     </section>
 
-    <section id="certificados" class="certificates-section">
+    <section id="certificados" class="certificates-section" style="background-color: #f8f9fa;">
         <div class="container">
             <h2>Verificación de Certificados Digitales</h2>
             <div class="section-intro">
                 <p>Utilice nuestro sistema para validar la autenticidad y vigencia de los certificados emitidos por DAGAT SAC. Transparencia y seguridad.</p>
             </div>
 
-            <div class="verification-container">
-                <div class="verification-form">
+            <div class="verification-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="verification-form" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow);">
                     <h3><i class="fas fa-search"></i> Buscar Certificado</h3>
                     <p>Ingrese el código de verificación que aparece en el documento o escanee el QR.</p>
                     
-                    <div class="input-group">
-                        <input type="text" id="certificateCode" placeholder="Ej: DAGAT-2024-00123" class="form-control">
+                    <div class="input-group" style="display: flex; gap: 1rem; margin: 1.5rem 0;">
+                        <input type="text" id="certificateCode" placeholder="Ej: DAGAT-2024-00123" class="form-control" style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
                         <button id="verifyBtn" class="btn btn-sm" style="flex-shrink: 0;">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
 
-                    <div class="qr-scanner">
+                    <div class="qr-scanner" style="margin-top: 2rem; border: 2px dashed #ddd; padding: 1rem; border-radius: 8px; text-align: center;">
                         <p style="color: #6c757d; margin-bottom: 1rem;"><i class="fas fa-camera"></i> Escanear Código QR</p>
                         <div id="qr-reader" style="width: 100%"></div>
                     </div>
                     
-                    <button id="adminAccessBtn" class="btn admin-access-btn">
+                    <button id="adminAccessBtn" class="btn" style="background-color: var(--secondary); margin-top: 2rem; width: 100%;">
                         <i class="fas fa-lock"></i> Acceso Administrativo
                     </button>
                 </div>
 
-                <div class="certificate-result" id="certificateResult" style="display: none;">
-                    <div class="result-header">
-                        <i class="fas fa-certificate"></i>
+                <div class="certificate-result" id="certificateResult" style="display: none; background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); border-left: 4px solid var(--success);">
+                    <div class="result-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--success);">
+                        <i class="fas fa-certificate" style="font-size: 2rem;"></i>
                         <h3>Resultado de Verificación</h3>
                     </div>
                     <div class="result-content" id="resultContent">
@@ -779,73 +591,8 @@
                 </div>
             </div>
 
-            <div class="admin-panel" id="adminPanel" style="display: none;">
-                <div class="admin-header">
-                    <h3><i class="fas fa-cog"></i> Panel de Gestión de Certificados</h3>
-                    <div class="admin-actions">
-                        <span class="admin-status" id="adminStatus">
-                            <i class="fas fa-user-shield"></i> Sesión activa
-                        </span>
-                        <button id="logoutBtn" class="btn btn-sm logout-btn">
-                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                        </button>
-                    </div>
+            <div class="admin-panel" id="adminPanel" style="display: none; margin-top: 3rem; background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); border: 2px solid var(--primary);">
                 </div>
-                
-                <div class="upload-certificate">
-                    <h4>Registrar Nuevo Certificado</h4>
-                    <form id="certificateForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="studentName">Nombre del Participante</label>
-                                <input type="text" id="studentName" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="studentDni">DNI</label>
-                                <input type="text" id="studentDni" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="courseName">Curso/Capacitación</label>
-                                <input type="text" id="courseName" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="courseHours">Horas Lectivas</label>
-                                <input type="number" id="courseHours" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="issueDate">Fecha de Emisión</label>
-                                <input type="date" id="issueDate" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="expiryDate">Fecha de Vencimiento (Opcional)</label>
-                                <input type="date" id="expiryDate" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="certificateNotes">Observaciones</label>
-                            <textarea id="certificateNotes" class="form-control" rows="3"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-save"></i> Generar Certificado
-                        </button>
-                    </form>
-                </div>
-
-                <div class="certificates-list">
-                    <h4>Certificados Registrados (Local)</h4>
-                    <div class="certificates-grid" id="certificatesGrid">
-                        <p style="color: #6c757d;">Cargando lista de certificados...</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -855,64 +602,40 @@
             <p>Artículos, guías y descargas gratuitas sobre seguridad industrial, normativas y cumplimiento legal en Perú.</p>
         </div>
 
-        <div class="blog-grid">
-            <article class="blog-card">
-                <img src="https://images.unsplash.com/photo-1579782522774-a6962322306d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Normativas NFPA" loading="lazy" class="blog-img">
-                <div class="blog-content">
+        <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+            <article class="blog-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+                <img src="https://images.unsplash.com/photo-1579782522774-a6962322306d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Normativas NFPA" loading="lazy" class="blog-img" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="blog-content" style="padding: 1.5rem;">
                     <h3>Actualizaciones NFPA 2024: Lo que necesita saber</h3>
-                    <p class="blog-date">15 Junio 2024</p>
+                    <p class="blog-date" style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">15 Junio 2024</p>
                     <p>Resumen de los cambios más importantes en las normativas NFPA para sistemas contra incendios este año.</p>
-                    
-                    <div class="resource-download">
-                        <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-                        <a href="#" target="_blank" class="download-btn">
-                            <i class="fas fa-file-pdf"></i> Guía NFPA 10 - Extintores
-                        </a>
-                        </div>
-                    
-                    <a href="#" class="btn btn-outline btn-sm" style="margin-top: 1rem;">Leer Artículo</a>
+                    <a href="#" class="btn btn-outline btn-sm" style="margin-top: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 0.6rem 1.2rem; font-size: 0.9rem; display: inline-flex;">Leer Artículo</a>
                 </div>
             </article>
 
-            <article class="blog-card">
-                <img src="https://images.unsplash.com/photo-1547484738-f9b17796d19e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mantenimiento sistemas" loading="lazy" class="blog-img">
-                <div class="blog-content">
+            <article class="blog-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+                <img src="https://images.unsplash.com/photo-1547484738-f9b17796d19e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mantenimiento sistemas" loading="lazy" class="blog-img" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="blog-content" style="padding: 1.5rem;">
                     <h3>Mantenimiento Preventivo para Sistemas de Incendio</h3>
-                    <p class="blog-date">2 Mayo 2024</p>
+                    <p class="blog-date" style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">2 Mayo 2024</p>
                     <p>Guía completa sobre los protocolos de mantenimiento que toda empresa debería implementar.</p>
-                    
-                    <div class="resource-download">
-                        <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-                        <a href="#" target="_blank" class="download-btn">
-                            <i class="fas fa-file-pdf"></i> Checklist Mantenimiento
-                        </a>
-                    </div>
-                    
-                    <a href="#" class="btn btn-outline btn-sm" style="margin-top: 1rem;">Leer Artículo</a>
+                    <a href="#" class="btn btn-outline btn-sm" style="margin-top: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 0.6rem 1.2rem; font-size: 0.9rem; display: inline-flex;">Leer Artículo</a>
                 </div>
             </article>
 
-            <article class="blog-card">
-                <img src="https://images.unsplash.com/photo-1581093057923-005b6c73d72e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SST en Perú" loading="lazy" class="blog-img">
-                <div class="blog-content">
+            <article class="blog-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+                <img src="https://images.unsplash.com/photo-1581093057923-005b6c73d72e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SST en Perú" loading="lazy" class="blog-img" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="blog-content" style="padding: 1.5rem;">
                     <h3>Nuevas Obligaciones en SST para 2025 (Ley 29783)</h3>
-                    <p class="blog-date">18 Abril 2024</p>
+                    <p class="blog-date" style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">18 Abril 2024</p>
                     <p>Análisis de las modificaciones al reglamento de seguridad y salud en el trabajo en Perú.</p>
-                    
-                    <div class="resource-download">
-                        <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-                        <a href="#" target="_blank" class="download-btn">
-                            <i class="fas fa-file-pdf"></i> Ley 29783 Actualizada
-                        </a>
-                    </div>
-                    
-                    <a href="#" class="btn btn-outline btn-sm" style="margin-top: 1rem;">Leer Artículo</a>
+                    <a href="#" class="btn btn-outline btn-sm" style="margin-top: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 0.6rem 1.2rem; font-size: 0.9rem; display: inline-flex;">Leer Artículo</a>
                 </div>
             </article>
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="#" class="btn btn-outline"><i class="fas fa-book-open"></i> Ver Todos los Artículos</a>
+            <a href="#" class="btn btn-outline" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);"><i class="fas fa-book-open"></i> Ver Todos los Artículos</a>
         </div>
     </section>
 
@@ -922,33 +645,33 @@
             <p>Complete el formulario y un ingeniero se contactará con usted en menos de **4 horas**.</p>
         </div>
 
-        <div class="form-container">
+        <div class="form-container" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); max-width: 800px; margin: 0 auto;">
             <form id="cotizacionForm">
                 <div class="form-group">
                     <label for="nombre"><i class="fas fa-user"></i> Nombre Completo</label>
-                    <input type="text" id="nombre" class="form-control" required placeholder="Su Nombre">
+                    <input type="text" id="nombre" class="form-control" required placeholder="Su Nombre" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
 
                 <div class="form-group">
                     <label for="empresa"><i class="fas fa-building"></i> Empresa (RUC)</label>
-                    <input type="text" id="empresa" class="form-control" required placeholder="Nombre de la Empresa y RUC">
+                    <input type="text" id="empresa" class="form-control" required placeholder="Nombre de la Empresa y RUC" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
 
-                <div class="form-row">
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                        <input type="email" id="email" class="form-control" required placeholder="su.correo@empresa.com">
+                        <input type="email" id="email" class="form-control" required placeholder="su.correo@empresa.com" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
                     </div>
 
                     <div class="form-group">
                         <label for="telefono"><i class="fas fa-phone-alt"></i> Teléfono / WhatsApp</label>
-                        <input type="tel" id="telefono" class="form-control" required placeholder="+51">
+                        <input type="tel" id="telefono" class="form-control" required placeholder="+51" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="servicio"><i class="fas fa-tag"></i> Servicio de Interés</label>
-                    <select id="servicio" class="form-control" required>
+                    <select id="servicio" class="form-control" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
                         <option value="">Seleccione un servicio</option>
                         <option value="sistemas-incendio">Sistemas Contra Incendio (NFPA)</option>
                         <option value="capacitaciones">Capacitaciones SST / Primeros Auxilios</option>
@@ -963,12 +686,12 @@
 
                 <div class="form-group">
                     <label for="mensaje"><i class="fas fa-comment-dots"></i> Detalles del Requerimiento</label>
-                    <textarea id="mensaje" class="form-control" rows="5" placeholder="Describa su requerimiento: especificaciones técnicas, volumen, ubicación, etc."></textarea>
+                    <textarea id="mensaje" class="form-control" rows="5" placeholder="Describa su requerimiento: especificaciones técnicas, volumen, ubicación, etc." style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; min-height: 150px;"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label><i class="fas fa-paperclip"></i> Adjuntar Archivos (Opcional)</label>
-                    <div class="file-upload" id="fileUpload">
+                    <div class="file-upload" id="fileUpload" style="border: 2px dashed #ddd; padding: 2rem; text-align: center; border-radius: 8px; cursor: pointer;">
                         <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem; color: #6c757d;"></i>
                         <p>Arrastre archivos aquí o haga clic para seleccionar</p>
                         <p class="small" style="color: #6c757d;">(Planos, especificaciones, RIT, etc. Max 5MB)</p>
@@ -984,7 +707,7 @@
             </form>
         </div>
     </section>
-
+    
     <section id="contacto" class="bg-light">
         <h2>Contacto y Ubicación</h2>
         <div class="section-intro">
@@ -1027,49 +750,41 @@
                         <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn" style="width: 100%;">
+                    <a id="sendMailBtn" href="mailto:info@dagatgroup.com" class="btn" style="width: 100%;">
                         <i class="fas fa-paper-plane"></i> Enviar Mensaje
-                    </button>
+                    </a>
                 </form>
             </div>
             
             <div class="contact-info">
                 <h3><i class="fas fa-address-card" style="color: var(--primary);"></i> Datos de Contacto</h3>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-item" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 1.5rem; margin-top: 0.2rem;"></i>
                     <div>
                         <h3>Oficina Principal</h3>
                         <p>Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Oficina 301<br>Ate, Lima - Perú</p>
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
+                <div class="contact-item" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <i class="fas fa-phone-alt" style="color: var(--accent); font-size: 1.5rem; margin-top: 0.2rem;"></i>
                     <div>
                         <h3>Teléfonos</h3>
-                        <p>+51 992 132 260 (Principal)</p>
-                        <p>+51 981 353 787 (Ventas)</p>
+                        <p><a href="tel:+51992132260">+51 992 132 260</a> (Principal)</p>
+                        <p><a href="tel:+51981353787">+51 981 353 787</a> (Ventas)</p>
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
+                <div class="contact-item" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <i class="fas fa-envelope" style="color: var(--accent); font-size: 1.5rem; margin-top: 0.2rem;"></i>
                     <div>
                         <h3>Correo Electrónico</h3>
-                        <p>info@dagatgroup.com</p>
-                        <p>ingenieria@dagatgroup.com</p>
+                        <p><a href="mailto:info@dagatgroup.com">info@dagatgroup.com</a></p>
+                        <p><a href="mailto:ingenieria@dagatgroup.com">ingenieria@dagatgroup.com</a></p>
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h3>Horario de Atención</h3>
-                        <p>Lunes a Viernes: 8:30 am - 5:00 pm<br>Sábados: 9:00 am - 1:00 pm</p>
-                    </div>
-                </div>
-
-                <h3 style="margin-top: 1rem;"><i class="fas fa-share-alt" style="color: var(--primary);"></i> Síguenos</h3>
+                <h3 style="margin-top: 2rem;"><i class="fas fa-share-alt" style="color: var(--primary);"></i> Síguenos</h3>
                 <div class="social-links">
                     <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -1079,12 +794,12 @@
             </div>
         </div>
 
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.965949656279!2d-77.0365427!3d-12.0463258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAyJzQ2LjgiUyA3N8KwMDInMTEuNiJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" allowfullscreen="" loading="lazy"></iframe>
+        <div class="map-container" style="height: 400px; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); margin-top: 3rem;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.965949656279!2d-77.0365427!3d-12.0463258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAyJzQ2LjgiUyA3N8KwMDInMTEuNiJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" allowfullscreen="" loading="lazy" style="width: 100%; height: 100%; border: 0;"></iframe>
         </div>
     </section>
 
-    <a href="https://wa.me/51992132260?text=Hola%20DAGAT%20SAC,%20quisiera%20más%20información%20sobre%20sus%20servicios%20de%20ingeniería" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <a href="https://wa.me/51992132260?text=Hola%20DAGAT%20SAC,%20quisiera%20más%20información%20sobre%20sus%20servicios%20de%20ingeniería" class="whatsapp-float" aria-label="Contactar por WhatsApp" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: var(--whatsapp); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 99; animation: pulse 2s infinite;">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1092,8 +807,8 @@
         <div class="footer-container">
             <div class="footer-about">
                 <div class="footer-logo">
-                    <i class="fas fa-helmet-safety"></i>
-                    <span>DAGAT SAC</span>
+                    <img src="Logo final 2 dagat.jpg" alt="Logo DAGAT SAC">
+                    <span>DAGAT</span>
                 </div>
                 <p>Expertos en ingeniería de seguridad, protección contra incendios, salud ocupacional y consultoría integral en Perú.</p>
                 <div class="social-links">
@@ -1108,10 +823,10 @@
                 <h3>Servicios Clave</h3>
                 <ul>
                     <li><a href="#servicios">Sistemas Contra Incendio</a></li>
-                    <li><a href="#servicios">Seguridad y Salud Ocupacional</a></li>
+                    <li><a href="#servicios">Auditorías SST</a></li>
                     <li><a href="#capacitaciones">Capacitaciones Certificadas</a></li>
                     <li><a href="#servicios">Ingeniería de Proyectos</a></li>
-                    <li><a href="#contabilidad">Servicios Contables</a></li>
+                    <li><a href="#servicios">Servicios Contables</a></li>
                     <li><a href="#certificados">Verificación de Certificados</a></li>
                 </ul>
             </div>
@@ -1119,12 +834,10 @@
             <div class="footer-links">
                 <h3>Enlaces Útiles</h3>
                 <ul>
-                    <li><a href="#nosotros">Sobre DAGAT</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#cotizar">Solicitar Cotización</a></li>
                     <li><a href="#blog">Blog Técnico</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#contacto">Nuestra Ubicación</a></li>
+                    <li><a href="#contacto">Contacto y Ubicación</a></li>
                 </ul>
             </div>
 
@@ -1134,31 +847,30 @@
                     <li><i class="fas fa-phone-alt"></i> <a href="tel:+51992132260">+51 992 132 260</a></li>
                     <li><i class="fas fa-envelope"></i> <a href="mailto:info@dagatgroup.com">info@dagatgroup.com</a></li>
                     <li><i class="fas fa-map-marker-alt"></i> <a href="#contacto">Ate, Lima - Perú</a></li>
-                    <li><i class="fas fa-clock"></i> <span style="color: #ccc;">Lun-Vie: 8:30 am - 5:00 pm</span></li>
                 </ul>
             </div>
         </div>
 
-        <div class="copyright">
-            <p>© 2025 DAGAT SAC. Todos los derechos reservados. | Desarrollado con 🛠️ e Ingeniería.</p>
+        <div class="copyright" style="text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>© 2025 DAGAT SAC. Todos los derechos reservados. | Servicios en Ingeniería.</p>
         </div>
     </footer>
 
-    <div class="auth-overlay" id="authOverlay" style="display: none;">
-        <div class="auth-container">
+    <div class="auth-overlay" id="authOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <div class="auth-container" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); width: 100%; max-width: 400px; text-align: center;">
             <h3><i class="fas fa-user-shield"></i> Acceso Administrativo</h3>
             <p>Ingrese la clave de administrador para acceder al panel de certificados</p>
             
-            <div class="form-group">
-                <label for="adminPassword">Clave de Administrador</label>
-                <input type="password" id="adminPassword" class="form-control" placeholder="Ingrese la clave">
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="adminPassword" style="display: block; text-align: left; margin-bottom: 0.5rem;">Clave de Administrador</label>
+                <input type="password" id="adminPassword" class="form-control" placeholder="Ingrese la clave" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             
-            <button id="loginBtn" class="btn">
+            <button id="loginBtn" class="btn" style="width: 100%;">
                 <i class="fas fa-sign-in-alt"></i> Ingresar
             </button>
             
-            <div class="auth-error" id="authError">
+            <div class="auth-error" id="authError" style="color: var(--danger); margin-top: 1rem; display: none;">
                 <i class="fas fa-exclamation-triangle"></i> Clave incorrecta. Intente nuevamente.
             </div>
         </div>
@@ -1166,10 +878,10 @@
 
     <script>
         // -----------------------------------------------------
-        // JS Mejorado: Modularización y Mejor UX
+        // JS: Funcionalidades
         // -----------------------------------------------------
 
-        // NOTIFICACIONES
+        // NOTIFICACIONES FLOTANTES
         function showNotification(message, type = 'info', duration = 4000) {
             const container = document.getElementById('notificationContainer') || (() => {
                 const div = document.createElement('div');
@@ -1185,12 +897,10 @@
                 <span>${message}</span>
             `;
 
-            container.prepend(notification); // Mostrar la más nueva arriba
+            container.prepend(notification); 
 
-            // Mostrar
             setTimeout(() => notification.classList.add('show'), 50);
 
-            // Ocultar y eliminar
             setTimeout(() => {
                 notification.classList.remove('show');
                 notification.addEventListener('transitionend', () => notification.remove());
@@ -1201,22 +911,28 @@
         class AuthSystem {
             constructor() {
                 this.isAuthenticated = false;
-                this.adminPassword = "Mon211306@@"; // TU CLAVE
+                this.adminPassword = "Mon211306@@"; 
                 this.init();
             }
-
+            
             init() {
                 this.checkExistingSession();
                 document.getElementById('adminAccessBtn').addEventListener('click', () => { this.showAuthModal(); });
                 document.getElementById('loginBtn').addEventListener('click', () => { this.authenticate(); });
-                document.getElementById('logoutBtn').addEventListener('click', () => { this.logout(); });
+                
+                // Se asume que logoutBtn existe dentro del panel al hacer login
+                const adminPanel = document.getElementById('adminPanel');
+                if (adminPanel) {
+                     // Solo asignamos el evento si el elemento existe (para evitar errores en la carga inicial)
+                    document.getElementById('logoutBtn').addEventListener('click', () => { this.logout(); });
+                }
                 document.getElementById('adminPassword').addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') { this.authenticate(); }
                 });
             }
 
             checkExistingSession() {
-                const session = sessionStorage.getItem('dagat_admin_session'); // Usar sessionStorage para mayor seguridad y duración de sesión limitada
+                const session = sessionStorage.getItem('dagat_admin_session'); 
                 if (session && session === 'active') {
                     this.isAuthenticated = true;
                     this.showAdminPanel();
@@ -1263,41 +979,71 @@
             }
 
             showAdminPanel() {
-                document.getElementById('adminPanel').style.display = 'block';
+                // Generar el contenido del panel de administración al iniciar sesión
+                const adminPanel = document.getElementById('adminPanel');
+                if (adminPanel) {
+                    adminPanel.innerHTML = `
+                        <div class="admin-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h3><i class="fas fa-cog"></i> Panel de Gestión de Certificados</h3>
+                            <button id="logoutBtn" class="btn btn-sm" style="background-color: var(--danger);"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                        </div>
+                        <div class="upload-certificate">
+                            <h4>Registrar Nuevo Certificado</h4>
+                            <form id="certificateForm">
+                                <p style="color: var(--primary); margin-bottom: 1rem;">** Los datos registrados aquí serán usados para generar el QR y PDF de verificación **</p>
+                                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="form-group"><label for="studentName">Nombre</label><input type="text" id="studentName" class="form-control" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; width: 100%;"></div>
+                                    <div class="form-group"><label for="studentDni">DNI</label><input type="text" id="studentDni" class="form-control" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; width: 100%;"></div>
+                                </div>
+                                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="form-group"><label for="courseName">Curso</label><input type="text" id="courseName" class="form-control" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; width: 100%;"></div>
+                                    <div class="form-group"><label for="courseHours">Horas</label><input type="number" id="courseHours" class="form-control" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; width: 100%;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="issueDate">Fecha de Emisión</label>
+                                    <input type="date" id="issueDate" class="form-control" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; width: 100%;">
+                                </div>
+                                <button type="submit" class="btn btn-success" style="margin-top: 1rem;"><i class="fas fa-save"></i> Generar Certificado (Incluye PDF/QR)</button>
+                            </form>
+                        </div>
+                        <div class="certificates-list">
+                            <h4>Certificados Registrados (Local)</h4>
+                            <div class="certificates-grid" id="certificatesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                <p style="color: #6c757d;">Cargando lista...</p>
+                            </div>
+                        </div>
+                    `;
+                    adminPanel.style.display = 'block';
+                    // Re-asignar eventos a los elementos recién creados
+                    document.getElementById('logoutBtn').addEventListener('click', () => { this.logout(); });
+                    document.getElementById('certificateForm').addEventListener('submit', (e) => { e.preventDefault(); certificateSystem.generateCertificate(); });
+                }
                 if (certificateSystem) {
                     certificateSystem.loadCertificatesList();
                 }
             }
 
             hideAdminPanel() {
-                document.getElementById('adminPanel').style.display = 'none';
+                const adminPanel = document.getElementById('adminPanel');
+                if (adminPanel) {
+                    adminPanel.style.display = 'none';
+                }
             }
         }
 
         // SISTEMA DE CERTIFICADOS
         class CertificateSystem {
             constructor() {
-                // Usar localStorage para la demo, en un sistema real sería una API
                 this.certificates = JSON.parse(localStorage.getItem('dagat_certificates')) || [];
                 this.init();
             }
 
             init() {
                 document.getElementById('verifyBtn').addEventListener('click', () => { this.verifyCertificate(); });
-                document.getElementById('certificateForm').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    this.generateCertificate();
-                });
                 this.initQRScanner();
             }
 
             generateCertificate() {
-                if (!authSystem.isAuthenticated) {
-                    showNotification('❌ Debe iniciar sesión para generar certificados', 'error');
-                    authSystem.showAuthModal();
-                    return;
-                }
-
                 const certificateData = {
                     id: this.generateId(),
                     studentName: document.getElementById('studentName').value,
@@ -1342,47 +1088,44 @@
                 const resultDiv = document.getElementById('certificateResult');
                 const contentDiv = document.getElementById('resultContent');
                 
-                resultDiv.style.display = 'block'; // Mostrar siempre el contenedor
+                resultDiv.style.display = 'block';
 
                 if (certificate) {
-                    // Determinar vigencia
                     const isExpired = certificate.expiryDate && new Date(certificate.expiryDate) < new Date();
                     const statusText = isExpired ? 'Vencido' : 'Válido';
                     const statusColor = isExpired ? 'danger' : 'success';
                     const statusIcon = isExpired ? 'times-circle' : 'check-circle';
 
                     contentDiv.innerHTML = `
-                        <div class="alert alert-${statusColor}">
+                        <div class="alert alert-${statusColor}" style="padding: 1rem; border-radius: 8px; background-color: ${isExpired ? '#f8d7da' : '#d4edda'}; color: ${isExpired ? '#721c24' : '#155724'}; border: 1px solid ${isExpired ? '#f5c6cb' : '#c3e6cb'};">
                             <i class="fas fa-${statusIcon}"></i>
                             <strong>Certificado ${statusText}</strong>
                         </div>
-                        <div class="certificate-details">
-                            <div class="certificate-detail"><span>Código:</span><strong>${certificate.id}</strong></div>
-                            <div class="certificate-detail"><span>Participante:</span><strong>${certificate.studentName}</strong></div>
-                            <div class="certificate-detail"><span>DNI:</span><strong>${certificate.studentDni}</strong></div>
-                            <div class="certificate-detail"><span>Curso:</span><strong>${certificate.courseName}</strong></div>
-                            <div class="certificate-detail"><span>Horas:</span><strong>${certificate.courseHours} horas</strong></div>
-                            <div class="certificate-detail"><span>Fecha de Emisión:</span><strong>${new Date(certificate.issueDate).toLocaleDateString()}</strong></div>
-                            ${certificate.expiryDate ? `<div class="certificate-detail"><span>Fecha Vencimiento:</span><strong>${new Date(certificate.expiryDate).toLocaleDateString()}</strong></div>` : ''}
-                            <div class="certificate-detail"><span>Emitido por:</span><strong>${certificate.issuedBy}</strong></div>
-                            ${certificate.notes ? `<div class="certificate-detail"><span>Observaciones:</span><span>${certificate.notes}</span></div>` : ''}
+                        <div class="certificate-details" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <p><strong>Código:</strong> ${certificate.id}</p>
+                            <p><strong>Participante:</strong> ${certificate.studentName}</p>
+                            <p><strong>Curso:</strong> ${certificate.courseName}</p>
+                            <p><strong>Fecha de Emisión:</strong> ${new Date(certificate.issueDate).toLocaleDateString()}</p>
+                            ${certificate.expiryDate ? `<p><strong>Fecha Vencimiento:</strong> ${new Date(certificate.expiryDate).toLocaleDateString()}</p>` : ''}
                         </div>
                     `;
+                    showNotification(`✅ Certificado ${code} es ${statusText}.`, statusColor);
                 } else {
                     contentDiv.innerHTML = `
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger" style="padding: 1rem; border-radius: 8px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">
                             <i class="fas fa-exclamation-triangle"></i>
                             <strong>Certificado No Encontrado</strong>
-                            <p>El código "${code}" no corresponde a un certificado emitido por DAGAT SAC. Verifique el código e intente nuevamente.</p>
+                            <p>El código "${code}" no corresponde a un certificado emitido por DAGAT SAC.</p>
                         </div>
                     `;
+                    showNotification(`❌ Certificado ${code} no encontrado.`, 'error');
                 }
                 document.getElementById('certificados').scrollIntoView({ behavior: 'smooth' });
             }
 
             loadCertificatesList() {
                 const grid = document.getElementById('certificatesGrid');
-                if (!grid) return; // Si no existe (no está autenticado), no hace nada
+                if (!grid) return; 
 
                 if (this.certificates.length === 0) {
                     grid.innerHTML = `<p style="color: #6c757d;">No hay certificados registrados aún.</p>`;
@@ -1390,86 +1133,78 @@
                 }
                 
                 grid.innerHTML = this.certificates.map(cert => `
-                    <div class="certificate-card">
+                    <div class="certificate-card" style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary);">
                         <h5>${cert.studentName}</h5>
                         <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">${cert.courseName}</p>
-                        <p style="font-size: 0.8rem; margin-bottom: 10px;"><strong>Cód:</strong> <span class="code">${cert.id}</span></p>
-                        <button onclick="certificateSystem.viewCertificate('${cert.id}')" class="btn btn-sm" style="background-color: var(--secondary);">
+                        <p style="font-size: 0.8rem; margin-bottom: 10px;"><strong>Cód:</strong> <span class="code" style="font-family: monospace; background: var(--dark); color: white; padding: 0.25rem 0.5rem; border-radius: 4px;">${cert.id}</span></p>
+                        <button onclick="certificateSystem.viewCertificate('${cert.id}')" class="btn btn-sm" style="background-color: var(--secondary); padding: 0.5rem 1rem; font-size: 0.9rem; border-radius: 4px;">
                             <i class="fas fa-eye"></i> Ver
+                        </button>
+                        <button onclick="certificateSystem.generateCertificatePDFById('${cert.id}')" class="btn btn-sm" style="background-color: var(--accent); padding: 0.5rem 1rem; font-size: 0.9rem; border-radius: 4px; margin-left: 5px;">
+                            <i class="fas fa-file-pdf"></i> PDF
                         </button>
                     </div>
                 `).join('');
             }
 
-            viewCertificate(id) {
-                document.getElementById('certificateCode').value = id;
-                this.verifyCertificate(id);
-            }
-
-            initQRScanner() {
-                // Prevenir error si la librería no está cargada (aunque se incluye en el head)
-                if (typeof Html5QrcodeScanner === 'undefined') {
-                    console.error("Html5QrcodeScanner no está disponible.");
-                    document.getElementById('qr-reader').innerHTML = '<p style="color:red;">El escáner QR requiere cargar librerías.</p>';
-                    return;
+            generateCertificatePDFById(id) {
+                const certificate = this.certificates.find(cert => cert.id === id);
+                if (certificate) {
+                    this.generateCertificatePDF(certificate);
+                } else {
+                    showNotification('❌ Error al encontrar los datos del certificado.', 'error');
                 }
-                
-                const onScanSuccess = (decodedText) => {
-                    document.getElementById('certificateCode').value = decodedText;
-                    this.verifyCertificate(decodedText);
-                    scanner.clear().catch(console.error); // Detener el escáner
-                };
-
-                const scanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: true });
-                scanner.render(onScanSuccess);
             }
 
             generateCertificatePDF(certificateData) {
-                // ** Lógica de generación de PDF real (ejemplo con jsPDF) **
                 const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
+                const doc = new jsPDF('l', 'mm', 'a4');
                 
-                doc.setFontSize(22);
-                doc.setTextColor(23, 36, 89);
-                doc.text("CERTIFICADO DE CAPACITACIÓN", 105, 30, null, null, "center");
+                const verificationUrl = `https://www.dagatservingenieria.com/#certificados?code=${certificateData.id}`; // URL de verificación
                 
-                doc.setFontSize(14);
-                doc.setTextColor(51, 51, 51);
-                doc.text("Se otorga a:", 105, 45, null, null, "center");
-                
-                doc.setFontSize(30);
-                doc.setTextColor(255, 112, 67);
-                doc.text(certificateData.studentName.toUpperCase(), 105, 60, null, null, "center");
-
-                doc.setFontSize(16);
-                doc.setTextColor(51, 51, 51);
-                doc.text(`Por haber concluido satisfactoriamente el curso de:`, 105, 75, null, null, "center");
-                
-                doc.setFontSize(20);
-                doc.setTextColor(23, 36, 89);
-                doc.text(certificateData.courseName, 105, 88, null, null, "center");
-                
-                doc.setFontSize(12);
-                doc.text(`Horas Lectivas: ${certificateData.courseHours} | DNI: ${certificateData.studentDni}`, 105, 98, null, null, "center");
-
-                // Generar QR para la verificación
-                const verificationUrl = `https://www.dagatgroup.com/#certificados?code=${certificateData.id}`; // USAR DOMINIO REAL
-                const typeNumber = 0;
-                const errorCorrectionLevel = 'L';
-                const qr = qrcode(typeNumber, errorCorrectionLevel);
+                const qr = qrcode(0, 'L');
                 qr.addData(verificationUrl);
                 qr.make();
                 const qrImg = qr.createDataURL(6, 0);
+
+                // --- Contenido del Certificado ---
+                doc.setFont('Helvetica');
+                doc.setFontSize(30);
+                doc.setTextColor('#172459'); // Primary Color
+                doc.text("CERTIFICADO DE CAPACITACIÓN", 148.5, 30, { align: "center" });
                 
-                doc.addImage(qrImg, 'JPEG', 85, 150, 40, 40);
+                // Simular el logo en el PDF - REQUIERE LA IMAGEN EN LA MISMA CARPETA
+                // doc.addImage('Logo final 2 dagat.jpg', 'JPEG', 120, 10, 40, 40); 
+                
+                doc.setFontSize(16);
+                doc.setTextColor('#555555');
+                doc.text("Se otorga a:", 148.5, 55, { align: "center" });
+                
+                doc.setFontSize(40);
+                doc.setTextColor('#FF7043'); // Accent Color
+                doc.text(certificateData.studentName.toUpperCase(), 148.5, 75, { align: "center" });
+
+                doc.setFontSize(18);
+                doc.setTextColor('#555555');
+                doc.text(`Por haber concluido satisfactoriamente el curso de:`, 148.5, 95, { align: "center" });
+                
+                doc.setFontSize(26);
+                doc.setTextColor('#172459');
+                doc.text(certificateData.courseName, 148.5, 110, { align: "center" });
+                
+                doc.setFontSize(12);
+                doc.setTextColor('#333333');
+                doc.text(`Horas Lectivas: ${certificateData.courseHours} | DNI: ${certificateData.studentDni} | Emitido: ${new Date(certificateData.issueDate).toLocaleDateString()}`, 148.5, 125, { align: "center" });
+
+                // Posicionamiento del QR (para verificación)
+                doc.addImage(qrImg, 'JPEG', 15, 160, 30, 30); 
                 doc.setFontSize(8);
-                doc.text("Escanee para verificar la autenticidad", 105, 195, null, null, "center");
+                doc.setTextColor('#666666');
+                doc.text("Escanee para verificar autenticidad:", 30, 195, { align: "center" });
+                doc.text(`Código: ${certificateData.id}`, 30, 198, { align: "center" });
 
-                doc.setFontSize(10);
-                doc.text(`Código de Verificación: ${certificateData.id}`, 10, 280);
-                doc.text(`Fecha de Emisión: ${new Date(certificateData.issueDate).toLocaleDateString()}`, 10, 285);
-
-                doc.save(`Certificado_${certificateData.id}.pdf`);
+                doc.save(`Certificado_DAGAT_${certificateData.id}.pdf`);
+                showNotification(`📄 Certificado ${certificateData.id} generado en PDF y listo para ser impreso.`, 'success');
             }
 
             saveToStorage() {
@@ -1477,69 +1212,8 @@
             }
         }
 
-        // CONTROLADORES DE PAGO (Mejorado para reflejar opciones)
-        document.getElementById('procesarPago').addEventListener('click', function() {
-            const selectedOption = document.querySelector('.payment-option.selected');
-            const monto = document.getElementById('montoPago').value.trim();
-            const detalle = document.getElementById('detallePago').value.trim();
-            
-            if (!selectedOption) {
-                showNotification('❌ Por favor, seleccione un método de pago.', 'error');
-                return;
-            }
-            
-            if (!monto || parseFloat(monto) <= 0) {
-                showNotification('❌ Ingrese un monto válido.', 'error');
-                return;
-            }
-            
-            if (!detalle) {
-                showNotification('❌ Ingrese el detalle del pago.', 'error');
-                return;
-            }
-            
-            const method = selectedOption.dataset.method;
-            let message = '';
-            
-            switch(method) {
-                case 'mercadopago':
-                    // En un entorno real, aquí se llamaría al SDK de Mercado Pago
-                    message = `💳 Pago en Línea (Mercado Pago)\n\n` +
-                              `Monto: S/ ${monto}\n` +
-                              `Detalle: ${detalle}\n\n` +
-                              `Redirigiendo a la pasarela de pago... (Simulación)`;
-                    break;
-                case 'transferencia':
-                    message = `💰 Transferencia Bancaria\n\n` +
-                              `Banco: Scotiabank\n` +
-                              `Cuenta: [Número de Cuenta]\n` +
-                              `CCI: [Número CCI]\n` +
-                              `Titular: DAGAT SAC\n` +
-                              `Monto: S/ ${monto}\n` +
-                              `Concepto: ${detalle}\n\n` +
-                              `Envíe el comprobante al correo: contabilidad.reyes@dagatgroup.com`;
-                    break;
-                case 'yape':
-                    message = `📱 Yape / Plin\n\n` +
-                              `Número: +51 992 132 260\n` +
-                              `Monto: S/ ${monto}\n` +
-                              `Concepto: ${detalle}\n\n` +
-                              `Envíe el comprobante por WhatsApp al mismo número.`;
-                    break;
-            }
-            
-            showNotification(`ℹ️ Detalle de su solicitud de pago:\n\n${message}`, 'info', 8000);
-            
-            if (method === 'mercadopago') {
-                // Simulación de redirección:
-                setTimeout(() => {
-                    // window.location.href = 'https://mpago.la/link-de-pago-simulado';
-                }, 1500);
-            }
-        });
-
         // -----------------------------------------------------
-        // INICIALIZACIÓN
+        // INICIALIZACIÓN Y EVENTOS
         // -----------------------------------------------------
         let authSystem;
         let certificateSystem;
@@ -1556,34 +1230,23 @@
                 certificateSystem.verifyCertificate(code);
             }
             
-            // Animación fade-in para secciones (CSS/JS)
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
+            // Animación fade-in para secciones 
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target); // Dejar de observar una vez que aparece
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
             
-            document.querySelectorAll('section').forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('section').forEach(el => { observer.observe(el); });
             
-            // Mensaje de bienvenida inicial (Mejora UX)
-            setTimeout(() => {
-                showNotification('👋 Bienvenido a DAGAT SAC - Su seguridad es nuestra prioridad', 'info');
-            }, 1000);
+            setTimeout(() => { showNotification('👋 Bienvenido a DAGAT SAC - Servicios en Ingeniería', 'info'); }, 1000);
         });
 
-        // -----------------------------------------------------
-        // MANEJO DE EVENTOS (MEJORADO)
-        // -----------------------------------------------------
+        // Eventos UI: Menú móvil, Scroll, Cotización y Contacto
         
         // Menú móvil
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1591,10 +1254,8 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -1604,6 +1265,30 @@
             });
         });
 
+        // Formulario de cotización (Envío con simulación de API)
+        document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
+            
+            // Simulación de envío real
+            setTimeout(() => {
+                showNotification('✅ Solicitud de cotización enviada. Le contactaremos en 4 horas.', 'success');
+                this.reset();
+                // Limpiar adjuntos simulados
+                document.getElementById('fileList').innerHTML = '';
+                document.getElementById('fileUpload').style.borderColor = '#ddd';
+                document.getElementById('fileUpload').style.backgroundColor = 'transparent';
+
+                // Restaurar botón
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2500);
+        });
+        
         // Formulario de cotización (Adjuntos)
         const fileUpload = document.getElementById('fileUpload');
         const fileInput = document.getElementById('archivos');
@@ -1627,46 +1312,37 @@
             }
         });
 
-        // Formulario de cotización (Envío)
-        document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
+
+        // Envío de correo directo (Mailto)
+        const sendMailBtn = document.getElementById('sendMailBtn');
+
+        sendMailBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            const btn = this.querySelector('.btn');
-            const originalText = btn.innerHTML;
             
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            btn.disabled = true;
+            const contactForm = document.getElementById('contactForm');
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
             
-            // Simular envío real a un servicio de correo/API
-            setTimeout(() => {
-                showNotification('✅ Solicitud de cotización enviada. Le responderemos a la brevedad.', 'success');
-                this.reset();
-                fileList.innerHTML = '';
-                fileUpload.style.borderColor = '#ddd';
-                fileUpload.style.backgroundColor = 'transparent';
+            if (!name || !email || !phone || !subject || !message) {
+                showNotification('❌ Por favor, complete todos los campos del formulario de contacto.', 'error');
+                return;
+            }
 
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 2500);
+            // Crear el cuerpo del correo
+            const body = `Nombre: ${name}%0AEmail: ${email}%0ATeléfono: ${phone}%0AAsunto: ${subject}%0A%0AMensaje:%0A${message}`;
+            const mailtoLink = `mailto:info@dagatgroup.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+            // Abrir el cliente de correo
+            window.location.href = mailtoLink;
+            showNotification('✉️ Abriendo cliente de correo. Por favor, haga clic en enviar.', 'info', 5000);
+            contactForm.reset();
         });
 
-        // Formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            showNotification('✅ Mensaje de contacto enviado. Gracias por comunicarse con DAGAT SAC.', 'success');
-            this.reset();
-        });
 
-        // Sistema de pagos (Selección visual)
-        document.querySelectorAll('.payment-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.payment-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-
-        // Navegación suave
+        // Navegación y Scroll se mantienen (para que los enlaces # funcionen)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1677,31 +1353,22 @@
             });
         });
 
-        // Cambiar clase activa en navegación al hacer scroll (Mejorado)
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
-            
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                // Ajustar offset para que el enlace se active cuando la sección esté a 100px de la parte superior
-                if (window.scrollY >= sectionTop - 100) { 
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= sectionTop - 100) { current = section.getAttribute('id'); }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
             });
         });
     </script>
 </body>
 </html>
-
 
 
