@@ -59,14 +59,16 @@
             overflow: hidden;
         }
 
-        /* Simulación de fondo con la imagen de ingeniería adjunta */
+        /* Fondo con la imagen de ingeniería adjunta */
         .header-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            /* RUTA LOCAL DE LA IMAGEN ADJUNTA */
             background: url('image_47485e.jpg') center/cover;
+            background-blend-mode: multiply; /* Para que el color azul del fondo se mezcle */
             opacity: 0.15; 
             z-index: 1;
         }
@@ -76,7 +78,7 @@
             z-index: 2;
         }
         
-        /* Logo Principal (Usando la imagen adjunta) */
+        /* Logo Principal */
         .logo {
             display: flex;
             flex-direction: column;
@@ -86,6 +88,7 @@
         }
 
         .logo img {
+            /* RUTA LOCAL DE LA IMAGEN ADJUNTA */
             height: 100px; 
             width: auto;
             filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
@@ -105,7 +108,7 @@
             text-transform: uppercase;
         }
 
-        /* Navegación y el resto de estilos se mantienen para consistencia */
+        /* Navegación */
         nav {
             background-color: var(--secondary);
             padding: 0.75rem 1rem;
@@ -201,18 +204,12 @@
         
         /* Hero Section */
         .hero {
-            /* Usamos la imagen adjunta para una superposición más sutil y conceptual */
+            /* RUTA LOCAL DE LA IMAGEN ADJUNTA */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('image_47485e.jpg') center/cover;
             background-attachment: fixed;
             color: white;
             padding: 8rem 1rem;
             text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
         }
 
         /* Cards de Servicios */
@@ -297,9 +294,11 @@
         }
 
         .footer-logo img {
+            /* RUTA LOCAL DE LA IMAGEN ADJUNTA */
             height: 40px; 
             width: auto;
             margin-right: 10px;
+            /* Filtro para hacer la imagen blanca en el fondo oscuro */
             filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 112, 67, 0.5)); 
         }
         
@@ -309,7 +308,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            /* Menú Móvil */
             .nav-links {
                 position: absolute;
                 top: 100%;
@@ -434,7 +432,7 @@
             </div>
 
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1554224155-ac28a1c97b83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHNlYXJjaHwzfHxhY2NvdW50aW5nJTIwYW5kJTIwYnVzaW5lc3MlMjBmaW5hbmNlfGVufDB8fHx8MTY2NTI1MDQ4MQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Servicios Contables" class="service-img" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1554224155-ac28a1c97b83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTYxNzd8MHwxfHNlYXJjaHwzfHxhY2NvdW50aW5nJTIwYW5kJTIwd29ya3BsYWNlfGVufDB8fHx8MTY2NTI1MDQ4MQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Servicios Contables" class="service-img" loading="lazy">
                 <div class="service-content">
                     <h3><i class="fas fa-chart-bar"></i> Servicios Contables</h3>
                     <p>Contabilidad general, planificación tributaria, gestión de nóminas, auditoría y consultoría financiera. (Partner Oficial).</p>
@@ -788,12 +786,12 @@
                 this.adminPassword = "Mon211306@@"; 
                 this.init();
             }
-            // (Resto de métodos de AuthSystem se mantienen)
-             init() {
+            
+            init() {
                 this.checkExistingSession();
                 document.getElementById('adminAccessBtn').addEventListener('click', () => { this.showAuthModal(); });
                 document.getElementById('loginBtn').addEventListener('click', () => { this.authenticate(); });
-                // Solo configuramos el logout si el panel existe (se mantiene en la simulación)
+                
                 if(document.getElementById('logoutBtn')) { 
                     document.getElementById('logoutBtn').addEventListener('click', () => { this.logout(); });
                 }
@@ -850,7 +848,6 @@
             }
 
             showAdminPanel() {
-                // Generar el contenido del panel de administración al iniciar sesión
                 const adminPanel = document.getElementById('adminPanel');
                 if (adminPanel) {
                     adminPanel.innerHTML = `
@@ -908,14 +905,13 @@
                 this.certificates = JSON.parse(localStorage.getItem('dagat_certificates')) || [];
                 this.init();
             }
-            // (Métodos init, generateId, verifyCertificate, displayVerificationResult, loadCertificatesList, viewCertificate, initQRScanner, saveToStorage se mantienen)
+
             init() {
                 document.getElementById('verifyBtn').addEventListener('click', () => { this.verifyCertificate(); });
                 this.initQRScanner();
             }
 
             generateCertificate() {
-                // (Se mantiene la lógica de extracción de datos y almacenamiento)
                 const certificateData = {
                     id: this.generateId(),
                     studentName: document.getElementById('studentName').value,
@@ -1040,8 +1036,9 @@
                 doc.setFontSize(30);
                 doc.setTextColor('#172459'); // Primary Color
                 doc.text("CERTIFICADO DE CAPACITACIÓN", 148.5, 30, { align: "center" });
-
-                // (Añadir más diseño de tu logo/fondo en el código final del diseñador)
+                
+                // (Simular la inclusión del logo para el PDF - Requiere la imagen)
+                // doc.addImage('Logo final 2 dagat.jpg', 'JPEG', 120, 10, 40, 40); 
                 
                 doc.setFontSize(16);
                 doc.setTextColor('#555555');
@@ -1089,7 +1086,6 @@
             authSystem = new AuthSystem();
             certificateSystem = new CertificateSystem();
             
-            // Animación fade-in para secciones 
             const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1106,8 +1102,6 @@
         });
 
         // Eventos UI: Menú móvil, Scroll, Cotización y Contacto
-        
-        // Menú móvil
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
 
@@ -1133,7 +1127,6 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
             btn.disabled = true;
             
-            // ** SIMULACIÓN DE ENVÍO PROFESIONAL **
             setTimeout(() => {
                 showNotification('✅ Solicitud de cotización enviada. Le contactaremos en 4 horas.', 'success');
                 this.reset();
@@ -1199,5 +1192,6 @@
     </script>
 </body>
 </html>
+
 
 
