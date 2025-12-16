@@ -2318,7 +2318,26 @@
         certificateSystem.verifyCertificate();
       }
     });
-     // Mostrar mensaje de bienvenida
+      // Añadir efecto de aparición a las secciones al hacer scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+      
+      // Observar todas las secciones y cards
+      document.querySelectorAll('section, .service-card, .blog-card, .accounting-service').forEach(el => {
+        observer.observe(el);
+      });
+      
+      // Mostrar mensaje de bienvenida
       setTimeout(() => {
         showNotification('👋 Bienvenido a DAGAT SAC - Su seguridad es nuestra prioridad', 'info');
       }, 1000);
@@ -2326,6 +2345,7 @@
   </script>
 </body>
 </html>
+
 
 
 
