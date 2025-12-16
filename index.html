@@ -76,19 +76,17 @@
       margin: 0 auto;
     }
 
-    .logo {
-      font-size: 2.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-      gap: 15px;
+    .logo i {
+      color: var(--accent);
+      margin-right: 15px;
+      font-size: 2.8rem;
     }
 
     .logo img {
       height: 80px;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
       transition: var(--transition);
+
     }
 
     .logo img:hover {
@@ -1317,13 +1315,13 @@
     }
 
     /* Responsive */
-    @media (max-width: 1200px) {
+    @media (max-width: 576px) {
       .logo {
         font-size: 2.2rem;
       }
       
-      .logo img {
-        height: 70px;
+      .logo i {
+        font-size: 2.2rem;
       }
       
       .hero h1 {
@@ -3302,5 +3300,6 @@
   </script>
 </body>
               </html>
+
 
 
