@@ -1,2326 +1,2131 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DAGAT SAC - Servicios Integrales de Ingeniería, Seguridad y Consultoría</title>
-  <meta name="description" content="Expertos en sistemas contra incendio, capacitaciones SST, consultoría en seguridad ocupacional y servicios contables en Perú">
-  
-  <!-- Fuentes e iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- SDK Mercado Pago -->
-  <script src="https://sdk.mercadopago.com/js/v2"></script>
-  
-  <!-- Librerías para certificados -->
-  <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-
-  <style>
-    :root {
-      --primary: #1a237e;
-      --secondary: #3949ab;
-      --accent: #ff5722;
-      --whatsapp: #25d366;
-      --accounting: #2e7d32;
-      --success: #4caf50;
-      --danger: #f44336;
-      --dark: #0d1b2a;
-      --light: #f8f9fa;
-      --shadow: 0 4px 6px rgba(0,0,0,0.1);
-      --transition: all 0.3s ease;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .header-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://res.cloudinary.com/dam4utzn2/image/upload/v1741138072/Logo_dagat_kog53k.jpg') center/cover;
-      opacity: 0.2;
-      z-index: 1;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      font-size: 2.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .logo i {
-      color: var(--accent);
-      margin-right: 15px;
-      font-size: 2.8rem;
-    }
-
-    /* Navegación */
-    nav {
-      background-color: var(--secondary);
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow);
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      background-color: var(--accent);
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 101;
-    }
-
-    /* Secciones */
-    section {
-      padding: 4rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      color: var(--primary);
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: var(--accent);
-    }
-
-    .section-intro {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 2rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581093057305-3ec4a37a6a6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-      color: white;
-      padding: 5rem 1rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Cards de Servicios */
-    .servicios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-
-    .service-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .service-content {
-      padding: 1.5rem;
-    }
-
-    .service-content h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    /* Formularios */
-    .form-container {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: inherit;
-    }
-
-    textarea.form-control {
-      min-height: 150px;
-    }
-
-    .file-upload {
-      border: 2px dashed #ddd;
-      padding: 2rem;
-      text-align: center;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .file-upload:hover {
-      border-color: var(--accent);
-      background-color: rgba(255, 87, 34, 0.05);
-    }
-
-    /* Botones */
-    .btn {
-      display: inline-block;
-      background-color: var(--accent);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-    }
-
-    .btn:hover {
-      background-color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .btn-whatsapp {
-      background-color: var(--whatsapp);
-    }
-
-    .btn-whatsapp:hover {
-      background-color: #128C7E;
-    }
-
-    .btn-accounting {
-      background-color: var(--accounting);
-    }
-
-    .btn-accounting:hover {
-      background-color: #1b5e20;
-    }
-
-    .btn-success {
-      background-color: var(--success);
-    }
-
-    .btn-success:hover {
-      background-color: #388e3c;
-    }
-
-    .btn-danger {
-      background-color: var(--danger);
-    }
-
-    .btn-danger:hover {
-      background-color: #d32f2f;
-    }
-
-    .btn-sm {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
-
-    .btn-outline:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    /* Google Maps */
-    .map-container {
-      height: 400px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-top: 2rem;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* WhatsApp Float */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      background-color: var(--whatsapp);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 99;
-      animation: pulse 2s infinite;
-      transition: var(--transition);
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--primary);
-      color: white;
-      padding: 3rem 1rem;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .footer-logo {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-logo i {
-      color: var(--accent);
-      margin-right: 10px;
-    }
-
-    .footer-links h3 {
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-
-    .footer-links h3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background-color: var(--accent);
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-      color: #ccc;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: white;
-      padding-left: 5px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: white;
-      transition: var(--transition);
-    }
-
-    .social-links a:hover {
-      background-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .copyright {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Sección Contable */
-    .accounting-section {
-      background-color: #f0f9f0;
-      padding: 4rem 1rem;
-    }
-
-    .accounting-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .accounting-header h2 {
-      color: var(--accounting);
-    }
-
-    .accounting-header h2::after {
-      background-color: var(--accounting);
-    }
-
-    .partner-badge {
-      display: inline-block;
-      background-color: var(--accounting);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .accounting-services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .accounting-service {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--accounting);
-      transition: var(--transition);
-    }
-
-    .accounting-service:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
-
-    .accounting-service h4 {
-      color: var(--accounting);
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .accounting-contact {
-      text-align: center;
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-    }
-
-    .accounting-contact a {
-      color: var(--accounting);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .accounting-contact a:hover {
-      text-decoration: underline;
-    }
-
-    /* Estilos para la sección de certificados */
-    .certificates-section {
-      background-color: #f8f9fa;
-      padding: 4rem 1rem;
-    }
-
-    .verification-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .verification-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-    }
-
-    .input-group {
-      display: flex;
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .input-group .form-control {
-      flex: 1;
-    }
-
-    .qr-scanner {
-      margin-top: 2rem;
-      border: 2px dashed #ddd;
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .certificate-result {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--success);
-    }
-
-    .result-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      color: var(--success);
-    }
-
-    .result-header i {
-      font-size: 2rem;
-    }
-
-    .certificate-details {
-      background: #f8f9fa;
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    .certificate-detail {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .certificate-detail:last-child {
-      border-bottom: none;
-    }
-
-    .admin-panel {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      margin-top: 3rem;
-      border: 2px solid var(--primary);
-    }
-
-    .upload-certificate {
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .certificates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .certificate-card {
-      background: #f8f9fa;
-      padding: 1rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--primary);
-    }
-
-    .certificate-card h5 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .certificate-card .code {
-      font-family: monospace;
-      background: var(--dark);
-      color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
-
-    .alert {
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .alert-success {
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-
-    .alert-danger {
-      background-color: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-    }
-
-    /* Nuevos estilos para el sistema de autenticación */
-    .auth-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
-    
-    .auth-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-    }
-    
-    .auth-container h3 {
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-    }
-    
-    .auth-container .form-group {
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-    
-    .auth-container .btn {
-      width: 100%;
-    }
-    
-    .auth-error {
-      color: var(--danger);
-      margin-top: 1rem;
-      display: none;
-    }
-    
-    .admin-access-btn {
-      margin-top: 1rem;
-      background-color: var(--secondary);
-      width: 100%;
-    }
-    
-    .admin-access-btn:hover {
-      background-color: var(--primary);
-    }
-    
-    .logout-btn {
-      background-color: var(--danger);
-      margin-left: 1rem;
-    }
-    
-    .admin-header {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .admin-status {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--success);
-      font-weight: 600;
-    }
-    
-    .admin-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* Estilos para calendario de capacitaciones */
-    .calendar-container {
-      height: 600px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-bottom: 2rem;
-    }
-
-    /* Estilos para blog */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-
-    .blog-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-
-    .blog-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .blog-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .blog-content {
-      padding: 1.5rem;
-    }
-
-    .blog-date {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .blog-content h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .resource-download {
-      background: #f8f9fa;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      border-left: 4px solid var(--accent);
-    }
-
-    .resource-download h4 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--primary);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .download-btn:hover {
-      background: var(--secondary);
-    }
-
-    /* Estilos para contacto */
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 2rem;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .contact-item i {
-      color: var(--accent);
-      font-size: 1.5rem;
-      margin-top: 0.2rem;
-    }
-
-    .contact-item h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    /* Estilos para pagos */
-    .payment-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .payment-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .payment-option {
-      background: #f8f9fa;
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      border: 2px solid transparent;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .payment-option:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .payment-option.selected {
-      border-color: var(--accent);
-      background: rgba(255, 87, 34, 0.05);
-    }
-
-    .payment-option i {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: var(--secondary);
-        z-index: 99;
-      }
-
-      .nav-links.active {
-        max-height: 500px;
-        padding: 1rem;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .whatsapp-float {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-      }
-
-      .verification-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-      
-      .input-group {
-        flex-direction: column;
-      }
-      
-      .admin-header {
-        flex-direction: column;
-      }
-      
-      .admin-actions {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-      }
-      
-      .logout-btn {
-        margin-left: 0;
-      }
-      
-      .certificates-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .service-card:hover {
-        transform: none;
-      }
-      
-      .accounting-service:hover {
-        transform: none;
-      }
-      
-      .hero {
-        padding: 3rem 1rem;
-      }
-      
-      section {
-        padding: 2rem 1rem;
-      }
-      
-      .logo {
-        font-size: 2rem;
-      }
-      
-      .logo i {
-        font-size: 2.2rem;
-      }
-
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-
-      .calendar-container {
-        height: 400px;
-      }
-
-      .blog-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .payment-options {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .service-content {
-        padding: 1rem;
-      }
-      
-      .form-container {
-        padding: 1.5rem;
-      }
-      
-      .verification-form {
-        padding: 1.5rem;
-      }
-      
-      .certificate-result {
-        padding: 1.5rem;
-      }
-      
-      .admin-panel {
-        padding: 1.5rem;
-      }
-      
-      .auth-container {
-        padding: 1.5rem;
-      }
-
-      .payment-container {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DAGAT SAC & DAGAT LAW — Plataforma Integral de Ingeniería, SST y Defensa Penal-Laboral</title>
+<meta name="description" content="Plataforma de alta ingeniería en protección contra incendios (NFPA), consultoría integral SG-SST (Ley 29783) y asesoría jurídica corporativa DAGAT LAW ante SUNAFIL y el Art. 168-A del Código Penal.">
+
+<script>
+  requestAnimationFrame(() => {
+    document.documentElement.classList.add('js-ready');
+  });
+</script>
+
+<!-- Open Graph / Meta Protocol -->
+<meta property="og:title" content="DAGAT SAC & DAGAT LAW — Ingeniería & Defensa Legal Corporativa">
+<meta property="og:description" content="Sistemas contra incendio NFPA, auditorías ITSE, defensa penal Art. 168-A CP y litigio inspectivo SUNAFIL en Perú.">
+<meta property="og:image" content="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#060919">
+
+<!-- Typography: Space Grotesk, Inter, JetBrains Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- High-Performance Vector Icons & Processing Tools -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+<style>
+:root {
+  --brand-fire: #ff5722;
+  --brand-fire-glow: rgba(255, 87, 34, 0.45);
+  --brand-amber: #f59e0b;
+  --brand-gold: #eab308;
+  --brand-gold-glow: rgba(234, 179, 8, 0.45);
+  --brand-indigo: #6366f1;
+  --brand-cyan: #06b6d4;
+  --brand-emerald: #10b981;
+  --brand-danger: #ef4444;
+
+  --bg: #060919;
+  --bg-surface: #0b1029;
+  --bg-card: rgba(255, 255, 255, 0.035);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-gold: rgba(234, 179, 8, 0.35);
+  --border-fire: rgba(255, 87, 34, 0.35);
+
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --gradient-cyber: radial-gradient(ellipse at 15% 15%, #1e1338 0%, transparent 50%),
+                     radial-gradient(ellipse at 85% 20%, #0d274c 0%, transparent 50%),
+                     radial-gradient(ellipse at 50% 90%, #201026 0%, transparent 55%);
+  --gradient-fire: linear-gradient(135deg, #ff5722 0%, #ff8a50 50%, #ff5722 100%);
+  --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
+  --gradient-tech: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.8);
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --max-w: 1280px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: rgba(0, 0, 0, 0.03);
+  --bg-card-hover: rgba(0, 0, 0, 0.06);
+  --border: rgba(0, 0, 0, 0.09);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --border-gold: rgba(180, 83, 9, 0.4);
+  --border-fire: rgba(234, 88, 12, 0.4);
+  --text: #090d24;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --gradient-cyber: radial-gradient(ellipse at 15% 15%, #ffedd5 0%, transparent 50%),
+                     radial-gradient(ellipse at 85% 20%, #e0e7ff 0%, transparent 50%),
+                     radial-gradient(ellipse at 50% 90%, #fef3c7 0%, transparent 55%);
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+/* Background cyber grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="light"] body::before {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
+.nav-shell {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 12px 24px;
+  background: rgba(6, 9, 25, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .nav-shell {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.nav-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-logo-img {
+  height: 56px;
+  width: auto;
+  filter: drop-shadow(0 4px 14px rgba(255, 87, 34, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.nav-brand-group:hover .nav-logo-img {
+  transform: scale(1.05);
+}
+
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-brand-text .main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-brand-text .main-title .dot {
+  width: 7px; height: 7px;
+  background: var(--brand-fire);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--brand-fire);
+  display: inline-block;
+  animation: pulseBeacon 2s infinite ease-in-out;
+}
+
+.nav-brand-text .sub-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-tab-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.nav-tab-link:hover {
+  color: var(--text);
+  background: var(--bg-card-hover);
+}
+
+.nav-tab-link.active {
+  color: #fff;
+  background: rgba(255, 87, 34, 0.15);
+  border: 1px solid var(--border-fire);
+}
+
+[data-theme="light"] .nav-tab-link.active {
+  color: var(--brand-fire);
+  background: rgba(255, 87, 34, 0.1);
+}
+
+.nav-tab-link.law-tab.active {
+  color: var(--brand-gold);
+  background: rgba(234, 179, 8, 0.15);
+  border-color: var(--border-gold);
+}
+
+.badge-law-nav {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(234, 179, 8, 0.2);
+  color: var(--brand-gold);
+  border: 1px solid var(--border-gold);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-fire {
+  background: var(--gradient-fire);
+  color: #fff;
+  box-shadow: 0 6px 20px -4px var(--brand-fire-glow);
+}
+
+.btn-fire:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -4px var(--brand-fire-glow);
+}
+
+.btn-law {
+  background: var(--gradient-gold);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 6px 20px -4px var(--brand-gold-glow);
+}
+
+.btn-law:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -4px var(--brand-gold-glow);
+}
+
+.btn-ghost {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--brand-fire);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-law {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  color: var(--brand-gold);
+}
+
+.btn-ghost-law:hover {
+  background: rgba(234, 179, 8, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-sm { padding: 6px 12px; font-size: 0.8rem; border-radius: 8px; }
+.btn-lg { padding: 14px 28px; font-size: 1rem; border-radius: 14px; }
+
+.icon-btn {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.icon-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+/* Breadcrumb Navigation on Dedicated Sheets */
+.sheet-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+
+.sheet-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sheet-breadcrumb a:hover {
+  color: var(--brand-fire);
+}
+
+.sheet-breadcrumb .current {
+  color: var(--brand-amber);
+  font-weight: 600;
+}
+
+.hero-stage {
+  position: relative;
+  min-height: 100vh;
+  padding: 130px 24px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-cyber);
+  overflow: hidden;
+}
+
+.monumental-logo-wrapper {
+  position: relative;
+  width: clamp(240px, 32vw, 340px);
+  height: clamp(240px, 32vw, 340px);
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Orbital Rings */
+.orbital-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbital-ring.ring-inner {
+  inset: -15px;
+  border: 1px dashed rgba(255, 87, 34, 0.45);
+  animation: rotateClockwise 24s linear infinite;
+}
+
+.orbital-ring.ring-middle {
+  inset: -35px;
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  border-top-color: var(--brand-gold);
+  border-bottom-color: var(--brand-fire);
+  animation: rotateCounter 36s linear infinite;
+}
+
+.orbital-ring.ring-outer {
+  inset: -60px;
+  border: 1px dotted rgba(99, 102, 241, 0.3);
+  animation: rotateClockwise 48s linear infinite;
+}
+
+.orbital-glow-core {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 87, 34, 0.4) 0%, 
+    rgba(234, 179, 8, 0.22) 40%, 
+    rgba(99, 102, 241, 0.12) 65%, 
+    transparent 80%);
+  filter: blur(34px);
+  animation: volumetricPulse 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.monumental-logo-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 40px rgba(255, 87, 34, 0.45));
+  animation: heroFloat 6s ease-in-out infinite;
+  transition: transform 0.4s ease;
+}
+
+.monumental-logo-wrapper:hover .monumental-logo-img {
+  transform: scale(1.06);
+}
+
+.monumental-logo-wrapper:hover .orbital-ring.ring-inner {
+  animation-duration: 10s;
+  border-color: var(--brand-fire);
+}
+
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes volumetricPulse {
+  0%, 100% { opacity: 0.8; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseBeacon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.5); }
+}
+
+.sheet-view {
+  display: none;
+  min-height: calc(100vh - 90px);
+  padding: 120px 24px 80px;
+  position: relative;
+  z-index: 1;
+  animation: sheetFadeIn 0.35s var(--ease-out);
+}
+
+.sheet-view.active {
+  display: block;
+}
+
+@keyframes sheetFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sheet-header {
+  max-width: var(--max-w);
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.sheet-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 4px 14px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+  background: rgba(255, 87, 34, 0.12);
+  color: var(--brand-fire);
+  border: 1px solid var(--border-fire);
+}
+
+.sheet-tag.gold {
+  background: rgba(234, 179, 8, 0.15);
+  color: var(--brand-gold);
+  border-color: var(--border-gold);
+}
+
+.sheet-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  margin-bottom: 16px;
+}
+
+.sheet-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.sheet-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* Bento & Card Grids */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.bento-card {
+  grid-column: span 4;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card.span-6 { grid-column: span 6; }
+.bento-card.span-8 { grid-column: span 8; }
+.bento-card.span-12 { grid-column: span 12; }
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.bento-card.gold-accent:hover {
+  border-color: var(--border-gold);
+}
+
+.bento-media-wrap {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #090e24;
+}
+
+.bento-media-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.bento-card:hover .bento-media-wrap img {
+  transform: scale(1.05);
+}
+
+.bento-media-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-surface) 0%, transparent 60%);
+}
+
+.bento-body {
+  padding: 24px 28px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.law-banner {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(6, 9, 25, 0.95) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.law-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-gold);
+}
+
+.sunafil-calc-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 50px;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.calc-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brand-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.form-select, .form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-select:focus, .form-input:focus {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 3px var(--brand-gold-glow);
+}
+
+.calc-results-dock {
+  background: rgba(234, 179, 8, 0.05);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.calc-sum-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-sum-box .label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.calc-sum-box .amount {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--brand-gold);
+  line-height: 1.1;
+}
+
+.calc-sum-box .subtext {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+/* Modals & Toast System */
+.app-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10010;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.app-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.app-modal-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.app-modal-box.gold-box {
+  border-color: var(--border-gold);
+}
+
+.toast-container {
+  position: fixed;
+  top: 24px; right: 24px;
+  z-index: 10025;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 320px;
+  max-width: 440px;
+  pointer-events: all;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  animation: toastSlideIn 0.3s var(--ease-out);
+}
+
+.toast::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--brand-fire);
+}
+
+.toast.gold::before { background: var(--brand-gold); }
+.toast.emerald::before { background: var(--brand-emerald); }
+.toast.danger::before { background: var(--brand-danger); }
+
+@keyframes toastSlideIn {
+  from { transform: translateX(110%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastSlideOut {
+  to { transform: translateX(110%); opacity: 0; }
+}
+
+.wa-bubble-float {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 990;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.wa-bubble-float:hover {
+  transform: scale(1.1) translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+  .bento-card { grid-column: span 6; }
+  .bento-card.span-8 { grid-column: span 12; }
+}
+
+@media (max-width: 768px) {
+  .nav-tabs {
+    position: fixed;
+    top: 80px; left: 16px; right: 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 14px;
+    flex-direction: column;
+    display: none;
+    box-shadow: var(--shadow-lg);
+  }
+  .nav-tabs.open { display: flex; }
+  .bento-card, .bento-card.span-6 { grid-column: span 12; }
+  .menu-btn-mobile { display: inline-flex !important; }
+}
+.menu-btn-mobile { display: none; }
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-overlay"></div>
-    <div class="header-content">
-      <div class="logo">
-        <i class="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png"></i>
-        <span>DAGAT SAC</span>
-      </div>
-      <img src="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png" align="center" width="40%"></a>
-      <p>Soluciones integrales en ingeniería, seguridad, salud ocupacional y consultoría</p>
-    </div>
-  </header>
 
-  <!-- Navegación -->
-  <nav>
-    <div class="nav-container">
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
+<div class="toast-container" id="toastContainer"></div>
+
+<header class="nav-shell">
+  <div class="nav-container">
+    <a href="#inicio" class="nav-brand-group" onclick="Router.navigate('inicio'); return false;">
+      <img src="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png" 
+           alt="DAGAT SAC" class="nav-logo-img" onerror="SVGGraphics.handleImgError(this, 'DAGAT LOGO')">
+      <div class="nav-brand-text">
+        <span class="main-title">DAGAT SAC <span class="dot"></span></span>
+        <span class="sub-title">Ingeniería & Legal Defense</span>
+      </div>
+    </a>
+
+    <!-- SPA Sheet Route Tabs -->
+    <nav class="nav-tabs" id="navTabs">
+      <a href="#inicio" class="nav-tab-link active" data-sheet="inicio"><i data-lucide="home" style="width:16px;height:16px;"></i> Inicio</a>
+      <a href="#ingenieria" class="nav-tab-link" data-sheet="ingenieria"><i data-lucide="flame" style="width:16px;height:16px;"></i> Ingeniería NFPA</a>
+      <a href="#dagat-law" class="nav-tab-link law-tab" data-sheet="dagat-law"><i data-lucide="scale" style="width:16px;height:16px;"></i> DAGAT LAW <span class="badge-law-nav">LEGAL</span></a>
+      <a href="#contabilidad" class="nav-tab-link" data-sheet="contabilidad"><i data-lucide="calculator" style="width:16px;height:16px;"></i> Contabilidad</a>
+      <a href="#certificados" class="nav-tab-link" data-sheet="certificados"><i data-lucide="badge-check" style="width:16px;height:16px;"></i> Certificados QR</a>
+      <a href="#normativas" class="nav-tab-link" data-sheet="normativas"><i data-lucide="book-marked" style="width:16px;height:16px;"></i> Normativas</a>
+      <a href="#contacto" class="nav-tab-link" data-sheet="contacto"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Contacto</a>
+    </nav>
+
+    <div class="nav-controls">
+      <button class="icon-btn" id="themeToggleBtn" title="Cambiar tema">
+        <i data-lucide="sun-moon" style="width:18px;height:18px;"></i>
       </button>
-      <div class="nav-links" id="navLinks">
-        <a href="#inicio" class="active"><i class="fas fa-home"></i> Inicio</a>
-        <a href="#nosotros"><i class="fas fa-building"></i> Nosotros</a>
-        <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
-        <a href="#contabilidad"><i class="fas fa-calculator"></i> Contabilidad</a>
-        <a href="#certificados"><i class="fas fa-certificate"></i> Certificados</a>
-        <a href="#cotizar"><i class="fas fa-file-invoice-dollar"></i> Cotizar</a>
-        <a href="#capacitaciones"><i class="fas fa-calendar-alt"></i> Capacitaciones</a>
-        <a href="#blog"><i class="fas fa-newspaper"></i> Blog</a>
-        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <h1>Expertos en seguridad y protección contra incendios</h1>
-      <p>Brindamos soluciones integrales con los más altos estándares de calidad para proteger su empresa y colaboradores</p>
-      <div class="hero-buttons">
-        <a href="#contacto" class="btn">Contáctenos</a>
-        <a href="#cotizar" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Cotización Rápida</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Nosotros -->
-  <section id="nosotros">
-    <h2>Sobre Nosotros</h2>
-    <div class="section-intro">
-      <p>Con más de 11 años de experiencia, somos líderes en implementación de sistemas de seguridad y salud ocupacional</p>
-    </div>
-
-    <div class="about-content">
-      <div class="about-text">
-        <h3>Nuestra Historia</h3>
-        <p>Fundada en Agosto del 2014, DAGAT SAC ha crecido de ser una pequeña empresa local a convertirse en un referente nacional en sistemas de seguridad contra incendios y salud ocupacional. Nuestro equipo está compuesto por ingenieros certificados y profesionales altamente capacitados.</p>
-        
-        <h3>Misión</h3>
-        <p>Proveer soluciones innovadoras en seguridad industrial que protejan vidas, bienes y el medio ambiente, cumpliendo con los más altos estándares internacionales.</p>
-        
-        <h3>Visión</h3>
-        <p>Ser reconocidos como la empresa líder en ingeniería de seguridad en Perú, expandiendo nuestras operaciones a nivel internacional.</p>
-      </div>
-
-      <div class="about-values">
-        <h3>Nuestros Valores</h3>
-        <ul>
-          <li><strong>Integridad:</strong> Actuamos con ética y transparencia en todas nuestras relaciones.</li>
-          <li><strong>Excelencia:</strong> Buscamos la máxima calidad en cada proyecto que emprendemos.</li>
-          <li><strong>Innovación:</strong> Implementamos tecnologías de vanguardia adaptadas a cada necesidad.</li>
-          <li><strong>Compromiso:</strong> Nos responsabilizamos plenamente por los resultados de nuestro trabajo.</li>
-          <li><strong>Seguridad:</strong> La protección de las personas es nuestra prioridad número uno.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Servicios -->
-  <section id="servicios">
-    <h2>Nuestros Servicios</h2>
-    <div class="section-intro">
-      <p>Ofrecemos una gama completa de servicios profesionales para garantizar la seguridad de su empresa</p>
-    </div>
-
-    <div class="servicios-grid">
-      <div class="service-card">
-        <img src="sci.png" alt="Sistemas contra incendio" class="service-img">
-        <div class="service-content">
-          <h3>Sistemas Contra Incendio</h3>
-          <p>Diseño, instalación y mantenimiento de sistemas de detección y supresión de incendios según normativa NFPA.</p>
-          <a href="#cotizar" class="btn">Solicitar Cotización</a>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img src="fotocapas.png" alt="Capacitaciones" class="service-img">
-        <div class="service-content">
-          <h3>Capacitaciones</h3>
-          <p>Programas de formación en seguridad industrial, primeros auxilios, extintores, lucha contra incendios y manejo de emergencias.</p>
-          <a href="#capacitaciones" class="btn">Ver Calendario</a>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Salud ocupacional" class="service-img">
-        <div class="service-content">
-          <h3>Seguridad y Salud Ocupacional</h3>
-          <p>Implementación de Sistemas de Gestión de SST según ley 29783 y reglamento.</p>
-          <a href="#contacto" class="btn">Más Información</a>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Consultoría" class="service-img">
-        <div class="service-content">
-          <h3>Consultoría Especializada</h3>
-          <p>Asesoramiento técnico y legal en normativas de seguridad industrial y protección contra incendios.</p>
-          <a href="#contacto" class="btn">Consultar</a>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dam4utzn2/image/upload/v1766509880/ChatGPT_Image_23_dic_2025_12_09_56_p.m._q8r8ge.png" alt="Ingeniería" class="service-img">
-        <div class="service-content">
-          <h3>Ingeniería de Proyectos</h3>
-          <p>Diseño y ejecución de proyectos de ingeniería especializada en seguridad asi como soluciones de software y TI.</p>
-          <a href="#cotizar" class="btn">Cotizar Proyecto</a>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dam4utzn2/image/upload/v1765898093/Mantenimiento_preventivo_eobmm4.png" alt="Mantenimiento" class="service-img">
-        <div class="service-content">
-          <h3>Mantenimiento Preventivo</h3>
-          <p>Programas de mantenimiento para sistemas de seguridad y equipos contra incendios.</p>
-          <a href="#contacto" class="btn">Solicitar Plan</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Contabilidad -->
-  <section id="contabilidad" class="accounting-section">
-    <div class="accounting-header">
-      <div class="partner-badge">
-        <i class="fas fa-handshake"></i> Partner Oficial
-      </div>
-      <h2>Servicios Contables y Asesoría Financiera</h2>
-      <p class="section-intro">A cargo de nuestro partner especializado <strong>Estudio Contable Reyes</strong></p>
-    </div>
-    
-    <div class="accounting-services">
-      <div class="accounting-service">
-        <h4><i class="fas fa-file-invoice-dollar"></i> Contabilidad General</h4>
-        <p>Mantenimiento de libros contables, registros de compras y ventas, conciliaciones bancarias y elaboración de estados financieros.</p>
-      </div>
-      
-      <div class="accounting-service">
-        <h4><i class="fas fa-chart-line"></i> Planificación Tributaria</h4>
-        <p>Optimización de cargas tributarias, asesoría en impuestos a la renta, IGV y otros tributos para maximizar su rentabilidad.</p>
-      </div>
-      
-      <div class="accounting-service">
-        <h4><i class="fas fa-users"></i> Nóminas y Planillas</h4>
-        <p>Gestión completa de planillas, cálculo de beneficios sociales, liquidaciones y cumplimiento de obligaciones laborales.</p>
-      </div>
-      
-      <div class="accounting-service">
-        <h4><i class="fas fa-balance-scale"></i> Auditoría Contable</h4>
-        <p>Revisión y verificación de estados financieros, cumplimiento de normas contables y emisión de informes de auditoría.</p>
-      </div>
-      
-      <div class="accounting-service">
-        <h4><i class="fas fa-calculator"></i> Declaraciones Juradas</h4>
-        <p>Preparación y presentación de declaraciones mensuales y anuales ante SUNAT de manera oportuna y precisa.</p>
-      </div>
-      
-      <div class="accounting-service">
-        <h4><i class="fas fa-briefcase"></i> Consultoría Financiera</h4>
-        <p>Análisis financiero, proyecciones de flujo de caja, evaluación de inversiones y asesoría en toma de decisiones estratégicas.</p>
-      </div>
-    </div>
-    
-    <div class="accounting-contact">
-      <h3>Contáctenos para una asesoría personalizada</h3>
-      <p>Estamos aquí para ayudarle a optimizar la gestión financiera de su empresa</p>
-      <p><strong>Email:</strong> <a href="mailto:contabilidad.reyes@dagatgroup.com">contabilidad.reyes@dagatgroup.com</a></p>
-      <a href="mailto:contabilidad.reyes@dagatgroup.com" class="btn btn-accounting">
-        <i class="fas fa-envelope"></i> Solicitar Asesoría Contable
+      <a href="#dagat-law" class="btn btn-law btn-sm" onclick="Router.navigate('dagat-law'); return false;">
+        <i data-lucide="shield" style="width:14px;height:14px;"></i> Urgencia Legal
       </a>
+      <button class="icon-btn menu-btn-mobile" id="menuToggleBtn" aria-label="Menú">
+        <i data-lucide="menu" style="width:20px;height:20px;"></i>
+      </button>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Sección de Verificación de Certificados -->
-  <section id="certificados" class="certificates-section">
-    <div class="container">
-      <h2>Verificación de Certificados</h2>
-      <div class="section-intro">
-        <p>Valide la autenticidad de los certificados emitidos por DAGAT SAC</p>
+<main>
+<section class="sheet-view active" id="sheet-inicio">
+  <div class="hero-stage">
+    <div style="max-width:1080px;margin:0 auto;text-align:center;position:relative;z-index:2;">
+      
+      <!-- Monumental 340px Orbital Logo -->
+      <div class="monumental-logo-wrapper">
+        <div class="orbital-glow-core"></div>
+        <div class="orbital-ring ring-inner"></div>
+        <div class="orbital-ring ring-middle"></div>
+        <div class="orbital-ring ring-outer"></div>
+        <img src="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png" 
+             alt="DAGAT SAC Monumental Logo" class="monumental-logo-img" 
+             onerror="SVGGraphics.handleImgError(this, 'DAGAT MONUMENTAL')">
       </div>
 
-      <div class="verification-container">
-        <div class="verification-form">
-          <h3><i class="fas fa-qrcode"></i> Verificar Certificado</h3>
-          <p>Ingrese el código de verificación o escanee el QR del certificado</p>
-          
-          <div class="input-group">
-            <input type="text" id="certificateCode" placeholder="Ej: DAGAT-2024-00123" class="form-control">
-            <button id="verifyBtn" class="btn">
-              <i class="fas fa-search"></i> Verificar
-            </button>
-          </div>
-
-          <div class="qr-scanner">
-            <div id="qr-reader" style="width: 100%"></div>
-          </div>
-          
-          <!-- Botón para acceder al panel de administración -->
-          <button id="adminAccessBtn" class="btn admin-access-btn">
-            <i class="fas fa-lock"></i> Acceso Administrativo
-          </button>
-        </div>
-
-        <div class="certificate-result" id="certificateResult" style="display: none;">
-          <div class="result-header">
-            <i class="fas fa-certificate"></i>
-            <h3>Resultado de Verificación</h3>
-          </div>
-          <div class="result-content" id="resultContent">
-            <!-- Aquí se mostrarán los datos del certificado -->
-          </div>
-        </div>
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:6px 16px;border-radius:100px;background:rgba(255,255,255,0.04);border:1px solid var(--border-strong);margin-bottom:24px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
+        <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">Ingeniería Contra Incendios & Blindaje Legal Laboral-Penal en el Perú</span>
       </div>
 
-      <!-- Panel de Administración (solo visible para usuarios autenticados) -->
-      <div class="admin-panel" id="adminPanel" style="display: none;">
-        <div class="admin-header">
-          <h3><i class="fas fa-cog"></i> Panel de Gestión de Certificados</h3>
-          <div class="admin-actions">
-            <span class="admin-status" id="adminStatus">
-              <i class="fas fa-user-shield"></i> Sesión activa
-            </span>
-            <button id="logoutBtn" class="btn btn-sm logout-btn">
-              <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-            </button>
-          </div>
-        </div>
-        
-        <div class="upload-certificate">
-          <h4>Registrar Nuevo Certificado</h4>
-          <form id="certificateForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="studentName">Nombre del Participante</label>
-                <input type="text" id="studentName" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="studentDni">DNI</label>
-                <input type="text" id="studentDni" class="form-control" required>
-              </div>
-            </div>
+      <h1 style="font-size:clamp(2.5rem, 5.5vw, 4.4rem);margin-bottom:20px;">
+        Seguridad de alta ingeniería.<br>
+        <span style="background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Protección técnica y</span> 
+        <span style="background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">defensa penal corporativa.</span>
+      </h1>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="courseName">Curso/Capacitación</label>
-                <input type="text" id="courseName" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="courseHours">Horas Lectivas</label>
-                <input type="number" id="courseHours" class="form-control" required>
-              </div>
-            </div>
+      <p style="font-size:clamp(1.05rem, 1.8vw, 1.25rem);color:var(--text-muted);max-width:760px;margin:0 auto 36px;">
+        Garantizamos la continuidad operativa de industrias con sistemas contra incendio listados NFPA, homologaciones ITSE de Defensa Civil y representación jurídica de Gerentes y Directores ante fiscalizaciones de SUNAFIL y el Art. 168-A del Código Penal.
+      </p>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="issueDate">Fecha de Emisión</label>
-                <input type="date" id="issueDate" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="expiryDate">Fecha de Vencimiento</label>
-                <input type="date" id="expiryDate" class="form-control">
-              </div>
-            </div>
+      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
+        <a href="#ingenieria" class="btn btn-fire btn-lg" onclick="Router.navigate('ingenieria'); return false;">
+          <i data-lucide="flame" style="width:18px;height:18px;"></i>
+          División Ingeniería NFPA
+        </a>
+        <a href="#dagat-law" class="btn btn-law btn-lg" onclick="Router.navigate('dagat-law'); return false;">
+          <i data-lucide="scale" style="width:18px;height:18px;"></i>
+          División DAGAT LAW
+        </a>
+        <a href="#certificados" class="btn btn-ghost btn-lg" onclick="Router.navigate('certificados'); return false;">
+          <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
+          Validar Certificados QR
+        </a>
+      </div>
 
-            <div class="form-group">
-              <label for="certificateNotes">Observaciones</label>
-              <textarea id="certificateNotes" class="form-control" rows="3"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-success">
-              <i class="fas fa-save"></i> Generar Certificado
-            </button>
-          </form>
+      <!-- Quick Route Cards to Sub-sheets -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:60px;text-align:left;">
+        <div class="bento-card" style="padding:24px;cursor:pointer;" onclick="Router.navigate('ingenieria')">
+          <div style="color:var(--brand-fire);margin-bottom:12px;"><i data-lucide="flame" style="width:32px;height:32px;"></i></div>
+          <h3 style="font-size:1.15rem;margin-bottom:6px;">Ingeniería Contra Incendios</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">Cuartos de bombas, rociadores NFPA 13 y detección inteligente direccionable.</p>
+          <span style="color:var(--brand-fire);font-weight:600;font-size:0.8rem;margin-top:12px;display:inline-block;">Ir a la hoja de Ingeniería →</span>
         </div>
 
-        <div class="certificates-list">
-          <h4>Certificados Registrados</h4>
-          <div class="certificates-grid" id="certificatesGrid">
-            <!-- Lista de certificados generados -->
-          </div>
+        <div class="bento-card gold-accent" style="padding:24px;cursor:pointer;" onclick="Router.navigate('dagat-law')">
+          <div style="color:var(--brand-gold);margin-bottom:12px;"><i data-lucide="scale" style="width:32px;height:32px;"></i></div>
+          <h3 style="font-size:1.15rem;margin-bottom:6px;">DAGAT LAW</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">Defensa penal Art. 168-A CP, auditoría de comités SST y litigio de multas SUNAFIL.</p>
+          <span style="color:var(--brand-gold);font-weight:600;font-size:0.8rem;margin-top:12px;display:inline-block;">Ir a la hoja de DAGAT LAW →</span>
+        </div>
+
+        <div class="bento-card" style="padding:24px;cursor:pointer;" onclick="Router.navigate('contabilidad')">
+          <div style="color:var(--brand-cyan);margin-bottom:12px;"><i data-lucide="calculator" style="width:32px;height:32px;"></i></div>
+          <h3 style="font-size:1.15rem;margin-bottom:6px;">Estudio Contable Reyes</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">Auditoría tributaria SUNAT, libros electrónicos y planillas laborales sin contingencias.</p>
+          <span style="color:var(--brand-cyan);font-weight:600;font-size:0.8rem;margin-top:12px;display:inline-block;">Ir a la hoja de Contabilidad →</span>
+        </div>
+
+        <div class="bento-card" style="padding:24px;cursor:pointer;" onclick="Router.navigate('certificados')">
+          <div style="color:var(--brand-emerald);margin-bottom:12px;"><i data-lucide="badge-check" style="width:32px;height:32px;"></i></div>
+          <h3 style="font-size:1.15rem;margin-bottom:6px;">Portal de Verificación</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">Validación instantánea con cámara QR y descarga de diplomas certificados en PDF.</p>
+          <span style="color:var(--brand-emerald);font-weight:600;font-size:0.8rem;margin-top:12px;display:inline-block;">Ir al Validador de Diplomas →</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Sección Cotización -->
-  <section id="cotizar" class="bg-light">
-    <h2>Solicitar Cotización</h2>
-    <div class="section-intro">
-      <p>Complete el formulario y nos contactaremos con usted en menos de 24 horas</p>
+<section class="sheet-view" id="sheet-ingenieria">
+  <div class="sheet-container">
+    <div class="sheet-breadcrumb">
+      <a href="#inicio" onclick="Router.navigate('inicio'); return false;">Inicio</a>
+      <span>/</span>
+      <span class="current">Ingeniería Contra Incendios</span>
     </div>
 
-    <div class="form-container">
-      <form id="cotizacionForm">
-        <div class="form-group">
-          <label for="nombre">Nombre Completo</label>
-          <input type="text" id="nombre" class="form-control" required>
-        </div>
+    <div class="sheet-header">
+      <span class="sheet-tag">// DIVISIÓN TÉCNICA</span>
+      <h2 class="sheet-title">Ingeniería de Protección Contra Incendios & NFPA</h2>
+      <p class="sheet-desc">
+        Diseño hidráulico, suministro, montaje electromecánico y mantenimiento predictivo bajo estándares internacionales NFPA 13, 14, 20 y 72.
+      </p>
+    </div>
 
-        <div class="form-group">
-          <label for="empresa">Empresa</label>
-          <input type="text" id="empresa" class="form-control" required>
+    <div class="bento-grid">
+      <div class="bento-card span-8">
+        <div class="bento-media-wrap" style="height:320px;">
+          <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1200&q=80" 
+               alt="Cuarto de Bombas NFPA 20" onerror="SVGGraphics.handleImgError(this, 'BOMBAS NFPA 20')">
         </div>
-
-        <div class="form-group">
-          <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" class="form-control" required>
+        <div class="bento-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="sheet-tag">NFPA 20</span>
+            <span style="font-size:0.8rem;color:var(--text-dim);">Equipos Listados UL / Aprobados FM</span>
+          </div>
+          <h3 style="font-size:1.45rem;margin-bottom:10px;">Cuartos de Bombas y Redes de Impulsión Principal</h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:18px;">
+            Instalamos grupos de presión con motores diésel y eléctricos de carcasa partida vertical u horizontal. Integramos tableros de control con transferencia automática y pruebas de flujo con flujómetros calibrados.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://wa.me/51992132260?text=Hola%20DAGAT%2C%20solicito%20cotizaci%C3%B3n%20para%20Cuarto%20de%20Bombas%20NFPA" target="_blank" class="btn btn-fire btn-sm">
+              <i data-lucide="phone-call" style="width:14px;height:14px;"></i> Solicitar Visita Técnica
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" class="form-control" required>
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
+               alt="Detección y Alarma Centralizada" onerror="SVGGraphics.handleImgError(this, 'DETECCION NFPA 72')">
         </div>
+        <div class="bento-body">
+          <span class="sheet-tag">NFPA 72</span>
+          <h3 style="font-size:1.2rem;margin:8px 0;">Detección Centralizada & Alarma Direccionable</h3>
+          <p style="color:var(--text-muted);font-size:0.88rem;">
+            Paneles multiprotocolo, detectores fotoeléctricos, sensores de haz proyectado (beam detectors) y estaciones de accionamiento manual.
+          </p>
+        </div>
+      </div>
 
-        <div class="form-group">
-          <label for="servicio">Servicio de Interés</label>
-          <select id="servicio" class="form-control" required>
-            <option value="">Seleccione un servicio</option>
-            <option value="sistemas-incendio">Sistemas Contra Incendio</option>
-            <option value="capacitaciones">Capacitaciones</option>
-            <option value="sst">Salud Ocupacional (SST)</option>
-            <option value="consultoria">Consultoría Especializada</option>
-            <option value="ingenieria">Ingeniería de Proyectos</option>
-            <option value="mantenimiento">Mantenimiento Preventivo</option>
-            <option value="contabilidad">Servicios Contables</option>
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80" 
+               alt="Rociadores Automáticos" onerror="SVGGraphics.handleImgError(this, 'ROCIADORES NFPA 13')">
+        </div>
+        <div class="bento-body">
+          <span class="sheet-tag">NFPA 13 / 14</span>
+          <h3 style="font-size:1.2rem;margin:8px 0;">Rociadores Automáticos & Gabinetes</h3>
+          <p style="color:var(--text-muted);font-size:0.88rem;">
+            Sistemas de tubería húmeda, seca y diluvio para naves industriales, racks logísticos de gran altura y centros comerciales.
+          </p>
+        </div>
+      </div>
+
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80" 
+               alt="Pruebas Hidrostáticas y Mantenimiento" onerror="SVGGraphics.handleImgError(this, 'MANTENIMIENTO')">
+        </div>
+        <div class="bento-body">
+          <span class="sheet-tag">NTP 350.043</span>
+          <h3 style="font-size:1.2rem;margin:8px 0;">Mantenimiento Predictivo & Pruebas</h3>
+          <p style="color:var(--text-muted);font-size:0.88rem;">
+            Pruebas hidrostáticas de presión a 200 PSI, recarga de extintores de PQS y CO2 y emisión de certificados de operatividad para ITSE.
+          </p>
+        </div>
+      </div>
+
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=800&q=80" 
+               alt="Brigadas de Emergencia" onerror="SVGGraphics.handleImgError(this, 'BRIGADAS SST')">
+        </div>
+        <div class="bento-body">
+          <span class="sheet-tag">INDUCCIÓN VIVENCIAL</span>
+          <h3 style="font-size:1.2rem;margin:8px 0;">Entrenamiento de Brigadas Industriales</h3>
+          <p style="color:var(--text-muted);font-size:0.88rem;">
+            Simuladores de fuego real, maniobras de rescate en espacios confinados y evacuación bajo cero visibilidad con humo inocuo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sheet-view" id="sheet-dagat-law">
+  <div class="sheet-container">
+    <div class="sheet-breadcrumb">
+      <a href="#inicio" onclick="Router.navigate('inicio'); return false;">Inicio</a>
+      <span>/</span>
+      <span class="current">DAGAT LAW</span>
+    </div>
+
+    <div class="sheet-header">
+      <span class="sheet-tag gold">// LEGAL DEFENSE & COMPLIANCE</span>
+      <h2 class="sheet-title">División DAGAT LAW: Blindaje Laboral y Defensa Penal</h2>
+      <p class="sheet-desc">
+        Litigio estratégico contra resoluciones de SUNAFIL y defensa penal técnica bajo el Art. 168-A del Código Penal para Gerentes, Directores y Miembros del Comité de SST.
+      </p>
+    </div>
+
+    <!-- Executive Warning Banner -->
+    <div class="law-banner">
+      <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+        <div style="width:54px;height:54px;border-radius:14px;background:rgba(234,179,8,0.18);display:flex;align-items:center;justify-content:center;color:var(--brand-gold);flex-shrink:0;">
+          <i data-lucide="shield-alert" style="width:30px;height:30px;"></i>
+        </div>
+        <div style="flex:1;min-width:280px;">
+          <h3 style="font-size:1.4rem;color:var(--brand-gold);margin-bottom:8px;">
+            Alerta Penal Corporativa: El Art. 168-A del Código Penal sanciona con hasta 8 años de prisión efectiva
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:16px;">
+            En caso de muerte o incapacidad permanente de un trabajador a causa de infracciones deliberadas o negligentes en normas de SST, la responsabilidad penal no se extingue con el pago de multas ni con indemnizaciones de seguros privados. Nuestro equipo técnico-legal articula peritajes de ingeniería para quebrar la imputación penal.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://wa.me/51992132260?text=URGENCIA%20DAGAT%20LAW%3A%20Requiero%20asistencia%20penal-laboral%20inmediata" target="_blank" class="btn btn-law">
+              <i data-lucide="phone-call" style="width:16px;height:16px;"></i> Hablar con Abogado Penalista de Guardia
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive SUNAFIL Fines Calculator (D.S. 019-2006-TR y Actualizaciones) -->
+    <div class="sunafil-calc-card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="color:var(--brand-gold);"><i data-lucide="calculator" style="width:26px;height:26px;"></i></div>
+        <h3 style="font-size:1.35rem;">Calculadora Interactiva de Multas SUNAFIL (D.S. 019-2006-TR)</h3>
+      </div>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:24px;">
+        Estima la cuantía pecuniaria a la que se expone tu organización en función del régimen empresarial, la gravedad tipificada y el rango de trabajadores afectados:
+      </p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>1. Régimen de la Empresa</label>
+          <select id="calcRegime" class="form-select">
+            <option value="micro">Microempresa (Acreditada REMYPE)</option>
+            <option value="pequena">Pequeña Empresa (Acreditada)</option>
+            <option value="nomype" selected>No MYPE (Régimen General / Principal)</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="mensaje">Detalles del Requerimiento</label>
-          <textarea id="mensaje" class="form-control" rows="5" placeholder="Describa su requerimiento, especificaciones técnicas, cantidad de participantes, etc."></textarea>
+        <div class="calc-field">
+          <label>2. Gravedad de la Infracción</label>
+          <select id="calcSeverity" class="form-select">
+            <option value="leve">Leve (Formalidades documentales)</option>
+            <option value="grave">Grave (Comité SST, EPP no crítico)</option>
+            <option value="muygrave" selected>Muy Grave (Accidente mortal, falta IPERC, sin EPP crítico)</option>
+          </select>
         </div>
 
-        <div class="form-group">
-          <label>Adjuntar Archivos (Opcional)</label>
-          <div class="file-upload" id="fileUpload">
-            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-            <p>Arrastre archivos aquí o haga clic para seleccionar</p>
-            <p class="small">(Planos, especificaciones técnicas, fotos, etc.)</p>
-            <input type="file" id="archivos" style="display: none;" multiple>
-          </div>
+        <div class="calc-field">
+          <label>3. Trabajadores Afectados</label>
+          <select id="calcWorkers" class="form-select">
+            <option value="1">1 a 10 trabajadores</option>
+            <option value="2">11 a 25 trabajadores</option>
+            <option value="3">26 a 50 trabajadores</option>
+            <option value="4" selected>51 a 100 trabajadores</option>
+            <option value="5">101 a más trabajadores</option>
+          </select>
         </div>
 
-        <button type="submit" class="btn" style="width: 100%;">
-          <span id="btnText">Enviar Solicitud</span>
-          <div id="btnLoader" class="loader" style="display: none;"></div>
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Sección Capacitaciones -->
-  <section id="capacitaciones">
-    <h2>Próximas Capacitaciones</h2>
-    <div class="section-intro">
-      <p>Programa de capacitaciones certificadas para su personal</p>
-    </div>
-
-    <div class="calendar-container">
-      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLima&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&src=Y19hY2lkZGUwMGQ5ZmVmYzVlODQ3YjJhY2FlZjQ4ZDdlYzJlZDEyM2JjYzU2YzE0YmFkYjU5ZDI3M2Q3YjQ3YzY2QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000" style="border-width:0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
-    </div>
-
-    <div class="payment-container">
-      <h3>Pagar Capacitación</h3>
-      <p>Seleccione el método de pago para su capacitación</p>
-      
-      <div class="payment-options">
-        <div class="payment-option" data-method="transferencia">
-          <i class="fas fa-university"></i>
-          <h4>Transferencia Bancaria</h4>
-          <p>Pago mediante transferencia interbancaria</p>
-        </div>
-        
-        <div class="payment-option" data-method="yape">
-          <i class="fas fa-mobile-alt"></i>
-          <h4>Yape / Plin</h4>
-          <p>Pago rápido con Yape o Plin</p>
-        </div>
-        
-        <div class="payment-option" data-method="efectivo">
-          <i class="fas fa-money-bill-wave"></i>
-          <h4>Efectivo</h4>
-          <p>Pago en nuestras oficinas</p>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="montoPago">Monto a Pagar (S/)</label>
-        <input type="number" id="montoPago" class="form-control" placeholder="Ingrese el monto" min="0" step="0.01">
-      </div>
-      
-      <div class="form-group">
-        <label for="detallePago">Detalle del Pago</label>
-        <input type="text" id="detallePago" class="form-control" placeholder="Ej: Curso de Extintores - Juan Pérez">
-      </div>
-      
-      <button id="procesarPago" class="btn btn-success" style="width: 100%;">
-        <i class="fas fa-credit-card"></i> Proceder al Pago
-      </button>
-    </div>
-  </section>
-
-  <!-- Sección Blog -->
-  <section id="blog" class="bg-light">
-    <h2>Blog Técnico</h2>
-    <div class="section-intro">
-      <p>Artículos, noticias y recursos sobre seguridad industrial y normativas</p>
-    </div>
-
-    <div class="blog-grid">
-      <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Normativas NFPA">
-        <div class="blog-content">
-          <h3>Actualizaciones NFPA 2024: Lo que necesita saber</h3>
-          <p class="blog-date">15 Junio 2024</p>
-          <p>Resumen de los cambios más importantes en las normativas NFPA para sistemas contra incendios este año.</p>
-          
-          <div class="resource-download">
-            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-            <a href="https://www.nfpa.org/codes-and-standards/nfpa-10-standard-for-portable-fire-extinguishers" target="_blank" class="download-btn">
-              <i class="fas fa-file-pdf"></i> Guía NFPA 10 - Extintores
-            </a>
-            <a href="https://www.nfpa.org/codes-and-standards/nfpa-72-standard-for-the-installation-of-fire-alarm-and-signaling-systems" target="_blank" class="download-btn" style="margin-left: 0.5rem;">
-              <i class="fas fa-file-pdf"></i> Resumen NFPA 72
-            </a>
-          </div>
-          
-          <a href="#" class="btn btn-outline">Leer Artículo</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1581093057923-005b6c73d72e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mantenimiento sistemas">
-        <div class="blog-content">
-          <h3>Mantenimiento Preventivo para Sistemas de Incendio</h3>
-          <p class="blog-date">2 Mayo 2024</p>
-          <p>Guía completa sobre los protocolos de mantenimiento que toda empresa debería implementar.</p>
-          
-          <div class="resource-download">
-            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-            <a href="https://www.osha.gov/sites/default/files/publications/osha2254.pdf" target="_blank" class="download-btn">
-              <i class="fas fa-file-pdf"></i> Checklist Mantenimiento
-            </a>
-            <a href="https://www.cdc.gov/niosh/docs/2004-101/spanish/2004-101sp.pdf" target="_blank" class="download-btn" style="margin-left: 0.5rem;">
-              <i class="fas fa-file-excel"></i> Planificador Anual
-            </a>
-          </div>
-          
-          <a href="#" class="btn btn-outline">Leer Artículo</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1581094487235-cee1ad15b7f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SST en Perú">
-        <div class="blog-content">
-          <h3>Nuevas Obligaciones en SST para 2025</h3>
-          <p class="blog-date">18 Abril 2024</p>
-          <p>Análisis de las modificaciones al reglamento de seguridad y salud en el trabajo en Perú.</p>
-          
-          <div class="resource-download">
-            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-            <a href="https://cdn.www.gob.pe/uploads/document/file/232575/LEY-29783.pdf" target="_blank" class="download-btn">
-              <i class="fas fa-file-pdf"></i> Ley 29783 Actualizada
-            </a>
-            <a href="https://cdn.www.gob.pe/uploads/document/file/232576/DS-005-2012-TR.pdf" target="_blank" class="download-btn" style="margin-left: 0.5rem;">
-              <i class="fas fa-file-pdf"></i> Reglamento SST
-            </a>
-          </div>
-          
-          <a href="#" class="btn btn-outline">Leer Artículo</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Primeros auxilios">
-        <div class="blog-content">
-          <h3>Protocolos de Primeros Auxilios en el Trabajo</h3>
-          <p class="blog-date">10 Marzo 2024</p>
-          <p>Guía práctica para implementar protocolos efectivos de primeros auxilios en el entorno laboral.</p>
-          
-          <div class="resource-download">
-            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-            <a href="https://www.cruzroja.es/cre_web/cre/formacion/materiales/descargas/manual_primeros_auxilios.pdf" target="_blank" class="download-btn">
-              <i class="fas fa-file-pdf"></i> Manual Primeros Auxilios
-            </a>
-            <a href="https://www.heart.org/-/media/files/health-topics/cardiac-arrest/spanish/handsonlycpr-infographic-spanish.pdf" target="_blank" class="download-btn" style="margin-left: 0.5rem;">
-              <i class="fas fa-file-pdf"></i> Protocolo RCP
-            </a>
-          </div>
-          
-          <a href="#" class="btn btn-outline">Leer Artículo</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipos protección">
-        <div class="blog-content">
-          <h3>Selección y Uso Correcto de EPP</h3>
-          <p class="blog-date">25 Febrero 2024</p>
-          <p>Cómo seleccionar los equipos de protección personal adecuados para cada riesgo laboral.</p>
-          
-          <div class="resource-download">
-            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-            <a href="https://www.osha.gov/sites/default/files/publications/osha3151.pdf" target="_blank" class="download-btn">
-              <i class="fas fa-file-pdf"></i> Guía EPP por Riesgo
-            </a>
-            <a href="https://www.cdc.gov/niosh/docs/2010-116/pdfs/2010-116.pdf" target="_blank" class="download-btn" style="margin-left: 0.5rem;">
-              <i class="fas fa-file-pdf"></i> Checklist Verificación EPP
-            </a>
-          </div>
-          
-          <a href="#" class="btn btn-outline">Leer Artículo</a>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Simulacros">
-        <div class="blog-content">
-          <h3>Planificación de Simulacros de Emergencia</h3>
-          <p class="blog-date">15 Enero 2024</p>
-          <p>Metodología para planificar y ejecutar simulacros de emergencia efectivos en su empresa.</p>
-          
-          <div class="resource-download">
-            <h4><i class="fas fa-download"></i> Recursos Descargables</h4>
-            <a href="https://www.ready.gov/sites/default/files/2020-03/fema_planning-considerations-evacuation-and-shelter-in-place.pdf" target="_blank" class="download-btn">
-              <i class="fas fa-file-pdf"></i> Plan de Simulacros
-            </a>
-            <a href="https://www.osha.gov/sites/default/files/publications/osha3088.pdf" target="_blank" class="download-btn" style="margin-left: 0.5rem;">
-              <i class="fas fa-file-excel"></i> Formato Evaluación
-            </a>
-          </div>
-          
-          <a href="#" class="btn btn-outline">Leer Artículo</a>
-        </div>
-      </article>
-    </div>
-
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="#" class="btn">Ver Todos los Artículos</a>
-    </div>
-  </section>
-
-  <!-- Sección Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <div class="section-intro">
-      <p>Estamos disponibles para atender sus consultas y brindarle la mejor solución</p>
-    </div>
-
-    <div class="contact-container">
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <h3>Oficina Principal</h3>
-            <p>Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Oficina 301<br>Ate, Lima - Perú</p>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <i class="fas fa-phone-alt"></i>
-          <div>
-            <h3>Teléfonos</h3>
-            <p>+51 992132260</p>
-            <p>+51 981353787</p>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <h3>Correo Electrónico</h3>
-            <p>info@dagatgroup.com<br>ingenieria@dagatgroup.com</p>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <i class="fas fa-calculator"></i>
-          <div>
-            <h3>Servicios Contables</h3>
-            <p>contabilidad.reyes@dagatgroup.com</p>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <i class="fas fa-clock"></i>
-          <div>
-            <h3>Horario de Atención</h3>
-            <p>Lunes a Viernes: 8:30 am - 5:00 pm<br>Sábados: 9:00 am - 1:00 pm</p>
-          </div>
-        </div>
-
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+        <div class="calc-field">
+          <label>Valor UIT Aplicable</label>
+          <input type="text" class="form-input" id="calcUitVal" value="S/ 5,350.00 (Vigente)" disabled>
         </div>
       </div>
 
-      <div class="form-container">
-        <h3>Envíanos un Mensaje</h3>
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="contactName">Nombre Completo</label>
-            <input type="text" id="contactName" class="form-control" required>
-          </div>
+      <div class="calc-results-dock">
+        <div class="calc-sum-box">
+          <span class="label">Multa Estimada SUNAFIL</span>
+          <span class="amount" id="calcResultDisplay">S/ 114,490.00</span>
+          <span class="subtext" id="calcUitEquivDisplay">Equivalente a 21.40 Unidades Impositivas Tributarias (UIT)</span>
+        </div>
 
-          <div class="form-group">
-            <label for="contactEmail">Correo Electrónico</label>
-            <input type="email" id="contactEmail" class="form-control" required>
-          </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <button type="button" class="btn btn-law" id="btnExportFineWhatsapp">
+            <i data-lucide="message-square" style="width:16px;height:16px;"></i> Consultar Estrategia de Descargo para esta Multa
+          </button>
+        </div>
+      </div>
+    </div>
 
-          <div class="form-group">
-            <label for="contactPhone">Teléfono</label>
-            <input type="tel" id="contactPhone" class="form-control" required>
-          </div>
+    <!-- Case Studies & Precedents -->
+    <div style="margin-top:40px;">
+      <h3 style="font-size:1.4rem;margin-bottom:20px;">Jurisprudencia Clave & Casos Emblemáticos DAGAT LAW</h3>
+      <div class="bento-grid">
+        <div class="bento-card span-4 gold-accent" style="padding:24px;cursor:pointer;" onclick="LegalApp.showModalCase(0)">
+          <span class="sheet-tag gold">PENAL // ART. 168-A CP</span>
+          <h4 style="font-size:1.1rem;margin:10px 0;">Archivo Fiscal por Imprudencia del Trabajador</h4>
+          <p style="font-size:0.85rem;color:var(--text-muted);">
+            Caso de atrapamiento en faja transportadora en Huachipa. Demostramos la entrega formal del PETS y la vulneración voluntaria del protocolo por la víctima.
+          </p>
+          <span style="color:var(--brand-gold);font-weight:600;font-size:0.82rem;margin-top:12px;display:inline-block;">Ver análisis dogmático penal →</span>
+        </div>
 
-          <div class="form-group">
-            <label for="contactSubject">Asunto</label>
-            <select id="contactSubject" class="form-control" required>
-              <option value="">Seleccione un asunto</option>
-              <option value="cotizacion">Solicitud de Cotización</option>
-              <option value="capacitacion">Información de Capacitaciones</option>
-              <option value="contabilidad">Servicios Contables</option>
-              <option value="certificados">Verificación de Certificados</option>
-              <option value="general">Consulta General</option>
+        <div class="bento-card span-4 gold-accent" style="padding:24px;cursor:pointer;" onclick="LegalApp.showModalCase(1)">
+          <span class="sheet-tag gold">SUNAFIL // NULIDAD TOTAL</span>
+          <h4 style="font-size:1.1rem;margin:10px 0;">Revocatoria de Multa de S/ 145,000 en Almacén</h4>
+          <p style="font-size:0.85rem;color:var(--text-muted);">
+            El Tribunal de Fiscalización Laboral anuló el acta de infracción que exigía rociadores en un almacén de metales exento según el RNE A.130.
+          </p>
+          <span style="color:var(--brand-gold);font-weight:600;font-size:0.82rem;margin-top:12px;display:inline-block;">Ver resolución del Tribunal TFL →</span>
+        </div>
+
+        <div class="bento-card span-4 gold-accent" style="padding:24px;cursor:pointer;" onclick="LegalApp.showModalCase(2)">
+          <span class="sheet-tag gold">CORTE SUPREMA // CASACIÓN</span>
+          <h4 style="font-size:1.1rem;margin:10px 0;">Casación 18190-2017: Reducción de Indemnización</h4>
+          <p style="font-size:0.85rem;color:var(--text-muted);">
+            Doctrina vinculante sobre concausa: si el empleador entregó EPP con certificación ANSI/OSHA, la indemnización por daño moral se reduce sustancialmente.
+          </p>
+          <span style="color:var(--brand-gold);font-weight:600;font-size:0.82rem;margin-top:12px;display:inline-block;">Ver fundamentos de casación →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sheet-view" id="sheet-contabilidad">
+  <div class="sheet-container">
+    <div class="sheet-breadcrumb">
+      <a href="#inicio" onclick="Router.navigate('inicio'); return false;">Inicio</a>
+      <span>/</span>
+      <span class="current">Contabilidad & Tributación</span>
+    </div>
+
+    <div class="sheet-header">
+      <span class="sheet-tag">// PARTNER TRIBUTARIO OFICIAL</span>
+      <h2 class="sheet-title">Estudio Contable Reyes & DAGAT Financial</h2>
+      <p class="sheet-desc">
+        Blindaje contable, auditoría tributaria ante SUNAT, libros electrónicos (SIRE) y optimización fiscal para empresas y contratistas industriales.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" 
+               alt="Auditoría Tributaria SUNAT" onerror="SVGGraphics.handleImgError(this, 'AUDITORIA SUNAT')">
+        </div>
+        <div class="bento-body">
+          <h3 style="font-size:1.2rem;margin-bottom:8px;">Planificación & Auditoría Tributaria</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">
+            Defensa ante fiscalizaciones de SUNAT por desbalance o gastos no deducibles, liquidación de IGV, Renta Anual y devoluciones de saldo a favor.
+          </p>
+        </div>
+      </div>
+
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+               alt="Gestión de Planillas y Nóminas" onerror="SVGGraphics.handleImgError(this, 'PLANILLAS PLAME')">
+        </div>
+        <div class="bento-body">
+          <h3 style="font-size:1.2rem;margin-bottom:8px;">Gestión de Planillas & T-Registro</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">
+            Elaboración de PLAME, cálculo de CTS, gratificaciones, vacaciones truncas y aportes a EsSalud/ONP/AFP sin margen de contingencias ante SUNAFIL.
+          </p>
+        </div>
+      </div>
+
+      <div class="bento-card span-4">
+        <div class="bento-media-wrap">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" 
+               alt="Estados Financieros y SIRE" onerror="SVGGraphics.handleImgError(this, 'SIRE SUNAT')">
+        </div>
+        <div class="bento-body">
+          <h3 style="font-size:1.2rem;margin-bottom:8px;">Implementación SIRE & Libros Digitales</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);">
+            Migración y conciliación mensual del Sistema Integrado de Registros Electrónicos (SIRE) de compras y ventas sin inconsistencias tributarias.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Tax Contact Box -->
+    <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;margin-top:40px;text-align:center;">
+      <h3 style="font-size:1.4rem;margin-bottom:8px;">¿Necesitas regularizar tus declaraciones o afrontar una esquela de SUNAT?</h3>
+      <p style="color:var(--text-muted);font-size:0.95rem;max-width:600px;margin:0 auto 20px;">
+        Nuestros contadores públicos colegiados revisan tu estado contable para estructurar un plan de contingencia inmediato.
+      </p>
+      <a href="https://wa.me/51992132260?text=Hola%20Estudio%20Contable%20Reyes%2C%20requiero%20asesor%C3%ADa%20tributaria" target="_blank" class="btn btn-fire">
+        <i data-lucide="mail" style="width:16px;height:16px;"></i> Agendar Asesoría con Estudio Contable Reyes
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sheet-view" id="sheet-certificados">
+  <div class="sheet-container">
+    <div class="sheet-breadcrumb">
+      <a href="#inicio" onclick="Router.navigate('inicio'); return false;">Inicio</a>
+      <span>/</span>
+      <span class="current">Verificación de Certificados</span>
+    </div>
+
+    <div class="sheet-header">
+      <span class="sheet-tag">// SISTEMA DE TRAZABILIDAD OFICIAL</span>
+      <h2 class="sheet-title">Verificación y Consulta de Diplomas Emitidos</h2>
+      <p class="sheet-desc">
+        Consulta la autenticidad de los diplomas emitidos por DAGAT SAC mediante el código correlativo de seguridad o a través de la cámara de tu dispositivo.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:28px;" class="cert-grid-layout">
+      <!-- Search Form -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;">
+        <h3 style="font-size:1.25rem;margin-bottom:8px;">Validar por Código Correlativo</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">
+          Haz clic sobre uno de los certificados de prueba activos o digita el código impreso:
+        </p>
+
+        <!-- 1-Click Test Badges -->
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+          <span style="font-size:0.78rem;color:var(--text-dim);">Demos listos:</span>
+          <button type="button" class="btn btn-ghost btn-sm" onclick="CertManager.populateCode('DAGAT-2025-00101')">DAGAT-2025-00101</button>
+          <button type="button" class="btn btn-ghost btn-sm" onclick="CertManager.populateCode('DAGAT-2025-00102')">DAGAT-2025-00102</button>
+          <button type="button" class="btn btn-ghost btn-sm" onclick="CertManager.populateCode('DAGAT-2025-00103')">DAGAT-2025-00103</button>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-bottom:20px;">
+          <input type="text" id="certSearchInput" class="form-input" placeholder="Ej. DAGAT-2025-00101" style="font-family:'JetBrains Mono',monospace;">
+          <button type="button" class="btn btn-fire" id="btnExecuteSearch">
+            <i data-lucide="search" style="width:16px;height:16px;"></i> Verificar
+          </button>
+        </div>
+
+        <!-- Camera Scanner Section -->
+        <div style="background:var(--bg);border:1px dashed var(--border-strong);border-radius:var(--radius);padding:18px;text-align:center;">
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:10px;">
+            ¿Tienes el diploma físico en la mano? Escanéalo con la cámara:
+          </p>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnToggleCameraScanner">
+            <i data-lucide="camera" style="width:14px;height:14px;"></i>
+            <span id="txtCameraToggle">Encender Cámara de Escaneo</span>
+          </button>
+          <div id="cameraViewportWrap" style="display:none;margin-top:14px;border-radius:12px;overflow:hidden;">
+            <div id="cameraScannerElement" style="width:100%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Search Display -->
+      <div id="certCardDisplay" style="background:var(--bg-surface);border:1px solid var(--border);border-left:4px solid var(--brand-emerald);border-radius:var(--radius-lg);padding:32px;display:none;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);">
+          <div id="certCardIcon" style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.15);color:var(--brand-emerald);display:flex;align-items:center;justify-content:center;">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+          <div>
+            <h4 id="certCardTitle" style="font-size:1.1rem;">Certificado Oficial Auténtico</h4>
+            <span id="certCardSub" style="font-size:0.8rem;color:var(--text-muted);">Verificado en la base de datos central de DAGAT SAC</span>
+          </div>
+        </div>
+
+        <div id="certCardRows"></div>
+
+        <div style="margin-top:24px;display:flex;gap:10px;">
+          <button type="button" class="btn btn-fire btn-sm" id="btnDownloadDiplomaPdf" style="flex:1;">
+            <i data-lucide="download" style="width:14px;height:14px;"></i> Descargar Diploma Oficial PDF (A4)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sheet-view" id="sheet-normativas">
+  <div class="sheet-container">
+    <div class="sheet-breadcrumb">
+      <a href="#inicio" onclick="Router.navigate('inicio'); return false;">Inicio</a>
+      <span>/</span>
+      <span class="current">Hub de Normativas</span>
+    </div>
+
+    <div class="sheet-header">
+      <span class="sheet-tag">// REPOSITORIO LEGAL VIGENTE</span>
+      <h2 class="sheet-title">Compendio Normativo de Seguridad, SST e ITSE</h2>
+      <p class="sheet-desc">
+        Accede a los resúmenes técnicos, matrices de multas y enlaces oficiales del Diario Oficial El Peruano y organismos reguladores.
+      </p>
+    </div>
+
+    <div class="bento-grid" id="normativesContainer">
+      <!-- Injected via NormApp -->
+    </div>
+  </div>
+</section>
+
+<section class="sheet-view" id="sheet-contacto">
+  <div class="sheet-container">
+    <div class="sheet-breadcrumb">
+      <a href="#inicio" onclick="Router.navigate('inicio'); return false;">Inicio</a>
+      <span>/</span>
+      <span class="current">Contacto Directo</span>
+    </div>
+
+    <div class="sheet-header">
+      <span class="sheet-tag">// COMUNICACIÓN DIRECTA</span>
+      <h2 class="sheet-title">Oficinas Centrales & Despacho Técnico</h2>
+      <p class="sheet-desc">Atención en Lima Metropolitana, Callao y principales centros industriales del Perú.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;">
+          <h3 style="font-size:1.2rem;margin-bottom:16px;">Sede Administrativa & Operativa</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:0.95rem;color:var(--text-muted);">
+            <div><strong style="color:var(--text);">Dirección:</strong> Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Of. 301, Ate — Lima, Perú</div>
+            <div><strong style="color:var(--text);">Teléfonos:</strong> +51 992 132 260 / +51 981 353 787</div>
+            <div><strong style="color:var(--text);">Correos:</strong> info@dagatgroup.com | legal@dagatgroup.com</div>
+            <div><strong style="color:var(--text);">Horario:</strong> Lun–Vie: 8:00 AM – 6:00 PM | Sáb: 8:30 AM – 1:00 PM</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;">
+          <h4 style="font-size:1.05rem;margin-bottom:6px;">¿Requieres atención de emergencia?</h4>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">
+            Activa la línea de guardia técnica o legal por WhatsApp las 24 horas del día.
+          </p>
+          <a href="https://wa.me/51992132260?text=EMERGENCIA%20DAGAT%3A%20Solicito%20atenci%C3%B3n%20urgente" target="_blank" class="btn btn-fire btn-sm">
+            <i data-lucide="message-circle" style="width:14px;height:14px;"></i> Canal WhatsApp de Emergencias
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Message Form -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;">
+        <h3 style="font-size:1.25rem;margin-bottom:18px;">Enviar Requerimiento Directo</h3>
+        <form id="contactFormDispatcher" style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <label style="font-size:0.8rem;color:var(--text-muted);">Nombres y Apellidos *</label>
+            <input type="text" id="contactName" class="form-input" required placeholder="Ej. Ing. Daniel Vargas">
+          </div>
+          <div>
+            <label style="font-size:0.8rem;color:var(--text-muted);">Empresa y RUC *</label>
+            <input type="text" id="contactCompany" class="form-input" required placeholder="Razón Social / RUC 20...">
+          </div>
+          <div>
+            <label style="font-size:0.8rem;color:var(--text-muted);">División de Interés</label>
+            <select id="contactDivision" class="form-select">
+              <option value="Ingeniería Contra Incendios NFPA">Ingeniería Contra Incendios (NFPA)</option>
+              <option value="DAGAT LAW (Defensa Penal y SUNAFIL)">DAGAT LAW (Defensa Penal y SUNAFIL)</option>
+              <option value="Auditoría y Gestión SG-SST">Auditoría y Gestión SG-SST</option>
+              <option value="Estudio Contable Reyes">Estudio Contable Reyes</option>
+              <option value="Verificación de Certificados">Verificación de Certificados</option>
             </select>
           </div>
-
-          <div class="form-group">
-            <label for="contactMessage">Mensaje</label>
-            <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+          <div>
+            <label style="font-size:0.8rem;color:var(--text-muted);">Detalle de la consulta o proyecto</label>
+            <textarea id="contactMessage" class="form-input" rows="3" required placeholder="Describa el metraje, tipo de industria o la situación legal actual..."></textarea>
           </div>
-
-          <button type="submit" class="btn" style="width: 100%;">
-            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+          <button type="submit" class="btn btn-fire" style="margin-top:6px;">
+            <i data-lucide="send" style="width:16px;height:16px;"></i> Enviar Directo a WhatsApp
           </button>
         </form>
       </div>
     </div>
+  </div>
+</section>
+</main>
 
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.965949656279!2d-77.0365427!3d-12.0463258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAyJzQ2LjgiUyA3N8KwMDInMTEuNiJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </section>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/51992132260?text=Hola%20DAGAT%20SAC,%20quisiera%20más%20información" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-about">
-        <div class="footer-logo">
-          <i class="fas fa-fire-extinguisher"></i>
-          <span>DAGAT SAC</span>
-        </div>
-        <p>Expertos en ingeniería de seguridad, protección contra incendios, salud ocupacional y consultoría contable en Perú.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
+<div class="app-modal" id="normModal">
+  <div class="app-modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+      <div>
+        <span class="sheet-tag" id="normModalTag">NORMA OFICIAL</span>
+        <h3 id="normModalTitle" style="font-size:1.35rem;margin-top:8px;">Ley N° 29783</h3>
       </div>
-
-      <div class="footer-links">
-        <h3>Servicios</h3>
-        <ul>
-          <li><a href="#">Sistemas Contra Incendio</a></li>
-          <li><a href="#">Capacitaciones</a></li>
-          <li><a href="#">Salud Ocupacional</a></li>
-          <li><a href="#">Consultoría Especializada</a></li>
-          <li><a href="#">Ingeniería de Proyectos</a></li>
-          <li><a href="#contabilidad">Servicios Contables</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h3>Enlaces Rápidos</h3>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#contabilidad">Contabilidad</a></li>
-          <li><a href="#certificados">Certificados</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h3>Contacto</h3>
-        <ul>
-          <li><i class="fas fa-phone"></i> +51 992132260</li>
-          <li><i class="fas fa-envelope"></i> info@dagatgroup.com</li>
-          <li><i class="fas fa-calculator"></i> contabilidad.reyes@dagatgroup.com</li>
-          <li><i class="fas fa-map-marker-alt"></i> Ate, Lima</li>
-        </ul>
-      </div>
+      <button class="icon-btn" onclick="NormApp.closeModal()">✕</button>
     </div>
 
-    <div class="copyright">
-      <p>&copy; 2025 DAGAT SAC. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+    <div style="font-size:0.92rem;color:var(--text-muted);display:flex;flex-direction:column;gap:16px;" id="normModalBody"></div>
 
-  <!-- Overlay de autenticación -->
-  <div class="auth-overlay" id="authOverlay" style="display: none;">
-    <div class="auth-container">
-      <h3><i class="fas fa-user-shield"></i> Acceso Administrativo</h3>
-      <p>Ingrese la clave de administrador para acceder al panel de certificados</p>
-      
-      <div class="form-group">
-        <label for="adminPassword">Clave de Administrador</label>
-        <input type="password" id="adminPassword" class="form-control" placeholder="Ingrese la clave">
-      </div>
-      
-      <button id="loginBtn" class="btn">
-        <i class="fas fa-sign-in-alt"></i> Ingresar
-      </button>
-      
-      <div class="auth-error" id="authError">
-        <i class="fas fa-exclamation-triangle"></i> Clave incorrecta. Intente nuevamente.
-      </div>
+    <div style="margin-top:24px;display:flex;gap:10px;justify-content:flex-end;">
+      <a href="#" id="normModalLink" target="_blank" rel="noopener" class="btn btn-fire btn-sm">
+        <i data-lucide="external-link" style="width:14px;height:14px;"></i> Ver en Diario Oficial El Peruano
+      </a>
+      <button class="btn btn-ghost btn-sm" onclick="NormApp.closeModal()">Cerrar</button>
     </div>
   </div>
+</div>
 
-  <!-- Scripts -->
-  <script>
-    // Sistema de Autenticación
-    class AuthSystem {
-      constructor() {
-        this.isAuthenticated = false;
-        this.adminPassword = "Mon211306@@"; // Tu clave de administrador
-        this.init();
-      }
+<div class="app-modal" id="caseModal">
+  <div class="app-modal-box gold-box">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+      <div>
+        <span class="sheet-tag gold" id="caseModalBadge">JURISPRUDENCIA</span>
+        <h3 id="caseModalTitle" style="font-size:1.35rem;margin-top:8px;color:var(--brand-gold);">Análisis de Caso</h3>
+      </div>
+      <button class="icon-btn" onclick="LegalApp.closeCaseModal()">✕</button>
+    </div>
 
-      init() {
-        // Verificar si ya hay una sesión activa
-        this.checkExistingSession();
-        
-        // Configurar eventos
-        document.getElementById('adminAccessBtn').addEventListener('click', () => {
-          this.showAuthModal();
-        });
-        
-        document.getElementById('loginBtn').addEventListener('click', () => {
-          this.authenticate();
-        });
-        
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-          this.logout();
-        });
-        
-        // Permitir autenticación con Enter
-        document.getElementById('adminPassword').addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') {
-            this.authenticate();
-          }
-        });
-      }
+    <div style="font-size:0.92rem;color:var(--text-muted);display:flex;flex-direction:column;gap:14px;" id="caseModalBody"></div>
 
-      checkExistingSession() {
-        const session = localStorage.getItem('dagat_admin_session');
-        if (session && session === 'active') {
-          this.isAuthenticated = true;
-          this.showAdminPanel();
-        }
-      }
+    <div style="margin-top:24px;display:flex;gap:10px;justify-content:flex-end;">
+      <a href="https://wa.me/51992132260?text=Hola%20DAGAT%20LAW%2C%20quisiera%20analizar%20un%20caso%20similar%20en%20mi%20planta" target="_blank" class="btn btn-law btn-sm">
+        <i data-lucide="message-square" style="width:14px;height:14px;"></i> Consultar con Abogado Penalista
+      </a>
+      <button class="btn btn-ghost btn-sm" onclick="LegalApp.closeCaseModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
 
-      showAuthModal() {
-        document.getElementById('authOverlay').style.display = 'flex';
-        document.getElementById('adminPassword').focus();
-      }
+<!-- Floating WhatsApp Action -->
+<a href="https://wa.me/51992132260?text=Hola%20DAGAT%20SAC%20%26%20DAGAT%20LAW%2C%20solicito%20informaci%C3%B3n" 
+   class="wa-bubble-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+</a>
 
-      hideAuthModal() {
-        document.getElementById('authOverlay').style.display = 'none';
-        document.getElementById('adminPassword').value = '';
-        document.getElementById('authError').style.display = 'none';
-      }
-
-      authenticate() {
-        const password = document.getElementById('adminPassword').value;
-        
-        if (password === this.adminPassword) {
-          this.isAuthenticated = true;
-          localStorage.setItem('dagat_admin_session', 'active');
-          this.hideAuthModal();
-          this.showAdminPanel();
-        } else {
-          document.getElementById('authError').style.display = 'block';
-          document.getElementById('adminPassword').value = '';
-          document.getElementById('adminPassword').focus();
-        }
-      }
-
-      logout() {
-        this.isAuthenticated = false;
-        localStorage.removeItem('dagat_admin_session');
-        this.hideAdminPanel();
-      }
-
-      showAdminPanel() {
-        document.getElementById('adminPanel').style.display = 'block';
-        // Recargar la lista de certificados
-        if (certificateSystem) {
-          certificateSystem.loadCertificatesList();
-        }
-      }
-
-      hideAdminPanel() {
-        document.getElementById('adminPanel').style.display = 'none';
-      }
+<script>
+const APP_DATA = {
+  UIT_VALUE: 5350,
+  WHATSAPP: '51992132260',
+  PRELOADED_CERTS: [
+    {
+      id: 'DAGAT-2025-00101',
+      studentName: 'JUAN CARLOS PÉREZ RAMOS',
+      studentDni: '45892011',
+      courseName: 'Lucha Contra Incendios y Evacuación de Emergencia (NFPA 10/72)',
+      courseHours: 8,
+      issueDate: '2025-02-15',
+      expiryDate: '2026-02-15',
+      issuedBy: 'DAGAT SAC'
+    },
+    {
+      id: 'DAGAT-2025-00102',
+      studentName: 'MARÍA ALEJANDRA VEGA SOTO',
+      studentDni: '70214589',
+      courseName: 'Seguridad y Salud en el Trabajo conforme a Ley 29783',
+      courseHours: 12,
+      issueDate: '2025-03-01',
+      expiryDate: '2026-03-01',
+      issuedBy: 'DAGAT SAC'
+    },
+    {
+      id: 'DAGAT-2025-00103',
+      studentName: 'CARLOS ALBERTO MENDOZA QUISPE',
+      studentDni: '41982310',
+      courseName: 'Trabajo en Altura y Operación de Plataformas Elevadoras',
+      courseHours: 16,
+      issueDate: '2025-03-10',
+      expiryDate: '2026-03-10',
+      issuedBy: 'DAGAT SAC'
     }
+  ],
+  NORMATIVAS: [
+    {
+      tag: 'LEY GENERAL',
+      title: 'Ley N° 29783 — Ley de Seguridad y Salud en el Trabajo',
+      desc: 'Marco general que consagra el principio de prevención y la responsabilidad civil y penal indelegable del empleador en territorio peruano.',
+      articles: [
+        'Art. 26: Obligación del Directorio de liderar el Sistema de Gestión de SST.',
+        'Art. 35: Mínimo 4 capacitaciones anuales obligatorias en jornada laboral.',
+        'Art. 49: Obligación de entregar EPP con especificación técnica conforme a la matriz IPERC.'
+      ],
+      fines: 'Multas muy graves desde 2.63 hasta 52.66 UIT dependiendo del número de trabajadores afectados.',
+      url: 'https://busquedas.elperuano.pe/dispositivo/NL/1004381-1'
+    },
+    {
+      tag: 'CÓDIGO PENAL',
+      title: 'Artículo 168-A del Código Penal — Delitos contra las Condiciones de SST',
+      desc: 'Sanciona con pena privativa de la libertad de 4 a 8 años a quien, infringiendo las normas de SST y estando legalmente obligado, cause la muerte o lesiones graves de trabajadores.',
+      articles: [
+        'Párrafo 1: Delito de peligro abstracto (1 a 4 años de prisión).',
+        'Párrafo 2: Muerte o lesiones graves como consecuencia de inobservancia deliberada (4 a 8 años de cárcel efectiva para Directores o Gerentes).'
+      ],
+      fines: 'Privación efectiva de la libertad e inhabilitación comercial de directivos.',
+      url: 'https://spij.minjus.gob.pe/'
+    },
+    {
+      tag: 'REGLAMENTO SECTORIAL',
+      title: 'D.S. N° 005-2012-TR y D.S. N° 001-2021-TR (Reglamento de SST)',
+      desc: 'Disposiciones de cumplimiento estricto para el funcionamiento del Comité paritario de SST y registros obligatorios.',
+      articles: [
+        'Art. 38: Constitución del Comité Paritario en empresas con 20 o más trabajadores.',
+        'Art. 77: Actualización obligatoria de la Matriz IPERC al menos una vez al año.'
+      ],
+      fines: 'Fiscalización inspectiva SUNAFIL con facultades de paralización preventiva de operaciones.',
+      url: 'https://busquedas.elperuano.pe/dispositivo/NL/1005851-1'
+    },
+    {
+      tag: 'EDIFICACIONES',
+      title: 'Norma Técnica A.130 — Reglamento Nacional de Edificaciones',
+      desc: 'Requisitos de diseño de seguridad contra incendios, evacuación y compartimentación cortafuego en edificaciones.',
+      articles: [
+        'Cap. III: Detección direccionable obligatoria según aforo y carga de fuego.',
+        'Cap. V: Redes de rociadores automáticos bajo NFPA 13 y cuartos de bombas de agua.'
+      ],
+      fines: 'Imposibilidad de obtención de licencia municipal y denegatoria de Certificado ITSE.',
+      url: 'https://www.gob.pe/vivienda'
+    },
+    {
+      tag: 'DEFENSA CIVIL',
+      title: 'D.S. N° 002-2018-PCM — Reglamento de Inspecciones Técnicas (ITSE)',
+      desc: 'Matriz de riesgo para inspecciones técnicas de Defensa Civil en edificaciones de Riesgo Bajo, Medio, Alto y Muy Alto.',
+      articles: [
+        'Inspección previa obligatoria para almacenes, fábricas y centros comerciales.',
+        'Vigencia de 2 años sujeta a visitas inopinadas de fiscalización edil.'
+      ],
+      fines: 'Clausura temporal o definitiva del establecimiento comercial.',
+      url: 'https://busquedas.elperuano.pe/dispositivo/NL/1603517-1'
+    },
+    {
+      tag: 'ESTÁNDAR NFPA',
+      title: 'Códigos NFPA 10, 13, 20 y 72 (Protección Internacional)',
+      desc: 'Estándares mundiales homologados por INDECI y aseguradoras para mitigación de catástrofes industriales.',
+      articles: [
+        'NFPA 20: Instalación de bombas estacionarias contra incendios.',
+        'NFPA 13: Criterios de diseño hidráulico para rociadores automáticos.'
+      ],
+      fines: 'Anulación de coberturas de seguros multirriesgo frente a incendios.',
+      url: 'https://www.nfpa.org'
+    }
+  ],
+  CASES: [
+    {
+      badge: 'DERECHO PENAL EMPRESARIAL',
+      title: 'Archivo Definitivo de Imputación Penal por el Art. 168-A CP',
+      problem: 'Un operador de envasado sufrió amputación traumática al introducir la mano en una tolva en marcha sin desconectar el switch de seguridad. La Fiscalía inició investigación contra el Gerente General bajo el Art. 168-A CP.',
+      strategy: 'DAGAT LAW acreditó la entrega fehaciente del PETS, las charlas de 5 minutos con firma biométrica y el peritaje técnico que evidenció que el interruptor de bloqueo LOTO fue vulnerado voluntariamente por el trabajador.',
+      outcome: 'La Fiscalía dispuso el ARCHIVO DEFINITIVO por falta de dolo e inexistencia de infracción al deber de cuidado por parte del empleador (Imputación objetiva - Auto-puesta en peligro).'
+    },
+    {
+      badge: 'TRIBUNAL SUNAFIL',
+      title: 'Nulidad Total de Multa SUNAFIL de S/ 145,000 en Almacén',
+      problem: 'Inspectores de SUNAFIL multaron a un centro de acopio aduciendo la ausencia de red húmeda de rociadores en un patio de maniobras techado.',
+      strategy: 'Se interpuso recurso de apelación demostrando con cálculos de carga de fuego y el RNE A.130 que los productos almacenados eran incombustibles (perfiles de acero), careciendo de exigibilidad técnica.',
+      outcome: 'El Tribunal de Fiscalización Laboral (TFL) revocó y declaró la NULIDAD TOTAL del acta inspectiva por vulnerar el Principio de Tipicidad.'
+    },
+    {
+      badge: 'CORTE SUPREMA',
+      title: 'Casación Laboral N° 18190-2017: Límites al Daño Moral',
+      problem: 'Demanda de indemnización por S/ 850,000 por daño moral interpuesta por extrabajador tras caída en altura.',
+      strategy: 'Demostración de concausa: se comprobó que el arnés estaba homologado y en perfecto estado, determinándose que el operario no se ancló a la línea de vida disponible.',
+      outcome: 'La Corte Suprema redujo la indemnización a un monto residual mínimo al acreditarse la diligencia probatoria del empleador.'
+    }
+  ]
+};
 
-    // Sistema de Verificación de Certificados
-    class CertificateSystem {
-      constructor() {
-        this.certificates = JSON.parse(localStorage.getItem('dagat_certificates')) || [];
-        this.init();
-      }
+const SVGGraphics = {
+  handleImgError(imgEl, title) {
+    imgEl.onerror = null;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+      <defs>
+        <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#070a1e"/>
+          <stop offset="60%" stop-color="#121a3e"/>
+          <stop offset="100%" stop-color="#ff5722"/>
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bgG)"/>
+      <circle cx="400" cy="220" r="140" fill="none" stroke="#ff5722" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
+      <circle cx="400" cy="220" r="90" fill="none" stroke="#eab308" stroke-width="1" opacity="0.5"/>
+      <text x="400" y="215" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="24" text-anchor="middle">DAGAT SAC // INGENIERÍA</text>
+      <text x="400" y="248" fill="#eab308" font-family="'JetBrains Mono', monospace" font-size="14" text-anchor="middle" letter-spacing="2">${title || 'INFRAESTRUCTURA CERTIFICADA'}</text>
+    </svg>`;
+    imgEl.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+};
 
-      init() {
-        // Verificación por código
-        document.getElementById('verifyBtn').addEventListener('click', () => {
-          this.verifyCertificate();
-        });
+const Toast = {
+  container: document.getElementById('toastContainer'),
+  show(message, type = 'fire', duration = 3500) {
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    el.innerHTML = `
+      <div style="flex:1;font-size:0.88rem;">${message}</div>
+      <button style="background:none;border:none;color:var(--text-dim);cursor:pointer;" aria-label="Cerrar">✕</button>
+    `;
+    el.querySelector('button').onclick = () => this.dismiss(el);
+    this.container.appendChild(el);
+    setTimeout(() => this.dismiss(el), duration);
+  },
+  dismiss(el) {
+    el.style.animation = 'toastSlideOut 0.3s forwards';
+    setTimeout(() => el.remove(), 300);
+  },
+  fire(msg) { this.show(msg, 'fire'); },
+  gold(msg) { this.show(msg, 'gold'); },
+  emerald(msg) { this.show(msg, 'emerald'); },
+  danger(msg) { this.show(msg, 'danger'); }
+};
 
-        // Formulario de nuevo certificado
-        document.getElementById('certificateForm').addEventListener('submit', (e) => {
+const Router = {
+  activeSheet: 'inicio',
+  validSheets: ['inicio', 'ingenieria', 'dagat-law', 'contabilidad', 'certificados', 'normativas', 'contacto'],
+
+  init() {
+    window.addEventListener('hashchange', () => this.handleHash());
+    document.querySelectorAll('.nav-tab-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const sheet = link.getAttribute('data-sheet');
+        if (sheet) {
           e.preventDefault();
-          this.generateCertificate();
-        });
-
-        // Inicializar escáner QR
-        this.initQRScanner();
-        
-        // Cargar lista de certificados (solo si está autenticado)
-        if (authSystem.isAuthenticated) {
-          this.loadCertificatesList();
+          this.navigate(sheet);
         }
-      }
+      });
+    });
+    this.handleHash();
+  },
 
-      generateCertificate() {
-        // Verificar autenticación antes de generar
-        if (!authSystem.isAuthenticated) {
-          alert('❌ Debe iniciar sesión para generar certificados');
-          authSystem.showAuthModal();
-          return;
-        }
+  handleHash() {
+    const hash = window.location.hash.replace('#', '').trim();
+    if (this.validSheets.includes(hash)) {
+      this.navigate(hash, false);
+    } else {
+      this.navigate('inicio', false);
+    }
+  },
 
-        const certificateData = {
-          id: this.generateId(),
-          studentName: document.getElementById('studentName').value,
-          studentDni: document.getElementById('studentDni').value,
-          courseName: document.getElementById('courseName').value,
-          courseHours: document.getElementById('courseHours').value,
-          issueDate: document.getElementById('issueDate').value,
-          expiryDate: document.getElementById('expiryDate').value,
-          notes: document.getElementById('certificateNotes').value,
-          status: 'active',
-          issuedBy: 'DAGAT SAC',
-          timestamp: new Date().toISOString()
-        };
+  navigate(sheetId, updateHash = true) {
+    if (!this.validSheets.includes(sheetId)) sheetId = 'inicio';
+    this.activeSheet = sheetId;
 
-        this.certificates.push(certificateData);
-        this.saveToStorage();
-        this.loadCertificatesList();
-        
-        // Generar PDF y QR
-        this.generateCertificatePDF(certificateData);
-        
-        alert('✅ Certificado generado exitosamente');
-        document.getElementById('certificateForm').reset();
-      }
-
-      generateId() {
-        const prefix = 'DAGAT';
-        const year = new Date().getFullYear();
-        const number = (this.certificates.length + 1).toString().padStart(5, '0');
-        return `${prefix}-${year}-${number}`;
-      }
-
-      verifyCertificate() {
-        const code = document.getElementById('certificateCode').value.trim();
-        const certificate = this.certificates.find(cert => cert.id === code);
-        
-        this.displayVerificationResult(certificate, code);
-      }
-
-      displayVerificationResult(certificate, code) {
-        const resultDiv = document.getElementById('certificateResult');
-        const contentDiv = document.getElementById('resultContent');
-        
-        if (certificate) {
-          contentDiv.innerHTML = `
-            <div class="alert alert-success">
-              <i class="fas fa-check-circle"></i>
-              <strong>Certificado Válido</strong>
-            </div>
-            <div class="certificate-details">
-              <div class="certificate-detail">
-                <span>Código:</span>
-                <strong>${certificate.id}</strong>
-              </div>
-              <div class="certificate-detail">
-                <span>Participante:</span>
-                <strong>${certificate.studentName}</strong>
-              </div>
-              <div class="certificate-detail">
-                <span>DNI:</span>
-                <strong>${certificate.studentDni}</strong>
-              </div>
-              <div class="certificate-detail">
-                <span>Curso:</span>
-                <strong>${certificate.courseName}</strong>
-              </div>
-              <div class="certificate-detail">
-                <span>Horas:</span>
-                <strong>${certificate.courseHours} horas</strong>
-              </div>
-              <div class="certificate-detail">
-                <span>Fecha de Emisión:</span>
-                <strong>${new Date(certificate.issueDate).toLocaleDateString()}</strong>
-              </div>
-              <div class="certificate-detail">
-                <span>Emitido por:</span>
-                <strong>${certificate.issuedBy}</strong>
-              </div>
-              ${certificate.notes ? `
-              <div class="certificate-detail">
-                <span>Observaciones:</span>
-                <span>${certificate.notes}</span>
-              </div>
-              ` : ''}
-            </div>
-          `;
-        } else {
-          contentDiv.innerHTML = `
-            <div class="alert alert-danger">
-              <i class="fas fa-exclamation-triangle"></i>
-              <strong>Certificado No Encontrado</strong>
-              <p>El código "${code}" no corresponde a un certificado válido emitido por DAGAT SAC.</p>
-            </div>
-          `;
-        }
-        
-        resultDiv.style.display = 'block';
-      }
-
-      loadCertificatesList() {
-        const grid = document.getElementById('certificatesGrid');
-        grid.innerHTML = this.certificates.map(cert => `
-          <div class="certificate-card">
-            <h5>${cert.studentName}</h5>
-            <p><strong>Curso:</strong> ${cert.courseName}</p>
-            <p><strong>Código:</strong> <span class="code">${cert.id}</span></p>
-            <p><strong>Fecha:</strong> ${new Date(cert.issueDate).toLocaleDateString()}</p>
-            <button onclick="certificateSystem.viewCertificate('${cert.id}')" class="btn btn-sm">
-              <i class="fas fa-eye"></i> Ver
-            </button>
-          </div>
-        `).join('');
-      }
-
-      viewCertificate(id) {
-        const certificate = this.certificates.find(cert => cert.id === id);
-        if (certificate) {
-          document.getElementById('certificateCode').value = id;
-          this.verifyCertificate();
-          document.getElementById('certificados').scrollIntoView();
-        }
-      }
-
-      initQRScanner() {
-        if (typeof Html5QrcodeScanner !== 'undefined') {
-          const scanner = new Html5QrcodeScanner(
-            "qr-reader", 
-            { fps: 10, qrbox: 250 }
-          );
-          
-          scanner.render((decodedText) => {
-            document.getElementById('certificateCode').value = decodedText;
-            this.verifyCertificate();
-            scanner.clear();
-          });
-        }
-      }
-
-      generateCertificatePDF(certificateData) {
-        // ⚡️⚡️⚡️ CONFIGURADO CON TU DOMINIO REAL ⚡️⚡️⚡️
-        const dominioReal = "https://www.dagatgroup.com";
-        
-        const verificationUrl = `${dominioReal}/#certificados?code=${certificateData.id}`;
-        
-        console.log('🔗 URL de verificación para el QR:', verificationUrl);
-        
-        alert(`📄 Certificado ${certificateData.id} generado.\n\n🔗 URL de verificación: ${verificationUrl}\n\nIncluye un QR con esta URL en el certificado PDF.`);
-        
-        // Aquí integrarías tu generador de PDFs
-        // El QR debe contener exactamente esta URL: verificationUrl
-      }
-
-      saveToStorage() {
-        localStorage.setItem('dagat_certificates', JSON.stringify(this.certificates));
-      }
+    if (updateHash) {
+      window.location.hash = '#' + sheetId;
     }
 
-    // Inicializar sistemas
-    let authSystem;
-    let certificateSystem;
-
-    // Menú móvil
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    // Toggle active view
+    document.querySelectorAll('.sheet-view').forEach(view => {
+      view.classList.toggle('active', view.id === `sheet-${sheetId}`);
     });
 
-    // Cerrar menú al hacer clic en un enlace (en móviles)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navLinks.classList.remove('active');
-          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    // Toggle active tab
+    document.querySelectorAll('.nav-tab-link').forEach(tab => {
+      tab.classList.toggle('active', tab.getAttribute('data-sheet') === sheetId);
+    });
+
+    // Close mobile nav
+    document.getElementById('navTabs').classList.remove('open');
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (window.lucide) lucide.createIcons();
+  }
+};
+
+const SunafilCalc = {
+  init() {
+    const regime = document.getElementById('calcRegime');
+    const severity = document.getElementById('calcSeverity');
+    const workers = document.getElementById('calcWorkers');
+
+    const recalculate = () => {
+      const reg = regime.value;
+      const sev = severity.value;
+      const w = parseInt(workers.value, 10);
+
+      // UIT multiplier matrix based on D.S. 019-2006-TR
+      let uitMultiplier = 0.5;
+
+      if (reg === 'nomype') {
+        if (sev === 'leve') uitMultiplier = [0.26, 0.47, 0.88, 1.56, 2.50][w - 1] || 1.0;
+        if (sev === 'grave') uitMultiplier = [1.57, 2.80, 5.25, 9.35, 15.52][w - 1] || 5.0;
+        if (sev === 'muygrave') uitMultiplier = [2.63, 4.68, 8.78, 21.40, 52.66][w - 1] || 21.40;
+      } else if (reg === 'pequena') {
+        if (sev === 'leve') uitMultiplier = [0.08, 0.14, 0.26, 0.47, 0.75][w - 1] || 0.26;
+        if (sev === 'grave') uitMultiplier = [0.45, 0.84, 1.57, 2.80, 4.50][w - 1] || 1.57;
+        if (sev === 'muygrave') uitMultiplier = [0.85, 1.55, 2.85, 5.10, 8.50][w - 1] || 3.0;
+      } else {
+        // Microempresa
+        if (sev === 'leve') uitMultiplier = [0.11, 0.15, 0.20, 0.25, 0.35][w - 1] || 0.15;
+        if (sev === 'grave') uitMultiplier = [0.20, 0.30, 0.40, 0.50, 0.60][w - 1] || 0.35;
+        if (sev === 'muygrave') uitMultiplier = [0.25, 0.35, 0.45, 0.55, 0.68][w - 1] || 0.50;
+      }
+
+      const totalSoles = uitMultiplier * APP_DATA.UIT_VALUE;
+      document.getElementById('calcResultDisplay').textContent = `S/ ${totalSoles.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('calcUitEquivDisplay').textContent = `Equivalente a ${uitMultiplier.toFixed(2)} Unidades Impositivas Tributarias (UIT)`;
+    };
+
+    [regime, severity, workers].forEach(el => el.addEventListener('change', recalculate));
+    recalculate();
+
+    document.getElementById('btnExportFineWhatsapp').addEventListener('click', () => {
+      const reg = regime.options[regime.selectedIndex].text;
+      const sev = severity.options[severity.selectedIndex].text;
+      const wor = workers.options[workers.selectedIndex].text;
+      const total = document.getElementById('calcResultDisplay').textContent;
+      const uit = document.getElementById('calcUitEquivDisplay').textContent;
+
+      const text = `Hola DAGAT LAW, calculé mi contingencia ante SUNAFIL:%0A- *Régimen:* ${encodeURIComponent(reg)}%0A- *Gravedad:* ${encodeURIComponent(sev)}%0A- *Trabajadores:* ${encodeURIComponent(wor)}%0A- *Multa Estimada:* ${encodeURIComponent(total)} (${encodeURIComponent(uit)})%0A%0ASolicito una consulta para estructurar nuestros descargos preventivos.`;
+      window.open(`https://wa.me/${APP_DATA.WHATSAPP}?text=${text}`, '_blank');
+    });
+  }
+};
+
+const CertManager = {
+  db: null,
+  activeCert: null,
+  scanner: null,
+
+  async init() {
+    await this.initDB();
+    document.getElementById('btnExecuteSearch').addEventListener('click', () => this.search());
+    document.getElementById('certSearchInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') this.search();
+    });
+
+    document.getElementById('btnToggleCameraScanner').addEventListener('click', () => this.toggleScanner());
+    document.getElementById('btnDownloadDiplomaPdf').addEventListener('click', () => {
+      if (this.activeCert) this.generatePdf(this.activeCert);
+    });
+  },
+
+  async initDB() {
+    return new Promise((resolve) => {
+      const req = indexedDB.open('dagat_certs_v5', 1);
+      req.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('certs')) {
+          db.createObjectStore('certs', { keyPath: 'id' });
         }
+      };
+      req.onsuccess = async () => {
+        this.db = req.result;
+        await this.seed();
+        resolve();
+      };
+    });
+  },
+
+  async seed() {
+    const tx = this.db.transaction('certs', 'readonly');
+    const countReq = tx.objectStore('certs').count();
+    countReq.onsuccess = () => {
+      if (countReq.result === 0) {
+        const writeTx = this.db.transaction('certs', 'readwrite');
+        APP_DATA.PRELOADED_CERTS.forEach(c => writeTx.objectStore('certs').put(c));
+      }
+    };
+  },
+
+  populateCode(code) {
+    document.getElementById('certSearchInput').value = code;
+    this.search();
+  },
+
+  async search() {
+    const code = (document.getElementById('certSearchInput').value || '').trim().toUpperCase();
+    if (!code) {
+      Toast.danger('Ingresa un código de certificado.');
+      return;
+    }
+
+    const tx = this.db.transaction('certs', 'readonly');
+    const req = tx.objectStore('certs').get(code);
+
+    req.onsuccess = () => {
+      const cert = req.result;
+      const display = document.getElementById('certCardDisplay');
+      const rows = document.getElementById('certCardRows');
+      const title = document.getElementById('certCardTitle');
+      const sub = document.getElementById('certCardSub');
+      const icon = document.getElementById('certCardIcon');
+
+      display.style.display = 'block';
+
+      if (cert) {
+        this.activeCert = cert;
+        display.style.borderLeftColor = 'var(--brand-emerald)';
+        icon.style.color = 'var(--brand-emerald)';
+        icon.style.background = 'rgba(16,185,129,0.15)';
+        icon.innerHTML = '<i data-lucide="check-circle-2"></i>';
+        title.textContent = 'Certificado Oficial Válido';
+        sub.textContent = 'Acreditación de capacitación verificada en DAGAT SAC';
+
+        rows.innerHTML = `
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;">
+            <span style="color:var(--text-muted);">Código:</span>
+            <strong style="color:var(--brand-fire);font-family:'JetBrains Mono';">${cert.id}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;">
+            <span style="color:var(--text-muted);">Participante:</span>
+            <strong>${cert.studentName}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;">
+            <span style="color:var(--text-muted);">DNI / Identificación:</span>
+            <strong>${cert.studentDni}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;">
+            <span style="color:var(--text-muted);">Curso:</span>
+            <strong>${cert.courseName}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;">
+            <span style="color:var(--text-muted);">Horas Lectivas:</span>
+            <strong>${cert.courseHours} horas</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:0.88rem;">
+            <span style="color:var(--text-muted);">Fecha de Emisión:</span>
+            <strong>${cert.issueDate}</strong>
+          </div>
+        `;
+        document.getElementById('btnDownloadDiplomaPdf').style.display = 'inline-flex';
+        Toast.emerald('Certificado oficial autenticado');
+      } else {
+        this.activeCert = null;
+        display.style.borderLeftColor = 'var(--brand-danger)';
+        icon.style.color = 'var(--brand-danger)';
+        icon.style.background = 'rgba(239,68,68,0.15)';
+        icon.innerHTML = '<i data-lucide="alert-triangle"></i>';
+        title.textContent = 'Certificado No Encontrado';
+        sub.textContent = 'El código ingresado no concuerda con ningún registro emitido';
+
+        rows.innerHTML = `<p style="font-size:0.88rem;color:var(--text-muted);padding:10px 0;">No se halló el registro <strong>${code}</strong>. Verifique mayúsculas y guiones.</p>`;
+        document.getElementById('btnDownloadDiplomaPdf').style.display = 'none';
+        Toast.danger('Código de certificado inválido o no existente');
+      }
+      if (window.lucide) lucide.createIcons();
+    };
+  },
+
+  toggleScanner() {
+    const wrap = document.getElementById('cameraViewportWrap');
+    const label = document.getElementById('txtCameraToggle');
+
+    if (this.scanner) {
+      this.scanner.stop().then(() => {
+        this.scanner.clear();
+        this.scanner = null;
+        wrap.style.display = 'none';
+        label.textContent = 'Encender Cámara de Escaneo';
+      }).catch(e => console.warn(e));
+    } else {
+      wrap.style.display = 'block';
+      label.textContent = 'Detener Cámara';
+      this.scanner = new Html5Qrcode("cameraScannerElement");
+      this.scanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: { width: 220, height: 220 } },
+        (decodedText) => {
+          let code = decodedText;
+          try {
+            if (decodedText.includes('code=')) {
+              code = new URL(decodedText).searchParams.get('code') || decodedText;
+            }
+          } catch(e) {}
+          this.populateCode(code);
+          this.toggleScanner();
+        },
+        () => {}
+      ).catch(() => {
+        Toast.danger('No se pudo iniciar la cámara del dispositivo.');
+        this.scanner = null;
+        wrap.style.display = 'none';
+        label.textContent = 'Encender Cámara de Escaneo';
       });
-    });
+    }
+  },
 
-    // Formulario de cotización
-    document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const btnText = document.getElementById('btnText');
-      const btnLoader = document.getElementById('btnLoader');
-      
-      btnText.textContent = 'Enviando...';
-      btnLoader.style.display = 'inline-block';
-      
-      // Simular envío
-      setTimeout(() => {
-        alert('✅ Solicitud enviada. Nos contactaremos pronto.');
-        this.reset();
-        btnText.textContent = 'Enviar Solicitud';
-        btnLoader.style.display = 'none';
-      }, 2000);
-    });
+  generatePdf(cert) {
+    try {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+      const w = doc.internal.pageSize.getWidth();
+      const h = doc.internal.pageSize.getHeight();
 
-    // Formulario de contacto
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('✅ Mensaje enviado. Nos contactaremos pronto.');
-      this.reset();
-    });
+      doc.setFillColor(6, 9, 25);
+      doc.rect(0, 0, w, 24, 'F');
+      
+      doc.setFillColor(255, 87, 34);
+      doc.rect(0, 24, w, 2.5, 'F');
 
-    // Sistema de pagos
-    document.querySelectorAll('.payment-option').forEach(option => {
-      option.addEventListener('click', function() {
-        // Remover selección anterior
-        document.querySelectorAll('.payment-option').forEach(opt => {
-          opt.classList.remove('selected');
-        });
-        
-        // Agregar selección actual
-        this.classList.add('selected');
-      });
-    });
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(20);
+      doc.text('DAGAT SAC — INGENIERÍA DE SEGURIDAD INDUSTRIAL', w / 2, 12, { align: 'center' });
+      doc.setFontSize(8);
+      doc.setFont('helvetica', 'normal');
+      doc.text('REGISTRO OFICIAL DE CAPACITACIÓN LABORAL — LEY 29783 & CÓDIGOS NFPA', w / 2, 18, { align: 'center' });
 
-    // Procesar pago
-    document.getElementById('procesarPago').addEventListener('click', function() {
-      const selectedMethod = document.querySelector('.payment-option.selected');
-      const monto = document.getElementById('montoPago').value;
-      const detalle = document.getElementById('detallePago').value;
-      
-      if (!selectedMethod) {
-        alert('❌ Por favor seleccione un método de pago');
-        return;
-      }
-      
-      if (!monto || monto <= 0) {
-        alert('❌ Por favor ingrese un monto válido');
-        return;
-      }
-      
-      if (!detalle) {
-        alert('❌ Por favor ingrese el detalle del pago');
-        return;
-      }
-      
-      const method = selectedMethod.dataset.method;
-      let message = '';
-      
-      switch(method) {
-        case 'transferencia':
-          message = `💰 Transferencia Bancaria\n\n` +
-                   `Banco: Scotiabank\n` +
-                   `Cuenta: 6590359300\n` +
-                   `CCI: 00965920659035930043\n` +
-                   `Titular: Ra...Gu..Ja..Ru..\n` +
-                   `Monto: S/ ${monto}\n` +
-                   `Concepto: ${detalle}\n\n` +
-                   `Envíe el comprobante a contabilidad.reyes@dagatgroup.com`;
-          break;
-        case 'yape':
-          message = `📱 Yape / Plin\n\n` +
-                   `Número: 992132260\n` +
-                   `Monto: S/ ${monto}\n` +
-                   `Concepto: ${detalle}\n\n` +
-                   `Envíe el comprobante por WhatsApp al mismo número`;
-          break;
-        case 'efectivo':
-          message = `💵 Pago en Efectivo\n\n` +
-                   `Dirección: Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Oficina 301, Ate\n` +
-                   `Horario: Lunes a Viernes 8:30am - 5:00pm\n` +
-                   `Monto: S/ ${monto}\n` +
-                   `Concepto: ${detalle}`;
-          break;
-      }
-      
-      alert(message);
-    });
+      doc.setTextColor(15, 23, 42);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(28);
+      doc.text('CERTIFICADO OFICIAL', w / 2, 50, { align: 'center' });
 
-    // Subida de archivos
-    const fileUpload = document.getElementById('fileUpload');
-    const fileInput = document.getElementById('archivos');
-    
-    fileUpload.addEventListener('click', () => {
-      fileInput.click();
-    });
-    
-    fileInput.addEventListener('change', () => {
-      if (fileInput.files.length > 0) {
-        fileUpload.innerHTML = `<i class="fas fa-check" style="color: green;"></i>
-                               <p>${fileInput.files.length} archivo(s) seleccionado(s)</p>`;
-      }
-    });
+      doc.setDrawColor(255, 87, 34);
+      doc.setLineWidth(0.8);
+      doc.line(w / 2 - 35, 55, w / 2 + 35, 55);
 
-    // Navegación suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(11);
+      doc.setTextColor(100, 116, 139);
+      doc.text('Se otorga el presente reconocimiento y constancia a:', w / 2, 68, { align: 'center' });
 
-    // Cambiar clase activa en navegación
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 60) {
-          current = section.getAttribute('id');
-        }
-      });
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(22);
+      doc.setTextColor(6, 9, 25);
+      doc.text(cert.studentName.toUpperCase(), w / 2, 82, { align: 'center' });
 
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-          link.classList.add('active');
-        }
-      });
-    });
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(100, 116, 139);
+      doc.text(`DNI / Identidad: ${cert.studentDni}`, w / 2, 90, { align: 'center' });
 
-    // Inicializar sistemas cuando la página cargue
-    document.addEventListener('DOMContentLoaded', function() {
-      authSystem = new AuthSystem();
-      certificateSystem = new CertificateSystem();
-      
-      // Verificar si hay un código en la URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get('code');
-      if (code) {
-        document.getElementById('certificateCode').value = code;
-        certificateSystem.verifyCertificate();
-      }
-    });
-  </script>
+      doc.setFontSize(11);
+      doc.text('Por haber cursado y superado las evaluaciones teórico-prácticas del programa:', w / 2, 106, { align: 'center' });
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(16);
+      doc.setTextColor(255, 87, 34);
+      doc.text(cert.courseName, w / 2, 118, { align: 'center' });
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(71, 85, 105);
+      doc.text(`Duración lectiva acreditada: ${cert.courseHours} horas evaluadas.`, w / 2, 128, { align: 'center' });
+      doc.text(`Lima, ${cert.issueDate}.`, w / 2, 136, { align: 'center' });
+
+      // Embed QR Code
+      try {
+        const qr = qrcode(0, 'M');
+        qr.addData(`https://www.dagatgroup.com/#certificados?code=${cert.id}`);
+        qr.make();
+        const qrDataUrl = qr.createDataURL(4, 4);
+        doc.addImage(qrDataUrl, 'PNG', w - 48, h - 52, 36, 36);
+        doc.setFontSize(7);
+        doc.setTextColor(100, 116, 139);
+        doc.text('Escanee para validar', w - 30, h - 13, { align: 'center' });
+      } catch(e) {}
+
+      doc.setFillColor(6, 9, 25);
+      doc.rect(0, h - 8, w, 8, 'F');
+      doc.setFontSize(8);
+      doc.setTextColor(255, 255, 255);
+      doc.text(`Registro Oficial: ${cert.id}  |  www.dagatgroup.com  |  info@dagatgroup.com`, w / 2, h - 3, { align: 'center' });
+
+      doc.save(`Certificado-${cert.id}.pdf`);
+      Toast.emerald('Diploma oficial PDF generado y descargado');
+    } catch(err) {
+      Toast.danger('Error al generar el diploma en PDF.');
+    }
+  }
+};
+
+const NormApp = {
+  init() {
+    const container = document.getElementById('normativesContainer');
+    container.innerHTML = APP_DATA.NORMATIVAS.map((norm, index) => `
+      <div class="bento-card span-4">
+        <div class="bento-body">
+          <span class="sheet-tag">${norm.tag}</span>
+          <h3 style="font-size:1.15rem;margin:10px 0;">${norm.title}</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:16px;">${norm.desc}</p>
+          <div style="margin-top:auto;display:flex;gap:8px;">
+            <button class="btn btn-fire btn-sm" onclick="NormApp.openModal(${index})" style="flex:1;">
+              <i data-lucide="book-open" style="width:14px;height:14px;"></i> Ver Artículos
+            </button>
+            <a href="${norm.url}" target="_blank" rel="noopener" class="icon-btn" title="Ver en Fuente Oficial">
+              <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  },
+
+  openModal(index) {
+    const data = APP_DATA.NORMATIVAS[index];
+    if (!data) return;
+    document.getElementById('normModalTag').textContent = data.tag;
+    document.getElementById('normModalTitle').textContent = data.title;
+    document.getElementById('normModalBody').innerHTML = `
+      <p style="color:var(--text);font-size:0.95rem;">${data.desc}</p>
+      <div>
+        <strong style="color:var(--brand-fire);display:block;margin-bottom:6px;">Obligaciones Principales:</strong>
+        <ul style="list-style:disc;padding-left:20px;display:flex;flex-direction:column;gap:6px;">
+          ${data.articles.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+      <div style="background:var(--bg);padding:14px;border-radius:var(--radius);border-left:3px solid var(--brand-fire);">
+        <strong style="display:block;margin-bottom:4px;color:var(--text);">Escala Sancionatoria:</strong>
+        <span style="font-size:0.88rem;">${data.fines}</span>
+      </div>
+    `;
+    document.getElementById('normModalLink').href = data.url;
+    document.getElementById('normModal').classList.add('active');
+    if (window.lucide) lucide.createIcons();
+  },
+
+  closeModal() {
+    document.getElementById('normModal').classList.remove('active');
+  }
+};
+
+const LegalApp = {
+  showModalCase(index) {
+    const c = APP_DATA.CASES[index];
+    if (!c) return;
+    document.getElementById('caseModalBadge').textContent = c.badge;
+    document.getElementById('caseModalTitle').textContent = c.title;
+    document.getElementById('caseModalBody').innerHTML = `
+      <div>
+        <strong style="color:var(--brand-danger);display:block;margin-bottom:4px;">1. Imputación / Riesgo Inminente:</strong>
+        <p>${c.problem}</p>
+      </div>
+      <div>
+        <strong style="color:var(--brand-gold);display:block;margin-bottom:4px;">2. Estrategia Técnico-Jurídica DAGAT LAW:</strong>
+        <p>${c.strategy}</p>
+      </div>
+      <div style="background:var(--bg);padding:14px;border-radius:var(--radius);border-left:3px solid var(--brand-gold);">
+        <strong style="color:var(--brand-emerald);display:block;margin-bottom:4px;">3. Resultado Obtenido:</strong>
+        <p style="color:#fff;font-weight:600;">${c.outcome}</p>
+      </div>
+    `;
+    document.getElementById('caseModal').classList.add('active');
+    if (window.lucide) lucide.createIcons();
+  },
+  closeCaseModal() {
+    document.getElementById('caseModal').classList.remove('active');
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) lucide.createIcons();
+
+  // Theme Manager
+  const savedTheme = localStorage.getItem('dagat-theme') || 'dark';
+  document.documentElement.dataset.theme = savedTheme;
+  document.getElementById('themeToggleBtn').addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('dagat-theme', next);
+  });
+
+  // Mobile Menu
+  document.getElementById('menuToggleBtn').addEventListener('click', () => {
+    document.getElementById('navTabs').classList.toggle('open');
+  });
+
+  // Contact form submission to WhatsApp
+  document.getElementById('contactFormDispatcher').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value;
+    const company = document.getElementById('contactCompany').value;
+    const division = document.getElementById('contactDivision').value;
+    const msg = document.getElementById('contactMessage').value;
+
+    const fullMsg = `Hola DAGAT SAC, me comunico desde la plataforma web:%0A- *Nombre:* ${encodeURIComponent(name)}%0A- *Empresa:* ${encodeURIComponent(company)}%0A- *División:* ${encodeURIComponent(division)}%0A- *Requerimiento:* ${encodeURIComponent(msg)}`;
+    window.open(`https://wa.me/${APP_DATA.WHATSAPP}?text=${fullMsg}`, '_blank');
+  });
+
+  // Initialize Modules
+  Router.init();
+  SunafilCalc.init();
+  CertManager.init();
+  NormApp.init();
+});
+</script>
 </body>
 </html>
 
