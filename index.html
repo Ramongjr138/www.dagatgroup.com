@@ -22,11 +22,10 @@
   })();
 </script>
 
-<title>DAGAT SAC & DAGAT LAW — Ingeniería Contra Incendios, SST y Defensa Penal-Laboral</title>
-<meta name="description" content="Plataforma técnica y legal: sistemas contra incendio NFPA, consultoría SG-SST (Ley 29783) y defensa corporativa ante SUNAFIL y el Art. 168-A del Código Penal en Perú.">
+<title>DAGAT SAC & DAGAT LAW — Servicios en Ingeniería, Contra Incendios, SST y Defensa Penal-Laboral</title>
+<meta name="description" content="Plataforma técnica y legal: sistemas contra incendio NFPA, consultoría SG-SST (Ley 29783) y defensa legal Penal y Laboral y el Art. 168-A del Código Penal en Perú.">
 <meta name="author" content="DAGAT SAC">
 
-<!-- SEO dinámico por vista -->
 <meta property="og:title" content="DAGAT SAC & DAGAT LAW — Ingeniería & Defensa Legal Corporativa">
 <meta property="og:description" content="Sistemas NFPA, auditorías ITSE, defensa penal Art. 168-A CP y litigio inspectivo SUNAFIL.">
 <meta property="og:image" content="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png">
@@ -37,7 +36,6 @@
 <link rel="canonical" href="https://www.dagatgroup.com/">
 <link rel="icon" href="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png">
 
-<!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,30 +51,23 @@
     "addressRegion": "Lima",
     "addressCountry": "PE"
   },
-  "areaServed": "PE",
-  "priceRange": "$$"
+  "areaServed": "PE"
 }
 </script>
 
-<!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://res.cloudinary.com">
 <link rel="preconnect" href="https://images.unsplash.com">
 
-<!-- Fuentes -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Librerías -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer></script>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
 
 <style>
-/* ============================================================
-   DESIGN TOKENS
-   ============================================================ */
 :root {
   --brand-fire: #ff5722;
   --brand-fire-glow: rgba(255, 87, 34, 0.45);
@@ -121,7 +112,6 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Safe area para iPhone notch */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -206,9 +196,6 @@ body::before {
     linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
 }
 
-/* ============================================================
-   SKIP LINK (accesibilidad)
-   ============================================================ */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -224,9 +211,6 @@ body::before {
 }
 .skip-link:focus { top: 12px; }
 
-/* ============================================================
-   NAV
-   ============================================================ */
 .nav-shell {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -259,6 +243,7 @@ body::before {
   text-decoration: none;
   color: inherit;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .nav-logo-img {
@@ -360,9 +345,6 @@ body::before {
   gap: 8px;
 }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -409,6 +391,12 @@ body::before {
 }
 .btn-ghost:hover { background: var(--bg-card-hover); border-color: var(--brand-fire); transform: translateY(-2px); }
 
+.btn-danger {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #fff;
+}
+.btn-danger:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -4px rgba(220,38,38,0.5); }
+
 .btn-sm { padding: 6px 12px; font-size: 0.8rem; border-radius: 8px; }
 .btn-lg { padding: 14px 28px; font-size: 1rem; border-radius: 14px; }
 
@@ -428,9 +416,6 @@ body::before {
 .icon-btn:hover { background: var(--bg-card-hover); border-color: var(--border-strong); color: var(--text); }
 .icon-btn:focus-visible { outline: 2px solid var(--brand-fire); outline-offset: 2px; }
 
-/* ============================================================
-   BREADCRUMBS
-   ============================================================ */
 .sheet-breadcrumb {
   display: flex;
   align-items: center;
@@ -450,9 +435,6 @@ body::before {
 .sheet-breadcrumb a:hover { color: var(--brand-fire); }
 .sheet-breadcrumb .current { color: var(--brand-amber); font-weight: 600; }
 
-/* ============================================================
-   HERO
-   ============================================================ */
 .hero-stage {
   position: relative;
   min-height: 100vh;
@@ -546,9 +528,6 @@ body::before {
   50% { opacity: 0.3; transform: scale(1.5); }
 }
 
-/* ============================================================
-   SHEET VIEWS (SPA)
-   ============================================================ */
 .sheet-view {
   display: none;
   min-height: calc(100vh - 90px);
@@ -606,9 +585,6 @@ body::before {
 
 .sheet-container { max-width: var(--max-w); margin: 0 auto; }
 
-/* ============================================================
-   BENTO GRID
-   ============================================================ */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -669,9 +645,6 @@ body::before {
   flex-direction: column;
 }
 
-/* ============================================================
-   LAW BANNER
-   ============================================================ */
 .law-banner {
   background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(6, 9, 25, 0.95) 100%);
   border: 1px solid var(--border-gold);
@@ -690,9 +663,6 @@ body::before {
   background: var(--gradient-gold);
 }
 
-/* ============================================================
-   CALCULADORA SUNAFIL
-   ============================================================ */
 .sunafil-calc-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-gold);
@@ -781,9 +751,6 @@ body::before {
   border-left: 3px solid var(--brand-amber);
 }
 
-/* ============================================================
-   MODALES
-   ============================================================ */
 .app-modal {
   position: fixed;
   inset: 0;
@@ -821,9 +788,6 @@ body::before {
 
 .app-modal-box.gold-box { border-color: var(--border-gold); }
 
-/* ============================================================
-   TOAST
-   ============================================================ */
 .toast-container {
   position: fixed;
   top: calc(24px + var(--safe-top));
@@ -875,9 +839,6 @@ body::before {
   to { transform: translateX(110%); opacity: 0; }
 }
 
-/* ============================================================
-   WHATSAPP FLOAT
-   ============================================================ */
 .wa-bubble-float {
   position: fixed;
   bottom: calc(24px + var(--safe-bottom));
@@ -897,29 +858,65 @@ body::before {
 
 .wa-bubble-float:hover { transform: scale(1.1) translateY(-4px); }
 
-/* ============================================================
-   SKELETON LOADER
-   ============================================================ */
-.skeleton {
-  background: linear-gradient(90deg,
-    var(--bg-card) 25%,
-    var(--bg-card-hover) 50%,
-    var(--bg-card) 75%);
-  background-size: 200% 100%;
-  animation: skeletonShimmer 1.5s infinite;
+.offline-indicator {
+  position: fixed;
+  bottom: calc(24px + var(--safe-bottom));
+  left: 24px;
+  padding: 10px 16px;
+  background: var(--brand-danger);
+  color: white;
   border-radius: var(--radius-sm);
-  height: 14px;
-  margin: 8px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 998;
+  box-shadow: var(--shadow-md);
 }
 
-@keyframes skeletonShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+.hidden { display: none !important; }
+
+.admin-cert-card {
+  padding: 16px;
+  background: var(--bg-elevated, var(--bg));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+.admin-cert-card:hover {
+  border-color: var(--brand-gold);
+  transform: translateY(-2px);
+}
+
+.admin-cert-card h5 {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.admin-cert-card .cert-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  background: rgba(234, 179, 8, 0.12);
+  color: var(--brand-gold);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-gold);
+}
+
+.admin-cert-card .cert-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.admin-cert-card .cert-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
 @media (max-width: 1024px) {
   .bento-card { grid-column: span 6; }
   .bento-card.span-8 { grid-column: span 12; }
@@ -963,17 +960,12 @@ body::before {
 }
 
 .menu-btn-mobile { display: none; }
-
-/* Utility */
-.hidden { display: none !important; }
 </style>
 </head>
 <body>
 
-<!-- Skip link accesibilidad -->
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<!-- Offline -->
 <div id="offlineIndicator" class="offline-indicator hidden" role="status">
   Sin conexión — trabajando offline
 </div>
@@ -982,7 +974,7 @@ body::before {
 
 <header class="nav-shell">
   <div class="nav-container">
-    <a href="#inicio" class="nav-brand-group" data-route="inicio">
+    <a class="nav-brand-group" data-route="inicio">
       <img src="https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png"
            alt="DAGAT SAC" class="nav-logo-img"
            onerror="SVGGraphics.handleImgError(this, 'DAGAT LOGO')">
@@ -993,26 +985,26 @@ body::before {
     </a>
 
     <nav class="nav-tabs" id="navTabs" role="navigation" aria-label="Navegación principal">
-      <button class="nav-tab-link active" data-sheet="inicio" role="tab" aria-selected="true">
+      <button class="nav-tab-link active" data-sheet="inicio" role="tab">
         <i data-lucide="home" style="width:16px;height:16px;"></i> Inicio
       </button>
-      <button class="nav-tab-link" data-sheet="ingenieria" role="tab" aria-selected="false">
+      <button class="nav-tab-link" data-sheet="ingenieria" role="tab">
         <i data-lucide="flame" style="width:16px;height:16px;"></i> Ingeniería NFPA
       </button>
-      <button class="nav-tab-link law-tab" data-sheet="dagat-law" role="tab" aria-selected="false">
+      <button class="nav-tab-link law-tab" data-sheet="dagat-law" role="tab">
         <i data-lucide="scale" style="width:16px;height:16px;"></i> DAGAT LAW
         <span class="badge-law-nav">LEGAL</span>
       </button>
-      <button class="nav-tab-link" data-sheet="contabilidad" role="tab" aria-selected="false">
+      <button class="nav-tab-link" data-sheet="contabilidad" role="tab">
         <i data-lucide="calculator" style="width:16px;height:16px;"></i> Contabilidad
       </button>
-      <button class="nav-tab-link" data-sheet="certificados" role="tab" aria-selected="false">
+      <button class="nav-tab-link" data-sheet="certificados" role="tab">
         <i data-lucide="badge-check" style="width:16px;height:16px;"></i> Certificados QR
       </button>
-      <button class="nav-tab-link" data-sheet="normativas" role="tab" aria-selected="false">
+      <button class="nav-tab-link" data-sheet="normativas" role="tab">
         <i data-lucide="book-marked" style="width:16px;height:16px;"></i> Normativas
       </button>
-      <button class="nav-tab-link" data-sheet="contacto" role="tab" aria-selected="false">
+      <button class="nav-tab-link" data-sheet="contacto" role="tab">
         <i data-lucide="map-pin" style="width:16px;height:16px;"></i> Contacto
       </button>
     </nav>
@@ -1032,10 +1024,11 @@ body::before {
 </header>
 
 <main id="main-content">
-<!-- ============================================================
+
+<!-- ═══════════════════════════════════════════════════════
      SHEET: INICIO
-     ============================================================ -->
-<section class="sheet-view active" id="sheet-inicio" role="tabpanel" aria-labelledby="tab-inicio">
+     ═══════════════════════════════════════════════════════ -->
+<section class="sheet-view active" id="sheet-inicio" role="tabpanel">
   <div class="hero-stage">
     <div style="max-width:1080px;margin:0 auto;text-align:center;position:relative;z-index:2;">
 
@@ -1112,9 +1105,9 @@ body::before {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      SHEET: INGENIERÍA
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-ingenieria" role="tabpanel">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
@@ -1217,9 +1210,9 @@ body::before {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      SHEET: DAGAT LAW
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-dagat-law" role="tabpanel">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
@@ -1254,14 +1247,13 @@ body::before {
       </div>
     </div>
 
-    <!-- Calculadora SUNAFIL -->
     <div class="sunafil-calc-card">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
         <div style="color:var(--brand-gold);"><i data-lucide="calculator" style="width:26px;height:26px;"></i></div>
         <h3 style="font-size:1.35rem;">Calculadora Interactiva de Multas SUNAFIL</h3>
       </div>
       <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:24px;">
-        Estima la cuantía pecuniaria a la que se expone tu organización conforme al <strong>D.S. 019-2006-TR</strong> y el valor de UIT vigente. Los multiplicadores se actualizan automáticamente según la tabla oficial.
+        Estima la cuantía pecuniaria a la que se expone tu organización conforme al <strong>D.S. 019-2006-TR</strong> y el valor de UIT vigente.
       </p>
 
       <div class="calc-grid">
@@ -1313,7 +1305,7 @@ body::before {
       </div>
 
       <div class="calc-disclaimer">
-        <strong>Nota legal:</strong> Los montos son referenciales y se calculan según los multiplicadores del D.S. 019-2006-TR. La multa final depende de la subsanación voluntaria, reincidencia y criterios del inspector. Confirma el valor UIT vigente con tu contador o SUNAT.
+        <strong>Nota legal:</strong> Los montos son referenciales y se calculan según los multiplicadores del D.S. 019-2006-TR. La multa final depende de la subsanación voluntaria, reincidencia y criterios del inspector.
       </div>
     </div>
 
@@ -1345,9 +1337,9 @@ body::before {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      SHEET: CONTABILIDAD
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-contabilidad" role="tabpanel">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
@@ -1419,9 +1411,9 @@ body::before {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      SHEET: CERTIFICADOS
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-certificados" role="tabpanel">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
@@ -1473,6 +1465,12 @@ body::before {
             <div id="cameraScannerElement" style="width:100%;"></div>
           </div>
         </div>
+
+        <button type="button" class="btn btn-ghost btn-sm" id="btnAdminAccess"
+                style="width:100%;margin-top:14px;border-color:var(--border-gold);color:var(--brand-gold);">
+          <i data-lucide="lock" style="width:14px;height:14px;"></i>
+          <span id="adminBtnLabel">Acceso Administrativo</span>
+        </button>
       </div>
 
       <div id="certCardDisplay" style="background:var(--bg-surface);border:1px solid var(--border);border-left:4px solid var(--brand-emerald);border-radius:var(--radius-lg);padding:32px;display:none;" aria-live="polite">
@@ -1498,9 +1496,9 @@ body::before {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      SHEET: NORMATIVAS
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-normativas" role="tabpanel">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
@@ -1519,9 +1517,9 @@ body::before {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      SHEET: CONTACTO
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-contacto" role="tabpanel">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
@@ -1591,11 +1589,94 @@ body::before {
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SHEET: PANEL ADMIN (oculto por defecto)
+     ═══════════════════════════════════════════════════════ -->
+<section class="sheet-view" id="sheet-admin" role="tabpanel">
+  <div class="sheet-container">
+    <nav class="sheet-breadcrumb" aria-label="Breadcrumb">
+      <a data-route="certificados">Certificados</a>
+      <span aria-hidden="true">/</span>
+      <span class="current">Panel Administrativo</span>
+    </nav>
+
+    <div class="sheet-header">
+      <span class="sheet-tag gold">// ZONA RESTRINGIDA</span>
+      <h2 class="sheet-title">Panel de Gestión de Certificados</h2>
+      <p class="sheet-desc">Genera, consulta y administra todos los certificados emitidos por DAGAT SAC. Cada certificado genera un PDF oficial con logo, marca de agua y QR de verificación.</p>
+    </div>
+
+    <div style="background:var(--bg-surface);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:32px;margin-bottom:32px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);">
+        <div style="color:var(--brand-gold);"><i data-lucide="file-plus-2" style="width:24px;height:24px;"></i></div>
+        <h3 style="font-size:1.2rem;">Generar Nuevo Certificado</h3>
+      </div>
+
+      <form id="adminCertForm" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <div>
+          <label for="admStudentName" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Nombre del Participante *</label>
+          <input type="text" id="admStudentName" class="form-input" required placeholder="Juan Pérez Ramos">
+        </div>
+        <div>
+          <label for="admStudentDni" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">DNI *</label>
+          <input type="text" id="admStudentDni" class="form-input" required pattern="[0-9]{8}" maxlength="8" placeholder="45892011">
+        </div>
+        <div style="grid-column:1 / -1;">
+          <label for="admCourseName" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Curso / Capacitación *</label>
+          <input type="text" id="admCourseName" class="form-input" required placeholder="Ej: Lucha Contra Incendios y Evacuación (NFPA 10/72)">
+        </div>
+        <div>
+          <label for="admCourseHours" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Horas Lectivas *</label>
+          <input type="number" id="admCourseHours" class="form-input" required min="1" max="500" value="8">
+        </div>
+        <div>
+          <label for="admIssueDate" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Fecha de Emisión *</label>
+          <input type="date" id="admIssueDate" class="form-input" required>
+        </div>
+        <div>
+          <label for="admExpiryDate" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Fecha de Vencimiento (opcional)</label>
+          <input type="date" id="admExpiryDate" class="form-input">
+        </div>
+        <div>
+          <label for="admCertType" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Tipo de Certificado</label>
+          <select id="admCertType" class="form-select">
+            <option value="Técnico">Capacitación Técnica</option>
+            <option value="Legal">Capacitación Legal</option>
+            <option value="SST">Seguridad y Salud en el Trabajo</option>
+            <option value="NFPA">Normativa NFPA</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div style="grid-column:1 / -1;display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+          <button type="submit" class="btn btn-law" style="flex:1;min-width:200px;">
+            <i data-lucide="file-check-2" style="width:16px;height:16px;"></i>
+            Generar Certificado + PDF
+          </button>
+          <button type="button" class="btn btn-ghost" id="btnLogoutAdmin">
+            <i data-lucide="log-out" style="width:16px;height:16px;"></i>
+            Cerrar Sesión
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);flex-wrap:wrap;">
+        <h3 style="font-size:1.2rem;">Certificados Registrados <span id="adminCertCount" style="color:var(--text-dim);font-weight:400;font-size:0.9rem;"></span></h3>
+        <input type="text" id="adminSearch" class="form-input" placeholder="Buscar por nombre o DNI..." style="max-width:280px;">
+      </div>
+
+      <div id="adminCertList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;"></div>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      MODAL: NORMATIVAS
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <div class="app-modal" id="normModal" role="dialog" aria-modal="true" aria-labelledby="normModalTitle">
   <div class="app-modal-box">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:12px;">
@@ -1617,9 +1698,9 @@ body::before {
   </div>
 </div>
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════════════════
      MODAL: CASOS LEGALES
-     ============================================================ -->
+     ═══════════════════════════════════════════════════════ -->
 <div class="app-modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
   <div class="app-modal-box gold-box">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:12px;">
@@ -1642,6 +1723,43 @@ body::before {
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════
+     MODAL: LOGIN ADMIN
+     ═══════════════════════════════════════════════════════ -->
+<div class="app-modal" id="adminLoginModal" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+  <div class="app-modal-box gold-box" style="max-width:440px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+      <div>
+        <span class="sheet-tag gold">// AUTENTICACIÓN</span>
+        <h3 id="adminLoginTitle" style="font-size:1.3rem;margin-top:8px;color:var(--brand-gold);">Acceso Restringido</h3>
+      </div>
+      <button class="icon-btn" data-close-modal="adminLoginModal" aria-label="Cerrar">✕</button>
+    </div>
+
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">
+      Ingresa la clave maestra para gestionar certificados. La sesión dura 8 horas.
+    </p>
+
+    <div style="margin-bottom:16px;">
+      <label for="adminPasswordInput" style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:6px;">Clave Maestra</label>
+      <input type="password" id="adminPasswordInput" class="form-input" placeholder="••••••••••••"
+             autocomplete="current-password">
+    </div>
+
+    <div id="adminLoginError" style="display:none;padding:10px 14px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:8px;color:#f87171;font-size:0.85rem;margin-bottom:16px;">
+      <span id="adminLoginErrorMsg">Clave incorrecta.</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <button id="adminLoginBtn" class="btn btn-law" style="flex:1;">
+        <i data-lucide="log-in" style="width:16px;height:16px;"></i>
+        Ingresar
+      </button>
+      <button class="btn btn-ghost" data-close-modal="adminLoginModal">Cancelar</button>
+    </div>
+  </div>
+</div>
+
 <!-- WhatsApp Float -->
 <a href="https://wa.me/51992132260?text=Hola%20DAGAT%20SAC%20%26%20DAGAT%20LAW%2C%20solicito%20informaci%C3%B3n"
    class="wa-bubble-float" target="_blank" rel="noopener" aria-label="WhatsApp" data-analytics="wa-float">
@@ -1652,12 +1770,11 @@ body::before {
 'use strict';
 
 /* ============================================================
-   UTILIDADES SEGURAS
+   UTILIDADES
    ============================================================ */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-// Sanitizar HTML para prevenir XSS
 const escapeHTML = (str) => {
   if (typeof str !== 'string') return '';
   const div = document.createElement('div');
@@ -1665,7 +1782,6 @@ const escapeHTML = (str) => {
   return div.innerHTML;
 };
 
-// localStorage seguro
 const SafeStorage = {
   get(key, fallback = null) {
     try { return localStorage.getItem(key) ?? fallback; }
@@ -1701,6 +1817,7 @@ const APP_DATA = {
       courseHours: 8,
       issueDate: '2025-02-15',
       expiryDate: '2026-02-15',
+      certType: 'NFPA',
       issuedBy: 'DAGAT SAC'
     },
     {
@@ -1711,6 +1828,7 @@ const APP_DATA = {
       courseHours: 12,
       issueDate: '2025-03-01',
       expiryDate: '2026-03-01',
+      certType: 'SST',
       issuedBy: 'DAGAT SAC'
     },
     {
@@ -1721,11 +1839,10 @@ const APP_DATA = {
       courseHours: 16,
       issueDate: '2025-03-10',
       expiryDate: '2026-03-10',
+      certType: 'Técnico',
       issuedBy: 'DAGAT SAC'
     }
   ],
-  // Matriz oficial D.S. 019-2006-TR
-  // [1-10, 11-25, 26-50, 51-100, 101+]
   SUNAFIL_UIT_TABLE: {
     nomype: {
       leve:     [0.26, 0.47, 0.88, 1.56, 2.50],
@@ -1762,7 +1879,7 @@ const APP_DATA = {
       desc: 'Sanciona con pena privativa de la libertad de 4 a 8 años a quien, infringiendo las normas de SST y estando legalmente obligado, cause la muerte o lesiones graves de trabajadores.',
       articles: [
         'Párrafo 1: Delito de peligro abstracto (1 a 4 años de prisión).',
-        'Párrafo 2: Muerte o lesiones graves por inobservancia deliberada (4 a 8 años de cárcel efectiva para Directores o Gerentes).'
+        'Párrafo 2: Muerte o lesiones graves por inobservancia deliberada (4 a 8 años de cárcel efectiva).'
       ],
       fines: 'Privación efectiva de la libertad e inhabilitación comercial de directivos.',
       url: 'https://spij.minjus.gob.pe/'
@@ -1838,7 +1955,7 @@ const APP_DATA = {
 };
 
 /* ============================================================
-   SVG FALLBACK PARA IMÁGENES ROTAS
+   SVG FALLBACK
    ============================================================ */
 const SVGGraphics = {
   handleImgError(imgEl, title) {
@@ -1866,43 +1983,27 @@ const SVGGraphics = {
    ============================================================ */
 const Toast = {
   container: null,
-  activeToasts: new Set(),
-
-  init() {
-    this.container = $('#toastContainer');
-  },
-
   show(message, type = 'fire', duration = 3500) {
+    if (!this.container) this.container = $('#toastContainer');
     const el = document.createElement('div');
     el.className = `toast ${type}`;
-    el.setAttribute('role', 'status');
     el.innerHTML = `
       <div style="flex:1;font-size:0.88rem;">${escapeHTML(message)}</div>
-      <button style="background:none;border:none;color:var(--text-dim);cursor:pointer;padding:4px;" aria-label="Cerrar notificación">✕</button>
+      <button style="background:none;border:none;color:var(--text-dim);cursor:pointer;padding:4px;" aria-label="Cerrar">✕</button>
     `;
-
     const closeBtn = el.querySelector('button');
     closeBtn.onclick = () => this.dismiss(el);
-
     this.container.appendChild(el);
-    this.activeToasts.add(el);
-
     const timer = setTimeout(() => this.dismiss(el), duration);
     el._timer = timer;
-
     return el;
   },
-
   dismiss(el) {
     if (!el || !el.parentNode) return;
     clearTimeout(el._timer);
-    this.activeToasts.delete(el);
     el.style.animation = 'toastSlideOut 0.3s forwards';
-    setTimeout(() => {
-      if (el.parentNode) el.remove();
-    }, 300);
+    setTimeout(() => { if (el.parentNode) el.remove(); }, 300);
   },
-
   fire(msg) { return this.show(msg, 'fire'); },
   gold(msg) { return this.show(msg, 'gold'); },
   emerald(msg) { return this.show(msg, 'emerald'); },
@@ -1910,18 +2011,13 @@ const Toast = {
 };
 
 /* ============================================================
-   ANALYTICS (eventos anónimos)
+   ANALYTICS
    ============================================================ */
 const Analytics = {
   track(event, data = {}) {
-    if (window.gtag) {
-      window.gtag('event', event, data);
-    }
-    if (typeof console !== 'undefined' && console.debug) {
-      console.debug('[Analytics]', event, data);
-    }
+    if (window.gtag) window.gtag('event', event, data);
+    if (console.debug) console.debug('[Analytics]', event, data);
   },
-
   init() {
     document.addEventListener('click', (e) => {
       const el = e.target.closest('[data-analytics]');
@@ -1936,33 +2032,37 @@ const Analytics = {
 };
 
 /* ============================================================
-   ROUTER SPA
+   ROUTER
    ============================================================ */
 const Router = {
   activeSheet: 'inicio',
-  validSheets: ['inicio', 'ingenieria', 'dagat-law', 'contabilidad', 'certificados', 'normativas', 'contacto'],
+  validSheets: ['inicio', 'ingenieria', 'dagat-law', 'contabilidad', 'certificados', 'normativas', 'contacto', 'admin'],
   titles: {
-    'inicio': 'DAGAT SAC & DAGAT LAW — Ingeniería y Defensa Legal',
-    'ingenieria': 'Ingeniería NFPA — DAGAT SAC',
-    'dagat-law': 'DAGAT LAW — Defensa Penal y SUNAFIL',
+    'inicio': 'DAGAT SAC & DAGAT LAW — Servicios en Ingeniería y Defensa Legal',
+    'ingenieria': 'Servicios en Ingeniería  — DAGAT SAC',
+    'dagat-law': 'DAGAT LAW — Defensa Penal y Laboral',
     'contabilidad': 'Estudio Contable Reyes — DAGAT',
     'certificados': 'Verificar Certificado — DAGAT SAC',
     'normativas': 'Normativas Vigentes — DAGAT SAC',
-    'contacto': 'Contacto — DAGAT SAC'
+    'contacto': 'Contacto — DAGAT SAC',
+    'admin': 'Panel Administrativo — DAGAT SAC'
   },
 
   init() {
-    // Event delegation: un solo listener para todos los botones con data-route
     document.addEventListener('click', (e) => {
       const routeEl = e.target.closest('[data-route]');
       if (routeEl) {
         e.preventDefault();
         const sheet = routeEl.dataset.route;
+        // Proteger la ruta admin
+        if (sheet === 'admin') {
+          AdminAuth.handleAccess();
+          return;
+        }
         this.navigate(sheet);
         return;
       }
 
-      // Tabs del navbar
       const tabEl = e.target.closest('.nav-tab-link[data-sheet]');
       if (tabEl) {
         e.preventDefault();
@@ -1970,14 +2070,11 @@ const Router = {
       }
     });
 
-    // Soporte de teclado para elementos role=button
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        const routeEl = e.target.closest('[data-route][role="button"], [data-case][role="button"]');
-        if (routeEl) {
-          e.preventDefault();
-          routeEl.click();
-        }
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.closest && e.target.closest('[data-route][role="button"], [data-case][role="button"]')) {
+        const el = e.target.closest('[data-route][role="button"], [data-case][role="button"]');
+        e.preventDefault();
+        el.click();
       }
     });
 
@@ -1989,7 +2086,6 @@ const Router = {
     const rawHash = window.location.hash.replace('#', '').trim();
     const [sheetId, queryString] = rawHash.split('?');
     const params = new URLSearchParams(queryString || '');
-
     if (this.validSheets.includes(sheetId)) {
       this.navigate(sheetId, false, params);
     } else {
@@ -2004,64 +2100,60 @@ const Router = {
     if (updateHash) {
       const query = params.toString();
       const newHash = '#' + sheetId + (query ? '?' + query : '');
-      if (window.location.hash !== newHash) {
-        window.location.hash = newHash;
-      }
+      if (window.location.hash !== newHash) window.location.hash = newHash;
     }
 
-    // Toggle vistas
     $$('.sheet-view').forEach(view => {
       view.classList.toggle('active', view.id === `sheet-${sheetId}`);
     });
 
-    // Toggle tabs activos
     $$('.nav-tab-link').forEach(tab => {
       const isActive = tab.dataset.sheet === sheetId;
       tab.classList.toggle('active', isActive);
       tab.setAttribute('aria-selected', isActive);
     });
 
-    // Cerrar menú móvil
     const tabs = $('#navTabs');
     if (tabs) tabs.classList.remove('open');
     const menuBtn = $('#menuToggleBtn');
     if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
 
-    // Actualizar título
     document.title = this.titles[sheetId] || this.titles['inicio'];
 
-    // Actualizar meta description según vista
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       const descriptions = {
         'inicio': 'Plataforma técnica y legal: sistemas contra incendio NFPA, SST y defensa corporativa ante SUNAFIL.',
-        'ingenieria': 'Diseño hidráulico, cuartos de bombas, rociadores y detección NFPA 13, 14, 20 y 72.',
-        'dagat-law': 'Defensa penal Art. 168-A CP, litigio SUNAFIL y auditoría de comités SST.',
+        'ingenieria': 'Servicios de Ingeniería, Bombas contra Incendio, Sistemas de detección Temprana.',
+        'dagat-law': 'Defensa penal Art. 168-A CP, Laboral y auditorías en SST e ISO 9001-45001 y 14001.',
         'contabilidad': 'Auditoría tributaria, SIRE, planillas y libros electrónicos.',
         'certificados': 'Verificación instantánea de certificados DAGAT SAC por código o QR.',
         'normativas': 'Compendio normativo vigente: Ley 29783, Art. 168-A CP, ITSE y NFPA.',
-        'contacto': 'Contacto directo con DAGAT SAC. Lima, Perú. Atención 24/7.'
+        'contacto': 'Contacto directo con DAGAT SAC. Lima, Perú.',
+        'admin': 'Panel administrativo de gestión de certificados.'
       };
       metaDesc.setAttribute('content', descriptions[sheetId] || descriptions['inicio']);
     }
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Re-renderizar iconos lucide
     if (window.lucide) {
       try { window.lucide.createIcons(); } catch (e) { /* silent */ }
     }
 
-    // Si hay un código de certificado en params, autobuscar
     if (sheetId === 'certificados' && params.get('code')) {
       setTimeout(() => {
         const input = $('#certSearchInput');
         if (input) {
           input.value = params.get('code').toUpperCase();
-          if (window.CertManager) window.CertManager.search();
+          CertManager.search();
         }
       }, 200);
+    }
+
+    if (sheetId === 'admin') {
+      // Refrescar lista al entrar
+      AdminPanel.renderList();
     }
   }
 };
@@ -2075,7 +2167,6 @@ const SunafilCalc = {
     const severity = $('#calcSeverity');
     const workers = $('#calcWorkers');
     const uitInput = $('#calcUitInput');
-
     if (!regime || !severity || !workers) return;
 
     const recalculate = () => {
@@ -2083,20 +2174,14 @@ const SunafilCalc = {
       const sev = severity.value;
       const w = parseInt(workers.value, 10);
       const uit = parseFloat(uitInput.value) || APP_DATA.UIT_VALUE;
-
       const table = APP_DATA.SUNAFIL_UIT_TABLE[reg]?.[sev];
       if (!table) return;
-
       const multiplier = table[w] ?? table[0];
       const totalSoles = multiplier * uit;
-
       const resultEl = $('#calcResultDisplay');
       const uitEl = $('#calcUitEquivDisplay');
-
       resultEl.textContent = `S/ ${totalSoles.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
       uitEl.textContent = `≈ ${multiplier.toFixed(2)} UIT × S/ ${uit.toLocaleString('es-PE')} UIT vigente`;
-
-      // Animación sutil
       resultEl.style.transform = 'scale(1.05)';
       setTimeout(() => resultEl.style.transform = 'scale(1)', 150);
     };
@@ -2116,7 +2201,6 @@ const SunafilCalc = {
         const wor = workers.options[workers.selectedIndex].text;
         const total = $('#calcResultDisplay').textContent;
         const uit = $('#calcUitEquivDisplay').textContent;
-
         const text = `Hola DAGAT LAW, calculé mi contingencia ante SUNAFIL:%0A- *Régimen:* ${encodeURIComponent(reg)}%0A- *Gravedad:* ${encodeURIComponent(sev)}%0A- *Trabajadores:* ${encodeURIComponent(wor)}%0A- *Multa Estimada:* ${encodeURIComponent(total)} (${encodeURIComponent(uit)})%0A%0ASolicito una consulta para estructurar nuestros descargos preventivos.`;
         window.open(`https://wa.me/${APP_DATA.WHATSAPP}?text=${text}`, '_blank');
         Analytics.track('sunafil-calc-whatsapp');
@@ -2126,7 +2210,7 @@ const SunafilCalc = {
 };
 
 /* ============================================================
-   CERT MANAGER
+   CERT MANAGER (búsqueda, verificación, PDF)
    ============================================================ */
 const CertManager = {
   db: null,
@@ -2134,11 +2218,8 @@ const CertManager = {
   scanner: null,
 
   async init() {
-    try {
-      await this.initDB();
-    } catch (e) {
-      console.warn('IndexedDB no disponible:', e);
-    }
+    try { await this.initDB(); }
+    catch (e) { console.warn('IndexedDB no disponible:', e); }
 
     const searchBtn = $('#btnExecuteSearch');
     const searchInput = $('#certSearchInput');
@@ -2150,11 +2231,11 @@ const CertManager = {
       });
     }
 
-    // Demo buttons
     $$('[data-demo-code]').forEach(btn => {
       btn.addEventListener('click', () => {
         const code = btn.dataset.demoCode;
-        $('#certSearchInput').value = code;
+        const input = $('#certSearchInput');
+        if (input) input.value = code;
         this.search();
       });
     });
@@ -2172,7 +2253,7 @@ const CertManager = {
 
   async initDB() {
     return new Promise((resolve, reject) => {
-      const req = indexedDB.open('dagat_certs_v6', 1);
+      const req = indexedDB.open('dagat_certs_v7', 1);
       req.onupgradeneeded = (e) => {
         const db = e.target.result;
         if (!db.objectStoreNames.contains('certs')) {
@@ -2193,7 +2274,12 @@ const CertManager = {
     return new Promise((resolve) => {
       const tx = this.db.transaction('certs', 'readwrite');
       const store = tx.objectStore('certs');
-      APP_DATA.PRELOADED_CERTS.forEach(c => store.put(c));
+      const countReq = store.count();
+      countReq.onsuccess = () => {
+        if (countReq.result === 0) {
+          APP_DATA.PRELOADED_CERTS.forEach(c => store.put(c));
+        }
+      };
       tx.oncomplete = () => resolve();
       tx.onerror = () => resolve();
     });
@@ -2206,16 +2292,10 @@ const CertManager = {
   },
 
   async search() {
-    const code = ($('#certSearchInput')?.value || '').trim().toUpperCase();
-    if (!code) {
-      Toast.danger('Ingresa un código de certificado.');
-      return;
-    }
-
-    if (!this.db) {
-      Toast.danger('Base de datos no disponible. Recarga la página.');
-      return;
-    }
+    const input = $('#certSearchInput');
+    const code = (input?.value || '').trim().toUpperCase();
+    if (!code) { Toast.danger('Ingresa un código de certificado.'); return; }
+    if (!this.db) { Toast.danger('Base de datos no disponible.'); return; }
 
     const tx = this.db.transaction('certs', 'readonly');
     const req = tx.objectStore('certs').get(code);
@@ -2223,7 +2303,6 @@ const CertManager = {
     req.onsuccess = () => {
       const cert = req.result;
       const display = $('#certCardDisplay');
-
       if (cert) {
         this.activeCert = cert;
         this.renderValidCert(cert);
@@ -2234,14 +2313,11 @@ const CertManager = {
         this.renderInvalidCert(code);
         Toast.danger('Código no encontrado');
       }
-
       display.style.display = 'block';
       if (window.lucide) window.lucide.createIcons();
     };
 
-    req.onerror = () => {
-      Toast.danger('Error al consultar la base de datos.');
-    };
+    req.onerror = () => Toast.danger('Error al consultar la base de datos.');
   },
 
   renderValidCert(cert) {
@@ -2259,17 +2335,16 @@ const CertManager = {
     title.textContent = 'Certificado Oficial Válido';
     sub.textContent = 'Acreditación verificada en DAGAT SAC';
 
-    // XSS-safe con escapeHTML
     rows.innerHTML = `
       <div class="cert-row"><span class="cert-label">Código:</span><strong style="color:var(--brand-fire);font-family:'JetBrains Mono';">${escapeHTML(cert.id)}</strong></div>
       <div class="cert-row"><span class="cert-label">Participante:</span><strong>${escapeHTML(cert.studentName)}</strong></div>
       <div class="cert-row"><span class="cert-label">DNI:</span><strong>${escapeHTML(cert.studentDni)}</strong></div>
       <div class="cert-row"><span class="cert-label">Curso:</span><strong>${escapeHTML(cert.courseName)}</strong></div>
+      <div class="cert-row"><span class="cert-label">Tipo:</span><strong>${escapeHTML(cert.certType || 'Técnico')}</strong></div>
       <div class="cert-row"><span class="cert-label">Horas:</span><strong>${escapeHTML(String(cert.courseHours))} horas</strong></div>
       <div class="cert-row cert-row-last"><span class="cert-label">Emisión:</span><strong>${escapeHTML(cert.issueDate)}</strong></div>
     `;
 
-    // Añadir estilos inline por simplicidad
     rows.querySelectorAll('.cert-row').forEach(r => {
       r.style.cssText = 'display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:12px;';
     });
@@ -2338,12 +2413,11 @@ const CertManager = {
               code = url.searchParams.get('code') || decodedText;
             }
           } catch (e) { /* no es URL */ }
-
           this.populateCode(code);
           this.toggleScanner();
           Analytics.track('cert-scanned');
         },
-        () => { /* errores silenciosos del scanner */ }
+        () => { /* silencioso */ }
       ).catch(() => {
         Toast.danger('No se pudo iniciar la cámara.');
         this.scanner = null;
@@ -2357,11 +2431,16 @@ const CertManager = {
     }
   },
 
+  /* ═══════════════════════════════════════════════════════
+     GENERADOR PDF PREMIUM CON LOGO + MARCA DE AGUA
+     ═══════════════════════════════════════════════════════ */
   generatePdf(cert) {
     if (!window.jspdf) {
       Toast.danger('Generador PDF no disponible.');
       return;
     }
+
+    const LOGO_URL = 'https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png';
 
     try {
       const { jsPDF } = window.jspdf;
@@ -2369,84 +2448,586 @@ const CertManager = {
       const w = doc.internal.pageSize.getWidth();
       const h = doc.internal.pageSize.getHeight();
 
-      doc.setFillColor(6, 9, 25);
-      doc.rect(0, 0, w, 24, 'F');
-      doc.setFillColor(255, 87, 34);
-      doc.rect(0, 24, w, 2.5, 'F');
+      const loadImage = (url) => new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          try {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            resolve({
+              dataUrl: canvas.toDataURL('image/png'),
+              width: img.naturalWidth,
+              height: img.naturalHeight
+            });
+          } catch (e) { reject(e); }
+        };
+        img.onerror = reject;
+        img.src = url + (url.includes('?') ? '&' : '?') + 'cors=1&_=' + Date.now();
+      });
 
-      doc.setTextColor(255, 255, 255);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(18);
-      doc.text('DAGAT SAC — INGENIERÍA DE SEGURIDAD INDUSTRIAL', w / 2, 12, { align: 'center' });
-      doc.setFontSize(8);
-      doc.setFont('helvetica', 'normal');
-      doc.text('REGISTRO OFICIAL DE CAPACITACIÓN — LEY 29783 & CÓDIGOS NFPA', w / 2, 18, { align: 'center' });
+      const render = (logo) => {
+        // Fondo crema elegante
+        doc.setFillColor(253, 251, 247);
+        doc.rect(0, 0, w, h, 'F');
 
-      doc.setTextColor(15, 23, 42);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(26);
-      doc.text('CERTIFICADO OFICIAL', w / 2, 50, { align: 'center' });
+        // MARCA DE AGUA CENTRAL (LOGO GRANDE TRANSPARENTE)
+        if (logo) {
+          try {
+            const GState = window.jspdf.GState;
+            if (GState) {
+              const watermarkSize = 150;
+              const wmX = (w - watermarkSize) / 2;
+              const wmY = (h - watermarkSize) / 2 + 5;
+              doc.setGState(new GState({ opacity: 0.06 }));
+              doc.addImage(logo.dataUrl, 'PNG', wmX, wmY, watermarkSize, watermarkSize);
+              doc.setGState(new GState({ opacity: 1 }));
+            }
+          } catch (e) { /* sin marca de agua */ }
+        }
 
-      doc.setDrawColor(255, 87, 34);
-      doc.setLineWidth(0.8);
-      doc.line(w / 2 - 35, 55, w / 2 + 35, 55);
+        // Borde exterior dorado
+        doc.setDrawColor(180, 130, 60);
+        doc.setLineWidth(0.5);
+        doc.rect(8, 8, w - 16, h - 16);
 
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(11);
-      doc.setTextColor(100, 116, 139);
-      doc.text('Se otorga el presente reconocimiento a:', w / 2, 68, { align: 'center' });
+        // Borde interior oscuro grueso
+        doc.setDrawColor(6, 9, 25);
+        doc.setLineWidth(1.2);
+        doc.rect(12, 12, w - 24, h - 24);
 
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(20);
-      doc.setTextColor(6, 9, 25);
-      doc.text(cert.studentName.toUpperCase(), w / 2, 82, { align: 'center' });
+        // Esquinas decorativas doradas
+        doc.setDrawColor(212, 160, 60);
+        doc.setLineWidth(2);
+        const cSize = 8;
+        doc.line(12, 12, 12 + cSize, 12);
+        doc.line(12, 12, 12, 12 + cSize);
+        doc.line(w - 12, 12, w - 12 - cSize, 12);
+        doc.line(w - 12, 12, w - 12, 12 + cSize);
+        doc.line(12, h - 12, 12 + cSize, h - 12);
+        doc.line(12, h - 12, 12, h - 12 - cSize);
+        doc.line(w - 12, h - 12, w - 12 - cSize, h - 12);
+        doc.line(w - 12, h - 12, w - 12, h - 12 - cSize);
 
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
-      doc.setTextColor(100, 116, 139);
-      doc.text(`DNI: ${cert.studentDni}`, w / 2, 90, { align: 'center' });
+        // LOGO DAGAT EN LA PARTE SUPERIOR
+        if (logo) {
+          try {
+            const logoSize = 22;
+            const logoAspect = logo.width / logo.height;
+            const logoW = logoSize * logoAspect;
+            const logoH = logoSize;
+            const logoX = (w - logoW) / 2;
+            doc.addImage(logo.dataUrl, 'PNG', logoX, 15, logoW, logoH);
+          } catch (e) { /* sin logo */ }
+        }
 
-      doc.setFontSize(11);
-      doc.text('Por haber cursado y superado el programa:', w / 2, 106, { align: 'center' });
+        // ENCABEZADO: SOLO "DAGAT SAC"
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(28);
+        doc.setTextColor(6, 9, 25);
+        doc.text('DAGAT SAC', w / 2, 47, { align: 'center' });
 
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(15);
-      doc.setTextColor(255, 87, 34);
-      doc.text(cert.courseName, w / 2, 118, { align: 'center' });
+        // Subtítulo genérico
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7.5);
+        doc.setTextColor(140, 110, 60);
+        doc.text('CERTIFICACIÓN OFICIAL  ·  CAPACITACIÓN  ·  CONSTANCIA TÉCNICA', w / 2, 53, { align: 'center', charSpace: 1.2 });
 
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
-      doc.setTextColor(71, 85, 105);
-      doc.text(`Duración: ${cert.courseHours} horas lectivas.`, w / 2, 128, { align: 'center' });
-      doc.text(`Lima, ${cert.issueDate}.`, w / 2, 136, { align: 'center' });
+        // Línea decorativa
+        doc.setDrawColor(212, 160, 60);
+        doc.setLineWidth(0.6);
+        doc.line(w / 2 - 55, 57, w / 2 + 55, 57);
+        doc.setFillColor(212, 160, 60);
+        doc.circle(w / 2, 57, 1.2, 'F');
 
-      // QR
-      if (window.qrcode) {
-        try {
-          const qr = window.qrcode(0, 'M');
-          qr.addData(`${APP_DATA.DOMAIN}/#certificados?code=${cert.id}`);
-          qr.make();
-          const qrDataUrl = qr.createDataURL(4, 4);
-          doc.addImage(qrDataUrl, 'PNG', w - 48, h - 52, 36, 36);
-          doc.setFontSize(7);
-          doc.setTextColor(100, 116, 139);
-          doc.text('Escanear para validar', w - 30, h - 13, { align: 'center' });
-        } catch (e) { /* silent */ }
-      }
+        // TÍTULO PRINCIPAL
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(24);
+        doc.setTextColor(6, 9, 25);
+        doc.text('CERTIFICADO', w / 2, 70, { align: 'center', charSpace: 2.5 });
 
-      doc.setFillColor(6, 9, 25);
-      doc.rect(0, h - 8, w, 8, 'F');
-      doc.setFontSize(8);
-      doc.setTextColor(255, 255, 255);
-      doc.text(`Registro: ${cert.id}  |  www.dagatgroup.com  |  info@dagatgroup.com`, w / 2, h - 3, { align: 'center' });
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9.5);
+        doc.setTextColor(100, 100, 100);
+        doc.text('Se otorga el presente reconocimiento a', w / 2, 80, { align: 'center' });
 
-      doc.save(`Certificado-${cert.id}.pdf`);
-      Toast.emerald('Diploma PDF descargado');
-      Analytics.track('cert-pdf-download', { code: cert.id });
+        // NOMBRE DEL PARTICIPANTE
+        const studentName = (cert.studentName || '').toUpperCase();
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(studentName.length > 40 ? 18 : studentName.length > 30 ? 21 : 25);
+        doc.setTextColor(255, 87, 34);
+        doc.text(studentName, w / 2, 95, { align: 'center' });
+
+        // DNI
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9.5);
+        doc.setTextColor(100, 100, 100);
+        doc.text(`DNI / Identificación: ${cert.studentDni}`, w / 2, 103, { align: 'center' });
+
+        // Intro del curso
+        doc.setFontSize(9.5);
+        doc.text('Por haber cursado y aprobado satisfactoriamente:', w / 2, 116, { align: 'center' });
+
+        // CURSO
+        const courseName = cert.courseName || '';
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(courseName.length > 70 ? 12 : courseName.length > 50 ? 14 : 16);
+        doc.setTextColor(6, 9, 25);
+
+        const courseLines = doc.splitTextToSize(courseName, w - 90);
+        let courseY = 128;
+        courseLines.forEach((line, idx) => {
+          doc.text(line, w / 2, courseY + idx * 7.5, { align: 'center' });
+        });
+        const courseEndY = courseY + (courseLines.length - 1) * 7.5;
+
+        // HORAS Y FECHAS
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9.5);
+        doc.setTextColor(80, 80, 80);
+        doc.text(
+          `Duración: ${cert.courseHours} horas lectivas`,
+          w / 2,
+          courseEndY + 13,
+          { align: 'center' }
+        );
+
+        const fechaEmision = new Date(cert.issueDate).toLocaleDateString('es-PE', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        doc.text(`Lima, ${fechaEmision}`, w / 2, courseEndY + 21, { align: 'center' });
+
+        if (cert.expiryDate) {
+          const fechaVenc = new Date(cert.expiryDate).toLocaleDateString('es-PE');
+          doc.setFontSize(8.5);
+          doc.setTextColor(120, 120, 120);
+          doc.text(`Válido hasta: ${fechaVenc}`, w / 2, courseEndY + 28, { align: 'center' });
+        }
+
+        // CÓDIGO DE VERIFICACIÓN (INFERIOR IZQUIERDO)
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7.5);
+        doc.setTextColor(140, 110, 60);
+        doc.text('CÓDIGO DE VERIFICACIÓN', 20, h - 26);
+
+        doc.setFont('courier', 'bold');
+        doc.setFontSize(10);
+        doc.setTextColor(6, 9, 25);
+        doc.text(cert.id, 20, h - 21);
+
+        // QR CODE (INFERIOR DERECHO)
+        if (window.qrcode) {
+          try {
+            const qr = window.qrcode(0, 'M');
+            qr.addData(`${APP_DATA.DOMAIN}/#certificados?code=${cert.id}`);
+            qr.make();
+            const qrDataUrl = qr.createDataURL(5, 5);
+            const qrSize = 30;
+            const qrX = w - 20 - qrSize;
+            const qrY = h - 20 - qrSize;
+            doc.addImage(qrDataUrl, 'PNG', qrX, qrY, qrSize, qrSize);
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(6.5);
+            doc.setTextColor(120, 120, 120);
+            doc.text('Escanear para validar', qrX + qrSize / 2, qrY - 2, { align: 'center' });
+          } catch (e) { /* silent */ }
+        }
+
+        // PIE DE PÁGINA
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(6.5);
+        doc.setTextColor(140, 140, 140);
+        doc.text(
+          'www.dagatgroup.com  ·  info@dagatgroup.com  ·  +51 992 132 260  ·  Lima, Perú',
+          w / 2,
+          h - 14,
+          { align: 'center' }
+        );
+
+        doc.save(`Certificado-${cert.id}-${studentName.replace(/\s+/g, '_')}.pdf`);
+        Toast.emerald('Diploma PDF descargado');
+        Analytics.track('cert-pdf-download', { code: cert.id });
+      };
+
+      loadImage(LOGO_URL)
+        .then(render)
+        .catch((err) => {
+          console.warn('No se pudo cargar el logo para el PDF:', err);
+          render(null);
+        });
     } catch (e) {
       console.error(e);
       Toast.danger('Error al generar el PDF.');
     }
+  }
+};
+
+/* ============================================================
+   ADMIN AUTH — Login con clave maestra
+   ============================================================ */
+const AdminAuth = {
+  // ⚠️ CAMBIA ESTA CLAVE POR LA QUE TÚ QUIERAS
+  MASTER_KEY: 'Mon21130602@@',
+
+  SESSION_KEY: 'dagat_admin_session',
+  SESSION_DURATION: 8 * 60 * 60 * 1000,
+  MAX_ATTEMPTS: 5,
+  LOCKOUT_MS: 5 * 60 * 1000,
+  attempts: 0,
+  lockedUntil: 0,
+
+  init() {
+    const accessBtn = $('#btnAdminAccess');
+    const loginBtn = $('#adminLoginBtn');
+    const logoutBtn = $('#btnLogoutAdmin');
+    const pwdInput = $('#adminPasswordInput');
+
+    if (accessBtn) accessBtn.addEventListener('click', () => this.handleAccess());
+    if (loginBtn) loginBtn.addEventListener('click', () => this.login());
+    if (logoutBtn) logoutBtn.addEventListener('click', () => this.logout());
+    if (pwdInput) {
+      pwdInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') this.login();
+      });
+    }
+
+    this.checkExistingSession();
+  },
+
+  checkExistingSession() {
+    const raw = SafeStorage.getSession(this.SESSION_KEY);
+    if (!raw) return;
+    try {
+      const session = JSON.parse(raw);
+      if (session.expires > Date.now()) {
+        const label = $('#adminBtnLabel');
+        if (label) label.textContent = 'Ir al Panel Admin';
+      } else {
+        sessionStorage.removeItem(this.SESSION_KEY);
+      }
+    } catch (e) {
+      sessionStorage.removeItem(this.SESSION_KEY);
+    }
+  },
+
+  handleAccess() {
+    const raw = SafeStorage.getSession(this.SESSION_KEY);
+    if (raw) {
+      try {
+        const session = JSON.parse(raw);
+        if (session.expires > Date.now()) {
+          Router.navigate('admin');
+          return;
+        }
+      } catch (e) { /* ignore */ }
+    }
+    this.showLoginModal();
+  },
+
+  showLoginModal() {
+    const modal = $('#adminLoginModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const errBox = $('#adminLoginError');
+    if (errBox) errBox.style.display = 'none';
+    setTimeout(() => {
+      const input = $('#adminPasswordInput');
+      if (input) input.focus();
+    }, 200);
+    if (window.lucide) window.lucide.createIcons();
+  },
+
+  hideLoginModal() {
+    const modal = $('#adminLoginModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    const input = $('#adminPasswordInput');
+    if (input) input.value = '';
+  },
+
+  async login() {
+    if (Date.now() < this.lockedUntil) {
+      const secs = Math.ceil((this.lockedUntil - Date.now()) / 1000);
+      this.showLoginError(`Bloqueado. Espera ${secs} segundos.`);
+      return;
+    }
+
+    const input = $('#adminPasswordInput');
+    const pwd = (input?.value || '').trim();
+
+    if (!pwd) {
+      this.showLoginError('Ingresa la clave.');
+      return;
+    }
+
+    if (pwd === this.MASTER_KEY) {
+      this.attempts = 0;
+      const session = {
+        authenticated: true,
+        createdAt: Date.now(),
+        expires: Date.now() + this.SESSION_DURATION
+      };
+      SafeStorage.setSession(this.SESSION_KEY, JSON.stringify(session));
+      this.hideLoginModal();
+      const label = $('#adminBtnLabel');
+      if (label) label.textContent = 'Ir al Panel Admin';
+      Toast.gold('Acceso concedido — Bienvenido al panel');
+      Analytics.track('admin-login-success');
+      Router.navigate('admin');
+    } else {
+      this.attempts++;
+      const remaining = this.MAX_ATTEMPTS - this.attempts;
+
+      if (this.attempts >= this.MAX_ATTEMPTS) {
+        this.lockedUntil = Date.now() + this.LOCKOUT_MS;
+        this.showLoginError(`Demasiados intentos. Bloqueado por ${this.LOCKOUT_MS / 60000} minutos.`);
+        Toast.danger('Cuenta bloqueada temporalmente');
+      } else {
+        this.showLoginError(`Clave incorrecta. ${remaining} intento${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}.`);
+      }
+      if (input) input.value = '';
+      Analytics.track('admin-login-fail', { attempts: this.attempts });
+    }
+  },
+
+  showLoginError(msg) {
+    const box = $('#adminLoginError');
+    const msgEl = $('#adminLoginErrorMsg');
+    if (box && msgEl) {
+      msgEl.textContent = msg;
+      box.style.display = 'block';
+    }
+  },
+
+  logout() {
+    sessionStorage.removeItem(this.SESSION_KEY);
+    const label = $('#adminBtnLabel');
+    if (label) label.textContent = 'Acceso Administrativo';
+    Toast.gold('Sesión cerrada');
+    Analytics.track('admin-logout');
+    Router.navigate('certificados');
+  }
+};
+
+/* ============================================================
+   ADMIN PANEL — Gestión de certificados
+   ============================================================ */
+const AdminPanel = {
+  init() {
+    const form = $('#adminCertForm');
+    const searchInput = $('#adminSearch');
+
+    if (form) {
+      const issueInput = $('#admIssueDate');
+      if (issueInput && !issueInput.value) {
+        issueInput.value = new Date().toISOString().split('T')[0];
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.createCert();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => this.renderList());
+    }
+
+    const list = $('#adminCertList');
+    if (list) {
+      list.addEventListener('click', (e) => {
+        const delBtn = e.target.closest('[data-delete-cert]');
+        if (delBtn) {
+          const id = delBtn.dataset.deleteCert;
+          if (confirm(`¿Eliminar el certificado ${id}? Esta acción no se puede deshacer.`)) {
+            this.deleteCert(id);
+          }
+          return;
+        }
+
+        const dlBtn = e.target.closest('[data-download-cert]');
+        if (dlBtn) {
+          const id = dlBtn.dataset.downloadCert;
+          this.downloadCert(id);
+        }
+      });
+    }
+  },
+
+  async createCert() {
+    const raw = SafeStorage.getSession(AdminAuth.SESSION_KEY);
+    if (!raw) {
+      Toast.danger('Sesión expirada. Inicia sesión nuevamente.');
+      AdminAuth.showLoginModal();
+      return;
+    }
+    try {
+      const session = JSON.parse(raw);
+      if (session.expires < Date.now()) {
+        Toast.danger('Sesión expirada.');
+        AdminAuth.logout();
+        return;
+      }
+    } catch (e) {
+      AdminAuth.logout();
+      return;
+    }
+
+    const studentName = ($('#admStudentName')?.value || '').trim();
+    const studentDni = ($('#admStudentDni')?.value || '').trim();
+    const courseName = ($('#admCourseName')?.value || '').trim();
+    const courseHours = parseInt($('#admCourseHours')?.value || '0', 10);
+    const issueDate = $('#admIssueDate')?.value;
+    const expiryDate = $('#admExpiryDate')?.value || '';
+    const certType = $('#admCertType')?.value || 'Técnico';
+
+    if (!studentName || !studentDni || !courseName || !courseHours || !issueDate) {
+      Toast.danger('Completa todos los campos obligatorios.');
+      return;
+    }
+    if (studentDni.length !== 8 || !/^\d+$/.test(studentDni)) {
+      Toast.danger('El DNI debe tener exactamente 8 dígitos.');
+      return;
+    }
+
+    const year = new Date().getFullYear();
+    const existing = await this.getAllCerts();
+    const yearCerts = existing.filter(c => c.id.startsWith(`DAGAT-${year}-`));
+    const nextNum = String(yearCerts.length + 1).padStart(5, '0');
+    const id = `DAGAT-${year}-${nextNum}`;
+
+    const cert = {
+      id,
+      studentName,
+      studentDni,
+      courseName,
+      courseHours,
+      issueDate,
+      expiryDate,
+      certType,
+      issuedBy: 'DAGAT SAC',
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      await this.saveCert(cert);
+      Toast.emerald(`Certificado ${id} creado correctamente`);
+
+      $('#adminCertForm').reset();
+      const issueInput = $('#admIssueDate');
+      if (issueInput) issueInput.value = new Date().toISOString().split('T')[0];
+      const hoursInput = $('#admCourseHours');
+      if (hoursInput) hoursInput.value = '8';
+
+      await this.renderList();
+
+      // Descargar PDF automáticamente
+      CertManager.generatePdf(cert);
+    } catch (e) {
+      console.error(e);
+      Toast.danger('Error al guardar el certificado.');
+    }
+  },
+
+  async getAllCerts() {
+    if (!CertManager.db) return [];
+    return new Promise((resolve) => {
+      const tx = CertManager.db.transaction('certs', 'readonly');
+      const req = tx.objectStore('certs').getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve([]);
+    });
+  },
+
+  async saveCert(cert) {
+    if (!CertManager.db) throw new Error('DB no disponible');
+    return new Promise((resolve, reject) => {
+      const tx = CertManager.db.transaction('certs', 'readwrite');
+      const req = tx.objectStore('certs').put(cert);
+      req.onsuccess = () => resolve();
+      req.onerror = () => reject(req.error);
+    });
+  },
+
+  async deleteCert(id) {
+    if (!CertManager.db) return;
+    return new Promise((resolve) => {
+      const tx = CertManager.db.transaction('certs', 'readwrite');
+      const req = tx.objectStore('certs').delete(id);
+      req.onsuccess = async () => {
+        Toast.gold(`Certificado ${id} eliminado`);
+        await this.renderList();
+        resolve();
+      };
+      req.onerror = () => {
+        Toast.danger('Error al eliminar.');
+        resolve();
+      };
+    });
+  },
+
+  async downloadCert(id) {
+    const cert = await new Promise((resolve) => {
+      const tx = CertManager.db.transaction('certs', 'readonly');
+      const req = tx.objectStore('certs').get(id);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => resolve(null);
+    });
+    if (cert) CertManager.generatePdf(cert);
+    else Toast.danger('Certificado no encontrado.');
+  },
+
+  async renderList() {
+    const list = $('#adminCertList');
+    const countEl = $('#adminCertCount');
+    if (!list) return;
+
+    const allCerts = await this.getAllCerts();
+    const searchTerm = ($('#adminSearch')?.value || '').trim().toLowerCase();
+
+    let filtered = allCerts;
+    if (searchTerm) {
+      filtered = allCerts.filter(c =>
+        c.studentName.toLowerCase().includes(searchTerm) ||
+        c.studentDni.includes(searchTerm) ||
+        c.id.toLowerCase().includes(searchTerm)
+      );
+    }
+
+    filtered.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+
+    if (countEl) countEl.textContent = `(${filtered.length}${searchTerm ? ' de ' + allCerts.length : ''})`;
+
+    if (!filtered.length) {
+      list.innerHTML = `<p style="color:var(--text-dim);font-size:0.9rem;grid-column:1/-1;padding:20px;text-align:center;">${searchTerm ? 'Sin resultados para tu búsqueda.' : 'Aún no hay certificados registrados. Crea el primero arriba.'}</p>`;
+      return;
+    }
+
+    list.innerHTML = filtered.map(c => `
+      <div class="admin-cert-card">
+        <h5>${escapeHTML(c.studentName)}</h5>
+        <span class="cert-id">${escapeHTML(c.id)}</span>
+        <p class="cert-meta">${escapeHTML(c.courseName)}</p>
+        <p class="cert-meta"><strong>DNI:</strong> ${escapeHTML(c.studentDni)} · <strong>${escapeHTML(String(c.courseHours))}h</strong></p>
+        <p class="cert-meta"><strong>Emisión:</strong> ${escapeHTML(c.issueDate)}</p>
+        <div class="cert-actions">
+          <button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(c.id)}" style="flex:1;">
+            <i data-lucide="download" style="width:12px;height:12px;"></i> PDF
+          </button>
+          <button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(c.id)}" title="Eliminar">
+            <i data-lucide="trash-2" style="width:12px;height:12px;"></i>
+          </button>
+        </div>
+      </div>
+    `).join('');
+
+    if (window.lucide) window.lucide.createIcons();
   }
 };
 
@@ -2478,10 +3059,7 @@ const NormApp = {
 
     container.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-norm-index]');
-      if (btn) {
-        const idx = parseInt(btn.dataset.normIndex, 10);
-        this.openModal(idx);
-      }
+      if (btn) this.openModal(parseInt(btn.dataset.normIndex, 10));
     });
   },
 
@@ -2505,7 +3083,6 @@ const NormApp = {
       </div>
     `;
     $('#normModalLink').href = data.url;
-
     this.openAppModal('normModal');
   },
 
@@ -2517,9 +3094,7 @@ const NormApp = {
     if (window.lucide) window.lucide.createIcons();
   },
 
-  closeModal() {
-    this.closeAppModal('normModal');
-  },
+  closeModal() { this.closeAppModal('normModal'); },
 
   closeAppModal(id) {
     const modal = document.getElementById(id);
@@ -2536,10 +3111,7 @@ const LegalApp = {
   init() {
     document.addEventListener('click', (e) => {
       const card = e.target.closest('[data-case]');
-      if (card) {
-        const idx = parseInt(card.dataset.case, 10);
-        this.showModalCase(idx);
-      }
+      if (card) this.showModalCase(parseInt(card.dataset.case, 10));
     });
   },
 
@@ -2563,23 +3135,19 @@ const LegalApp = {
         <p style="color:var(--text);font-weight:600;">${escapeHTML(c.outcome)}</p>
       </div>
     `;
-
     NormApp.openAppModal('caseModal');
   },
 
-  closeCaseModal() {
-    NormApp.closeAppModal('caseModal');
-  }
+  closeCaseModal() { NormApp.closeAppModal('caseModal'); }
 };
 
 /* ============================================================
-   THEME MANAGER
+   THEME / MENU / MODALES / CONTACTO / CONNECTIVITY
    ============================================================ */
 const ThemeManager = {
   init() {
     const btn = $('#themeToggleBtn');
     if (!btn) return;
-
     btn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme') || 'dark';
       const next = current === 'dark' ? 'light' : 'dark';
@@ -2590,15 +3158,11 @@ const ThemeManager = {
   }
 };
 
-/* ============================================================
-   MOBILE MENU
-   ============================================================ */
 const MobileMenu = {
   init() {
     const btn = $('#menuToggleBtn');
     const tabs = $('#navTabs');
     if (!btn || !tabs) return;
-
     btn.addEventListener('click', () => {
       const isOpen = tabs.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(isOpen));
@@ -2606,12 +3170,8 @@ const MobileMenu = {
   }
 };
 
-/* ============================================================
-   MODALES: cierre con click fuera y ESC
-   ============================================================ */
 const ModalManager = {
   init() {
-    // Botones con data-close-modal
     document.addEventListener('click', (e) => {
       const closeBtn = e.target.closest('[data-close-modal]');
       if (closeBtn) {
@@ -2620,50 +3180,35 @@ const ModalManager = {
       }
     });
 
-    // Click en backdrop
     $$('.app-modal').forEach(modal => {
       modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          NormApp.closeAppModal(modal.id);
-        }
+        if (e.target === modal) NormApp.closeAppModal(modal.id);
       });
     });
 
-    // ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        $$('.app-modal.active').forEach(m => {
-          NormApp.closeAppModal(m.id);
-        });
+        $$('.app-modal.active').forEach(m => NormApp.closeAppModal(m.id));
       }
     });
   }
 };
 
-/* ============================================================
-   FORM CONTACTO → WHATSAPP
-   ============================================================ */
 const ContactForm = {
   init() {
     const form = $('#contactFormDispatcher');
     if (!form) return;
-
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      // Validación manual con feedback
       const name = $('#contactName').value.trim();
       const company = $('#contactCompany').value.trim();
       const division = $('#contactDivision').value;
       const msg = $('#contactMessage').value.trim();
-
       if (!name || !company || !msg) {
         Toast.danger('Completa todos los campos obligatorios.');
         return;
       }
-
       const fullMsg = `Hola DAGAT SAC, me comunico desde la web:%0A- *Nombre:* ${encodeURIComponent(name)}%0A- *Empresa:* ${encodeURIComponent(company)}%0A- *División:* ${encodeURIComponent(division)}%0A- *Requerimiento:* ${encodeURIComponent(msg)}`;
-
       window.open(`https://wa.me/${APP_DATA.WHATSAPP}?text=${fullMsg}`, '_blank');
       Toast.emerald('Abriendo WhatsApp con tu mensaje...');
       Analytics.track('contact-form-whatsapp', { division });
@@ -2672,9 +3217,6 @@ const ContactForm = {
   }
 };
 
-/* ============================================================
-   ONLINE/OFFLINE DETECTOR
-   ============================================================ */
 const Connectivity = {
   init() {
     const updateStatus = () => {
@@ -2682,52 +3224,54 @@ const Connectivity = {
       if (!banner) return;
       banner.classList.toggle('hidden', navigator.onLine);
     };
-
     window.addEventListener('online', () => {
       Toast.emerald('Conexión restaurada');
       updateStatus();
     });
-
     window.addEventListener('offline', () => {
       Toast.danger('Sin conexión — modo offline');
       updateStatus();
     });
-
     updateStatus();
   }
 };
 
 /* ============================================================
-   INICIALIZACIÓN GLOBAL
+   BOOT
    ============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  // Iconos
+document.addEventListener('DOMContentLoaded', async () => {
   if (window.lucide) {
     try { window.lucide.createIcons(); } catch (e) { /* silent */ }
   }
 
-  // Inicializar módulos
-  Toast.init();
+  Toast.container = $('#toastContainer');
+
   Analytics.init();
   ThemeManager.init();
   MobileMenu.init();
+
+  await CertManager.init();
+
   Router.init();
   SunafilCalc.init();
-  CertManager.init();
   NormApp.init();
   LegalApp.init();
   ModalManager.init();
   ContactForm.init();
   Connectivity.init();
+  AdminAuth.init();
+  AdminPanel.init();
 
-  // Exponer métodos globales para onclick inline (compatibilidad)
+  // Exponer globales para botones inline
   window.Router = Router;
   window.NormApp = NormApp;
   window.LegalApp = LegalApp;
   window.CertManager = CertManager;
+  window.AdminAuth = AdminAuth;
+  window.AdminPanel = AdminPanel;
 
   console.log('%c DAGAT SAC & DAGAT LAW ', 'background:linear-gradient(135deg,#ff5722,#eab308);color:white;font-size:14px;padding:6px 12px;border-radius:6px;font-weight:bold;');
-  console.log('%c Plataforma v3.0 — Optimizada para producción ', 'color:#10b981;font-size:11px;');
+  console.log('%c Plataforma v4.0 — Panel Admin + PDF Premium ', 'color:#10b981;font-size:11px;');
 });
 </script>
 </body>
