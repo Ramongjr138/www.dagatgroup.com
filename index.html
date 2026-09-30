@@ -43,9 +43,6 @@
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
 
 <style>
-/* ═══════════════════════════════════════════════════════
-   DESIGN TOKENS
-   ═══════════════════════════════════════════════════════ */
 :root {
   --brand-fire: #ff5722;
   --brand-fire-glow: rgba(255, 87, 34, 0.45);
@@ -139,7 +136,6 @@ body {
   padding-right: var(--safe-right);
 }
 
-/* Prevenir overflow horizontal */
 html, body { max-width: 100vw; overflow-x: hidden; }
 img, svg, video, iframe { max-width: 100%; height: auto; display: block; }
 input, select, textarea, button { font-family: inherit; font-size: 16px; }
@@ -162,7 +158,6 @@ h1, h2, h3, h4, h5 {
   border-radius: 8px;
 }
 
-/* Fondo de grid animado */
 body::before {
   content: '';
   position: fixed;
@@ -187,9 +182,6 @@ body::before {
     linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
 }
 
-/* ═══════════════════════════════════════════════════════
-   UTILIDADES
-   ═══════════════════════════════════════════════════════ */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -206,9 +198,6 @@ body::before {
 
 .hidden { display: none !important; }
 
-/* ═══════════════════════════════════════════════════════
-   NAV MÓVIL-FIRST
-   ═══════════════════════════════════════════════════════ */
 .nav-shell {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -302,7 +291,6 @@ body::before {
   flex-shrink: 0;
 }
 
-/* Drawer móvil */
 .nav-drawer {
   position: fixed;
   top: 0; right: -100%;
@@ -362,9 +350,6 @@ body::before {
   min-height: 48px;
 }
 
-/* ═══════════════════════════════════════════════════════
-   BOTONES (mobile-first, touch targets grandes)
-   ═══════════════════════════════════════════════════════ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -457,9 +442,55 @@ body::before {
 .icon-btn:active { transform: scale(0.94); }
 .icon-btn:focus-visible { outline: 2px solid var(--brand-fire); outline-offset: 2px; }
 
-/* ═══════════════════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════════════════ */
+.nav-tab-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.nav-tab-link:hover {
+  color: var(--text);
+  background: var(--bg-card-hover);
+}
+
+.nav-tab-link.active {
+  color: #fff;
+  background: rgba(255, 87, 34, 0.15);
+  border-color: var(--border-fire);
+}
+
+[data-theme="light"] .nav-tab-link.active {
+  color: var(--brand-fire);
+  background: rgba(255, 87, 34, 0.1);
+}
+
+.nav-tab-link.law-tab.active {
+  color: var(--brand-gold);
+  background: rgba(234, 179, 8, 0.15);
+  border-color: var(--border-gold);
+}
+
+.badge-law-nav {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(234, 179, 8, 0.2);
+  color: var(--brand-gold);
+  border: 1px solid var(--border-gold);
+}
+
 .hero-stage {
   position: relative;
   min-height: 100vh;
@@ -543,9 +574,6 @@ body::before {
   50% { transform: translateY(-8px); }
 }
 
-/* ═══════════════════════════════════════════════════════
-   SHEET VIEWS (SPA)
-   ═══════════════════════════════════════════════════════ */
 .sheet-view {
   display: none;
   min-height: calc(100vh - var(--nav-h));
@@ -625,8 +653,265 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════════════
-   BENTO GRID RESPONSIVE
+   SERVICE CARDS — Diseño premium con imagen + overlay
    ═══════════════════════════════════════════════════════ */
+.service-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .service-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+.service-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card.fire:hover { border-color: var(--brand-fire); }
+.service-card.gold:hover { border-color: var(--brand-gold); }
+.service-card.cyan:hover { border-color: var(--brand-cyan); }
+
+.service-card-media {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: #090e24;
+  flex-shrink: 0;
+}
+
+.service-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+  filter: saturate(0.85) contrast(1.05);
+}
+
+.service-card:hover .service-card-media img {
+  transform: scale(1.08);
+  filter: saturate(1) contrast(1.1);
+}
+
+.service-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(6, 9, 25, 0.6) 70%, var(--bg-surface) 100%);
+  pointer-events: none;
+}
+
+.service-card.fire .service-card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 87, 34, 0.35), transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.service-card.gold .service-card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.35), transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.service-card.cyan .service-card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.service-card-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s var(--ease-bounce);
+}
+
+.service-card:hover .service-card-icon {
+  transform: scale(1.08) rotate(-5deg);
+}
+
+.service-card.fire .service-card-icon {
+  background: rgba(255, 87, 34, 0.25);
+  border: 1px solid rgba(255, 87, 34, 0.5);
+  color: #ff8a50;
+}
+
+.service-card.gold .service-card-icon {
+  background: rgba(234, 179, 8, 0.25);
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  color: #fbbf24;
+}
+
+.service-card.cyan .service-card-icon {
+  background: rgba(6, 182, 212, 0.25);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #22d3ee;
+}
+
+.service-card-badge {
+  position: absolute;
+  top: 22px;
+  right: 16px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 3;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.service-card.fire .service-card-badge {
+  background: rgba(255, 87, 34, 0.2);
+  color: #ff8a50;
+  border: 1px solid rgba(255, 87, 34, 0.4);
+}
+
+.service-card.gold .service-card-badge {
+  background: rgba(234, 179, 8, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.service-card.cyan .service-card-badge {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+}
+
+.service-card-body {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.service-card-body h3 {
+  font-size: clamp(1.15rem, 3.5vw, 1.4rem);
+  margin-bottom: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.service-card.fire .service-card-body h3 { color: #ff8a50; }
+.service-card.gold .service-card-body h3 { color: #fbbf24; }
+.service-card.cyan .service-card-body h3 { color: #22d3ee; }
+
+.service-card-body p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.service-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.service-card-list li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-card-list li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.service-card.fire .service-card-list li::before { background: var(--brand-fire); }
+.service-card.gold .service-card-list li::before { background: var(--brand-gold); }
+.service-card.cyan .service-card-list li::before { background: var(--brand-cyan); }
+
+.service-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  transition: gap 0.3s var(--ease-out);
+  text-decoration: none;
+}
+
+.service-card.fire .service-card-cta { color: #ff8a50; }
+.service-card.gold .service-card-cta { color: #fbbf24; }
+.service-card.cyan .service-card-cta { color: #22d3ee; }
+
+.service-card:hover .service-card-cta {
+  gap: 12px;
+}
+
+.service-card.fire:hover {
+  box-shadow: 0 20px 60px -20px rgba(255, 87, 34, 0.4), var(--shadow-lg);
+}
+
+.service-card.gold:hover {
+  box-shadow: 0 20px 60px -20px rgba(234, 179, 8, 0.4), var(--shadow-lg);
+}
+
+.service-card.cyan:hover {
+  box-shadow: 0 20px 60px -20px rgba(6, 182, 212, 0.4), var(--shadow-lg);
+}
+
+/* Bento grid legacy (para normativas) */
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -650,30 +935,6 @@ body::before {
 
 .bento-card.gold-accent:hover { border-color: var(--border-gold); }
 
-.bento-media-wrap {
-  height: 180px;
-  position: relative;
-  overflow: hidden;
-  background: #090e24;
-}
-
-.bento-media-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-out);
-}
-
-.bento-card:hover .bento-media-wrap img { transform: scale(1.05); }
-
-.bento-media-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, var(--bg-surface) 0%, transparent 60%);
-  pointer-events: none;
-}
-
 .bento-body {
   padding: 20px;
   flex: 1;
@@ -681,9 +942,6 @@ body::before {
   flex-direction: column;
 }
 
-/* ═══════════════════════════════════════════════════════
-   FORMS MÓVIL-FIRST
-   ═══════════════════════════════════════════════════════ */
 .form-select, .form-input {
   width: 100%;
   padding: 12px 14px;
@@ -693,7 +951,7 @@ body::before {
   border-radius: var(--radius-sm);
   color: var(--text);
   font-family: inherit;
-  font-size: 16px; /* Evita zoom en iOS */
+  font-size: 16px;
   outline: none;
   transition: all 0.2s ease;
   -webkit-appearance: none;
@@ -729,9 +987,6 @@ body::before {
   margin-bottom: 6px;
 }
 
-/* ═══════════════════════════════════════════════════════
-   CARDS ADMIN — lista de certificados
-   ═══════════════════════════════════════════════════════ */
 .admin-cert-card {
   padding: 16px;
   background: var(--bg-card);
@@ -776,9 +1031,6 @@ body::before {
   margin-top: 12px;
 }
 
-/* ═══════════════════════════════════════════════════════
-   MODALES MÓVIL
-   ═══════════════════════════════════════════════════════ */
 .app-modal {
   position: fixed;
   inset: 0;
@@ -823,9 +1075,6 @@ body::before {
   margin: 0 auto 16px;
 }
 
-/* ═══════════════════════════════════════════════════════
-   TOAST MÓVIL
-   ═══════════════════════════════════════════════════════ */
 .toast-container {
   position: fixed;
   top: calc(16px + var(--safe-top));
@@ -877,9 +1126,6 @@ body::before {
   to { transform: translateY(-100%); opacity: 0; }
 }
 
-/* ═══════════════════════════════════════════════════════
-   WHATSAPP FLOAT
-   ═══════════════════════════════════════════════════════ */
 .wa-bubble-float {
   position: fixed;
   bottom: calc(20px + var(--safe-bottom));
@@ -901,9 +1147,6 @@ body::before {
 .wa-bubble-float:hover { transform: scale(1.08); }
 .wa-bubble-float:active { transform: scale(0.95); }
 
-/* ═══════════════════════════════════════════════════════
-   SKELETON
-   ═══════════════════════════════════════════════════════ */
 .skeleton {
   background: linear-gradient(90deg,
     var(--bg-card) 25%,
@@ -933,9 +1176,6 @@ body::before {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ═══════════════════════════════════════════════════════
-   REVEAL ON SCROLL
-   ═══════════════════════════════════════════════════════ */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -955,9 +1195,6 @@ body::before {
   .reveal { opacity: 1; transform: none; }
 }
 
-/* ═══════════════════════════════════════════════════════
-   BOTONES DE EXPORTAR/IMPORTAR
-   ═══════════════════════════════════════════════════════ */
 .data-actions {
   display: flex;
   gap: 10px;
@@ -971,9 +1208,21 @@ body::before {
 
 .data-actions .btn { flex: 1; min-width: 140px; }
 
-/* ═══════════════════════════════════════════════════════
-   BREAKPOINTS — TABLET
-   ═══════════════════════════════════════════════════════ */
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+.text-center { text-align: center; }
+
+.card-surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+@media (min-width: 640px) {
+  .card-surface { padding: 28px; }
+}
+
 @media (min-width: 640px) {
   .nav-shell { padding: calc(10px + var(--safe-top)) 24px 10px; }
   .nav-logo-img { height: 48px; }
@@ -995,9 +1244,6 @@ body::before {
   .modal-handle { display: none; }
 }
 
-/* ═══════════════════════════════════════════════════════
-   BREAKPOINTS — DESKTOP
-   ═══════════════════════════════════════════════════════ */
 @media (min-width: 900px) {
   .nav-tabs-desktop { display: flex; }
   .nav-drawer-toggle { display: none !important; }
@@ -1008,34 +1254,9 @@ body::before {
   .bento-card.span-6 { grid-column: span 6; }
   .bento-card.span-8 { grid-column: span 8; }
   .bento-card.span-12 { grid-column: span 12; }
-  .bento-media-wrap { height: 200px; }
-  .bento-card:hover { transform: translateY(-4px); }
   .bento-body { padding: 24px 28px 28px; }
   .calc-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   .admin-cert-list-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-}
-
-/* ═══════════════════════════════════════════════════════
-   LAYOUT HELPERS
-   ═══════════════════════════════════════════════════════ */
-.stack { display: flex; flex-direction: column; gap: 16px; }
-.row { display: flex; gap: 12px; flex-wrap: wrap; }
-.text-center { text-align: center; }
-.mb-3 { margin-bottom: 12px; }
-.mb-4 { margin-bottom: 16px; }
-.mb-5 { margin-bottom: 20px; }
-.mt-4 { margin-top: 16px; }
-.mt-5 { margin-top: 20px; }
-
-.card-surface {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-}
-
-@media (min-width: 640px) {
-  .card-surface { padding: 28px; }
 }
 </style>
 </head>
@@ -1045,9 +1266,6 @@ body::before {
 
 <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
 
-<!-- ═══════════════════════════════════════════════════════
-     NAV
-     ═══════════════════════════════════════════════════════ -->
 <header class="nav-shell">
   <div class="nav-container">
     <div class="nav-brand-group" data-route="inicio">
@@ -1089,7 +1307,6 @@ body::before {
   </div>
 </header>
 
-<!-- Drawer móvil -->
 <div class="nav-drawer-backdrop" id="navDrawerBackdrop"></div>
 <aside class="nav-drawer" id="navDrawer" aria-label="Menú móvil">
   <div class="nav-drawer-header">
@@ -1171,7 +1388,6 @@ body::before {
         </button>
       </div>
 
-      <!-- Stats -->
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px;padding-top:24px;border-top:1px solid var(--border);">
         <div class="reveal" style="text-align:center;">
           <div class="stat-counter" data-count="520" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:800;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">0</div>
@@ -1207,85 +1423,152 @@ body::before {
 
     <div class="sheet-header">
       <span class="sheet-tag">// DIVISIÓN TÉCNICA</span>
-      <h2 class="sheet-title">Ingeniería Contra Incendios & NFPA</h2>
+      <h2 class="sheet-title">Servicios de Ingeniería</h2>
       <p class="sheet-desc">Diseño, suministro, montaje y mantenimiento bajo estándares NFPA 13, 14, 20 y 72.</p>
     </div>
 
-    <div class="bento-grid">
-      <div class="bento-card span-8 reveal">
-        <div class="bento-media-wrap" style="height:220px;">
+    <div class="service-cards">
+      <div class="service-card fire reveal">
+        <div class="service-card-media">
           <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1200&q=80"
                alt="Cuarto de Bombas NFPA 20" loading="lazy">
-        </div>
-        <div class="bento-body">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-            <span class="sheet-tag">NFPA 20</span>
-            <span style="font-size:0.75rem;color:var(--text-dim);">Equipos Listados UL / Aprobados FM</span>
+          <div class="service-card-icon">
+            <i data-lucide="flame" style="width:26px;height:26px;"></i>
           </div>
-          <h3 style="font-size:clamp(1.05rem, 4vw, 1.35rem);margin-bottom:10px;">Cuartos de Bombas y Redes de Impulsión</h3>
-          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:16px;">
-            Grupos de presión con motores diésel y eléctricos. Tableros de transferencia automática y pruebas de flujo certificadas.
-          </p>
-          <a href="https://wa.me/51992132260?text=Hola%20DAGAT%2C%20solicito%20cotizaci%C3%B3n%20Cuarto%20de%20Bombas"
-             target="_blank" rel="noopener" class="btn btn-fire btn-sm" style="align-self:flex-start;">
-            <i data-lucide="phone-call" style="width:14px;height:14px;"></i> Solicitar Visita Técnica
+          <span class="service-card-badge">NFPA 20</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Cuartos de Bombas y Redes de Impulsión</h3>
+          <p>Grupos de presión con motores diésel y eléctricos, tableros de transferencia automática y pruebas de flujo certificadas.</p>
+          <ul class="service-card-list">
+            <li>Equipos listados UL / Aprobados FM</li>
+            <li>Bombas principales y jockey</li>
+            <li>Pruebas hidrostáticas certificadas</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Cotizaci%C3%B3n%20Cuarto%20de%20Bombas%20NFPA"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Solicitar cotización <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
         </div>
       </div>
 
-      <div class="bento-card span-4 reveal">
-        <div class="bento-media-wrap">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
-               alt="Detección" loading="lazy">
+      <div class="service-card fire reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+               alt="Detección y Alarma NFPA 72" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="siren" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">NFPA 72</span>
         </div>
-        <div class="bento-body">
-          <span class="sheet-tag">NFPA 72</span>
-          <h3 style="font-size:1.05rem;margin:8px 0;">Detección & Alarma</h3>
-          <p style="color:var(--text-muted);font-size:0.85rem;">
-            Paneles direccionables, detectores fotoeléctricos, beam detectors y estaciones manuales.
-          </p>
-        </div>
-      </div>
-
-      <div class="bento-card span-4 reveal">
-        <div class="bento-media-wrap">
-          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80"
-               alt="Rociadores" loading="lazy">
-        </div>
-        <div class="bento-body">
-          <span class="sheet-tag">NFPA 13 / 14</span>
-          <h3 style="font-size:1.05rem;margin:8px 0;">Rociadores Automáticos</h3>
-          <p style="color:var(--text-muted);font-size:0.85rem;">
-            Tubería húmeda, seca y diluvio para naves industriales y racks de gran altura.
-          </p>
+        <div class="service-card-body">
+          <h3>Detección Centralizada & Alarma</h3>
+          <p>Paneles direccionables, detectores fotoeléctricos y sistemas de notificación masiva certificados.</p>
+          <ul class="service-card-list">
+            <li>Paneles multiprotocolo inteligentes</li>
+            <li>Beam detectors para naves industriales</li>
+            <li>Estaciones manuales y sirenas</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Cotizaci%C3%B3n%20Detecci%C3%B3n%20NFPA%2072"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Solicitar cotización <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
         </div>
       </div>
 
-      <div class="bento-card span-4 reveal">
-        <div class="bento-media-wrap">
-          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80"
-               alt="Mantenimiento" loading="lazy">
+      <div class="service-card fire reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80"
+               alt="Rociadores NFPA 13/14" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="droplets" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">NFPA 13 / 14</span>
         </div>
-        <div class="bento-body">
-          <span class="sheet-tag">NTP 350.043</span>
-          <h3 style="font-size:1.05rem;margin:8px 0;">Mantenimiento Predictivo</h3>
-          <p style="color:var(--text-muted);font-size:0.85rem;">
-            Pruebas hidrostáticas 200 PSI, recarga de extintores y certificados para ITSE.
-          </p>
+        <div class="service-card-body">
+          <h3>Rociadores Automáticos & Gabinetes</h3>
+          <p>Sistemas de tubería húmeda, seca y diluvio para naves industriales, racks de gran altura y centros comerciales.</p>
+          <ul class="service-card-list">
+            <li>Sistema húmedo / seco / pre-acción</li>
+            <li>Rociadores ESFR para racks altos</li>
+            <li>Gabinetes contra incendio completos</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Cotizaci%C3%B3n%20Rociadores%20NFPA%2013"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Solicitar cotización <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
         </div>
       </div>
 
-      <div class="bento-card span-4 reveal">
-        <div class="bento-media-wrap">
-          <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=800&q=80"
-               alt="Brigadas" loading="lazy">
+      <div class="service-card fire reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80"
+               alt="Mantenimiento NTP 350.043" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="wrench" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">NTP 350.043</span>
         </div>
-        <div class="bento-body">
-          <span class="sheet-tag">CAPACITACIÓN</span>
-          <h3 style="font-size:1.05rem;margin:8px 0;">Brigadas Industriales</h3>
-          <p style="color:var(--text-muted);font-size:0.85rem;">
-            Simuladores de fuego real, rescate en espacios confinados y evacuación con humo.
-          </p>
+        <div class="service-card-body">
+          <h3>Mantenimiento Predictivo & Pruebas</h3>
+          <p>Programas anuales con certificados de operatividad, recarga de extintores y pruebas hidrostáticas.</p>
+          <ul class="service-card-list">
+            <li>Pruebas hidrostáticas 200 PSI</li>
+            <li>Recarga PQS y CO₂</li>
+            <li>Certificados para ITSE</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Plan%20Mantenimiento%20Preventivo"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Solicitar plan <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fire reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=1200&q=80"
+               alt="Brigadas Industriales" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="users" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">CAPACITACIÓN</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Entrenamiento de Brigadas Industriales</h3>
+          <p>Simuladores de fuego real, rescate en espacios confinados y evacuación con humo inocuo.</p>
+          <ul class="service-card-list">
+            <li>Lucha contra incendios vivencial</li>
+            <li>Primeros auxilios y RCP</li>
+            <li>Manejo de extintores certificado</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Capacitaci%C3%B3n%20Brigadas"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Ver calendario <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fire reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80"
+               alt="Seguridad y Salud en el Trabajo" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="shield-check" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">LEY 29783</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Seguridad y Salud Ocupacional</h3>
+          <p>Implementación completa del SG-SST según Ley 29783 y reglamento sectorial.</p>
+          <ul class="service-card-list">
+            <li>Matriz IPERC actualizada</li>
+            <li>Comité paritario y actas</li>
+            <li>Auditoría para SUNAFIL</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Asesor%C3%ADa%20SST"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Conocer más <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -1305,7 +1588,7 @@ body::before {
 
     <div class="sheet-header">
       <span class="sheet-tag gold">// LEGAL DEFENSE</span>
-      <h2 class="sheet-title">DAGAT LAW</h2>
+      <h2 class="sheet-title">Defensa Legal Penal y Laboral</h2>
       <p class="sheet-desc">Defensa penal Art. 168-A CP y litigio estratégico contra resoluciones de SUNAFIL.</p>
     </div>
 
@@ -1384,27 +1667,106 @@ body::before {
       </div>
     </div>
 
-    <h3 style="font-size:1.05rem;margin-bottom:14px;">Casos Emblemáticos</h3>
-    <div class="bento-grid">
-      <div class="bento-card gold-accent reveal" style="padding:18px;cursor:pointer;" data-case="0" tabindex="0" role="button">
-        <span class="sheet-tag gold">PENAL // ART. 168-A</span>
-        <h4 style="font-size:1rem;margin:10px 0 8px;">Archivo Fiscal por Imprudencia</h4>
-        <p style="font-size:0.82rem;color:var(--text-muted);">Caso Huachipa: demostramos entrega del PETS y vulneración voluntaria del protocolo.</p>
-        <span style="color:var(--brand-gold);font-weight:600;font-size:0.78rem;margin-top:10px;display:inline-block;">Ver caso →</span>
+    <h3 style="font-size:1.2rem;margin:24px 0 16px;display:flex;align-items:center;gap:10px;">
+      <i data-lucide="gavel" style="width:20px;height:20px;color:var(--brand-gold);"></i>
+      Servicios de Defensa Legal Penal y Laboral
+    </h3>
+
+    <div class="service-cards">
+      <div class="service-card gold reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
+               alt="Defensa Penal Corporativa" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="scale" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">PENAL</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Defensa Penal por Art. 168-A CP</h3>
+          <p>Representación técnica-legal de Gerentes, Directores y Miembros del Comité de SST ante imputaciones por accidentes laborales.</p>
+          <ul class="service-card-list">
+            <li>Peritajes de ingeniería forense</li>
+            <li>Teoría del caso y estrategia procesal</li>
+            <li>Acompañamiento en diligencias fiscales</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=URGENCIA%20Defensa%20Penal%20Art.%20168-A"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Abogado de guardia <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="bento-card gold-accent reveal" style="padding:18px;cursor:pointer;" data-case="1" tabindex="0" role="button">
-        <span class="sheet-tag gold">SUNAFIL // NULIDAD</span>
-        <h4 style="font-size:1rem;margin:10px 0 8px;">Revocatoria de S/ 145,000</h4>
-        <p style="font-size:0.82rem;color:var(--text-muted);">Tribunal anuló acta sobre rociadores en almacén de metales exento por RNE A.130.</p>
-        <span style="color:var(--brand-gold);font-weight:600;font-size:0.78rem;margin-top:10px;display:inline-block;">Ver caso →</span>
+      <div class="service-card gold reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80"
+               alt="Litigio SUNAFIL" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="file-x" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">SUNAFIL</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Litigio contra Multas SUNAFIL</h3>
+          <p>Descargos administrativos, recursos de reconsideración y apelaciones ante el Tribunal de Fiscalización Laboral.</p>
+          <ul class="service-card-list">
+            <li>Análisis de tipicidad del acta</li>
+            <li>Descargos técnicos argumentados</li>
+            <li>Apelación ante TFL</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Descargo%20de%20Multa%20SUNAFIL"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Revisar mi caso <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="bento-card gold-accent reveal" style="padding:18px;cursor:pointer;" data-case="2" tabindex="0" role="button">
-        <span class="sheet-tag gold">CORTE SUPREMA</span>
-        <h4 style="font-size:1rem;margin:10px 0 8px;">Casación 18190-2017</h4>
-        <p style="font-size:0.82rem;color:var(--text-muted);">Doctrina sobre concausa: EPP certificado reduce la indemnización por daño moral.</p>
-        <span style="color:var(--brand-gold);font-weight:600;font-size:0.78rem;margin-top:10px;display:inline-block;">Ver caso →</span>
+      <div class="service-card gold reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+               alt="Auditoría SST Preventiva" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="clipboard-check" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">PREVENTIVO</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Auditoría Legal Preventiva SST</h3>
+          <p>Diagnóstico de cumplimiento normativo antes de una inspección. Blindaje documentario de tu empresa.</p>
+          <ul class="service-card-list">
+            <li>Revisión de registros obligatorios</li>
+            <li>Simulacro de inspección SUNAFIL</li>
+            <li>Plan de subsanación inmediato</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Auditor%C3%ADa%20Preventiva%20SST"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Solicitar diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card gold reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80"
+               alt="Asesoría Laboral Corporativa" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="briefcase" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">LABORAL</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Asesoría Laboral Corporativa</h3>
+          <p>Consultoría permanente en derecho laboral para empresas: contratos, despidos, negociación colectiva y compliance.</p>
+          <ul class="service-card-list">
+            <li>Contratos y régimen laboral</li>
+            <li>Procesos disciplinarios</li>
+            <li>Cumplimiento normativo continuo</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Asesor%C3%ADa%20Laboral%20Corporativa"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Consultar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1427,41 +1789,102 @@ body::before {
       <p class="sheet-desc">Auditoría tributaria SUNAT, planillas y libros electrónicos.</p>
     </div>
 
-    <div class="bento-grid">
-      <div class="bento-card reveal" style="padding:20px;">
-        <div style="color:var(--brand-cyan);margin-bottom:12px;"><i data-lucide="file-text" style="width:28px;height:28px;"></i></div>
-        <h3 style="font-size:1rem;margin-bottom:8px;">Auditoría Tributaria</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);">
-          Defensa ante fiscalizaciones SUNAT, IGV, Renta Anual y devoluciones.
-        </p>
+    <div class="service-cards">
+      <div class="service-card cyan reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80"
+               alt="Auditoría Tributaria" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="file-text" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">TRIBUTARIO</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Auditoría Tributaria & Planificación</h3>
+          <p>Defensa ante fiscalizaciones SUNAT, optimización de carga tributaria y recuperación de saldos a favor.</p>
+          <ul class="service-card-list">
+            <li>IGV, Renta Anual y pagos a cuenta</li>
+            <li>Devoluciones y compensaciones</li>
+            <li>Estrategia fiscal preventiva</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Auditor%C3%ADa%20Tributaria"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Agendar reunión <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="bento-card reveal" style="padding:20px;">
-        <div style="color:var(--brand-cyan);margin-bottom:12px;"><i data-lucide="users" style="width:28px;height:28px;"></i></div>
-        <h3 style="font-size:1rem;margin-bottom:8px;">Planillas & T-Registro</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);">
-          PLAME, CTS, gratificaciones y aportes sin contingencias SUNAFIL.
-        </p>
+      <div class="service-card cyan reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+               alt="Planillas y T-Registro" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="users" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">PLANILLAS</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Planillas, PLAME & T-Registro</h3>
+          <p>Gestión completa de planillas electrónicas, cálculo de beneficios sociales y aportes previsionales.</p>
+          <ul class="service-card-list">
+            <li>PLAME mensual sin contingencias</li>
+            <li>CTS, gratificaciones y vacaciones</li>
+            <li>Altas y bajas en T-Registro</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Gesti%C3%B3n%20de%20Planillas"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Delegar mi planilla <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="bento-card reveal" style="padding:20px;">
-        <div style="color:var(--brand-cyan);margin-bottom:12px;"><i data-lucide="line-chart" style="width:28px;height:28px;"></i></div>
-        <h3 style="font-size:1rem;margin-bottom:8px;">SIRE & Libros Digitales</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);">
-          Migración y conciliación mensual sin inconsistencias.
-        </p>
+      <div class="service-card cyan reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+               alt="SIRE y Libros Digitales" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="line-chart" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">SIRE SUNAT</span>
+        </div>
+        <div class="service-card-body">
+          <h3>SIRE & Libros Electrónicos</h3>
+          <p>Implementación y conciliación mensual del Sistema Integrado de Registros Electrónicos.</p>
+          <ul class="service-card-list">
+            <li>Migración a SIRE Compras/Ventas</li>
+            <li>Conciliaciones bancarias</li>
+            <li>Reportes mensuales y anuales</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Implementaci%C3%B3n%20SIRE"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Implementar SIRE <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="reveal" style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-top:24px;text-align:center;">
-      <h3 style="font-size:1.05rem;margin-bottom:8px;">¿Necesitas regularizar tus declaraciones?</h3>
-      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:16px;">
-        Contadores colegiados evalúan tu estado y estructuran plan de contingencia.
-      </p>
-      <a href="https://wa.me/51992132260?text=Asesor%C3%ADa%20tributaria"
-         target="_blank" rel="noopener" class="btn btn-fire btn-block">
-        <i data-lucide="mail" style="width:14px;height:14px;"></i> Agendar Asesoría
-      </a>
+      <div class="service-card cyan reveal">
+        <div class="service-card-media">
+          <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=800&q=80"
+               alt="Consultoría Financiera" loading="lazy">
+          <div class="service-card-icon">
+            <i data-lucide="trending-up" style="width:26px;height:26px;"></i>
+          </div>
+          <span class="service-card-badge">FINANCIERO</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Consultoría Financiera Estratégica</h3>
+          <p>Análisis de estados financieros, flujo de caja proyectado y apoyo en decisiones de inversión.</p>
+          <ul class="service-card-list">
+            <li>Proyecciones financieras</li>
+            <li>Análisis de rentabilidad</li>
+            <li>Evaluación de inversiones</li>
+          </ul>
+          <a href="https://wa.me/51992132260?text=Consultor%C3%ADa%20Financiera"
+             target="_blank" rel="noopener" class="service-card-cta">
+            Consultar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1660,7 +2083,6 @@ body::before {
       <p class="sheet-desc">Gestiona todos los certificados emitidos por DAGAT SAC.</p>
     </div>
 
-    <!-- Exportar/Importar -->
     <div class="data-actions reveal">
       <button class="btn btn-ghost btn-sm" id="btnExportJson" style="flex:1;">
         <i data-lucide="download" style="width:14px;height:14px;"></i>
@@ -1742,9 +2164,7 @@ body::before {
 
 </main>
 
-<!-- ═══════════════════════════════════════════════════════
-     MODALES
-     ═══════════════════════════════════════════════════════ -->
+<!-- MODALES -->
 <div class="app-modal" id="normModal">
   <div class="app-modal-box">
     <div class="modal-handle"></div>
@@ -1835,10 +2255,8 @@ body::before {
 </a>
 
 <!-- ═══════════════════════════════════════════════════════
-     BASE DE DATOS EMBEBIDA
-     Aquí van los certificados permanentes del sitio.
-     El panel admin los actualiza en localStorage.
-     Para hacerlos permanentes para TODOS: exporta → pega aquí → sube el HTML.
+     BASE DE DATOS EMBEBIDA (certificados del sitio)
+     Edita este JSON para hacer certificados permanentes.
      ═══════════════════════════════════════════════════════ -->
 <script type="application/json" id="seed-certificates">
 [
@@ -1906,9 +2324,6 @@ const SafeStorage = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   DATA EMBEBIDA (leída del <script type="application/json">)
-   ═══════════════════════════════════════════════════════ */
 const getSeedCerts = () => {
   try {
     const el = document.getElementById('seed-certificates');
@@ -2035,9 +2450,6 @@ const APP_DATA = {
   ]
 };
 
-/* ═══════════════════════════════════════════════════════
-   SVG FALLBACK
-   ═══════════════════════════════════════════════════════ */
 const SVGGraphics = {
   handleImgError(imgEl, title) {
     imgEl.onerror = null;
@@ -2056,9 +2468,6 @@ const SVGGraphics = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   TOAST
-   ═══════════════════════════════════════════════════════ */
 const Toast = {
   container: null,
   show(message, type = 'fire', duration = 3500) {
@@ -2096,8 +2505,6 @@ const Analytics = {
       const el = e.target.closest('[data-analytics]');
       if (el) this.track(el.dataset.analytics);
     });
-
-    // Ripple effect en botones
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.btn');
       if (!btn) return;
@@ -2108,9 +2515,6 @@ const Analytics = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   ROUTER
-   ═══════════════════════════════════════════════════════ */
 const Router = {
   activeSheet: 'inicio',
   validSheets: ['inicio', 'ingenieria', 'dagat-law', 'contabilidad', 'certificados', 'normativas', 'contacto', 'admin'],
@@ -2185,7 +2589,6 @@ const Router = {
 
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
 
-    // Trigger reveal
     setTimeout(() => Reveal.check(), 100);
 
     if (sheetId === 'certificados' && params.get('code')) {
@@ -2202,9 +2605,6 @@ const Router = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   REVEAL ON SCROLL
-   ═══════════════════════════════════════════════════════ */
 const Reveal = {
   observer: null,
   init() {
@@ -2233,9 +2633,6 @@ const Reveal = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   COUNTERS ANIMADOS
-   ═══════════════════════════════════════════════════════ */
 const Counters = {
   init() {
     if (!('IntersectionObserver' in window)) return;
@@ -2264,9 +2661,6 @@ const Counters = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   SUNFIL CALC
-   ═══════════════════════════════════════════════════════ */
 const SunafilCalc = {
   init() {
     const regime = $('#calcRegime');
@@ -2313,9 +2707,6 @@ const SunafilCalc = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   CERT MANAGER (localStorage + seed embebida)
-   ═══════════════════════════════════════════════════════ */
 const CertManager = {
   STORAGE_KEY: 'dagat_certificates_db',
   activeCert: null,
@@ -2354,7 +2745,6 @@ const CertManager = {
     }
   },
 
-  // Carga: seed embebida + localStorage (sin duplicados)
   loadCertificates() {
     const seed = APP_DATA.PRELOADED_CERTS;
     let stored = [];
@@ -2363,7 +2753,6 @@ const CertManager = {
       if (raw) stored = JSON.parse(raw);
     } catch (e) { stored = []; }
 
-    // Merge: seed + stored (stored tiene prioridad si mismo ID)
     const map = new Map();
     seed.forEach(c => map.set(c.id, c));
     stored.forEach(c => map.set(c.id, c));
@@ -2409,7 +2798,6 @@ const CertManager = {
     display.style.display = 'block';
     $('#certCardRows').innerHTML = '<div class="skeleton"></div><div class="skeleton" style="width:80%;"></div><div class="skeleton" style="width:60%;"></div>';
 
-    // Simular delay para mejor UX
     await new Promise(r => setTimeout(r, 250));
 
     const cert = this.getCert(code);
@@ -2531,9 +2919,6 @@ const CertManager = {
     }
   },
 
-  /* ═══════════════════════════════════════════════════════
-     PDF PREMIUM CON LOGO + MARCA DE AGUA
-     ═══════════════════════════════════════════════════════ */
   generatePdf(cert) {
     if (!window.jspdf) { Toast.danger('Generador PDF no disponible.'); return; }
 
@@ -2611,46 +2996,41 @@ const CertManager = {
         doc.setTextColor(6, 9, 25);
         doc.text('DAGAT SAC', w / 2, 47, { align: 'center' });
 
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(7.5);
-        doc.setTextColor(140, 110, 60);
-        doc.text('CERTIFICACIÓN OFICIAL  ·  CAPACITACIÓN  ·  CONSTANCIA TÉCNICA', w / 2, 53, { align: 'center', charSpace: 1.2 });
-
         doc.setDrawColor(212, 160, 60);
         doc.setLineWidth(0.6);
-        doc.line(w / 2 - 55, 57, w / 2 + 55, 57);
+        doc.line(w / 2 - 55, 56, w / 2 + 55, 56);
         doc.setFillColor(212, 160, 60);
-        doc.circle(w / 2, 57, 1.2, 'F');
+        doc.circle(w / 2, 56, 1.2, 'F');
 
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(24);
         doc.setTextColor(6, 9, 25);
-        doc.text('CERTIFICADO', w / 2, 70, { align: 'center', charSpace: 2.5 });
+        doc.text('CERTIFICADO', w / 2, 68, { align: 'center', charSpace: 2.5 });
 
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(9.5);
         doc.setTextColor(100, 100, 100);
-        doc.text('Se otorga el presente reconocimiento a', w / 2, 80, { align: 'center' });
+        doc.text('Se otorga el presente reconocimiento a', w / 2, 78, { align: 'center' });
 
         const name = (cert.studentName || '').toUpperCase();
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(name.length > 40 ? 18 : name.length > 30 ? 21 : 25);
         doc.setTextColor(255, 87, 34);
-        doc.text(name, w / 2, 95, { align: 'center' });
+        doc.text(name, w / 2, 93, { align: 'center' });
 
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(9.5);
         doc.setTextColor(100, 100, 100);
-        doc.text(`DNI: ${cert.studentDni}`, w / 2, 103, { align: 'center' });
-        doc.text('Por haber cursado y aprobado:', w / 2, 116, { align: 'center' });
+        doc.text(`DNI: ${cert.studentDni}`, w / 2, 101, { align: 'center' });
+        doc.text('Por haber cursado y aprobado:', w / 2, 114, { align: 'center' });
 
         const courseName = cert.courseName || '';
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(courseName.length > 70 ? 12 : courseName.length > 50 ? 14 : 16);
         doc.setTextColor(6, 9, 25);
         const courseLines = doc.splitTextToSize(courseName, w - 90);
-        courseLines.forEach((line, idx) => doc.text(line, w / 2, 128 + idx * 7.5, { align: 'center' }));
-        const courseEndY = 128 + (courseLines.length - 1) * 7.5;
+        courseLines.forEach((line, idx) => doc.text(line, w / 2, 126 + idx * 7.5, { align: 'center' }));
+        const courseEndY = 126 + (courseLines.length - 1) * 7.5;
 
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(9.5);
@@ -2710,9 +3090,6 @@ const CertManager = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   ADMIN AUTH
-   ═══════════════════════════════════════════════════════ */
 const AdminAuth = {
   MASTER_KEY: 'Dagat2025#Admin',
   SESSION_KEY: 'dagat_admin_session',
@@ -2832,9 +3209,6 @@ const AdminAuth = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   ADMIN PANEL
-   ═══════════════════════════════════════════════════════ */
 const AdminPanel = {
   init() {
     const form = $('#adminCertForm');
@@ -2862,7 +3236,6 @@ const AdminPanel = {
       });
     }
 
-    // Export/Import
     const exportBtn = $('#btnExportJson');
     const importBtn = $('#btnImportJson');
     const fileInput = $('#fileImportJson');
@@ -2923,7 +3296,6 @@ const AdminPanel = {
     await CertManager.saveCert(cert);
     Toast.emerald(`Certificado ${id} creado`);
 
-    // Confetti visual simple
     this.celebrate();
 
     $('#adminCertForm').reset();
@@ -2937,7 +3309,6 @@ const AdminPanel = {
   },
 
   celebrate() {
-    // Simple confetti con divs
     const colors = ['#ff5722', '#eab308', '#10b981', '#6366f1'];
     for (let i = 0; i < 30; i++) {
       const conf = document.createElement('div');
@@ -3068,9 +3439,6 @@ const AdminPanel = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   NORMATIVAS
-   ═══════════════════════════════════════════════════════ */
 const NormApp = {
   init() {
     const c = $('#normativesContainer');
@@ -3258,9 +3626,6 @@ const ContactForm = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   BOOT
-   ═══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
 
@@ -3282,7 +3647,6 @@ document.addEventListener('DOMContentLoaded', () => {
   AdminAuth.init();
   AdminPanel.init();
 
-  // Safety reveal
   setTimeout(() => {
     $$('.reveal:not(.visible)').forEach(el => {
       const r = el.getBoundingClientRect();
@@ -3290,11 +3654,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 1500);
 
-  console.log('%c DAGAT SAC v5.0 ', 'background:linear-gradient(135deg,#ff5722,#eab308);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
-  console.log('%c Mobile-first · localStorage · PDF Premium ', 'color:#10b981;font-size:11px;');
+  console.log('%c DAGAT SAC v6.0 ', 'background:linear-gradient(135deg,#ff5722,#eab308);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  console.log('%c Servicios premium · PDF limpio · Sin subtítulo ', 'color:#10b981;font-size:11px;');
 });
 
-// Exponer globales
 window.Router = Router;
 window.AdminAuth = AdminAuth;
 window.AdminPanel = AdminPanel;
