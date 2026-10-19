@@ -3254,7 +3254,7 @@ const AdminAuth = {
     $('#adminPasswordInput').value = '';
   },
 
-  async login() {
+   async login() {
     const email = ($('#adminEmailInput')?.value || '').trim();
     const pass = ($('#adminPasswordInput')?.value || '').trim();
     if (!email || !pass) { this.showError('Completa los campos.'); return; }
@@ -3262,12 +3262,15 @@ const AdminAuth = {
     const btn = $('#adminLoginBtn');
     btn.innerHTML = 'Verificando...'; btn.disabled = true;
 
-    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password: pass });
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ 
+      email, 
+      password: pass 
+    });
 
     btn.innerHTML = 'Ingresar'; btn.disabled = false;
 
     if (error) {
-      this.showError('Credenciales incorrectas.');
+      this.showError('Credenciales incorrectas: ' + error.message);
       return;
     }
 
@@ -3276,12 +3279,8 @@ const AdminAuth = {
     const label = $('#adminBtnLabel');
     if (label) label.textContent = 'Ir al Panel Admin';
     Toast.gold('Acceso administrativo concedido');
-    Router.navigate('admin');
-  },
-
-  showError(msg) {
-    $('#adminLoginErrorMsg').textContent = msg;
-    $('#adminLoginError').style.display = 'block';
+    
+    setTimeout(() => Router.navigate('admin'), 300);
   },
 
   async logout() {
