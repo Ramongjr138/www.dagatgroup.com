@@ -2447,7 +2447,7 @@ body::before {
 const SUPABASE_URL = 'https://regcqabwwdmbsvlwinvm.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJlZ2NxYWJ3d2RtYnN2bHdpbnZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0NDMwNTgsImV4cCI6MjEwODAxOTA1OH0.DOclbgSTjFfYyI3px3wT-LgcnKrz3N5wSAObinmt9XA';
 
-var supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+var supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: true, autoRefreshToken: true } });
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
