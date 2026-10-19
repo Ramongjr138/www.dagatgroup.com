@@ -37,10 +37,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- LIBRERÍAS -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer></script>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
+<!-- LIBRERÍA DE SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 :root {
@@ -1448,7 +1451,7 @@ body::before {
             <li>Bombas principales y jockey</li>
             <li>Pruebas hidrostáticas certificadas</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Cotizaci%C3%B3n%20Cuarto%20de%20Bombas%20NFPA"
+          <a href="https://wa.me/51992132260?text=Cotizaci%C3%B3n%20Cuarto%20de%20Bombas%20NFPA"
              target="_blank" rel="noopener" class="service-card-cta">
             Solicitar cotización <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1473,7 +1476,7 @@ body::before {
             <li>Diseño de sistemas de alarmas</li>
             <li>Ejecución de proyectos</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Cotizaci%C3%B3n%20Detecci%C3%B3n%20NFPA%2072"
+          <a href="https://wa.me/51992132260?text=Cotizaci%C3%B3n%20Detecci%C3%B3n%20NFPA%2072"
              target="_blank" rel="noopener" class="service-card-cta">
             Solicitar cotización <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1498,7 +1501,7 @@ body::before {
             <li>Rociadores ESFR para racks altos</li>
             <li>Gabinetes contra incendio completos</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Cotizaci%C3%B3n%20Rociadores%20NFPA%2013"
+          <a href="https://wa.me/51992132260?text=Cotizaci%C3%B3n%20Rociadores%20NFPA%2013"
              target="_blank" rel="noopener" class="service-card-cta">
             Solicitar cotización <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1523,7 +1526,7 @@ body::before {
             <li>Recarga PQS y CO₂</li>
             <li>Certificados para ITSE</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Plan%20Mantenimiento%20Preventivo"
+          <a href="https://wa.me/51992132260?text=Plan%20Mantenimiento%20Preventivo"
              target="_blank" rel="noopener" class="service-card-cta">
             Solicitar plan <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1548,7 +1551,7 @@ body::before {
             <li>Primeros auxilios y RCP</li>
             <li>Manejo de extintores certificado</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Capacitaci%C3%B3n%20Brigadas"
+          <a href="https://wa.me/51992132260?text=Capacitaci%C3%B3n%20Brigadas"
              target="_blank" rel="noopener" class="service-card-cta">
             Ver calendario <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1573,7 +1576,7 @@ body::before {
             <li>Comité paritario y actas</li>
             <li>Auditoría para SUNAFIL</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Asesor%C3%ADa%20SST"
+          <a href="https://wa.me/51992132260?text=Asesor%C3%ADa%20SST"
              target="_blank" rel="noopener" class="service-card-cta">
             Conocer más <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1610,7 +1613,7 @@ body::before {
           <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:14px;">
             La responsabilidad penal por muerte o lesiones graves no se extingue con multas. Articulamos peritajes técnicos para quebrar la imputación.
           </p>
-          <a href="https://wa.me/51942714141?text=URGENCIA%20DAGAT%20LAW"
+          <a href="https://wa.me/51992132260?text=URGENCIA%20DAGAT%20LAW"
              target="_blank" rel="noopener" class="btn btn-law btn-sm">
             <i data-lucide="phone-call" style="width:14px;height:14px;"></i> Abogado de Guardia
           </a>
@@ -1696,7 +1699,7 @@ body::before {
             <li>Teoría del caso y estrategia procesal</li>
             <li>Acompañamiento en diligencias fiscales</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=URGENCIA%20Defensa%20Penal%20Art.%20168-A"
+          <a href="https://wa.me/51992132260?text=URGENCIA%20Defensa%20Penal%20Art.%20168-A"
              target="_blank" rel="noopener" class="service-card-cta">
             Abogado de guardia <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1721,7 +1724,7 @@ body::before {
             <li>Descargos técnicos argumentados</li>
             <li>Apelación ante TFL</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Descargo%20de%20Multa%20SUNAFIL"
+          <a href="https://wa.me/51992132260?text=Descargo%20de%20Multa%20SUNAFIL"
              target="_blank" rel="noopener" class="service-card-cta">
             Revisar mi caso <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1746,7 +1749,7 @@ body::before {
             <li>Simulacro de inspección SUNAFIL</li>
             <li>Plan de subsanación inmediato</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Auditor%C3%ADa%20Preventiva%20SST"
+          <a href="https://wa.me/51992132260?text=Auditor%C3%ADa%20Preventiva%20SST"
              target="_blank" rel="noopener" class="service-card-cta">
             Solicitar diagnóstico <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1771,7 +1774,7 @@ body::before {
             <li>Procesos disciplinarios</li>
             <li>Cumplimiento normativo continuo</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Asesor%C3%ADa%20Laboral%20Corporativa"
+          <a href="https://wa.me/51992132260?text=Asesor%C3%ADa%20Laboral%20Corporativa"
              target="_blank" rel="noopener" class="service-card-cta">
             Consultar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1854,7 +1857,7 @@ body::before {
             <li>Devoluciones y compensaciones</li>
             <li>Estrategia fiscal preventiva</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Auditor%C3%ADa%20Tributaria"
+          <a href="https://wa.me/51992132260?text=Auditor%C3%ADa%20Tributaria"
              target="_blank" rel="noopener" class="service-card-cta">
             Agendar reunión <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1879,7 +1882,7 @@ body::before {
             <li>CTS, gratificaciones y vacaciones</li>
             <li>Altas y bajas en T-Registro</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Gesti%C3%B3n%20de%20Planillas"
+          <a href="https://wa.me/51992132260?text=Gesti%C3%B3n%20de%20Planillas"
              target="_blank" rel="noopener" class="service-card-cta">
             Delegar mi planilla <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1904,7 +1907,7 @@ body::before {
             <li>Conciliaciones bancarias</li>
             <li>Reportes mensuales y anuales</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Implementaci%C3%B3n%20SIRE"
+          <a href="https://wa.me/51992132260?text=Implementaci%C3%B3n%20SIRE"
              target="_blank" rel="noopener" class="service-card-cta">
             Implementar SIRE <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1929,7 +1932,7 @@ body::before {
             <li>Análisis de rentabilidad</li>
             <li>Evaluación de inversiones</li>
           </ul>
-          <a href="https://wa.me/51942714141?text=Consultor%C3%ADa%20Financiera"
+          <a href="https://wa.me/51992132260?text=Consultor%C3%ADa%20Financiera"
              target="_blank" rel="noopener" class="service-card-cta">
             Consultar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
           </a>
@@ -1964,11 +1967,6 @@ body::before {
         </div>
       </div>
 
-      <div style="background:rgba(255,87,34,0.08);border-left:3px solid var(--brand-fire);padding:10px 12px;border-radius:6px;margin-bottom:16px;font-size:0.78rem;">
-        <strong style="color:var(--brand-fire);display:block;margin-bottom:2px;">Acceso restringido</strong>
-        <span style="color:var(--text-muted);">Los usuarios del campus son asignados directamente por el administrador de DAGAT.</span>
-      </div>
-
       <form id="campusLoginForm" style="display:flex;flex-direction:column;gap:14px;">
         <div>
           <label for="stuDniInput" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:6px;">Usuario (DNI) *</label>
@@ -1978,14 +1976,14 @@ body::before {
           <label for="stuPassInput" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:6px;">Contraseña *</label>
           <input type="password" id="stuPassInput" class="form-input" placeholder="••••••••" required autocomplete="current-password">
         </div>
-        <button type="submit" class="btn btn-law btn-block">
+        <button type="submit" class="btn btn-law btn-block" id="btnLoginStudent">
           <i data-lucide="log-in" style="width:16px;height:16px;"></i> Ingresar a mis Clases
         </button>
       </form>
 
       <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:var(--text-muted);flex-wrap:wrap;gap:8px;">
         <span>¿Deseas inscribirte a un diplomado?</span>
-        <a href="https://wa.me/51942714141?text=Deseo%20matricularme%20en%20el%20Campus%20Virtual%20DAGAT" target="_blank" rel="noopener" style="color:var(--brand-gold);font-weight:600;">Solicitar vacante →</a>
+        <a href="https://wa.me/51992132260?text=Deseo%20matricularme%20en%20el%20Campus%20Virtual%20DAGAT" target="_blank" rel="noopener" style="color:var(--brand-gold);font-weight:600;">Solicitar vacante →</a>
       </div>
     </div>
 
@@ -2163,8 +2161,8 @@ body::before {
         <h3 style="font-size:1.05rem;margin-bottom:14px;">Sede Administrativa</h3>
         <div style="display:flex;flex-direction:column;gap:12px;font-size:0.88rem;color:var(--text-muted);">
           <div><strong style="color:var(--text);">Dirección:</strong><br>Ca. Las Amazonas Urb. Tilda Mz. H lote 20, Of. 301, Ate — Lima</div>
-          <div><strong style="color:var(--text);">Teléfonos:</strong><br>+51 942 714 141<br>+51 939 351 318</div>
-          <div><strong style="color:var(--text);">Email:</strong><br>info@dagatgroup.com<br>rgjacobor@dagatgroup.com</div>
+          <div><strong style="color:var(--text);">Teléfonos:</strong><br>+51 992 132 260<br>+51 981 353 787</div>
+          <div><strong style="color:var(--text);">Email:</strong><br>info@dagatgroup.com<br>legal@dagatgroup.com</div>
           <div><strong style="color:var(--text);">Horario:</strong><br>Lun–Vie: 8:00 AM – 6:00 PM<br>Sáb: 8:30 AM – 1:00 PM</div>
         </div>
       </div>
@@ -2174,7 +2172,7 @@ body::before {
         <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">
           Línea de guardia técnica y legal.
         </p>
-        <a href="https://wa.me/51942714141?text=EMERGENCIA%20DAGAT"
+        <a href="https://wa.me/51992132260?text=EMERGENCIA%20DAGAT"
            target="_blank" rel="noopener" class="btn btn-fire btn-block">
           <i data-lucide="message-circle" style="width:14px;height:14px;"></i> WhatsApp Emergencias
         </a>
@@ -2352,6 +2350,7 @@ body::before {
 
 </main>
 
+<!-- MODALES -->
 <div class="app-modal" id="normModal">
   <div class="app-modal-box">
     <div class="modal-handle"></div>
@@ -2392,7 +2391,7 @@ body::before {
     <div style="font-size:0.88rem;color:var(--text-muted);display:flex;flex-direction:column;gap:12px;" id="caseModalBody"></div>
 
     <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;">
-      <a href="https://wa.me/51942714141?text=Consulta%20caso%20legal"
+      <a href="https://wa.me/51992132260?text=Consulta%20caso%20legal"
          target="_blank" rel="noopener" class="btn btn-law btn-sm" style="flex:1;">
         <i data-lucide="message-square" style="width:14px;height:14px;"></i> Consultar
       </a>
@@ -2415,16 +2414,20 @@ body::before {
     </div>
 
     <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:18px;">
-      Ingresa la clave maestra para gestionar certificados, alumnos y videos.
+      Ingresa tu correo de administrador y contraseña.
     </p>
 
     <div style="margin-bottom:14px;">
-      <label for="adminPasswordInput" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:6px;">Clave Maestra</label>
+      <label for="adminEmailInput" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:6px;">Correo Electrónico</label>
+      <input type="email" id="adminEmailInput" class="form-input" placeholder="admin@dagatgroup.com" autocomplete="username">
+    </div>
+    <div style="margin-bottom:14px;">
+      <label for="adminPasswordInput" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:6px;">Contraseña</label>
       <input type="password" id="adminPasswordInput" class="form-input" placeholder="••••••••••" autocomplete="current-password">
     </div>
 
     <div id="adminLoginError" style="display:none;padding:10px 14px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:8px;color:#f87171;font-size:0.82rem;margin-bottom:14px;">
-      <span id="adminLoginErrorMsg">Clave incorrecta.</span>
+      <span id="adminLoginErrorMsg">Credenciales incorrectas.</span>
     </div>
 
     <div style="display:flex;gap:8px;">
@@ -2436,71 +2439,21 @@ body::before {
   </div>
 </div>
 
-<a href="https://wa.me/51942714141?text=Hola%20DAGAT"
+<a href="https://wa.me/51992132260?text=Hola%20DAGAT"
    class="wa-bubble-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <i data-lucide="message-circle" style="width:26px;height:26px;"></i>
 </a>
-
-<script type="application/json" id="seed-certificates">
-[
-  {
-    "id": "DAGAT-2025-00101",
-    "studentName": "JUAN CARLOS PÉREZ RAMOS",
-    "studentDni": "45892011",
-    "courseName": "Lucha Contra Incendios y Evacuación (NFPA 10/72)",
-    "courseHours": 8,
-    "issueDate": "2025-02-15",
-    "expiryDate": "2026-02-15",
-    "certType": "NFPA",
-    "issuedBy": "DAGAT SAC"
-  },
-  {
-    "id": "DAGAT-2025-00102",
-    "studentName": "MARÍA ALEJANDRA VEGA SOTO",
-    "studentDni": "70214589",
-    "courseName": "Seguridad y Salud en el Trabajo conforme a Ley 29783",
-    "courseHours": 12,
-    "issueDate": "2025-03-01",
-    "expiryDate": "2026-03-01",
-    "certType": "SST",
-    "issuedBy": "DAGAT SAC"
-  },
-  {
-    "id": "DAGAT-2025-00103",
-    "studentName": "CARLOS ALBERTO MENDOZA QUISPE",
-    "studentDni": "41982310",
-    "courseName": "Trabajo en Altura y Plataformas Elevadoras",
-    "courseHours": 16,
-    "issueDate": "2025-03-10",
-    "expiryDate": "2026-03-10",
-    "certType": "Técnico",
-    "issuedBy": "DAGAT SAC"
-  }
-]
-</script>
 
 <script>
 'use strict';
 
 /* ═══════════════════════════════════════════════════════════════════════
-   CONFIGURACIÓN DE SEGURIDAD — CAMBIA ESTO ANTES DE PUBLICAR
-   ═══════════════════════════════════════════════════════════════════════
-   
-   PASO 1: Abre este archivo en un navegador.
-   PASO 2: Presiona F12 → pestaña Console.
-   PASO 3: Pega el siguiente comando (cambia 'MiClaveSecreta2026' por TU clave):
-   
-   crypto.subtle.digest('SHA-256', new TextEncoder().encode('MiClaveSecreta2026'))
-     .then(b => console.log(Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')));
-   
-   PASO 4: Copia el string de 64 caracteres que aparece.
-   PASO 5: Pégalo abajo en ADMIN_HASH.
-   PASO 6: Guarda y publica. NUNCA compartas la clave real.
+   CONFIGURACIÓN DE SUPABASE (AQUÍ VAN TUS LLAVES REALES)
    ═══════════════════════════════════════════════════════════════════════ */
+const SUPABASE_URL = 'https://regcqabwwdmbsvlwinvm.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Bhe6i3tqFtHz_hBZ6e_o7Q_Jv41-iG0';
 
-const ADMIN_HASH = '73b4e3cfa0b726b4f646ee4976e2bc3fe875ff90c47a0f08b5559e3992484705';
-
-/* ═══════════════════════════════════════════════════════════════════════ */
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -2512,26 +2465,6 @@ const escapeHTML = (str) => {
   return div.innerHTML;
 };
 
-const sha256 = async (text) => {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-};
-
-const SafeStorage = {
-  get(key, fallback = null) {
-    try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; }
-  },
-  set(key, value) {
-    try { localStorage.setItem(key, value); return true; } catch { return false; }
-  },
-  getSession(key, fallback = null) {
-    try { return sessionStorage.getItem(key) ?? fallback; } catch { return fallback; }
-  },
-  setSession(key, value) {
-    try { sessionStorage.setItem(key, value); return true; } catch { return false; }
-  }
-};
-
 const getSeedCerts = () => {
   try {
     const el = document.getElementById('seed-certificates');
@@ -2541,7 +2474,7 @@ const getSeedCerts = () => {
 
 const APP_DATA = {
   UIT_VALUE: 5350,
-  WHATSAPP: '51942714141',
+  WHATSAPP: '51992132260',
   DOMAIN: 'https://www.dagatgroup.com',
   get PRELOADED_CERTS() { return getSeedCerts(); },
   SUNAFIL_UIT_TABLE: {
@@ -2890,75 +2823,23 @@ const SunafilCalc = {
 };
 
 /* ═══════════════════════════════════════════════════════════════════════
-   CAMPUS VIRTUAL — VERSIÓN SEGURA (Fase A)
-   
-   IMPORTANTE: las contraseñas ya NO se guardan en texto plano. Se guardan
-   como hash SHA-256. Esto evita que al abrir la consola del navegador
-   cualquiera pueda leer "pass: 'dagat2025'".
-   
-   Aun así, recuerda: sin backend, alguien con conocimientos puede
-   modificar el localStorage. Esto es solo una primera barrera.
+   CAMPUS VIRTUAL (AHORA CONECTADO A SUPABASE)
    ═══════════════════════════════════════════════════════════════════════ */
 const CampusManager = {
-  USERS_KEY: 'dagat_campus_users_v2',
-  VIDEOS_KEY: 'dagat_campus_videos_v2',
-  SESSION_KEY: 'dagat_campus_active_student_v2',
-
-  defaultUsers: [],
-
-  defaultVideos: [
-    {
-      id: 'vid-1',
-      tag: 'MÓDULO 01 · PENAL LABORAL',
-      title: 'Imputación Objetiva y el Art. 168-A del Código Penal en Accidentes de Trabajo',
-      duration: '1h 45m',
-      embedUrl: 'https://www.youtube-nocookie.com/embed/ysz5S6PUM-U',
-      desc: 'Análisis práctico de la responsabilidad penal del Gerente General, delegación de funciones, principio de confianza y autopuesta en peligro de la víctima.',
-      materialUrl: 'https://spij.minjus.gob.pe/'
-    },
-    {
-      id: 'vid-2',
-      tag: 'MÓDULO 02 · FISCALIZACIÓN SUNAFIL',
-      title: 'Defensa ante Actas de Infracción y Criterios del Tribunal de Fiscalización Laboral',
-      duration: '2h 10m',
-      embedUrl: 'https://www.youtube-nocookie.com/embed/jNQXAC9IVRw',
-      desc: 'Cómo estructurar descargos técnicos frente a imputaciones por matriz IPERC, falta de capacitación o equipos de protección personal.',
-      materialUrl: 'https://busquedas.elperuano.pe/dispositivo/NL/1004381-1'
-    },
-    {
-      id: 'vid-3',
-      tag: 'MÓDULO 03 · INGENIERÍA NFPA',
-      title: 'Inspección, Prueba y Mantenimiento de Sistemas Contra Incendios (NFPA 25 y RNE A.130)',
-      duration: '1h 55m',
-      embedUrl: 'https://www.youtube-nocookie.com/embed/LXb3EKWsInQ',
-      desc: 'Protocolos de pruebas hidrostáticas, arranque de bombas diésel/eléctricas y requisitos para superar inspecciones ITSE.',
-      materialUrl: 'https://www.nfpa.org'
-    }
-  ],
-
   users: [],
   videos: [],
   activeVideoIdx: 0,
+  currentStudent: null,
 
   init() {
-    this.loadData();
-
     $('#campusLoginForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
       this.login();
     });
 
     $('#btnCampusLogout')?.addEventListener('click', () => this.logout());
-
-    $('#adminStudentForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.createStudent();
-    });
-
-    $('#adminVideoForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.createVideo();
-    });
+    $('#adminStudentForm')?.addEventListener('submit', (e) => { e.preventDefault(); this.createStudent(); });
+    $('#adminVideoForm')?.addEventListener('submit', (e) => { e.preventDefault(); this.createVideo(); });
 
     $('#adminStudentList')?.addEventListener('click', (e) => {
       const del = e.target.closest('[data-del-student]');
@@ -2970,96 +2851,55 @@ const CampusManager = {
       if (del) this.deleteVideo(del.dataset.delVideo);
     });
 
-    this.checkActiveStudent();
-    this.renderAdminStudents();
-    this.renderAdminVideos();
+    this.loadVideos();
   },
 
-  loadData() {
-    let savedUsers = [];
-    try {
-      const rawU = SafeStorage.get(this.USERS_KEY);
-      if (rawU) savedUsers = JSON.parse(rawU);
-    } catch (e) { savedUsers = []; }
-
-    this.users = Array.isArray(savedUsers) ? savedUsers : [];
-    SafeStorage.set(this.USERS_KEY, JSON.stringify(this.users));
-
-    let savedVideos = [];
-    try {
-      const rawV = SafeStorage.get(this.VIDEOS_KEY);
-      if (rawV) savedVideos = JSON.parse(rawV);
-    } catch (e) { savedVideos = []; }
-
-    if (savedVideos.length > 0) {
-      this.videos = savedVideos;
-    } else {
-      this.videos = [...this.defaultVideos];
-      SafeStorage.set(this.VIDEOS_KEY, JSON.stringify(this.videos));
+  async loadVideos() {
+    const { data, error } = await supabase.from('videos').select('*').order('created_at', { ascending: true });
+    if (!error && data) {
+      this.videos = data;
+      if (this.currentStudent) this.renderPlaylist();
     }
-  },
-
-  normalizeEmbedUrl(url) {
-    const raw = (url || '').trim();
-    try {
-      if (raw.includes('youtube.com/watch?v=')) {
-        const id = new URL(raw).searchParams.get('v');
-        if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
-      }
-      if (raw.includes('youtu.be/')) {
-        const id = raw.split('youtu.be/')[1].split(/[?&]/)[0];
-        if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
-      }
-      if (raw.includes('vimeo.com/') && !raw.includes('player.vimeo.com')) {
-        const id = raw.split('vimeo.com/')[1].split(/[?&/]/)[0];
-        if (id && /^\d+$/.test(id)) return `https://player.vimeo.com/video/${id}`;
-      }
-    } catch (e) {}
-    return raw;
   },
 
   async login() {
     const dni = ($('#stuDniInput')?.value || '').trim();
     const pass = ($('#stuPassInput')?.value || '').trim();
-
     if (!dni || !pass) { Toast.danger('Completa los campos.'); return; }
 
-    const passHash = await sha256(pass);
+    const btn = $('#btnLoginStudent');
+    btn.innerHTML = 'Verificando...'; btn.disabled = true;
 
-    const found = this.users.find(u => u.dni === dni && u.passHash === passHash);
+    // Consultar si el alumno existe y la contraseña es correcta
+    const { data, error } = await supabase.from('students').select('*').eq('dni', dni).single();
 
-    if (!found) {
-      Toast.danger('DNI o contraseña incorrectos.');
+    if (error || !data) {
+      Toast.danger('DNI no registrado.');
+      btn.innerHTML = 'Ingresar a mis Clases'; btn.disabled = false;
       return;
     }
 
-    SafeStorage.setSession(this.SESSION_KEY, JSON.stringify({
-      dni: found.dni,
-      name: found.name,
-      program: found.program,
-      createdAt: Date.now()
-    }));
+    if (data.password_hash !== pass) {
+      Toast.danger('Contraseña incorrecta.');
+      btn.innerHTML = 'Ingresar a mis Clases'; btn.disabled = false;
+      return;
+    }
 
-    Toast.emerald(`Bienvenido al Aula, ${found.name}`);
-    this.openClassroom(found);
+    this.currentStudent = data;
+    Toast.emerald(`Bienvenido al Aula, ${data.name}`);
+    this.openClassroom(data);
+    await this.loadVideos();
+    
+    btn.innerHTML = 'Ingresar a mis Clases'; btn.disabled = false;
   },
 
   logout() {
-    sessionStorage.removeItem(this.SESSION_KEY);
+    this.currentStudent = null;
     const iframe = $('#campusVideoIframe');
     if (iframe) iframe.src = '';
     $('#campusClassroomArea').style.display = 'none';
     $('#campusAuthGate').style.display = 'block';
     Toast.gold('Sesión de aula finalizada');
-  },
-
-  checkActiveStudent() {
-    const raw = SafeStorage.getSession(this.SESSION_KEY);
-    if (!raw) return;
-    try {
-      const student = JSON.parse(raw);
-      if (student && student.dni && student.name) this.openClassroom(student);
-    } catch (e) {}
   },
 
   openClassroom(student) {
@@ -3075,6 +2915,10 @@ const CampusManager = {
   renderPlaylist() {
     const container = $('#campusPlaylistContainer');
     if (!container) return;
+    if (this.videos.length === 0) {
+       container.innerHTML = '<p style="font-size:0.85rem;color:var(--text-dim);">Aún no hay videos publicados.</p>';
+       return;
+    }
     container.innerHTML = this.videos.map((v, idx) => `
       <div class="admin-cert-card ${idx === this.activeVideoIdx ? 'active-video' : ''}" data-video-idx="${idx}" style="cursor:pointer;display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(255,87,34,0.15);color:var(--brand-fire);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -3098,64 +2942,51 @@ const CampusManager = {
     const v = this.videos[idx];
     if (!v) return;
     this.activeVideoIdx = idx;
-    $('#campusVideoIframe').src = v.embedUrl;
+    
+    let embed = v.embed_url;
+    if (embed.includes('watch?v=')) embed = embed.replace('watch?v=', 'embed/');
+    
+    $('#campusVideoIframe').src = embed;
     $('#campusActiveTag').textContent = v.tag;
     $('#campusActiveTitle').textContent = v.title;
-    $('#campusActiveDesc').textContent = v.desc;
-    $('#campusMaterialLink').href = v.materialUrl || '#';
+    $('#campusActiveDesc').textContent = v.description;
+    $('#campusMaterialLink').href = v.material_url || '#';
     this.renderPlaylist();
   },
 
   async createStudent() {
-    if (!AdminAuth.isAuthenticated()) {
-      Toast.danger('Inicia sesión como administrador.');
-      AdminAuth.showLoginModal();
-      return;
-    }
-
+    if (!AdminAuth.isAuthenticated()) { Toast.danger('Inicia sesión como administrador.'); return; }
     const name = ($('#stuAdminName')?.value || '').trim().toUpperCase();
     const dni = ($('#stuAdminDni')?.value || '').trim();
     const pass = ($('#stuAdminPass')?.value || '').trim();
     const program = ($('#stuAdminCourse')?.value || '').trim();
 
-    if (!name || !dni || !pass || !program) {
-      Toast.danger('Completa todos los campos del alumno.');
-      return;
-    }
+    if (!name || !dni || !pass || !program) { Toast.danger('Completa todos los campos del alumno.'); return; }
 
-    if (pass.length < 6) {
-      Toast.danger('La contraseña debe tener al menos 6 caracteres.');
-      return;
-    }
+    const { error } = await supabase.from('students').insert({ name, dni, password_hash: pass, program });
+    if (error) { Toast.danger('Error: ' + error.message); return; }
 
-    const passHash = await sha256(pass);
-    const idx = this.users.findIndex(u => u.dni === dni);
-    const newUser = { dni, passHash, name, program };
-    if (idx >= 0) this.users[idx] = newUser;
-    else this.users.push(newUser);
-
-    SafeStorage.set(this.USERS_KEY, JSON.stringify(this.users));
     $('#adminStudentForm').reset();
     this.renderAdminStudents();
     Toast.emerald(`Acceso habilitado para ${name}`);
   },
 
-  deleteStudent(dni) {
+  async deleteStudent(dni) {
     if (!AdminAuth.isAuthenticated()) return;
-    this.users = this.users.filter(u => u.dni !== dni);
-    SafeStorage.set(this.USERS_KEY, JSON.stringify(this.users));
+    await supabase.from('students').delete().eq('dni', dni);
     this.renderAdminStudents();
     Toast.gold(`Usuario ${dni} eliminado`);
   },
 
-  renderAdminStudents() {
+  async renderAdminStudents() {
     const list = $('#adminStudentList');
     if (!list) return;
-    if (!this.users.length) {
+    const { data } = await supabase.from('students').select('*');
+    if (!data || data.length === 0) {
       list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">Aún no hay alumnos registrados. Crea el primero arriba.</p>';
       return;
     }
-    list.innerHTML = this.users.map(u => `
+    list.innerHTML = data.map(u => `
       <div class="admin-cert-card">
         <h5>${escapeHTML(u.name)}</h5>
         <span class="cert-id">DNI: ${escapeHTML(u.dni)}</span>
@@ -3171,60 +3002,46 @@ const CampusManager = {
   },
 
   async createVideo() {
-    if (!AdminAuth.isAuthenticated()) {
-      Toast.danger('Inicia sesión como administrador.');
-      AdminAuth.showLoginModal();
-      return;
-    }
-
+    if (!AdminAuth.isAuthenticated()) { Toast.danger('Inicia sesión como administrador.'); return; }
     const tag = ($('#vidAdminTag')?.value || '').trim().toUpperCase();
     const duration = ($('#vidAdminDuration')?.value || '').trim();
     const title = ($('#vidAdminTitle')?.value || '').trim();
-    const rawUrl = ($('#vidAdminUrl')?.value || '').trim();
-    const materialUrl = ($('#vidAdminMaterial')?.value || '').trim() || 'https://spij.minjus.gob.pe/';
-    const desc = ($('#vidAdminDesc')?.value || '').trim();
+    const embed_url = ($('#vidAdminUrl')?.value || '').trim();
+    const material_url = ($('#vidAdminMaterial')?.value || '').trim();
+    const description = ($('#vidAdminDesc')?.value || '').trim();
 
-    if (!tag || !duration || !title || !rawUrl || !desc) {
-      Toast.danger('Completa todos los datos del video.');
-      return;
-    }
+    if (!tag || !duration || !title || !embed_url || !description) { Toast.danger('Completa los campos.'); return; }
 
-    const newVid = {
-      id: 'vid-' + Date.now(),
-      tag, title, duration,
-      embedUrl: this.normalizeEmbedUrl(rawUrl),
-      desc, materialUrl
-    };
+    const { error } = await supabase.from('videos').insert({ tag, title, duration, embed_url, description, material_url, published: true });
+    if (error) { Toast.danger('Error: ' + error.message); return; }
 
-    this.videos.push(newVid);
-    SafeStorage.set(this.VIDEOS_KEY, JSON.stringify(this.videos));
     $('#adminVideoForm').reset();
-    this.renderAdminVideos();
-    this.renderPlaylist();
-    Toast.emerald('Grabación publicada en el Campus Virtual');
+    await this.renderAdminVideos();
+    await this.loadVideos();
+    Toast.emerald('Grabación publicada');
   },
 
-  deleteVideo(id) {
+  async deleteVideo(id) {
     if (!AdminAuth.isAuthenticated()) return;
-    this.videos = this.videos.filter(v => v.id !== id);
-    SafeStorage.set(this.VIDEOS_KEY, JSON.stringify(this.videos));
-    this.renderAdminVideos();
-    this.renderPlaylist();
-    Toast.gold('Grabación retirada del Campus');
+    await supabase.from('videos').delete().eq('id', id);
+    await this.renderAdminVideos();
+    await this.loadVideos();
+    Toast.gold('Grabación retirada');
   },
 
-  renderAdminVideos() {
+  async renderAdminVideos() {
     const list = $('#adminVideoList');
     if (!list) return;
-    if (!this.videos.length) {
+    const { data } = await supabase.from('videos').select('*');
+    if (!data || data.length === 0) {
       list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">No hay videos publicados.</p>';
       return;
     }
-    list.innerHTML = this.videos.map(v => `
+    list.innerHTML = data.map(v => `
       <div class="admin-cert-card">
         <span class="cert-id">${escapeHTML(v.tag)} · ${escapeHTML(v.duration)}</span>
         <h5>${escapeHTML(v.title)}</h5>
-        <p class="cert-meta">${escapeHTML(v.desc)}</p>
+        <p class="cert-meta">${escapeHTML(v.description)}</p>
         <div class="cert-actions">
           <button type="button" class="btn btn-danger btn-sm" data-del-video="${escapeHTML(v.id)}" style="width:100%;">
             <i data-lucide="trash-2" style="width:12px;height:12px;"></i> Quitar Grabación
@@ -3236,82 +3053,30 @@ const CampusManager = {
   }
 };
 
+/* ═══════════════════════════════════════════════════════════════════════
+   CERTIFICADOS (CONECTADO A SUPABASE)
+   ═══════════════════════════════════════════════════════════════════════ */
 const CertManager = {
-  STORAGE_KEY: 'dagat_certificates_db_v2',
   activeCert: null,
   scanner: null,
-  certificates: [],
 
   init() {
-    this.loadCertificates();
-
     const searchBtn = $('#btnExecuteSearch');
-    const searchInput = $('#certSearchInput');
     if (searchBtn) searchBtn.addEventListener('click', () => this.search());
-    if (searchInput) {
-      searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') this.search();
-      });
-    }
+    
+    const searchInput = $('#certSearchInput');
+    if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.search(); });
 
     $$('[data-demo-code]').forEach(btn => {
       btn.addEventListener('click', () => {
-        const code = btn.dataset.demoCode;
         const input = $('#certSearchInput');
-        if (input) input.value = code;
+        if (input) input.value = btn.dataset.demoCode;
         this.search();
       });
     });
 
-    const camBtn = $('#btnToggleCameraScanner');
-    if (camBtn) camBtn.addEventListener('click', () => this.toggleScanner());
-
-    const dlBtn = $('#btnDownloadDiplomaPdf');
-    if (dlBtn) {
-      dlBtn.addEventListener('click', () => {
-        if (this.activeCert) this.generatePdf(this.activeCert);
-      });
-    }
-  },
-
-  loadCertificates() {
-    const seed = APP_DATA.PRELOADED_CERTS;
-    let stored = [];
-    try {
-      const raw = SafeStorage.get(this.STORAGE_KEY);
-      if (raw) stored = JSON.parse(raw);
-    } catch (e) { stored = []; }
-
-    const map = new Map();
-    seed.forEach(c => map.set(c.id, c));
-    stored.forEach(c => map.set(c.id, c));
-    this.certificates = Array.from(map.values());
-    this.persist();
-    return this.certificates;
-  },
-
-  persist() { SafeStorage.set(this.STORAGE_KEY, JSON.stringify(this.certificates)); },
-
-  getCert(id) { return this.certificates.find(c => c.id === id) || null; },
-
-  getAllCerts() {
-    return [...this.certificates].sort((a, b) =>
-      (b.createdAt || b.issueDate || '').localeCompare(a.createdAt || a.issueDate || '')
-    );
-  },
-
-  async saveCert(cert) {
-    const idx = this.certificates.findIndex(c => c.id === cert.id);
-    if (idx >= 0) this.certificates[idx] = cert;
-    else this.certificates.push(cert);
-    this.persist();
-    return true;
-  },
-
-  async deleteCert(id) {
-    this.certificates = this.certificates.filter(c => c.id !== id);
-    this.persist();
-    return true;
+    $('#btnToggleCameraScanner')?.addEventListener('click', () => this.toggleScanner());
+    $('#btnDownloadDiplomaPdf')?.addEventListener('click', () => { if (this.activeCert) this.generatePdf(this.activeCert); });
   },
 
   async search() {
@@ -3321,14 +3086,14 @@ const CertManager = {
 
     const display = $('#certCardDisplay');
     display.style.display = 'block';
-    $('#certCardRows').innerHTML = '<div class="skeleton"></div><div class="skeleton" style="width:80%;"></div><div class="skeleton" style="width:60%;"></div>';
+    $('#certCardRows').innerHTML = '<div class="skeleton"></div><div class="skeleton" style="width:80%;"></div>';
 
-    await new Promise(r => setTimeout(r, 250));
+    // Buscar en Supabase
+    const { data, error } = await supabase.from('certificates').select('*').eq('id', code).single();
 
-    const cert = this.getCert(code);
-    if (cert) {
-      this.activeCert = cert;
-      this.renderValidCert(cert);
+    if (data && !error) {
+      this.activeCert = data;
+      this.renderValidCert(data);
       Toast.emerald('Certificado autenticado');
     } else {
       this.activeCert = null;
@@ -3341,334 +3106,152 @@ const CertManager = {
   renderValidCert(cert) {
     const display = $('#certCardDisplay');
     const icon = $('#certCardIcon');
-    const title = $('#certCardTitle');
-    const sub = $('#certCardSub');
-    const rows = $('#certCardRows');
-    const dlBtn = $('#btnDownloadDiplomaPdf');
-
     display.style.borderLeftColor = 'var(--brand-emerald)';
     icon.style.color = 'var(--brand-emerald)';
     icon.style.background = 'rgba(16,185,129,0.15)';
     icon.innerHTML = '<i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>';
-    title.textContent = 'Certificado Válido';
-    sub.textContent = 'Verificado en DAGAT SAC';
+    $('#certCardTitle').textContent = 'Certificado Válido';
+    $('#certCardSub').textContent = 'Verificado en DAGAT SAC';
 
     const fields = [
       ['Código', cert.id, 'color:var(--brand-fire);font-family:JetBrains Mono,monospace;'],
-      ['Participante', cert.studentName],
-      ['DNI', cert.studentDni],
-      ['Curso', cert.courseName],
-      ['Tipo', cert.certType || 'Técnico'],
-      ['Horas', `${cert.courseHours} horas`],
-      ['Emisión', cert.issueDate]
+      ['Participante', cert.student_name],
+      ['DNI', cert.student_dni],
+      ['Curso', cert.course_name],
+      ['Tipo', cert.cert_type || 'Técnico'],
+      ['Horas', `${cert.course_hours} horas`],
+      ['Emisión', cert.issue_date]
     ];
 
-    rows.innerHTML = fields.map(([label, value, style], idx) => `
+    $('#certCardRows').innerHTML = fields.map(([label, value, style], idx) => `
       <div style="display:flex;justify-content:space-between;padding:10px 0;${idx < fields.length - 1 ? 'border-bottom:1px solid var(--border);' : ''}font-size:0.85rem;gap:12px;flex-wrap:wrap;">
         <span style="color:var(--text-muted);flex-shrink:0;">${escapeHTML(label)}:</span>
         <strong style="text-align:right;overflow-wrap:break-word;word-break:break-word;${style || ''}">${escapeHTML(String(value))}</strong>
       </div>
     `).join('');
-
-    dlBtn.style.display = 'inline-flex';
+    $('#btnDownloadDiplomaPdf').style.display = 'inline-flex';
   },
 
   renderInvalidCert(code) {
     const display = $('#certCardDisplay');
     const icon = $('#certCardIcon');
-    const title = $('#certCardTitle');
-    const sub = $('#certCardSub');
-    const rows = $('#certCardRows');
-    const dlBtn = $('#btnDownloadDiplomaPdf');
-
     display.style.borderLeftColor = 'var(--brand-danger)';
     icon.style.color = 'var(--brand-danger)';
     icon.style.background = 'rgba(239,68,68,0.15)';
     icon.innerHTML = '<i data-lucide="alert-triangle" style="width:22px;height:22px;"></i>';
-    title.textContent = 'No Encontrado';
-    sub.textContent = 'Código no válido';
-    rows.innerHTML = `<p style="font-size:0.85rem;color:var(--text-muted);padding:8px 0;">No se halló <strong style="font-family:JetBrains Mono,monospace;color:var(--brand-fire);">${escapeHTML(code)}</strong></p>`;
-    dlBtn.style.display = 'none';
+    $('#certCardTitle').textContent = 'No Encontrado';
+    $('#certCardSub').textContent = 'Código no válido';
+    $('#certCardRows').innerHTML = `<p style="font-size:0.85rem;color:var(--text-muted);padding:8px 0;">No se halló <strong style="font-family:JetBrains Mono,monospace;color:var(--brand-fire);">${escapeHTML(code)}</strong></p>`;
+    $('#btnDownloadDiplomaPdf').style.display = 'none';
   },
 
   toggleScanner() {
     const wrap = $('#cameraViewportWrap');
     const label = $('#txtCameraToggle');
-
-    if (typeof Html5Qrcode === 'undefined') {
-      Toast.danger('Escáner no disponible.');
-      return;
-    }
-
+    if (typeof Html5Qrcode === 'undefined') { Toast.danger('Escáner no disponible.'); return; }
     if (this.scanner) {
-      this.scanner.stop().then(() => {
-        this.scanner.clear();
-        this.scanner = null;
-        wrap.style.display = 'none';
-        label.textContent = 'Encender Cámara';
-      }).catch(() => {});
+      this.scanner.stop().then(() => { this.scanner.clear(); this.scanner = null; wrap.style.display = 'none'; label.textContent = 'Encender Cámara'; }).catch(() => {});
       return;
     }
-
     wrap.style.display = 'block';
     label.textContent = 'Detener';
-
     try {
       this.scanner = new Html5Qrcode("cameraScannerElement");
-      this.scanner.start(
-        { facingMode: "environment" },
-        { fps: 10, qrbox: { width: 220, height: 220 } },
-        (decodedText) => {
-          let code = decodedText;
-          try {
-            if (decodedText.includes('code=')) {
-              code = new URL(decodedText).searchParams.get('code') || decodedText;
-            }
-          } catch (e) {}
-          const input = $('#certSearchInput');
-          if (input) input.value = code;
-          this.search();
-          this.toggleScanner();
-        },
-        () => {}
-      ).catch(() => {
-        Toast.danger('No se pudo iniciar la cámara.');
-        this.scanner = null;
-        wrap.style.display = 'none';
-        label.textContent = 'Encender Cámara';
-      });
-    } catch (e) {
-      Toast.danger('Error del escáner.');
-      this.scanner = null;
-      wrap.style.display = 'none';
-    }
+      this.scanner.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 220, height: 220 } }, (decodedText) => {
+        let code = decodedText;
+        try { if (decodedText.includes('code=')) code = new URL(decodedText).searchParams.get('code') || decodedText; } catch (e) {}
+        const input = $('#certSearchInput');
+        if (input) input.value = code;
+        this.search();
+        this.toggleScanner();
+      }, () => {}).catch(() => { Toast.danger('No se pudo iniciar la cámara.'); this.scanner = null; wrap.style.display = 'none'; label.textContent = 'Encender Cámara'; });
+    } catch (e) { Toast.danger('Error del escáner.'); this.scanner = null; wrap.style.display = 'none'; }
   },
 
   generatePdf(cert) {
     if (!window.jspdf) { Toast.danger('Generador PDF no disponible.'); return; }
-
     const LOGO_URL = 'https://res.cloudinary.com/dam4utzn2/image/upload/v1766507983/Dagat_final-Photoroom_qe9746.png';
-
     try {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
       const w = doc.internal.pageSize.getWidth();
       const h = doc.internal.pageSize.getHeight();
-
       const loadImage = (url) => new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => {
-          try {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            resolve({ dataUrl: canvas.toDataURL('image/png'), width: img.naturalWidth, height: img.naturalHeight });
-          } catch (e) { reject(e); }
-        };
-        img.onerror = reject;
-        img.src = url + (url.includes('?') ? '&' : '?') + 'cors=1&_=' + Date.now();
+        const img = new Image(); img.crossOrigin = 'anonymous';
+        img.onload = () => { try { const canvas = document.createElement('canvas'); canvas.width = img.naturalWidth; canvas.height = img.naturalHeight; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0); resolve({ dataUrl: canvas.toDataURL('image/png'), width: img.naturalWidth, height: img.naturalHeight }); } catch (e) { reject(e); } };
+        img.onerror = reject; img.src = url + (url.includes('?') ? '&' : '?') + 'cors=1&_=' + Date.now();
       });
-
       const render = (logo) => {
-        doc.setFillColor(253, 251, 247);
-        doc.rect(0, 0, w, h, 'F');
-
+        doc.setFillColor(253, 251, 247); doc.rect(0, 0, w, h, 'F');
         if (logo) {
           try {
             const GState = window.jspdf.GState;
-            if (GState) {
-              const wSize = 150;
-              const wmX = (w - wSize) / 2;
-              const wmY = (h - wSize) / 2 + 5;
-              doc.setGState(new GState({ opacity: 0.06 }));
-              doc.addImage(logo.dataUrl, 'PNG', wmX, wmY, wSize, wSize);
-              doc.setGState(new GState({ opacity: 1 }));
-            }
+            if (GState) { const wSize = 150; const wmX = (w - wSize) / 2; const wmY = (h - wSize) / 2 + 5; doc.setGState(new GState({ opacity: 0.06 })); doc.addImage(logo.dataUrl, 'PNG', wmX, wmY, wSize, wSize); doc.setGState(new GState({ opacity: 1 })); }
           } catch (e) {}
         }
-
-        doc.setDrawColor(180, 130, 60);
-        doc.setLineWidth(0.5);
-        doc.rect(8, 8, w - 16, h - 16);
-
-        doc.setDrawColor(6, 9, 25);
-        doc.setLineWidth(1.2);
-        doc.rect(12, 12, w - 24, h - 24);
-
-        doc.setDrawColor(212, 160, 60);
-        doc.setLineWidth(2);
-        const cS = 8;
+        doc.setDrawColor(180, 130, 60); doc.setLineWidth(0.5); doc.rect(8, 8, w - 16, h - 16);
+        doc.setDrawColor(6, 9, 25); doc.setLineWidth(1.2); doc.rect(12, 12, w - 24, h - 24);
+        doc.setDrawColor(212, 160, 60); doc.setLineWidth(2); const cS = 8;
         doc.line(12, 12, 12 + cS, 12); doc.line(12, 12, 12, 12 + cS);
         doc.line(w - 12, 12, w - 12 - cS, 12); doc.line(w - 12, 12, w - 12, 12 + cS);
         doc.line(12, h - 12, 12 + cS, h - 12); doc.line(12, h - 12, 12, h - 12 - cS);
         doc.line(w - 12, h - 12, w - 12 - cS, h - 12); doc.line(w - 12, h - 12, w - 12, h - 12 - cS);
-
-        if (logo) {
-          try {
-            const lSize = 22;
-            const aspect = logo.width / logo.height;
-            const lW = lSize * aspect;
-            const lX = (w - lW) / 2;
-            doc.addImage(logo.dataUrl, 'PNG', lX, 15, lW, lSize);
-          } catch (e) {}
-        }
-
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(28);
-        doc.setTextColor(6, 9, 25);
-        doc.text('DAGAT SAC', w / 2, 47, { align: 'center' });
-
-        doc.setDrawColor(212, 160, 60);
-        doc.setLineWidth(0.6);
-        doc.line(w / 2 - 55, 56, w / 2 + 55, 56);
-        doc.setFillColor(212, 160, 60);
-        doc.circle(w / 2, 56, 1.2, 'F');
-
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(24);
-        doc.setTextColor(6, 9, 25);
-        doc.text('CERTIFICADO', w / 2, 68, { align: 'center', charSpace: 2.5 });
-
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9.5);
-        doc.setTextColor(100, 100, 100);
-        doc.text('Se otorga el presente reconocimiento a', w / 2, 78, { align: 'center' });
-
-        const name = (cert.studentName || '').toUpperCase();
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(name.length > 40 ? 18 : name.length > 30 ? 21 : 25);
-        doc.setTextColor(255, 87, 34);
-        doc.text(name, w / 2, 93, { align: 'center' });
-
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9.5);
-        doc.setTextColor(100, 100, 100);
-        doc.text(`DNI: ${cert.studentDni}`, w / 2, 101, { align: 'center' });
-        doc.text('Por haber cursado y aprobado:', w / 2, 114, { align: 'center' });
-
-        const courseName = cert.courseName || '';
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(courseName.length > 70 ? 12 : courseName.length > 50 ? 14 : 16);
-        doc.setTextColor(6, 9, 25);
-        const courseLines = doc.splitTextToSize(courseName, w - 90);
-        courseLines.forEach((line, idx) => doc.text(line, w / 2, 126 + idx * 7.5, { align: 'center' }));
-        const courseEndY = 126 + (courseLines.length - 1) * 7.5;
-
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9.5);
-        doc.setTextColor(80, 80, 80);
-        doc.text(`Duración: ${cert.courseHours} horas lectivas`, w / 2, courseEndY + 13, { align: 'center' });
-
-        const fecha = new Date(cert.issueDate).toLocaleDateString('es-PE', { year: 'numeric', month: 'long', day: 'numeric' });
-        doc.text(`Lima, ${fecha}`, w / 2, courseEndY + 21, { align: 'center' });
-
-        if (cert.expiryDate) {
-          doc.setFontSize(8.5);
-          doc.setTextColor(120, 120, 120);
-          const venc = new Date(cert.expiryDate).toLocaleDateString('es-PE');
-          doc.text(`Válido hasta: ${venc}`, w / 2, courseEndY + 28, { align: 'center' });
-        }
-
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(7.5);
-        doc.setTextColor(140, 110, 60);
-        doc.text('CÓDIGO DE VERIFICACIÓN', 20, h - 26);
-        doc.setFont('courier', 'bold');
-        doc.setFontSize(10);
-        doc.setTextColor(6, 9, 25);
-        doc.text(cert.id, 20, h - 21);
-
-        if (window.qrcode) {
-          try {
-            const qr = window.qrcode(0, 'M');
-            qr.addData(`${APP_DATA.DOMAIN}/#certificados?code=${cert.id}`);
-            qr.make();
-            const qrDataUrl = qr.createDataURL(5, 5);
-            const qrSize = 30;
-            const qrX = w - 20 - qrSize;
-            const qrY = h - 20 - qrSize;
-            doc.addImage(qrDataUrl, 'PNG', qrX, qrY, qrSize, qrSize);
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(6.5);
-            doc.setTextColor(120, 120, 120);
-            doc.text('Escanear para validar', qrX + qrSize / 2, qrY - 2, { align: 'center' });
-          } catch (e) {}
-        }
-
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(6.5);
-        doc.setTextColor(140, 140, 140);
-        doc.text('www.dagatgroup.com  ·  info@dagatgroup.com  ·  +51 992 132 260  ·  Lima, Perú', w / 2, h - 14, { align: 'center' });
-
+        if (logo) { try { const lSize = 22; const aspect = logo.width / logo.height; const lW = lSize * aspect; const lX = (w - lW) / 2; doc.addImage(logo.dataUrl, 'PNG', lX, 15, lW, lSize); } catch (e) {} }
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(28); doc.setTextColor(6, 9, 25); doc.text('DAGAT SAC', w / 2, 47, { align: 'center' });
+        doc.setDrawColor(212, 160, 60); doc.setLineWidth(0.6); doc.line(w / 2 - 55, 56, w / 2 + 55, 56); doc.setFillColor(212, 160, 60); doc.circle(w / 2, 56, 1.2, 'F');
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(24); doc.setTextColor(6, 9, 25); doc.text('CERTIFICADO', w / 2, 68, { align: 'center', charSpace: 2.5 });
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor(100, 100, 100); doc.text('Se otorga el presente reconocimiento a', w / 2, 78, { align: 'center' });
+        const name = (cert.student_name || '').toUpperCase(); doc.setFont('helvetica', 'bold'); doc.setFontSize(name.length > 40 ? 18 : name.length > 30 ? 21 : 25); doc.setTextColor(255, 87, 34); doc.text(name, w / 2, 93, { align: 'center' });
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor(100, 100, 100); doc.text(`DNI: ${cert.student_dni}`, w / 2, 101, { align: 'center' }); doc.text('Por haber cursado y aprobado:', w / 2, 114, { align: 'center' });
+        const courseName = cert.course_name || ''; doc.setFont('helvetica', 'bold'); doc.setFontSize(courseName.length > 70 ? 12 : courseName.length > 50 ? 14 : 16); doc.setTextColor(6, 9, 25);
+        const courseLines = doc.splitTextToSize(courseName, w - 90); courseLines.forEach((line, idx) => doc.text(line, w / 2, 126 + idx * 7.5, { align: 'center' })); const courseEndY = 126 + (courseLines.length - 1) * 7.5;
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor(80, 80, 80); doc.text(`Duración: ${cert.course_hours} horas lectivas`, w / 2, courseEndY + 13, { align: 'center' });
+        const fecha = new Date(cert.issue_date).toLocaleDateString('es-PE', { year: 'numeric', month: 'long', day: 'numeric' }); doc.text(`Lima, ${fecha}`, w / 2, courseEndY + 21, { align: 'center' });
+        if (cert.expiry_date) { doc.setFontSize(8.5); doc.setTextColor(120, 120, 120); const venc = new Date(cert.expiry_date).toLocaleDateString('es-PE'); doc.text(`Válido hasta: ${venc}`, w / 2, courseEndY + 28, { align: 'center' }); }
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(140, 110, 60); doc.text('CÓDIGO DE VERIFICACIÓN', 20, h - 26);
+        doc.setFont('courier', 'bold'); doc.setFontSize(10); doc.setTextColor(6, 9, 25); doc.text(cert.id, 20, h - 21);
+        if (window.qrcode) { try { const qr = window.qrcode(0, 'M'); qr.addData(`${APP_DATA.DOMAIN}/#certificados?code=${cert.id}`); qr.make(); const qrDataUrl = qr.createDataURL(5, 5); const qrSize = 30; const qrX = w - 20 - qrSize; const qrY = h - 20 - qrSize; doc.addImage(qrDataUrl, 'PNG', qrX, qrY, qrSize, qrSize); doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(120, 120, 120); doc.text('Escanear para validar', qrX + qrSize / 2, qrY - 2, { align: 'center' }); } catch (e) {} }
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(140, 140, 140); doc.text('www.dagatgroup.com  ·  info@dagatgroup.com  ·  +51 992 132 260  ·  Lima, Perú', w / 2, h - 14, { align: 'center' });
         doc.save(`Certificado-${cert.id}-${name.replace(/\s+/g, '_')}.pdf`);
         Toast.emerald('PDF descargado');
       };
-
       loadImage(LOGO_URL).then(render).catch(() => render(null));
-    } catch (e) {
-      Toast.danger('Error al generar PDF.');
-    }
+    } catch (e) { Toast.danger('Error al generar PDF.'); }
   }
 };
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ADMIN AUTH — VERSIÓN SEGURA (Fase A)
-   
-   La clave maestra ya NO está en el código. Solo se guarda su hash
-   SHA-256. Para generar tu hash, sigue las instrucciones al inicio
-   del script (busca "CONFIGURACIÓN DE SEGURIDAD").
+   ADMIN AUTH (SUPABASE REAL AUTH)
    ═══════════════════════════════════════════════════════════════════════ */
 const AdminAuth = {
-  SESSION_KEY: 'dagat_admin_session_v2',
-  SESSION_DURATION: 2 * 60 * 60 * 1000,
-  MAX_ATTEMPTS: 5,
-  LOCKOUT_MS: 5 * 60 * 1000,
-  attempts: 0,
-  lockedUntil: 0,
+  currentUser: null,
 
   init() {
-    const accessBtn = $('#btnAdminAccess');
-    const loginBtn = $('#adminLoginBtn');
-    const logoutBtn = $('#btnLogoutAdmin');
-    const pwdInput = $('#adminPasswordInput');
-
-    if (accessBtn) accessBtn.addEventListener('click', () => this.handleAccess());
-    if (loginBtn) loginBtn.addEventListener('click', () => this.login());
-    if (logoutBtn) logoutBtn.addEventListener('click', () => this.logout());
-    if (pwdInput) pwdInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.login(); });
-
-    this.checkSession();
+    $('#btnAdminAccess')?.addEventListener('click', () => this.handleAccess());
+    $('#adminLoginBtn')?.addEventListener('click', () => this.login());
+    $('#btnLogoutAdmin')?.addEventListener('click', () => this.logout());
+    $('#adminPasswordInput')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.login(); });
+    
+    // Verificar si ya hay sesión activa en Supabase
+    supabase.auth.onAuthStateChange((event, session) => {
+      this.currentUser = session ? session.user : null;
+      if (session) {
+        const label = $('#adminBtnLabel');
+        if (label) label.textContent = 'Ir al Panel Admin';
+      }
+    });
   },
 
   isAuthenticated() {
-    const raw = SafeStorage.getSession(this.SESSION_KEY);
-    if (!raw) return false;
-    try {
-      const s = JSON.parse(raw);
-      if (!s.expires || s.expires < Date.now()) {
-        sessionStorage.removeItem(this.SESSION_KEY);
-        return false;
-      }
-      return s.authenticated === true;
-    } catch { return false; }
-  },
-
-  checkSession() {
-    if (this.isAuthenticated()) {
-      const label = $('#adminBtnLabel');
-      if (label) label.textContent = 'Ir al Panel Admin';
-    }
+    return !!this.currentUser;
   },
 
   handleAccess() {
     if (this.isAuthenticated()) {
       Router.navigate('admin');
-      return;
+    } else {
+      this.showLoginModal();
     }
-    this.showLoginModal();
   },
 
   showLoginModal() {
@@ -3676,9 +3259,8 @@ const AdminAuth = {
     if (!modal) return;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    const err = $('#adminLoginError');
-    if (err) err.style.display = 'none';
-    setTimeout(() => { const i = $('#adminPasswordInput'); if (i) i.focus(); }, 200);
+    $('#adminLoginError').style.display = 'none';
+    setTimeout(() => { $('#adminEmailInput')?.focus(); }, 200);
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
   },
 
@@ -3687,69 +3269,42 @@ const AdminAuth = {
     if (!modal) return;
     modal.classList.remove('active');
     document.body.style.overflow = '';
-    const input = $('#adminPasswordInput');
-    if (input) input.value = '';
+    $('#adminPasswordInput').value = '';
   },
 
   async login() {
-    if (Date.now() < this.lockedUntil) {
-      const s = Math.ceil((this.lockedUntil - Date.now()) / 1000);
-      this.showError(`Bloqueado. Espera ${s}s`);
+    const email = ($('#adminEmailInput')?.value || '').trim();
+    const pass = ($('#adminPasswordInput')?.value || '').trim();
+    if (!email || !pass) { this.showError('Completa los campos.'); return; }
+
+    const btn = $('#adminLoginBtn');
+    btn.innerHTML = 'Verificando...'; btn.disabled = true;
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
+
+    btn.innerHTML = 'Ingresar'; btn.disabled = false;
+
+    if (error) {
+      this.showError('Credenciales incorrectas.');
       return;
     }
 
-    if (ADMIN_HASH === 'PEGA_AQUI_TU_HASH_DE_64_CARACTERES') {
-      this.showError('El administrador debe configurar ADMIN_HASH antes de usar este panel. Revisa el código fuente.');
-      return;
-    }
-
-    const input = $('#adminPasswordInput');
-    const pwd = (input?.value || '').trim();
-    if (!pwd) { this.showError('Ingresa la clave.'); return; }
-
-    try {
-      const inputHash = await sha256(pwd);
-
-      if (inputHash === ADMIN_HASH) {
-        this.attempts = 0;
-        const session = {
-          authenticated: true,
-          createdAt: Date.now(),
-          expires: Date.now() + this.SESSION_DURATION
-        };
-        SafeStorage.setSession(this.SESSION_KEY, JSON.stringify(session));
-        this.hideLoginModal();
-        const label = $('#adminBtnLabel');
-        if (label) label.textContent = 'Ir al Panel Admin';
-        Toast.gold('Acceso administrativo concedido');
-        Router.navigate('admin');
-      } else {
-        this.attempts++;
-        const remaining = this.MAX_ATTEMPTS - this.attempts;
-        if (this.attempts >= this.MAX_ATTEMPTS) {
-          this.lockedUntil = Date.now() + this.LOCKOUT_MS;
-          this.showError(`Bloqueado ${this.LOCKOUT_MS / 60000} min.`);
-        } else {
-          this.showError(`Clave incorrecta. ${remaining} intento${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}.`);
-        }
-        if (input) input.value = '';
-      }
-    } catch (e) {
-      this.showError('Error al verificar la clave.');
-    }
+    this.currentUser = data.user;
+    this.hideLoginModal();
+    const label = $('#adminBtnLabel');
+    if (label) label.textContent = 'Ir al Panel Admin';
+    Toast.gold('Acceso administrativo concedido');
+    Router.navigate('admin');
   },
 
   showError(msg) {
-    const box = $('#adminLoginError');
-    const msgEl = $('#adminLoginErrorMsg');
-    if (box && msgEl) {
-      msgEl.textContent = msg;
-      box.style.display = 'block';
-    }
+    $('#adminLoginErrorMsg').textContent = msg;
+    $('#adminLoginError').style.display = 'block';
   },
 
-  logout() {
-    sessionStorage.removeItem(this.SESSION_KEY);
+  async logout() {
+    await supabase.auth.signOut();
+    this.currentUser = null;
     const label = $('#adminBtnLabel');
     if (label) label.textContent = 'Acceso Administrativo';
     Toast.gold('Sesión administrativa cerrada');
@@ -3760,233 +3315,107 @@ const AdminAuth = {
 const AdminPanel = {
   init() {
     const form = $('#adminCertForm');
-    const searchInput = $('#adminSearch');
-
     if (form) {
       const issueInput = $('#admIssueDate');
       if (issueInput && !issueInput.value) issueInput.value = new Date().toISOString().split('T')[0];
       form.addEventListener('submit', (e) => { e.preventDefault(); this.createCert(); });
     }
-
-    if (searchInput) searchInput.addEventListener('input', () => this.renderList());
-
-    const list = $('#adminCertList');
-    if (list) {
-      list.addEventListener('click', (e) => {
-        const del = e.target.closest('[data-delete-cert]');
-        if (del) { this.deleteCert(del.dataset.deleteCert); return; }
-        const dl = e.target.closest('[data-download-cert]');
-        if (dl) this.downloadCert(dl.dataset.downloadCert);
-      });
-    }
-
-    const exportBtn = $('#btnExportJson');
-    const importBtn = $('#btnImportJson');
-    const fileInput = $('#fileImportJson');
-
-    if (exportBtn) exportBtn.addEventListener('click', () => this.exportJson());
-    if (importBtn && fileInput) {
-      importBtn.addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', (e) => this.importJson(e.target.files[0]));
-    }
+    $('#adminSearch')?.addEventListener('input', () => this.renderList());
+    $('#adminCertList')?.addEventListener('click', (e) => {
+      const del = e.target.closest('[data-delete-cert]');
+      if (del) this.deleteCert(del.dataset.deleteCert);
+      const dl = e.target.closest('[data-download-cert]');
+      if (dl) this.downloadCert(dl.dataset.downloadCert);
+    });
   },
 
   async createCert() {
-    if (!AdminAuth.isAuthenticated()) {
-      Toast.danger('Sesión expirada.');
-      AdminAuth.showLoginModal();
-      return;
-    }
+    if (!AdminAuth.isAuthenticated()) { Toast.danger('Sesión expirada.'); return; }
+    const studentName = $('#admStudentName').value.trim();
+    const studentDni = $('#admStudentDni').value.trim();
+    const courseName = $('#admCourseName').value.trim();
+    const courseHours = parseInt($('#admCourseHours').value || '0', 10);
+    const issueDate = $('#admIssueDate').value;
+    const expiryDate = $('#admExpiryDate').value || null;
+    const certType = $('#admCertType').value;
 
-    const studentName = ($('#admStudentName')?.value || '').trim();
-    const studentDni = ($('#admStudentDni')?.value || '').trim();
-    const courseName = ($('#admCourseName')?.value || '').trim();
-    const courseHours = parseInt($('#admCourseHours')?.value || '0', 10);
-    const issueDate = $('#admIssueDate')?.value;
-    const expiryDate = $('#admExpiryDate')?.value || '';
-    const certType = $('#admCertType')?.value || 'Técnico';
-
-    if (!studentName || !studentDni || !courseName || !courseHours || !issueDate) {
-      Toast.danger('Completa todos los campos obligatorios.');
-      return;
-    }
-    if (studentDni.length !== 8 || !/^\d+$/.test(studentDni)) {
-      Toast.danger('El DNI debe tener 8 dígitos.');
-      return;
-    }
+    if (!studentName || !studentDni || !courseName || !courseHours || !issueDate) { Toast.danger('Completa todos los campos.'); return; }
 
     const year = new Date().getFullYear();
-    const existing = CertManager.getAllCerts();
-    const yearCerts = existing.filter(c => c.id.startsWith(`DAGAT-${year}-`));
-    const nextNum = String(yearCerts.length + 1).padStart(5, '0');
+    const { data: certs } = await supabase.from('certificates').select('id').like('id', `DAGAT-${year}-%`);
+    const nextNum = String((certs?.length || 0) + 1).padStart(5, '0');
     const id = `DAGAT-${year}-${nextNum}`;
 
-    const cert = {
-      id, studentName, studentDni, courseName,
-      courseHours, issueDate, expiryDate, certType,
-      issuedBy: 'DAGAT SAC',
-      createdAt: new Date().toISOString()
-    };
+    const certData = { id, student_name: studentName, student_dni: studentDni, course_name: courseName, course_hours: courseHours, issue_date: issueDate, expiry_date: expiryDate, cert_type: certType, issued_by: 'DAGAT SAC' };
 
-    await CertManager.saveCert(cert);
+    const { error } = await supabase.from('certificates').insert(certData);
+    if (error) { Toast.danger('Error al crear certificado.'); return; }
+
     Toast.emerald(`Certificado ${id} creado`);
-
     this.celebrate();
-
     $('#adminCertForm').reset();
-    const issueInput = $('#admIssueDate');
-    if (issueInput) issueInput.value = new Date().toISOString().split('T')[0];
-    const hoursInput = $('#admCourseHours');
-    if (hoursInput) hoursInput.value = '8';
-
+    $('#admIssueDate').value = new Date().toISOString().split('T')[0];
+    $('#admCourseHours').value = '8';
     await this.renderList();
-    CertManager.generatePdf(cert);
+    CertManager.generatePdf(certData);
   },
 
   celebrate() {
     const colors = ['#ff5722', '#eab308', '#10b981', '#6366f1'];
     for (let i = 0; i < 30; i++) {
       const conf = document.createElement('div');
-      conf.style.cssText = `
-        position: fixed;
-        top: 50%; left: 50%;
-        width: 8px; height: 8px;
-        background: ${colors[Math.floor(Math.random() * colors.length)]};
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 99999;
-        transform: translate(-50%, -50%);
-      `;
+      conf.style.cssText = `position: fixed; top: 50%; left: 50%; width: 8px; height: 8px; background: ${colors[Math.floor(Math.random() * colors.length)]}; border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%);`;
       document.body.appendChild(conf);
-
-      const angle = Math.random() * Math.PI * 2;
-      const velocity = 200 + Math.random() * 300;
-      const dx = Math.cos(angle) * velocity;
-      const dy = Math.sin(angle) * velocity;
-      const rotation = Math.random() * 720 - 360;
-
-      requestAnimationFrame(() => {
-        conf.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
-        conf.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${rotation}deg)`;
-        conf.style.opacity = '0';
-      });
-
+      const angle = Math.random() * Math.PI * 2; const velocity = 200 + Math.random() * 300;
+      const dx = Math.cos(angle) * velocity; const dy = Math.sin(angle) * velocity; const rotation = Math.random() * 720 - 360;
+      requestAnimationFrame(() => { conf.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)'; conf.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${rotation}deg)`; conf.style.opacity = '0'; });
       setTimeout(() => conf.remove(), 1300);
     }
   },
 
   async deleteCert(id) {
     if (!AdminAuth.isAuthenticated()) return;
-    await CertManager.deleteCert(id);
+    await supabase.from('certificates').delete().eq('id', id);
     Toast.gold(`Certificado ${id} eliminado`);
     await this.renderList();
   },
 
   downloadCert(id) {
-    const cert = CertManager.getCert(id);
-    if (cert) CertManager.generatePdf(cert);
-    else Toast.danger('No encontrado.');
+    supabase.from('certificates').select('*').eq('id', id).single().then(({data}) => {
+      if (data) CertManager.generatePdf(data);
+    });
   },
 
   async renderList() {
     const list = $('#adminCertList');
-    const countEl = $('#adminCertCount');
     if (!list) return;
-
     list.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;"><div class="spinner"></div></div>';
 
-    const all = CertManager.getAllCerts();
-    const term = ($('#adminSearch')?.value || '').trim().toLowerCase();
+    const { data: all } = await supabase.from('certificates').select('*').order('created_at', { ascending: false });
+    if (!all) { list.innerHTML = '<p style="text-align:center;">No hay certificados.</p>'; return; }
 
+    const term = ($('#adminSearch')?.value || '').trim().toLowerCase();
     let filtered = all;
     if (term) {
-      filtered = all.filter(c =>
-        (c.studentName || '').toLowerCase().includes(term) ||
-        (c.studentDni || '').includes(term) ||
-        (c.id || '').toLowerCase().includes(term)
-      );
+      filtered = all.filter(c => (c.student_name || '').toLowerCase().includes(term) || (c.student_dni || '').includes(term) || (c.id || '').toLowerCase().includes(term));
     }
+    $('#adminCertCount').textContent = `(${filtered.length})`;
 
-    if (countEl) countEl.textContent = `(${filtered.length}${term ? ' de ' + all.length : ''})`;
-
-    if (!filtered.length) {
-      list.innerHTML = `<p style="color:var(--text-dim);font-size:0.85rem;grid-column:1/-1;padding:20px;text-align:center;">${term ? 'Sin resultados.' : 'Aún no hay certificados.'}</p>`;
-      return;
-    }
+    if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:var(--text-dim);">Sin resultados.</p>'; return; }
 
     list.innerHTML = filtered.map(c => `
       <div class="admin-cert-card">
-        <h5>${escapeHTML(c.studentName)}</h5>
+        <h5>${escapeHTML(c.student_name)}</h5>
         <span class="cert-id">${escapeHTML(c.id)}</span>
-        <p class="cert-meta">${escapeHTML(c.courseName)}</p>
-        <p class="cert-meta"><strong>DNI:</strong> ${escapeHTML(c.studentDni)} · ${escapeHTML(String(c.courseHours))}h</p>
-        <p class="cert-meta">${escapeHTML(c.issueDate)}</p>
+        <p class="cert-meta">${escapeHTML(c.course_name)}</p>
+        <p class="cert-meta"><strong>DNI:</strong> ${escapeHTML(c.student_dni)} · ${escapeHTML(String(c.course_hours))}h</p>
         <div class="cert-actions">
-          <button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(c.id)}" style="flex:1;">
-            <i data-lucide="download" style="width:12px;height:12px;"></i> PDF
-          </button>
-          <button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(c.id)}" title="Eliminar" style="min-width:44px;padding:8px;">
-            <i data-lucide="trash-2" style="width:12px;height:12px;"></i>
-          </button>
+          <button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(c.id)}" style="flex:1;"><i data-lucide="download" style="width:12px;height:12px;"></i> PDF</button>
+          <button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(c.id)}" style="min-width:44px;padding:8px;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
         </div>
       </div>
     `).join('');
-
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
-  },
-
-  exportJson() {
-    if (!AdminAuth.isAuthenticated()) return;
-    const data = {
-      exportedAt: new Date().toISOString(),
-      certificates: CertManager.getAllCerts(),
-      campusUsers: CampusManager.users,
-      campusVideos: CampusManager.videos
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `dagat-backup-total-${new Date().toISOString().split('T')[0]}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    Toast.emerald(`Respaldo exportado (${data.certificates.length} certs, ${data.campusUsers.length} alumnos)`);
-  },
-
-  async importJson(file) {
-    if (!file) return;
-    if (!AdminAuth.isAuthenticated()) return;
-    try {
-      const text = await file.text();
-      const data = JSON.parse(text);
-      const certs = data.certificates || (Array.isArray(data) ? data : []);
-
-      let addedCerts = 0;
-      for (const cert of certs) {
-        if (cert.id && cert.studentName) {
-          await CertManager.saveCert(cert);
-          addedCerts++;
-        }
-      }
-
-      if (Array.isArray(data.campusUsers)) {
-        CampusManager.users = data.campusUsers;
-        SafeStorage.set(CampusManager.USERS_KEY, JSON.stringify(CampusManager.users));
-        CampusManager.renderAdminStudents();
-      }
-
-      if (Array.isArray(data.campusVideos)) {
-        CampusManager.videos = data.campusVideos;
-        SafeStorage.set(CampusManager.VIDEOS_KEY, JSON.stringify(CampusManager.videos));
-        CampusManager.renderAdminVideos();
-        CampusManager.renderPlaylist();
-      }
-
-      Toast.emerald(`Importados ${addedCerts} certificados y datos del Campus`);
-      await this.renderList();
-    } catch (e) {
-      Toast.danger('Error al importar: ' + e.message);
-    }
   }
 };
 
@@ -3994,7 +3423,6 @@ const NormApp = {
   init() {
     const c = $('#normativesContainer');
     if (!c) return;
-
     c.innerHTML = APP_DATA.NORMATIVAS.map((n, i) => `
       <div class="bento-card reveal">
         <div class="bento-body">
@@ -4002,60 +3430,28 @@ const NormApp = {
           <h3 style="font-size:1rem;margin:10px 0;">${escapeHTML(n.title)}</h3>
           <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">${escapeHTML(n.desc)}</p>
           <div style="margin-top:auto;display:flex;gap:8px;">
-            <button class="btn btn-fire btn-sm" data-norm-index="${i}" style="flex:1;">
-              <i data-lucide="book-open" style="width:12px;height:12px;"></i> Ver
-            </button>
-            <a href="${escapeHTML(n.url)}" target="_blank" rel="noopener" class="icon-btn" aria-label="Oficial" style="width:36px;height:36px;min-width:36px;">
-              <i data-lucide="external-link" style="width:14px;height:14px;"></i>
-            </a>
+            <button class="btn btn-fire btn-sm" data-norm-index="${i}" style="flex:1;"><i data-lucide="book-open" style="width:12px;height:12px;"></i> Ver</button>
+            <a href="${escapeHTML(n.url)}" target="_blank" rel="noopener" class="icon-btn" aria-label="Oficial" style="width:36px;height:36px;min-width:36px;"><i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
           </div>
         </div>
       </div>
     `).join('');
-
     c.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-norm-index]');
       if (btn) this.openModal(parseInt(btn.dataset.normIndex, 10));
     });
   },
-
   openModal(idx) {
     const d = APP_DATA.NORMATIVAS[idx];
     if (!d) return;
     $('#normModalTag').textContent = d.tag;
     $('#normModalTitle').textContent = d.title;
-    $('#normModalBody').innerHTML = `
-      <p style="color:var(--text);">${escapeHTML(d.desc)}</p>
-      <div>
-        <strong style="color:var(--brand-fire);display:block;margin-bottom:6px;">Obligaciones:</strong>
-        <ul style="list-style:disc;padding-left:20px;display:flex;flex-direction:column;gap:6px;">
-          ${d.articles.map(a => `<li>${escapeHTML(a)}</li>`).join('')}
-        </ul>
-      </div>
-      <div style="background:var(--bg);padding:12px;border-radius:10px;border-left:3px solid var(--brand-fire);">
-        <strong style="display:block;margin-bottom:4px;color:var(--text);">Sanciones:</strong>
-        <span>${escapeHTML(d.fines)}</span>
-      </div>
-    `;
+    $('#normModalBody').innerHTML = `<p style="color:var(--text);">${escapeHTML(d.desc)}</p><div><strong style="color:var(--brand-fire);display:block;margin-bottom:6px;">Obligaciones:</strong><ul style="list-style:disc;padding-left:20px;display:flex;flex-direction:column;gap:6px;">${d.articles.map(a => `<li>${escapeHTML(a)}</li>`).join('')}</ul></div><div style="background:var(--bg);padding:12px;border-radius:10px;border-left:3px solid var(--brand-fire);"><strong style="display:block;margin-bottom:4px;color:var(--text);">Sanciones:</strong><span>${escapeHTML(d.fines)}</span></div>`;
     $('#normModalLink').href = d.url;
     this.openModal_('normModal');
   },
-
-  openModal_(id) {
-    const m = document.getElementById(id);
-    if (!m) return;
-    m.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
-  },
-
-  closeModal() { this.closeModal_('normModal'); },
-  closeModal_(id) {
-    const m = document.getElementById(id);
-    if (!m) return;
-    m.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+  openModal_(id) { const m = document.getElementById(id); if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; if (window.lucide) try { window.lucide.createIcons(); } catch(e) {} } },
+  closeModal_ (id) { const m = document.getElementById(id); if (m) { m.classList.remove('active'); document.body.style.overflow = ''; } }
 };
 
 const LegalApp = {
@@ -4070,155 +3466,75 @@ const LegalApp = {
     if (!c) return;
     $('#caseModalBadge').textContent = c.badge;
     $('#caseModalTitle').textContent = c.title;
-    $('#caseModalBody').innerHTML = `
-      <div>
-        <strong style="color:var(--brand-danger);display:block;margin-bottom:4px;">1. Riesgo:</strong>
-        <p>${escapeHTML(c.problem)}</p>
-      </div>
-      <div>
-        <strong style="color:var(--brand-gold);display:block;margin-bottom:4px;">2. Estrategia:</strong>
-        <p>${escapeHTML(c.strategy)}</p>
-      </div>
-      <div style="background:var(--bg);padding:12px;border-radius:10px;border-left:3px solid var(--brand-gold);">
-        <strong style="color:var(--brand-emerald);display:block;margin-bottom:4px;">3. Resultado:</strong>
-        <p style="color:var(--text);font-weight:600;">${escapeHTML(c.outcome)}</p>
-      </div>
-    `;
+    $('#caseModalBody').innerHTML = `<div><strong style="color:var(--brand-danger);display:block;margin-bottom:4px;">1. Riesgo:</strong><p>${escapeHTML(c.problem)}</p></div><div><strong style="color:var(--brand-gold);display:block;margin-bottom:4px;">2. Estrategia:</strong><p>${escapeHTML(c.strategy)}</p></div><div style="background:var(--bg);padding:12px;border-radius:10px;border-left:3px solid var(--brand-gold);"><strong style="color:var(--brand-emerald);display:block;margin-bottom:4px;">3. Resultado:</strong><p style="color:var(--text);font-weight:600;">${escapeHTML(c.outcome)}</p></div>`;
     NormApp.openModal_('caseModal');
-  },
-  closeCaseModal() { NormApp.closeModal_('caseModal'); }
+  }
 };
 
 const ThemeManager = {
   init() {
-    const btn = $('#themeToggleBtn');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
+    $('#themeToggleBtn')?.addEventListener('click', () => {
       const cur = document.documentElement.getAttribute('data-theme') || 'dark';
       const next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
-      SafeStorage.set('dagat-theme', next);
+      try { localStorage.setItem('dagat-theme', next); } catch(e) {}
     });
   }
 };
 
 const MobileMenu = {
   init() {
-    const open = $('#menuToggleBtn');
-    const close = $('#menuCloseBtn');
-    const backdrop = $('#navDrawerBackdrop');
-
-    if (open) open.addEventListener('click', () => this.openDrawer());
-    if (close) close.addEventListener('click', () => this.close());
-    if (backdrop) backdrop.addEventListener('click', () => this.close());
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') this.close();
-    });
+    $('#menuToggleBtn')?.addEventListener('click', () => this.openDrawer());
+    $('#menuCloseBtn')?.addEventListener('click', () => this.close());
+    $('#navDrawerBackdrop')?.addEventListener('click', () => this.close());
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') this.close(); });
   },
-  openDrawer() {
-    $('#navDrawer')?.classList.add('open');
-    $('#navDrawerBackdrop')?.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  },
-  close() {
-    $('#navDrawer')?.classList.remove('open');
-    $('#navDrawerBackdrop')?.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  openDrawer() { $('#navDrawer')?.classList.add('open'); $('#navDrawerBackdrop')?.classList.add('open'); document.body.style.overflow = 'hidden'; },
+  close() { $('#navDrawer')?.classList.remove('open'); $('#navDrawerBackdrop')?.classList.remove('open'); document.body.style.overflow = ''; }
 };
 
 const ModalManager = {
   init() {
     document.addEventListener('click', (e) => {
       const closeBtn = e.target.closest('[data-close-modal]');
-      if (closeBtn) {
-        e.preventDefault();
-        NormApp.closeModal_(closeBtn.dataset.closeModal);
-      }
+      if (closeBtn) { e.preventDefault(); NormApp.closeModal_(closeBtn.dataset.closeModal); }
     });
-
     $$('.app-modal').forEach(m => {
-      m.addEventListener('click', (e) => {
-        if (e.target === m) NormApp.closeModal_(m.id);
-      });
+      m.addEventListener('click', (e) => { if (e.target === m) NormApp.closeModal_(m.id); });
     });
-
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        $$('.app-modal.active').forEach(m => NormApp.closeModal_(m.id));
-      }
+      if (e.key === 'Escape') $$('.app-modal.active').forEach(m => NormApp.closeModal_(m.id));
     });
   }
 };
 
 const ContactForm = {
   init() {
-    const form = $('#contactFormDispatcher');
-    if (!form) return;
-    form.addEventListener('submit', (e) => {
+    $('#contactFormDispatcher')?.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = $('#contactName').value.trim();
       const company = $('#contactCompany').value.trim();
       const division = $('#contactDivision').value;
       const msg = $('#contactMessage').value.trim();
-
-      if (!name || !company || !msg) {
-        Toast.danger('Completa los campos obligatorios.');
-        return;
-      }
-
+      if (!name || !company || !msg) { Toast.danger('Completa los campos obligatorios.'); return; }
       const text = `Hola DAGAT:%0A- Nombre: ${encodeURIComponent(name)}%0A- Empresa: ${encodeURIComponent(company)}%0A- División: ${encodeURIComponent(division)}%0A- Consulta: ${encodeURIComponent(msg)}`;
       window.open(`https://wa.me/${APP_DATA.WHATSAPP}?text=${text}`, '_blank');
       Toast.emerald('Abriendo WhatsApp...');
-      form.reset();
+      e.target.reset();
     });
   }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
-
   Toast.container = $('#toastContainer');
-
-  Analytics.init();
-  ThemeManager.init();
-  MobileMenu.init();
-  Reveal.init();
-  Counters.init();
-
-  CertManager.init();
-  CampusManager.init();
-  Router.init();
-  SunafilCalc.init();
-  NormApp.init();
-  LegalApp.init();
-  ModalManager.init();
-  ContactForm.init();
-  AdminAuth.init();
-  AdminPanel.init();
-
-  setTimeout(() => {
-    $$('.reveal:not(.visible)').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 1.5) el.classList.add('visible');
-    });
-  }, 1500);
-
-  if (ADMIN_HASH === 'PEGA_AQUI_TU_HASH_DE_64_CARACTERES') {
-    Toast.gold('Aviso: configura ADMIN_HASH para habilitar el panel de administración.', 8000);
-  }
-
-  console.log('%c DAGAT SAC v7.1 SECURE-BASIC ', 'background:linear-gradient(135deg,#ff5722,#eab308);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  Analytics.init(); ThemeManager.init(); MobileMenu.init(); Reveal.init(); Counters.init();
+  CertManager.init(); CampusManager.init(); Router.init(); SunafilCalc.init(); NormApp.init(); LegalApp.init(); ModalManager.init(); ContactForm.init(); AdminAuth.init(); AdminPanel.init();
+  setTimeout(() => { $$('.reveal:not(.visible)').forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight * 1.5) el.classList.add('visible'); }); }, 1500);
+  console.log('%c DAGAT SAC v8.0 SUPABASE SECURE ', 'background:linear-gradient(135deg,#10b981,#06b6d4);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
 });
 
-window.Router = Router;
-window.AdminAuth = AdminAuth;
-window.AdminPanel = AdminPanel;
-window.CertManager = CertManager;
-window.CampusManager = CampusManager;
-window.NormApp = NormApp;
-window.LegalApp = LegalApp;
+window.Router = Router; window.AdminAuth = AdminAuth; window.AdminPanel = AdminPanel; window.CertManager = CertManager; window.CampusManager = CampusManager; window.NormApp = NormApp; window.LegalApp = LegalApp;
 </script>
 </body>
 </html>
