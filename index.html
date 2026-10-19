@@ -643,9 +643,6 @@ body::before {
   line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════════════════════
-   SERVICE CARDS — Diseño premium con imagen + overlay
-   ═══════════════════════════════════════════════════════ */
 .service-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -902,7 +899,6 @@ body::before {
   box-shadow: 0 20px 60px -20px rgba(6, 182, 212, 0.4), var(--shadow-lg);
 }
 
-/* Bento grid (para normativas y casos) */
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1028,7 +1024,6 @@ body::before {
   margin-top: 12px;
 }
 
-/* Campus Virtual Grid */
 .campus-grid-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -1350,13 +1345,9 @@ body::before {
 
 <main id="main-content">
 
-<!-- ═══════════════════════════════════════════════════════
-     INICIO
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view active" id="sheet-inicio">
   <div class="hero-stage">
     <div style="max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2;width:100%;">
-
       <div class="monumental-logo-wrapper">
         <div class="orbital-glow-core"></div>
         <div class="orbital-ring ring-inner"></div>
@@ -1424,9 +1415,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     INGENIERÍA
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-ingenieria">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -1595,9 +1583,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     DAGAT LAW
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-dagat-law">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -1836,9 +1821,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CONTABILIDAD
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-contabilidad">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -1957,9 +1939,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CAMPUS VIRTUAL / AULA DE GRABACIONES
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-campus">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -1974,7 +1953,6 @@ body::before {
       <p class="sheet-desc">Diplomados y cursos especializados en Derecho Penal-Laboral, SG-SST e Ingeniería NFPA con acceso las 24 horas.</p>
     </div>
 
-    <!-- VISTA 1: LOGIN DE ALUMNOS -->
     <div id="campusAuthGate" class="card-surface reveal" style="max-width:460px;margin:0 auto;border-color:var(--border-gold);">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
         <div style="width:44px;height:44px;border-radius:12px;background:rgba(234,179,8,0.15);color:var(--brand-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -1986,12 +1964,9 @@ body::before {
         </div>
       </div>
 
-      <div style="background:rgba(234,179,8,0.08);border-left:3px solid var(--brand-gold);padding:10px 12px;border-radius:6px;margin-bottom:16px;font-size:0.78rem;">
-        <strong style="color:var(--brand-gold);display:block;">Credencial Demo de Prueba:</strong>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-muted);">DNI: 45892011 &nbsp;|&nbsp; Clave: dagat2025</span>
-        <button type="button" class="btn btn-ghost btn-sm" id="btnFillDemoStudent" style="margin-top:8px;width:100%;">
-          <i data-lucide="wand-2" style="width:13px;height:13px;"></i> Autocompletar e Ingresar Demo
-        </button>
+      <div style="background:rgba(255,87,34,0.08);border-left:3px solid var(--brand-fire);padding:10px 12px;border-radius:6px;margin-bottom:16px;font-size:0.78rem;">
+        <strong style="color:var(--brand-fire);display:block;margin-bottom:2px;">Acceso restringido</strong>
+        <span style="color:var(--text-muted);">Los usuarios del campus son asignados directamente por el administrador de DAGAT.</span>
       </div>
 
       <form id="campusLoginForm" style="display:flex;flex-direction:column;gap:14px;">
@@ -2014,7 +1989,6 @@ body::before {
       </div>
     </div>
 
-    <!-- VISTA 2: REPRODUCTOR Y LISTA DE CLASES -->
     <div id="campusClassroomArea" style="display:none;">
       <div class="card-surface" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-color:var(--border-gold);">
         <div style="display:flex;align-items:center;gap:12px;">
@@ -2028,7 +2002,7 @@ body::before {
         </div>
         <div style="display:flex;gap:8px;">
           <button type="button" class="btn btn-ghost btn-sm" data-route="admin" style="border-color:var(--border-gold);color:var(--brand-gold);">
-            <i data-lucide="settings" style="width:14px;height:14px;"></i> Subir Videos / Alumnos
+            <i data-lucide="settings" style="width:14px;height:14px;"></i> Panel Admin
           </button>
           <button type="button" class="btn btn-ghost btn-sm" id="btnCampusLogout">
             <i data-lucide="log-out" style="width:14px;height:14px;"></i> Salir del Aula
@@ -2037,7 +2011,6 @@ body::before {
       </div>
 
       <div class="campus-grid-layout">
-        <!-- Reproductor Principal -->
         <div class="card-surface">
           <div style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border-strong);margin-bottom:16px;">
             <iframe id="campusVideoIframe"
@@ -2061,7 +2034,6 @@ body::before {
           </div>
         </div>
 
-        <!-- Lista de Grabaciones -->
         <div class="card-surface">
           <h4 style="font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
             <i data-lucide="list-video" style="width:18px;height:18px;color:var(--brand-fire);"></i>
@@ -2074,9 +2046,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CERTIFICADOS
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-certificados">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -2157,9 +2126,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     NORMATIVAS
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-normativas">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -2178,9 +2144,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CONTACTO
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-contacto">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -2252,9 +2215,6 @@ body::before {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     ADMIN PANEL (Certificados + Alumnos + Grabaciones)
-     ═══════════════════════════════════════════════════════ -->
 <section class="sheet-view" id="sheet-admin">
   <div class="sheet-container">
     <nav class="sheet-breadcrumb">
@@ -2285,7 +2245,6 @@ body::before {
       <input type="file" id="fileImportJson" accept=".json" style="display:none;">
     </div>
 
-    <!-- 1. GENERADOR DE CERTIFICADOS -->
     <div style="background:var(--bg-surface);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px;" class="reveal">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">
         <div style="color:var(--brand-gold);"><i data-lucide="file-plus-2" style="width:22px;height:22px;"></i></div>
@@ -2346,11 +2305,10 @@ body::before {
       <div id="adminCertList" class="admin-cert-list-grid" style="display:grid;grid-template-columns:1fr;gap:12px;"></div>
     </div>
 
-    <!-- 2. GESTIÓN DE ALUMNOS DEL CAMPUS -->
     <div style="background:var(--bg-surface);border:1px solid var(--border-fire);border-radius:var(--radius-lg);padding:20px;margin-bottom:24px;" class="reveal">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">
         <div style="color:var(--brand-fire);"><i data-lucide="users" style="width:22px;height:22px;"></i></div>
-        <h3 style="font-size:1.05rem;">2. Generar Usuario y Clave para Alumnos (Campus Virtual)</h3>
+        <h3 style="font-size:1.05rem;">2. Generar Usuario y Clave para Alumnos</h3>
       </div>
 
       <form id="adminStudentForm" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:18px;">
@@ -2366,11 +2324,10 @@ body::before {
       <div id="adminStudentList" class="admin-cert-list-grid" style="display:grid;grid-template-columns:1fr;gap:12px;"></div>
     </div>
 
-    <!-- 3. SUBIR / PUBLICAR VIDEOS EN EL CAMPUS -->
     <div style="background:var(--bg-surface);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:20px;" class="reveal">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">
         <div style="color:var(--brand-gold);"><i data-lucide="video" style="width:22px;height:22px;"></i></div>
-        <h3 style="font-size:1.05rem;">3. Publicar Nueva Grabación de Clase en el Campus</h3>
+        <h3 style="font-size:1.05rem;">3. Publicar Nueva Grabación de Clase</h3>
       </div>
 
       <form id="adminVideoForm" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
@@ -2379,9 +2336,9 @@ body::before {
           <input type="text" id="vidAdminDuration" class="form-input" placeholder="Duración (Ej: 2h 05m)" required>
         </div>
         <input type="text" id="vidAdminTitle" class="form-input" placeholder="Título de la clase grabada *" required>
-        <input type="url" id="vidAdminUrl" class="form-input" placeholder="Enlace de YouTube o Vimeo (Ej: https://www.youtube.com/watch?v=...) *" required>
+        <input type="url" id="vidAdminUrl" class="form-input" placeholder="Enlace de YouTube o Vimeo *" required>
         <input type="url" id="vidAdminMaterial" class="form-input" placeholder="Enlace a PDF / Diapositivas en Drive (opcional)">
-        <textarea id="vidAdminDesc" class="form-input" rows="2" placeholder="Resumen de los temas tratados en la sesión *" required></textarea>
+        <textarea id="vidAdminDesc" class="form-input" rows="2" placeholder="Resumen de los temas tratados *" required></textarea>
         <button type="submit" class="btn btn-law">
           <i data-lucide="upload-cloud" style="width:16px;height:16px;"></i> Publicar Video en el Campus
         </button>
@@ -2395,7 +2352,6 @@ body::before {
 
 </main>
 
-<!-- MODALES -->
 <div class="app-modal" id="normModal">
   <div class="app-modal-box">
     <div class="modal-handle"></div>
@@ -2485,9 +2441,6 @@ body::before {
   <i data-lucide="message-circle" style="width:26px;height:26px;"></i>
 </a>
 
-<!-- ═══════════════════════════════════════════════════════
-     BASE DE DATOS EMBEBIDA (certificados del sitio)
-     ═══════════════════════════════════════════════════════ -->
 <script type="application/json" id="seed-certificates">
 [
   {
@@ -2529,6 +2482,26 @@ body::before {
 <script>
 'use strict';
 
+/* ═══════════════════════════════════════════════════════════════════════
+   CONFIGURACIÓN DE SEGURIDAD — CAMBIA ESTO ANTES DE PUBLICAR
+   ═══════════════════════════════════════════════════════════════════════
+   
+   PASO 1: Abre este archivo en un navegador.
+   PASO 2: Presiona F12 → pestaña Console.
+   PASO 3: Pega el siguiente comando (cambia 'MiClaveSecreta2026' por TU clave):
+   
+   crypto.subtle.digest('SHA-256', new TextEncoder().encode('MiClaveSecreta2026'))
+     .then(b => console.log(Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')));
+   
+   PASO 4: Copia el string de 64 caracteres que aparece.
+   PASO 5: Pégalo abajo en ADMIN_HASH.
+   PASO 6: Guarda y publica. NUNCA compartas la clave real.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+const ADMIN_HASH = 'PEGA_AQUI_TU_HASH_DE_64_CARACTERES';
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
@@ -2537,6 +2510,11 @@ const escapeHTML = (str) => {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
+};
+
+const sha256 = async (text) => {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
 };
 
 const SafeStorage = {
@@ -2558,10 +2536,7 @@ const getSeedCerts = () => {
   try {
     const el = document.getElementById('seed-certificates');
     return el ? JSON.parse(el.textContent) : [];
-  } catch (e) {
-    console.warn('Error leyendo certificados embebidos:', e);
-    return [];
-  }
+  } catch (e) { return []; }
 };
 
 const APP_DATA = {
@@ -2591,11 +2566,7 @@ const APP_DATA = {
       tag: 'LEY GENERAL',
       title: 'Ley N° 29783 — SST',
       desc: 'Marco de prevención y responsabilidad indelegable del empleador.',
-      articles: [
-        'Art. 26: Directorio lidera el SG-SST.',
-        'Art. 35: Mínimo 4 capacitaciones anuales.',
-        'Art. 49: Entrega de EPP conforme a IPERC.'
-      ],
+      articles: ['Art. 26: Directorio lidera el SG-SST.', 'Art. 35: Mínimo 4 capacitaciones anuales.', 'Art. 49: Entrega de EPP conforme a IPERC.'],
       fines: 'Multas muy graves: 2.63 a 52.66 UIT.',
       url: 'https://busquedas.elperuano.pe/dispositivo/NL/1004381-1'
     },
@@ -2603,10 +2574,7 @@ const APP_DATA = {
       tag: 'CÓDIGO PENAL',
       title: 'Art. 168-A CP',
       desc: 'Sanciona con 4 a 8 años de prisión por muerte o lesiones graves.',
-      articles: [
-        'Párrafo 1: Peligro abstracto (1-4 años).',
-        'Párrafo 2: Muerte/lesiones graves (4-8 años efectivos).'
-      ],
+      articles: ['Párrafo 1: Peligro abstracto (1-4 años).', 'Párrafo 2: Muerte/lesiones graves (4-8 años efectivos).'],
       fines: 'Prisión efectiva e inhabilitación.',
       url: 'https://spij.minjus.gob.pe/'
     },
@@ -2614,10 +2582,7 @@ const APP_DATA = {
       tag: 'REGLAMENTO',
       title: 'D.S. 005-2012-TR',
       desc: 'Reglamento de SST y registros obligatorios.',
-      articles: [
-        'Art. 38: Comité Paritario en 20+ trabajadores.',
-        'Art. 77: IPERC actualizado anualmente.'
-      ],
+      articles: ['Art. 38: Comité Paritario en 20+ trabajadores.', 'Art. 77: IPERC actualizado anualmente.'],
       fines: 'Paralización preventiva de operaciones.',
       url: 'https://busquedas.elperuano.pe/dispositivo/NL/1005851-1'
     },
@@ -2625,10 +2590,7 @@ const APP_DATA = {
       tag: 'EDIFICACIONES',
       title: 'Norma A.130 RNE',
       desc: 'Diseño de seguridad contra incendios y evacuación.',
-      articles: [
-        'Cap. III: Detección direccionable según aforo.',
-        'Cap. V: Rociadores NFPA 13 y cuartos de bombas.'
-      ],
+      articles: ['Cap. III: Detección direccionable según aforo.', 'Cap. V: Rociadores NFPA 13 y cuartos de bombas.'],
       fines: 'Sin licencia municipal ni ITSE.',
       url: 'https://www.gob.pe/vivienda'
     },
@@ -2636,10 +2598,7 @@ const APP_DATA = {
       tag: 'DEFENSA CIVIL',
       title: 'D.S. 002-2018-PCM (ITSE)',
       desc: 'Matriz de riesgo para inspecciones técnicas.',
-      articles: [
-        'Inspección previa para almacenes y fábricas.',
-        'Vigencia 2 años con visitas inopinadas.'
-      ],
+      articles: ['Inspección previa para almacenes y fábricas.', 'Vigencia 2 años con visitas inopinadas.'],
       fines: 'Clausura temporal o definitiva.',
       url: 'https://busquedas.elperuano.pe/dispositivo/NL/1603517-1'
     },
@@ -2647,10 +2606,7 @@ const APP_DATA = {
       tag: 'ESTÁNDAR NFPA',
       title: 'NFPA 10, 13, 20 y 72',
       desc: 'Estándares internacionales homologados.',
-      articles: [
-        'NFPA 20: Bombas estacionarias.',
-        'NFPA 13: Diseño hidráulico de rociadores.'
-      ],
+      articles: ['NFPA 20: Bombas estacionarias.', 'NFPA 13: Diseño hidráulico de rociadores.'],
       fines: 'Anulación de cobertura de seguros.',
       url: 'https://www.nfpa.org'
     }
@@ -2726,9 +2682,7 @@ const Toast = {
 };
 
 const Analytics = {
-  track(event, data = {}) {
-    if (window.gtag) window.gtag('event', event, data);
-  },
+  track(event, data = {}) { if (window.gtag) window.gtag('event', event, data); },
   init() {
     document.addEventListener('click', (e) => {
       const el = e.target.closest('[data-analytics]');
@@ -2758,7 +2712,6 @@ const Router = {
     'contacto': 'Contacto — DAGAT SAC',
     'admin': 'Panel Admin — DAGAT SAC'
   },
-
   init() {
     document.addEventListener('click', (e) => {
       const routeEl = e.target.closest('[data-route]');
@@ -2787,7 +2740,6 @@ const Router = {
     window.addEventListener('hashchange', () => this.handleHash());
     this.handleHash();
   },
-
   handleHash() {
     const rawHash = window.location.hash.replace('#', '').trim();
     const [sheetId, queryString] = rawHash.split('?');
@@ -2798,29 +2750,27 @@ const Router = {
       this.navigate('inicio', false);
     }
   },
-
   navigate(sheetId, updateHash = true, params = new URLSearchParams()) {
     if (!this.validSheets.includes(sheetId)) sheetId = 'inicio';
+    if (sheetId === 'admin' && !AdminAuth.isAuthenticated()) {
+      Toast.danger('Acceso restringido. Inicia sesión como administrador.');
+      AdminAuth.showLoginModal();
+      return;
+    }
     this.activeSheet = sheetId;
-
     if (updateHash) {
       const query = params.toString();
       const newHash = '#' + sheetId + (query ? '?' + query : '');
       if (window.location.hash !== newHash) window.location.hash = newHash;
     }
-
     $$('.sheet-view').forEach(v => v.classList.toggle('active', v.id === `sheet-${sheetId}`));
     $$('.nav-tab-link').forEach(tab => {
       tab.classList.toggle('active', tab.dataset.sheet === sheetId);
     });
-
     document.title = this.titles[sheetId] || this.titles['inicio'];
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
-
     setTimeout(() => Reveal.check(), 100);
-
     if (sheetId === 'certificados' && params.get('code')) {
       setTimeout(() => {
         const input = $('#certSearchInput');
@@ -2830,7 +2780,6 @@ const Router = {
         }
       }, 300);
     }
-
     if (sheetId === 'admin') {
       AdminPanel.renderList();
       CampusManager.renderAdminStudents();
@@ -2854,7 +2803,6 @@ const Reveal = {
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
     $$('.reveal').forEach(el => this.observer.observe(el));
   },
   check() {
@@ -2941,22 +2889,22 @@ const SunafilCalc = {
   }
 };
 
-/* ═══════════════════════════════════════════════════════
-   CAMPUS VIRTUAL MANAGER (Usuarios + Playlist de Videos)
-   ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════
+   CAMPUS VIRTUAL — VERSIÓN SEGURA (Fase A)
+   
+   IMPORTANTE: las contraseñas ya NO se guardan en texto plano. Se guardan
+   como hash SHA-256. Esto evita que al abrir la consola del navegador
+   cualquiera pueda leer "pass: 'dagat2025'".
+   
+   Aun así, recuerda: sin backend, alguien con conocimientos puede
+   modificar el localStorage. Esto es solo una primera barrera.
+   ═══════════════════════════════════════════════════════════════════════ */
 const CampusManager = {
-  USERS_KEY: 'dagat_campus_users',
-  VIDEOS_KEY: 'dagat_campus_videos',
-  SESSION_KEY: 'dagat_campus_active_student',
+  USERS_KEY: 'dagat_campus_users_v2',
+  VIDEOS_KEY: 'dagat_campus_videos_v2',
+  SESSION_KEY: 'dagat_campus_active_student_v2',
 
-  defaultUsers: [
-    {
-      dni: '45892011',
-      pass: 'dagat2025',
-      name: 'JUAN CARLOS PÉREZ RAMOS',
-      program: 'Diplomado en Derecho Penal Laboral y Sistemas SST'
-    }
-  ],
+  defaultUsers: [],
 
   defaultVideos: [
     {
@@ -2994,12 +2942,6 @@ const CampusManager = {
 
   init() {
     this.loadData();
-
-    $('#btnFillDemoStudent')?.addEventListener('click', () => {
-      $('#stuDniInput').value = '45892011';
-      $('#stuPassInput').value = 'dagat2025';
-      this.login();
-    });
 
     $('#campusLoginForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -3040,10 +2982,7 @@ const CampusManager = {
       if (rawU) savedUsers = JSON.parse(rawU);
     } catch (e) { savedUsers = []; }
 
-    const uMap = new Map();
-    this.defaultUsers.forEach(u => uMap.set(u.dni, u));
-    savedUsers.forEach(u => uMap.set(u.dni, u));
-    this.users = Array.from(uMap.values());
+    this.users = Array.isArray(savedUsers) ? savedUsers : [];
     SafeStorage.set(this.USERS_KEY, JSON.stringify(this.users));
 
     let savedVideos = [];
@@ -3079,17 +3018,28 @@ const CampusManager = {
     return raw;
   },
 
-  login() {
+  async login() {
     const dni = ($('#stuDniInput')?.value || '').trim();
     const pass = ($('#stuPassInput')?.value || '').trim();
-    const found = this.users.find(u => u.dni === dni && u.pass === pass);
+
+    if (!dni || !pass) { Toast.danger('Completa los campos.'); return; }
+
+    const passHash = await sha256(pass);
+
+    const found = this.users.find(u => u.dni === dni && u.passHash === passHash);
 
     if (!found) {
       Toast.danger('DNI o contraseña incorrectos.');
       return;
     }
 
-    SafeStorage.setSession(this.SESSION_KEY, JSON.stringify(found));
+    SafeStorage.setSession(this.SESSION_KEY, JSON.stringify({
+      dni: found.dni,
+      name: found.name,
+      program: found.program,
+      createdAt: Date.now()
+    }));
+
     Toast.emerald(`Bienvenido al Aula, ${found.name}`);
     this.openClassroom(found);
   },
@@ -3108,7 +3058,7 @@ const CampusManager = {
     if (!raw) return;
     try {
       const student = JSON.parse(raw);
-      if (student && student.dni) this.openClassroom(student);
+      if (student && student.dni && student.name) this.openClassroom(student);
     } catch (e) {}
   },
 
@@ -3116,7 +3066,7 @@ const CampusManager = {
     $('#campusAuthGate').style.display = 'none';
     $('#campusClassroomArea').style.display = 'block';
     $('#campusStudentName').textContent = student.name;
-    $('#campusStudentProgram').textContent = student.program;
+    $('#campusStudentProgram').textContent = student.program || 'Programa activo';
     this.renderPlaylist();
     this.selectVideo(0);
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
@@ -3156,8 +3106,8 @@ const CampusManager = {
     this.renderPlaylist();
   },
 
-  createStudent() {
-    if (!AdminPanel.checkSession()) {
+  async createStudent() {
+    if (!AdminAuth.isAuthenticated()) {
       Toast.danger('Inicia sesión como administrador.');
       AdminAuth.showLoginModal();
       return;
@@ -3173,8 +3123,14 @@ const CampusManager = {
       return;
     }
 
+    if (pass.length < 6) {
+      Toast.danger('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+
+    const passHash = await sha256(pass);
     const idx = this.users.findIndex(u => u.dni === dni);
-    const newUser = { dni, pass, name, program };
+    const newUser = { dni, passHash, name, program };
     if (idx >= 0) this.users[idx] = newUser;
     else this.users.push(newUser);
 
@@ -3185,6 +3141,7 @@ const CampusManager = {
   },
 
   deleteStudent(dni) {
+    if (!AdminAuth.isAuthenticated()) return;
     this.users = this.users.filter(u => u.dni !== dni);
     SafeStorage.set(this.USERS_KEY, JSON.stringify(this.users));
     this.renderAdminStudents();
@@ -3194,10 +3151,14 @@ const CampusManager = {
   renderAdminStudents() {
     const list = $('#adminStudentList');
     if (!list) return;
+    if (!this.users.length) {
+      list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">Aún no hay alumnos registrados. Crea el primero arriba.</p>';
+      return;
+    }
     list.innerHTML = this.users.map(u => `
       <div class="admin-cert-card">
         <h5>${escapeHTML(u.name)}</h5>
-        <span class="cert-id">DNI: ${escapeHTML(u.dni)} | Clave: ${escapeHTML(u.pass)}</span>
+        <span class="cert-id">DNI: ${escapeHTML(u.dni)}</span>
         <p class="cert-meta">${escapeHTML(u.program)}</p>
         <div class="cert-actions">
           <button type="button" class="btn btn-danger btn-sm" data-del-student="${escapeHTML(u.dni)}" style="width:100%;">
@@ -3209,8 +3170,8 @@ const CampusManager = {
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
   },
 
-  createVideo() {
-    if (!AdminPanel.checkSession()) {
+  async createVideo() {
+    if (!AdminAuth.isAuthenticated()) {
       Toast.danger('Inicia sesión como administrador.');
       AdminAuth.showLoginModal();
       return;
@@ -3230,12 +3191,9 @@ const CampusManager = {
 
     const newVid = {
       id: 'vid-' + Date.now(),
-      tag,
-      title,
-      duration,
+      tag, title, duration,
       embedUrl: this.normalizeEmbedUrl(rawUrl),
-      desc,
-      materialUrl
+      desc, materialUrl
     };
 
     this.videos.push(newVid);
@@ -3247,6 +3205,7 @@ const CampusManager = {
   },
 
   deleteVideo(id) {
+    if (!AdminAuth.isAuthenticated()) return;
     this.videos = this.videos.filter(v => v.id !== id);
     SafeStorage.set(this.VIDEOS_KEY, JSON.stringify(this.videos));
     this.renderAdminVideos();
@@ -3257,6 +3216,10 @@ const CampusManager = {
   renderAdminVideos() {
     const list = $('#adminVideoList');
     if (!list) return;
+    if (!this.videos.length) {
+      list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">No hay videos publicados.</p>';
+      return;
+    }
     list.innerHTML = this.videos.map(v => `
       <div class="admin-cert-card">
         <span class="cert-id">${escapeHTML(v.tag)} · ${escapeHTML(v.duration)}</span>
@@ -3274,7 +3237,7 @@ const CampusManager = {
 };
 
 const CertManager = {
-  STORAGE_KEY: 'dagat_certificates_db',
+  STORAGE_KEY: 'dagat_certificates_db_v2',
   activeCert: null,
   scanner: null,
   certificates: [],
@@ -3327,13 +3290,9 @@ const CertManager = {
     return this.certificates;
   },
 
-  persist() {
-    SafeStorage.set(this.STORAGE_KEY, JSON.stringify(this.certificates));
-  },
+  persist() { SafeStorage.set(this.STORAGE_KEY, JSON.stringify(this.certificates)); },
 
-  getCert(id) {
-    return this.certificates.find(c => c.id === id) || null;
-  },
+  getCert(id) { return this.certificates.find(c => c.id === id) || null; },
 
   getAllCerts() {
     return [...this.certificates].sort((a, b) =>
@@ -3650,16 +3609,21 @@ const CertManager = {
 
       loadImage(LOGO_URL).then(render).catch(() => render(null));
     } catch (e) {
-      console.error(e);
       Toast.danger('Error al generar PDF.');
     }
   }
 };
 
+/* ═══════════════════════════════════════════════════════════════════════
+   ADMIN AUTH — VERSIÓN SEGURA (Fase A)
+   
+   La clave maestra ya NO está en el código. Solo se guarda su hash
+   SHA-256. Para generar tu hash, sigue las instrucciones al inicio
+   del script (busca "CONFIGURACIÓN DE SEGURIDAD").
+   ═══════════════════════════════════════════════════════════════════════ */
 const AdminAuth = {
-  MASTER_KEY: 'Dagat2025#Admin',
-  SESSION_KEY: 'dagat_admin_session',
-  SESSION_DURATION: 8 * 60 * 60 * 1000,
+  SESSION_KEY: 'dagat_admin_session_v2',
+  SESSION_DURATION: 2 * 60 * 60 * 1000,
   MAX_ATTEMPTS: 5,
   LOCKOUT_MS: 5 * 60 * 1000,
   attempts: 0,
@@ -3679,27 +3643,30 @@ const AdminAuth = {
     this.checkSession();
   },
 
-  checkSession() {
+  isAuthenticated() {
     const raw = SafeStorage.getSession(this.SESSION_KEY);
-    if (!raw) return;
+    if (!raw) return false;
     try {
-      const session = JSON.parse(raw);
-      if (session.expires > Date.now()) {
-        const label = $('#adminBtnLabel');
-        if (label) label.textContent = 'Ir al Panel Admin';
-      } else {
+      const s = JSON.parse(raw);
+      if (!s.expires || s.expires < Date.now()) {
         sessionStorage.removeItem(this.SESSION_KEY);
+        return false;
       }
-    } catch (e) { sessionStorage.removeItem(this.SESSION_KEY); }
+      return s.authenticated === true;
+    } catch { return false; }
+  },
+
+  checkSession() {
+    if (this.isAuthenticated()) {
+      const label = $('#adminBtnLabel');
+      if (label) label.textContent = 'Ir al Panel Admin';
+    }
   },
 
   handleAccess() {
-    const raw = SafeStorage.getSession(this.SESSION_KEY);
-    if (raw) {
-      try {
-        const session = JSON.parse(raw);
-        if (session.expires > Date.now()) { Router.navigate('admin'); return; }
-      } catch (e) {}
+    if (this.isAuthenticated()) {
+      Router.navigate('admin');
+      return;
     }
     this.showLoginModal();
   },
@@ -3724,10 +3691,15 @@ const AdminAuth = {
     if (input) input.value = '';
   },
 
-  login() {
+  async login() {
     if (Date.now() < this.lockedUntil) {
       const s = Math.ceil((this.lockedUntil - Date.now()) / 1000);
       this.showError(`Bloqueado. Espera ${s}s`);
+      return;
+    }
+
+    if (ADMIN_HASH === 'PEGA_AQUI_TU_HASH_DE_64_CARACTERES') {
+      this.showError('El administrador debe configurar ADMIN_HASH antes de usar este panel. Revisa el código fuente.');
       return;
     }
 
@@ -3735,25 +3707,35 @@ const AdminAuth = {
     const pwd = (input?.value || '').trim();
     if (!pwd) { this.showError('Ingresa la clave.'); return; }
 
-    if (pwd === this.MASTER_KEY) {
-      this.attempts = 0;
-      const session = { authenticated: true, createdAt: Date.now(), expires: Date.now() + this.SESSION_DURATION };
-      SafeStorage.setSession(this.SESSION_KEY, JSON.stringify(session));
-      this.hideLoginModal();
-      const label = $('#adminBtnLabel');
-      if (label) label.textContent = 'Ir al Panel Admin';
-      Toast.gold('Acceso administrativo concedido');
-      Router.navigate('admin');
-    } else {
-      this.attempts++;
-      const remaining = this.MAX_ATTEMPTS - this.attempts;
-      if (this.attempts >= this.MAX_ATTEMPTS) {
-        this.lockedUntil = Date.now() + this.LOCKOUT_MS;
-        this.showError(`Bloqueado ${this.LOCKOUT_MS / 60000} min.`);
+    try {
+      const inputHash = await sha256(pwd);
+
+      if (inputHash === ADMIN_HASH) {
+        this.attempts = 0;
+        const session = {
+          authenticated: true,
+          createdAt: Date.now(),
+          expires: Date.now() + this.SESSION_DURATION
+        };
+        SafeStorage.setSession(this.SESSION_KEY, JSON.stringify(session));
+        this.hideLoginModal();
+        const label = $('#adminBtnLabel');
+        if (label) label.textContent = 'Ir al Panel Admin';
+        Toast.gold('Acceso administrativo concedido');
+        Router.navigate('admin');
       } else {
-        this.showError(`Clave incorrecta. ${remaining} intento${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}.`);
+        this.attempts++;
+        const remaining = this.MAX_ATTEMPTS - this.attempts;
+        if (this.attempts >= this.MAX_ATTEMPTS) {
+          this.lockedUntil = Date.now() + this.LOCKOUT_MS;
+          this.showError(`Bloqueado ${this.LOCKOUT_MS / 60000} min.`);
+        } else {
+          this.showError(`Clave incorrecta. ${remaining} intento${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}.`);
+        }
+        if (input) input.value = '';
       }
-      if (input) input.value = '';
+    } catch (e) {
+      this.showError('Error al verificar la clave.');
     }
   },
 
@@ -3792,10 +3774,7 @@ const AdminPanel = {
     if (list) {
       list.addEventListener('click', (e) => {
         const del = e.target.closest('[data-delete-cert]');
-        if (del) {
-          this.deleteCert(del.dataset.deleteCert);
-          return;
-        }
+        if (del) { this.deleteCert(del.dataset.deleteCert); return; }
         const dl = e.target.closest('[data-download-cert]');
         if (dl) this.downloadCert(dl.dataset.downloadCert);
       });
@@ -3812,17 +3791,8 @@ const AdminPanel = {
     }
   },
 
-  checkSession() {
-    const raw = SafeStorage.getSession(AdminAuth.SESSION_KEY);
-    if (!raw) return false;
-    try {
-      const s = JSON.parse(raw);
-      return s.expires > Date.now();
-    } catch { return false; }
-  },
-
   async createCert() {
-    if (!this.checkSession()) {
+    if (!AdminAuth.isAuthenticated()) {
       Toast.danger('Sesión expirada.');
       AdminAuth.showLoginModal();
       return;
@@ -3906,6 +3876,7 @@ const AdminPanel = {
   },
 
   async deleteCert(id) {
+    if (!AdminAuth.isAuthenticated()) return;
     await CertManager.deleteCert(id);
     Toast.gold(`Certificado ${id} eliminado`);
     await this.renderList();
@@ -3965,6 +3936,7 @@ const AdminPanel = {
   },
 
   exportJson() {
+    if (!AdminAuth.isAuthenticated()) return;
     const data = {
       exportedAt: new Date().toISOString(),
       certificates: CertManager.getAllCerts(),
@@ -3983,6 +3955,7 @@ const AdminPanel = {
 
   async importJson(file) {
     if (!file) return;
+    if (!AdminAuth.isAuthenticated()) return;
     try {
       const text = await file.text();
       const data = JSON.parse(text);
@@ -4232,7 +4205,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 1500);
 
-  console.log('%c DAGAT SAC v7.0 UNIFIED ', 'background:linear-gradient(135deg,#ff5722,#eab308);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  if (ADMIN_HASH === 'PEGA_AQUI_TU_HASH_DE_64_CARACTERES') {
+    Toast.gold('Aviso: configura ADMIN_HASH para habilitar el panel de administración.', 8000);
+  }
+
+  console.log('%c DAGAT SAC v7.1 SECURE-BASIC ', 'background:linear-gradient(135deg,#ff5722,#eab308);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
 });
 
 window.Router = Router;
