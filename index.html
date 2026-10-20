@@ -2060,7 +2060,7 @@ body::before {
       <div class="card-surface reveal">
         <h3 style="font-size:1.05rem;margin-bottom:8px;">Validar por Código</h3>
         <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">
-          Toca uno de prueba o digita el código:
+          Toca uno de prueba o digita el código impreso en el certificado:
         </p>
 
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
@@ -2071,7 +2071,7 @@ body::before {
 
         <div style="display:flex;gap:8px;margin-bottom:14px;flex-direction:column;">
           <input type="text" id="certSearchInput" class="form-input"
-                 placeholder="DAGAT-2025-00101"
+                 placeholder="DAGAT-2026-00001"
                  style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;"
                  autocomplete="off" spellcheck="false"
                  autocapitalize="characters"
@@ -2222,7 +2222,7 @@ body::before {
     <div class="sheet-header">
       <span class="sheet-tag gold">// ZONA RESTRINGIDA</span>
       <h2 class="sheet-title">Panel General de Administración</h2>
-      <p class="sheet-desc">Gestiona certificados QR, accesos de alumnos y videos grabados del Campus Virtual.</p>
+      <p class="sheet-desc">Gestiona certificados QR, accesos de alumnos y videos grabados en Supabase.</p>
     </div>
 
     <div class="data-actions reveal">
@@ -2239,6 +2239,13 @@ body::before {
         Cerrar Sesión Admin
       </button>
       <input type="file" id="fileImportJson" accept=".json" style="display:none;">
+    </div>
+
+    <!-- Caja de diagnóstico de Supabase (oculta salvo error de permisos/columnas) -->
+    <div id="supabaseDiagnosticBox" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.4);border-radius:var(--radius);padding:16px;margin-bottom:20px;font-size:0.84rem;">
+      <strong style="color:#f87171;display:block;margin-bottom:6px;">Diagnóstico de Base de Datos Supabase:</strong>
+      <p id="supabaseDiagnosticMsg" style="color:var(--text-muted);margin-bottom:8px;"></p>
+      <p style="font-size:0.78rem;color:var(--text-dim);">Solución: Entra a Supabase → SQL Editor y asegúrate de que la tabla <code>certificates</code> tenga <code>id text primary key</code> y una política RLS habilitada para <code>authenticated</code>.</p>
     </div>
 
     <div style="background:var(--bg-surface);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px;" class="reveal">
@@ -2286,7 +2293,7 @@ body::before {
             <input type="date" id="admExpiryDate" class="form-input">
           </div>
         </div>
-        <button type="submit" class="btn btn-law btn-block" style="margin-top:6px;">
+        <button type="submit" class="btn btn-law btn-block" id="btnSubmitCert" style="margin-top:6px;">
           <i data-lucide="file-check-2" style="width:16px;height:16px;"></i>
           Generar y Descargar Certificado PDF
         </button>
@@ -2411,7 +2418,7 @@ body::before {
     </div>
 
     <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:18px;">
-      Ingresa tu correo de administrador y contraseña.
+      Ingresa tu correo de administrador y contraseña de Supabase Auth.
     </p>
 
     <div style="margin-bottom:14px;">
@@ -2441,13 +2448,54 @@ body::before {
   <i data-lucide="message-circle" style="width:26px;height:26px;"></i>
 </a>
 
+<!-- Certificados semilla de respaldo para los botones de demostración -->
+<script type="application/json" id="seed-certificates">
+[
+  {
+    "id": "DAGAT-2025-00101",
+    "student_name": "JUAN CARLOS PÉREZ RAMOS",
+    "student_dni": "45892011",
+    "course_name": "Lucha Contra Incendios y Evacuación (NFPA 10/72)",
+    "course_hours": 8,
+    "issue_date": "2025-02-15",
+    "expiry_date": "2026-02-15",
+    "cert_type": "NFPA",
+    "issued_by": "DAGAT SAC"
+  },
+  {
+    "id": "DAGAT-2025-00102",
+    "student_name": "MARÍA ALEJANDRA VEGA SOTO",
+    "student_dni": "70214589",
+    "course_name": "Seguridad y Salud en el Trabajo conforme a Ley 29783",
+    "course_hours": 12,
+    "issue_date": "2025-03-01",
+    "expiry_date": "2026-03-01",
+    "cert_type": "SST",
+    "issued_by": "DAGAT SAC"
+  },
+  {
+    "id": "DAGAT-2025-00103",
+    "student_name": "CARLOS ALBERTO MENDOZA QUISPE",
+    "student_dni": "41982310",
+    "course_name": "Trabajo en Altura y Plataformas Elevadoras",
+    "course_hours": 16,
+    "issue_date": "2025-03-10",
+    "expiry_date": "2026-03-10",
+    "cert_type": "Técnico",
+    "issued_by": "DAGAT SAC"
+  }
+]
+</script>
+
 <script>
 'use strict';
 
 const SUPABASE_URL = 'https://regcqabwwdmbsvlwinvm.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJlZ2NxYWJ3d2RtYnN2bHdpbnZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0NDMwNTgsImV4cCI6MjEwODAxOTA1OH0.DOclbgSTjFfYyI3px3wT-LgcnKrz3N5wSAObinmt9XA';
 
-var supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: true, autoRefreshToken: true } });
+var supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true }
+});
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -2583,7 +2631,7 @@ const SVGGraphics = {
 
 const Toast = {
   container: null,
-  show(message, type = 'fire', duration = 3500) {
+  show(message, type = 'fire', duration = 4000) {
     if (!this.container) this.container = $('#toastContainer');
     const el = document.createElement('div');
     el.className = `toast ${type}`;
@@ -2605,7 +2653,7 @@ const Toast = {
   fire(msg) { return this.show(msg, 'fire'); },
   gold(msg) { return this.show(msg, 'gold'); },
   emerald(msg) { return this.show(msg, 'emerald'); },
-  danger(msg) { return this.show(msg, 'danger'); }
+  danger(msg) { return this.show(msg, 'danger', 5500); }
 };
 
 const Analytics = {
@@ -2845,6 +2893,29 @@ const CampusManager = {
     this.loadVideos();
   },
 
+  normalizeEmbedUrl(url) {
+    const raw = (url || '').trim();
+    try {
+      if (raw.includes('youtube.com/watch?v=')) {
+        const id = new URL(raw).searchParams.get('v');
+        if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
+      }
+      if (raw.includes('youtu.be/')) {
+        const id = raw.split('youtu.be/')[1].split(/[?&/]/)[0];
+        if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
+      }
+      if (raw.includes('youtube.com/live/')) {
+        const id = raw.split('youtube.com/live/')[1].split(/[?&/]/)[0];
+        if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
+      }
+      if (raw.includes('vimeo.com/') && !raw.includes('player.vimeo.com')) {
+        const id = raw.split('vimeo.com/')[1].split(/[?&/]/)[0];
+        if (id && /^\d+$/.test(id)) return `https://player.vimeo.com/video/${id}`;
+      }
+    } catch (e) {}
+    return raw;
+  },
+
   async loadVideos() {
     const { data, error } = await supabaseClient.from('videos').select('*').order('created_at', { ascending: true });
     if (!error && data) {
@@ -2877,9 +2948,9 @@ const CampusManager = {
 
     this.currentStudent = data;
     Toast.emerald(`Bienvenido al Aula, ${data.name}`);
-    this.openClassroom(data);
     await this.loadVideos();
-    
+    this.openClassroom(data);
+
     btn.innerHTML = 'Ingresar a mis Clases'; btn.disabled = false;
   },
 
@@ -2932,10 +3003,8 @@ const CampusManager = {
     const v = this.videos[idx];
     if (!v) return;
     this.activeVideoIdx = idx;
-    
-    let embed = v.embed_url;
-    if (embed.includes('watch?v=')) embed = embed.replace('watch?v=', 'embed/');
-    
+
+    const embed = this.normalizeEmbedUrl(v.embed_url);
     $('#campusVideoIframe').src = embed;
     $('#campusActiveTag').textContent = v.tag;
     $('#campusActiveTitle').textContent = v.title;
@@ -2954,7 +3023,7 @@ const CampusManager = {
     if (!name || !dni || !pass || !program) { Toast.danger('Completa todos los campos del alumno.'); return; }
 
     const { error } = await supabaseClient.from('students').insert({ name, dni, password_hash: pass, program });
-    if (error) { Toast.danger('Error: ' + error.message); return; }
+    if (error) { Toast.danger('Error al guardar alumno: ' + error.message); return; }
 
     $('#adminStudentForm').reset();
     this.renderAdminStudents();
@@ -2963,7 +3032,8 @@ const CampusManager = {
 
   async deleteStudent(dni) {
     if (!AdminAuth.isAuthenticated()) return;
-    await supabaseClient.from('students').delete().eq('dni', dni);
+    const { error } = await supabaseClient.from('students').delete().eq('dni', dni);
+    if (error) { Toast.danger('Error al eliminar: ' + error.message); return; }
     this.renderAdminStudents();
     Toast.gold(`Usuario ${dni} eliminado`);
   },
@@ -2971,8 +3041,8 @@ const CampusManager = {
   async renderAdminStudents() {
     const list = $('#adminStudentList');
     if (!list) return;
-    const { data } = await supabaseClient.from('students').select('*');
-    if (!data || data.length === 0) {
+    const { data, error } = await supabaseClient.from('students').select('*');
+    if (error || !data || data.length === 0) {
       list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">Aún no hay alumnos registrados. Crea el primero arriba.</p>';
       return;
     }
@@ -2996,14 +3066,16 @@ const CampusManager = {
     const tag = ($('#vidAdminTag')?.value || '').trim().toUpperCase();
     const duration = ($('#vidAdminDuration')?.value || '').trim();
     const title = ($('#vidAdminTitle')?.value || '').trim();
-    const embed_url = ($('#vidAdminUrl')?.value || '').trim();
+    const rawUrl = ($('#vidAdminUrl')?.value || '').trim();
     const material_url = ($('#vidAdminMaterial')?.value || '').trim();
     const description = ($('#vidAdminDesc')?.value || '').trim();
 
-    if (!tag || !duration || !title || !embed_url || !description) { Toast.danger('Completa los campos.'); return; }
+    if (!tag || !duration || !title || !rawUrl || !description) { Toast.danger('Completa los campos.'); return; }
+
+    const embed_url = this.normalizeEmbedUrl(rawUrl);
 
     const { error } = await supabaseClient.from('videos').insert({ tag, title, duration, embed_url, description, material_url, published: true });
-    if (error) { Toast.danger('Error: ' + error.message); return; }
+    if (error) { Toast.danger('Error al publicar video: ' + error.message); return; }
 
     $('#adminVideoForm').reset();
     await this.renderAdminVideos();
@@ -3013,7 +3085,8 @@ const CampusManager = {
 
   async deleteVideo(id) {
     if (!AdminAuth.isAuthenticated()) return;
-    await supabaseClient.from('videos').delete().eq('id', id);
+    const { error } = await supabaseClient.from('videos').delete().eq('id', id);
+    if (error) { Toast.danger('Error al quitar video: ' + error.message); return; }
     await this.renderAdminVideos();
     await this.loadVideos();
     Toast.gold('Grabación retirada');
@@ -3022,8 +3095,8 @@ const CampusManager = {
   async renderAdminVideos() {
     const list = $('#adminVideoList');
     if (!list) return;
-    const { data } = await supabaseClient.from('videos').select('*');
-    if (!data || data.length === 0) {
+    const { data, error } = await supabaseClient.from('videos').select('*');
+    if (error || !data || data.length === 0) {
       list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">No hay videos publicados.</p>';
       return;
     }
@@ -3033,7 +3106,7 @@ const CampusManager = {
         <h5>${escapeHTML(v.title)}</h5>
         <p class="cert-meta">${escapeHTML(v.description)}</p>
         <div class="cert-actions">
-          <button type="button" class="btn btn-danger btn-sm" data-del-video="${escapeHTML(v.id)}" style="width:100%;">
+          <button type="button" class="btn btn-danger btn-sm" data-del-video="${escapeHTML(String(v.id))}" style="width:100%;">
             <i data-lucide="trash-2" style="width:12px;height:12px;"></i> Quitar Grabación
           </button>
         </div>
@@ -3050,7 +3123,7 @@ const CertManager = {
   init() {
     const searchBtn = $('#btnExecuteSearch');
     if (searchBtn) searchBtn.addEventListener('click', () => this.search());
-    
+
     const searchInput = $('#certSearchInput');
     if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.search(); });
 
@@ -3075,9 +3148,15 @@ const CertManager = {
     display.style.display = 'block';
     $('#certCardRows').innerHTML = '<div class="skeleton"></div><div class="skeleton" style="width:80%;"></div>';
 
-    const { data, error } = await supabaseClient.from('certificates').select('*').eq('id', code).single();
+    let { data, error } = await supabaseClient.from('certificates').select('*').eq('id', code).maybeSingle();
 
-    if (data && !error) {
+    // Si no está en Supabase pero es uno de los 3 códigos demo de prueba, usar semilla demo
+    if (!data) {
+      const seedMatch = APP_DATA.PRELOADED_CERTS.find(c => c.id === code);
+      if (seedMatch) data = seedMatch;
+    }
+
+    if (data) {
       this.activeCert = data;
       this.renderValidCert(data);
       Toast.emerald('Certificado autenticado');
@@ -3209,17 +3288,28 @@ const CertManager = {
 const AdminAuth = {
   currentUser: null,
 
-  init() {
+  async init() {
     $('#btnAdminAccess')?.addEventListener('click', () => this.handleAccess());
     $('#adminLoginBtn')?.addEventListener('click', () => this.login());
     $('#btnLogoutAdmin')?.addEventListener('click', () => this.logout());
-    $('#adminPasswordInput')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.login(); });
-    
-    supabaseClient.auth.onAuthStateChange((event, session) => {
+    $('#adminPasswordInput')?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') this.login();
+    });
+
+    try {
+      const { data: { session } } = await supabaseClient.auth.getSession();
       this.currentUser = session ? session.user : null;
-      if (session) {
+      if (this.currentUser) {
         const label = $('#adminBtnLabel');
         if (label) label.textContent = 'Ir al Panel Admin';
+      }
+    } catch (e) {}
+
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      this.currentUser = session ? session.user : null;
+      const label = $('#adminBtnLabel');
+      if (label) {
+        label.textContent = session ? 'Ir al Panel Admin' : 'Acceso Administrativo';
       }
     });
   },
@@ -3241,7 +3331,8 @@ const AdminAuth = {
     if (!modal) return;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    $('#adminLoginError').style.display = 'none';
+    const errBox = $('#adminLoginError');
+    if (errBox) errBox.style.display = 'none';
     setTimeout(() => { $('#adminEmailInput')?.focus(); }, 200);
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
   },
@@ -3251,23 +3342,41 @@ const AdminAuth = {
     if (!modal) return;
     modal.classList.remove('active');
     document.body.style.overflow = '';
-    $('#adminPasswordInput').value = '';
+    const passInput = $('#adminPasswordInput');
+    if (passInput) passInput.value = '';
   },
 
-   async login() {
+  showError(msg) {
+    const box = $('#adminLoginError');
+    const msgEl = $('#adminLoginErrorMsg');
+    if (box && msgEl) {
+      msgEl.textContent = msg;
+      box.style.display = 'block';
+    } else {
+      Toast.danger(msg);
+    }
+  },
+
+  async login() {
     const email = ($('#adminEmailInput')?.value || '').trim();
     const pass = ($('#adminPasswordInput')?.value || '').trim();
-    if (!email || !pass) { this.showError('Completa los campos.'); return; }
+    if (!email || !pass) {
+      this.showError('Completa tu correo y contraseña.');
+      return;
+    }
 
     const btn = $('#adminLoginBtn');
-    btn.innerHTML = 'Verificando...'; btn.disabled = true;
+    btn.innerHTML = 'Verificando...';
+    btn.disabled = true;
 
-    const { data, error } = await supabaseClient.auth.signInWithPassword({ 
-      email, 
-      password: pass 
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password: pass
     });
 
-    btn.innerHTML = 'Ingresar'; btn.disabled = false;
+    btn.innerHTML = '<i data-lucide="log-in" style="width:14px;height:14px;"></i> Ingresar';
+    btn.disabled = false;
+    if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
 
     if (error) {
       this.showError('Credenciales incorrectas: ' + error.message);
@@ -3279,8 +3388,8 @@ const AdminAuth = {
     const label = $('#adminBtnLabel');
     if (label) label.textContent = 'Ir al Panel Admin';
     Toast.gold('Acceso administrativo concedido');
-    
-    setTimeout(() => Router.navigate('admin'), 300);
+
+    setTimeout(() => Router.navigate('admin'), 250);
   },
 
   async logout() {
@@ -3298,47 +3407,157 @@ const AdminPanel = {
     const form = $('#adminCertForm');
     if (form) {
       const issueInput = $('#admIssueDate');
-      if (issueInput && !issueInput.value) issueInput.value = new Date().toISOString().split('T')[0];
-      form.addEventListener('submit', (e) => { e.preventDefault(); this.createCert(); });
+      if (issueInput && !issueInput.value) {
+        issueInput.value = new Date().toISOString().split('T')[0];
+      }
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.createCert();
+      });
     }
+
     $('#adminSearch')?.addEventListener('input', () => this.renderList());
+
     $('#adminCertList')?.addEventListener('click', (e) => {
       const del = e.target.closest('[data-delete-cert]');
-      if (del) this.deleteCert(del.dataset.deleteCert);
+      if (del) {
+        this.deleteCert(del.dataset.deleteCert);
+        return;
+      }
       const dl = e.target.closest('[data-download-cert]');
-      if (dl) this.downloadCert(dl.dataset.downloadCert);
+      if (dl) {
+        this.downloadCert(dl.dataset.downloadCert);
+      }
     });
+
+    $('#btnExportJson')?.addEventListener('click', () => this.exportJson());
+    const importBtn = $('#btnImportJson');
+    const fileInput = $('#fileImportJson');
+    if (importBtn && fileInput) {
+      importBtn.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', (e) => this.importJson(e.target.files[0]));
+    }
+  },
+
+  showDiagnostic(msg) {
+    const box = $('#supabaseDiagnosticBox');
+    const msgEl = $('#supabaseDiagnosticMsg');
+    if (box && msgEl) {
+      msgEl.textContent = msg;
+      box.style.display = 'block';
+    }
+  },
+
+  hideDiagnostic() {
+    const box = $('#supabaseDiagnosticBox');
+    if (box) box.style.display = 'none';
+  },
+
+  async generateNextCertId() {
+    const year = new Date().getFullYear();
+    const prefix = `DAGAT-${year}-`;
+    const { data: certs, error } = await supabaseClient
+      .from('certificates')
+      .select('id');
+
+    if (error || !certs || certs.length === 0) {
+      return `${prefix}00001`;
+    }
+
+    let maxNum = 0;
+    certs.forEach(c => {
+      const idStr = String(c.id || '');
+      if (idStr.startsWith(prefix)) {
+        const parts = idStr.split('-');
+        const num = parseInt(parts[2], 10);
+        if (!isNaN(num) && num > maxNum) maxNum = num;
+      }
+    });
+
+    const nextNum = String(maxNum + 1).padStart(5, '0');
+    return `${prefix}${nextNum}`;
   },
 
   async createCert() {
-    if (!AdminAuth.isAuthenticated()) { Toast.danger('Sesión expirada.'); return; }
-    const studentName = $('#admStudentName').value.trim();
-    const studentDni = $('#admStudentDni').value.trim();
-    const courseName = $('#admCourseName').value.trim();
-    const courseHours = parseInt($('#admCourseHours').value || '0', 10);
-    const issueDate = $('#admIssueDate').value;
-    const expiryDate = $('#admExpiryDate').value || null;
-    const certType = $('#admCertType').value;
+    if (!AdminAuth.isAuthenticated()) {
+      Toast.danger('Tu sesión expiró. Vuelve a iniciar sesión.');
+      AdminAuth.showLoginModal();
+      return;
+    }
 
-    if (!studentName || !studentDni || !courseName || !courseHours || !issueDate) { Toast.danger('Completa todos los campos.'); return; }
+    const studentName = ($('#admStudentName')?.value || '').trim().toUpperCase();
+    const studentDni = ($('#admStudentDni')?.value || '').trim();
+    const courseName = ($('#admCourseName')?.value || '').trim();
+    const courseHours = parseInt($('#admCourseHours')?.value || '0', 10);
+    const issueDate = $('#admIssueDate')?.value;
+    const expiryDate = $('#admExpiryDate')?.value || null;
+    const certType = $('#admCertType')?.value || 'Técnico';
 
-    const year = new Date().getFullYear();
-    const { data: certs } = await supabaseClient.from('certificates').select('id').like('id', `DAGAT-${year}-%`);
-    const nextNum = String((certs?.length || 0) + 1).padStart(5, '0');
-    const id = `DAGAT-${year}-${nextNum}`;
+    if (!studentName || !studentDni || !courseName || !courseHours || !issueDate) {
+      Toast.danger('Completa todos los campos obligatorios.');
+      return;
+    }
 
-    const certData = { id, student_name: studentName, student_dni: studentDni, course_name: courseName, course_hours: courseHours, issue_date: issueDate, expiry_date: expiryDate, cert_type: certType, issued_by: 'DAGAT SAC' };
+    if (studentDni.length !== 8 || !/^\d+$/.test(studentDni)) {
+      Toast.danger('El DNI debe tener exactamente 8 dígitos numéricos.');
+      return;
+    }
 
-    const { error } = await supabaseClient.from('certificates').insert(certData);
-    if (error) { Toast.danger('Error al crear certificado.'); return; }
+    const submitBtn = $('#btnSubmitCert');
+    if (submitBtn) submitBtn.disabled = true;
 
-    Toast.emerald(`Certificado ${id} creado`);
-    this.celebrate();
-    $('#adminCertForm').reset();
-    $('#admIssueDate').value = new Date().toISOString().split('T')[0];
-    $('#admCourseHours').value = '8';
-    await this.renderList();
-    CertManager.generatePdf(certData);
+    try {
+      this.hideDiagnostic();
+      const id = await this.generateNextCertId();
+
+      const fullCertData = {
+        id,
+        student_name: studentName,
+        student_dni: studentDni,
+        course_name: courseName,
+        course_hours: courseHours,
+        issue_date: issueDate,
+        expiry_date: expiryDate,
+        cert_type: certType,
+        issued_by: 'DAGAT SAC'
+      };
+
+      let { error } = await supabaseClient.from('certificates').insert([fullCertData]);
+
+      // Si Supabase rechaza por alguna columna opcional faltante en la tabla, reintentar con las columnas esenciales
+      if (error && (error.message.includes('column') || error.code === 'PGRST204')) {
+        console.warn('Reintentando inserción sin columnas opcionales:', error.message);
+        const coreCertData = {
+          id,
+          student_name: studentName,
+          student_dni: studentDni,
+          course_name: courseName,
+          course_hours: courseHours,
+          issue_date: issueDate
+        };
+        const retry = await supabaseClient.from('certificates').insert([coreCertData]);
+        error = retry.error;
+      }
+
+      if (error) {
+        console.error('Error detallado de Supabase:', error);
+        this.showDiagnostic(`Error devuelto por Supabase: "${error.message}" (Código: ${error.code || 'N/A'})`);
+        Toast.danger('Supabase rechazó el registro: ' + error.message);
+        return;
+      }
+
+      Toast.emerald(`Certificado ${id} guardado en Supabase`);
+      this.celebrate();
+
+      $('#adminCertForm').reset();
+      $('#admIssueDate').value = new Date().toISOString().split('T')[0];
+      $('#admCourseHours').value = '8';
+
+      await this.renderList();
+      CertManager.generatePdf(fullCertData);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
   },
 
   celebrate() {
@@ -3347,24 +3566,38 @@ const AdminPanel = {
       const conf = document.createElement('div');
       conf.style.cssText = `position: fixed; top: 50%; left: 50%; width: 8px; height: 8px; background: ${colors[Math.floor(Math.random() * colors.length)]}; border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%);`;
       document.body.appendChild(conf);
-      const angle = Math.random() * Math.PI * 2; const velocity = 200 + Math.random() * 300;
-      const dx = Math.cos(angle) * velocity; const dy = Math.sin(angle) * velocity; const rotation = Math.random() * 720 - 360;
-      requestAnimationFrame(() => { conf.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)'; conf.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${rotation}deg)`; conf.style.opacity = '0'; });
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = 200 + Math.random() * 300;
+      const dx = Math.cos(angle) * velocity;
+      const dy = Math.sin(angle) * velocity;
+      const rotation = Math.random() * 720 - 360;
+      requestAnimationFrame(() => {
+        conf.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+        conf.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${rotation}deg)`;
+        conf.style.opacity = '0';
+      });
       setTimeout(() => conf.remove(), 1300);
     }
   },
 
   async deleteCert(id) {
     if (!AdminAuth.isAuthenticated()) return;
-    await supabaseClient.from('certificates').delete().eq('id', id);
+    const { error } = await supabaseClient.from('certificates').delete().eq('id', id);
+    if (error) {
+      Toast.danger('No se pudo eliminar: ' + error.message);
+      return;
+    }
     Toast.gold(`Certificado ${id} eliminado`);
     await this.renderList();
   },
 
-  downloadCert(id) {
-    supabaseClient.from('certificates').select('*').eq('id', id).single().then(({data}) => {
-      if (data) CertManager.generatePdf(data);
-    });
+  async downloadCert(id) {
+    const { data, error } = await supabaseClient.from('certificates').select('*').eq('id', id).single();
+    if (data && !error) {
+      CertManager.generatePdf(data);
+    } else {
+      Toast.danger('No se pudo obtener el certificado.');
+    }
   },
 
   async renderList() {
@@ -3372,31 +3605,91 @@ const AdminPanel = {
     if (!list) return;
     list.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;"><div class="spinner"></div></div>';
 
-    const { data: all } = await supabaseClient.from('certificates').select('*').order('created_at', { ascending: false });
-    if (!all) { list.innerHTML = '<p style="text-align:center;">No hay certificados.</p>'; return; }
+    const { data: all, error } = await supabaseClient
+      .from('certificates')
+      .select('*')
+      .order('issue_date', { ascending: false });
+
+    if (error) {
+      this.showDiagnostic(`Error al leer tabla certificates: "${error.message}"`);
+      list.innerHTML = `<p style="text-align:center;color:var(--brand-danger);grid-column:1/-1;">Error al cargar: ${escapeHTML(error.message)}</p>`;
+      return;
+    }
+
+    if (!all || all.length === 0) {
+      $('#adminCertCount').textContent = '(0)';
+      list.innerHTML = '<p style="text-align:center;color:var(--text-dim);grid-column:1/-1;">No hay certificados registrados aún.</p>';
+      return;
+    }
 
     const term = ($('#adminSearch')?.value || '').trim().toLowerCase();
     let filtered = all;
     if (term) {
-      filtered = all.filter(c => (c.student_name || '').toLowerCase().includes(term) || (c.student_dni || '').includes(term) || (c.id || '').toLowerCase().includes(term));
+      filtered = all.filter(c =>
+        (c.student_name || '').toLowerCase().includes(term) ||
+        (c.student_dni || '').includes(term) ||
+        String(c.id || '').toLowerCase().includes(term)
+      );
     }
     $('#adminCertCount').textContent = `(${filtered.length})`;
 
-    if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:var(--text-dim);">Sin resultados.</p>'; return; }
+    if (!filtered.length) {
+      list.innerHTML = '<p style="text-align:center;color:var(--text-dim);grid-column:1/-1;">Sin resultados para tu búsqueda.</p>';
+      return;
+    }
 
     list.innerHTML = filtered.map(c => `
       <div class="admin-cert-card">
         <h5>${escapeHTML(c.student_name)}</h5>
-        <span class="cert-id">${escapeHTML(c.id)}</span>
+        <span class="cert-id">${escapeHTML(String(c.id))}</span>
         <p class="cert-meta">${escapeHTML(c.course_name)}</p>
         <p class="cert-meta"><strong>DNI:</strong> ${escapeHTML(c.student_dni)} · ${escapeHTML(String(c.course_hours))}h</p>
         <div class="cert-actions">
-          <button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(c.id)}" style="flex:1;"><i data-lucide="download" style="width:12px;height:12px;"></i> PDF</button>
-          <button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(c.id)}" style="min-width:44px;padding:8px;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+          <button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(String(c.id))}" style="flex:1;"><i data-lucide="download" style="width:12px;height:12px;"></i> PDF</button>
+          <button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(String(c.id))}" style="min-width:44px;padding:8px;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
         </div>
       </div>
     `).join('');
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
+  },
+
+  async exportJson() {
+    const { data: certificates } = await supabaseClient.from('certificates').select('*');
+    const { data: students } = await supabaseClient.from('students').select('*');
+    const { data: videos } = await supabaseClient.from('videos').select('*');
+
+    const backup = {
+      exportedAt: new Date().toISOString(),
+      certificates: certificates || [],
+      students: students || [],
+      videos: videos || []
+    };
+
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `dagat-supabase-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    Toast.emerald('Respaldo descargado desde Supabase');
+  },
+
+  async importJson(file) {
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      const certs = data.certificates || (Array.isArray(data) ? data : []);
+      if (certs.length > 0) {
+        const { error } = await supabaseClient.from('certificates').upsert(certs);
+        if (error) throw error;
+      }
+      Toast.emerald('Datos importados a Supabase correctamente');
+      await this.renderList();
+    } catch (e) {
+      Toast.danger('Error al importar: ' + e.message);
+    }
   }
 };
 
@@ -3432,7 +3725,7 @@ const NormApp = {
     this.openModal_('normModal');
   },
   openModal_(id) { const m = document.getElementById(id); if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; if (window.lucide) try { window.lucide.createIcons(); } catch(e) {} } },
-  closeModal_ (id) { const m = document.getElementById(id); if (m) { m.classList.remove('active'); document.body.style.overflow = ''; } }
+  closeModal_(id) { const m = document.getElementById(id); if (m) { m.classList.remove('active'); document.body.style.overflow = ''; } }
 };
 
 const LegalApp = {
@@ -3506,16 +3799,44 @@ const ContactForm = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
   Toast.container = $('#toastContainer');
-  Analytics.init(); ThemeManager.init(); MobileMenu.init(); Reveal.init(); Counters.init();
-  CertManager.init(); CampusManager.init(); Router.init(); SunafilCalc.init(); NormApp.init(); LegalApp.init(); ModalManager.init(); ContactForm.init(); AdminAuth.init(); AdminPanel.init();
-  setTimeout(() => { $$('.reveal:not(.visible)').forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight * 1.5) el.classList.add('visible'); }); }, 1500);
-  console.log('%c DAGAT SAC v8.1 SUPABASE SECURE ', 'background:linear-gradient(135deg,#10b981,#06b6d4);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  Analytics.init();
+  ThemeManager.init();
+  MobileMenu.init();
+  Reveal.init();
+  Counters.init();
+
+  // Primero restaurar la sesión de Supabase antes de inicializar el Router
+  await AdminAuth.init();
+  CertManager.init();
+  CampusManager.init();
+  AdminPanel.init();
+  Router.init();
+
+  SunafilCalc.init();
+  NormApp.init();
+  LegalApp.init();
+  ModalManager.init();
+  ContactForm.init();
+
+  setTimeout(() => {
+    $$('.reveal:not(.visible)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 1.5) el.classList.add('visible');
+    });
+  }, 1500);
+  console.log('%c DAGAT SAC v8.2 SUPABASE FIXED ', 'background:linear-gradient(135deg,#10b981,#06b6d4);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
 });
 
-window.Router = Router; window.AdminAuth = AdminAuth; window.AdminPanel = AdminPanel; window.CertManager = CertManager; window.CampusManager = CampusManager; window.NormApp = NormApp; window.LegalApp = LegalApp;
+window.Router = Router;
+window.AdminAuth = AdminAuth;
+window.AdminPanel = AdminPanel;
+window.CertManager = CertManager;
+window.CampusManager = CampusManager;
+window.NormApp = NormApp;
+window.LegalApp = LegalApp;
 </script>
 </body>
 </html>
