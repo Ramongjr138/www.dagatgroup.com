@@ -135,7 +135,11 @@ body {
   -webkit-font-smoothing: antialiased;
   padding-left: var(--safe-left);
   padding-right: var(--safe-right);
+  display: flex;
+  flex-direction: column;
 }
+
+main { flex: 1; }
 
 html, body { max-width: 100vw; overflow-x: hidden; }
 img, svg, video, iframe { max-width: 100%; height: auto; display: block; }
@@ -549,7 +553,7 @@ body::before {
 .admin-cert-card h5 { font-size: 0.92rem; margin-bottom: 6px; overflow-wrap: break-word; }
 .admin-cert-card .cert-id { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; background: rgba(234, 179, 8, 0.12); color: var(--brand-gold); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; border: 1px solid var(--border-gold); word-break: break-all; }
 .admin-cert-card .cert-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px; overflow-wrap: break-word; }
-.admin-cert-card .cert-actions { display: flex; gap: 6px; margin-top: 12px; }
+.admin-cert-card .cert-actions { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
 
 .campus-grid-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
 
@@ -677,6 +681,25 @@ body::before {
 .data-actions .btn { flex: 1; min-width: 140px; }
 .card-surface { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; }
 
+.corp-footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: 28px 16px calc(28px + var(--safe-bottom));
+  position: relative;
+  z-index: 2;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.corp-footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 @media (min-width: 640px) {
   .card-surface { padding: 28px; }
   .nav-shell { padding: calc(10px + var(--safe-top)) 24px 10px; }
@@ -793,7 +816,7 @@ body::before {
           <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Proyectos</div>
         </div>
         <div class="reveal" style="text-align:center;">
-          <div class="stat-counter" data-count="11" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:800;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">0</div>
+          <div class="stat-counter" data-count="12" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:800;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">0</div>
           <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Años</div>
         </div>
         <div class="reveal" style="text-align:center;">
@@ -821,7 +844,7 @@ body::before {
     <div class="service-cards">
       <div class="service-card fire reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80" alt="Cuarto de Bombas NFPA 20" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80" alt="Cuarto de Bombas NFPA 20" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'NFPA 20 BOMBAS')">
           <div class="service-card-icon"><i data-lucide="flame" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">NFPA 20</span>
         </div>
@@ -837,7 +860,7 @@ body::before {
       </div>
       <div class="service-card fire reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Detección y Alarma NFPA 72" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Detección y Alarma NFPA 72" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'NFPA 72 ALARMA')">
           <div class="service-card-icon"><i data-lucide="siren" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">NFPA 72</span>
         </div>
@@ -853,7 +876,7 @@ body::before {
       </div>
       <div class="service-card fire reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80" alt="Rociadores NFPA 13/14" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80" alt="Rociadores NFPA 13/14" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'NFPA 13 ROCIADORES')">
           <div class="service-card-icon"><i data-lucide="droplets" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">NFPA 13 / 14</span>
         </div>
@@ -869,7 +892,7 @@ body::before {
       </div>
       <div class="service-card fire reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80" alt="Mantenimiento" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80" alt="Mantenimiento" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'MANTENIMIENTO')">
           <div class="service-card-icon"><i data-lucide="wrench" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">NTP 350.043</span>
         </div>
@@ -885,7 +908,7 @@ body::before {
       </div>
       <div class="service-card fire reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=1200&q=80" alt="Brigadas" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=1200&q=80" alt="Brigadas" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'BRIGADAS')">
           <div class="service-card-icon"><i data-lucide="users" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">CAPACITACIÓN</span>
         </div>
@@ -901,7 +924,7 @@ body::before {
       </div>
       <div class="service-card fire reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" alt="SST" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" alt="SST" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'LEY 29783 SST')">
           <div class="service-card-icon"><i data-lucide="shield-check" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">LEY 29783</span>
         </div>
@@ -975,8 +998,8 @@ body::before {
           </select>
         </div>
         <div class="calc-field">
-          <label for="calcUitInput">UIT (S/)</label>
-          <input type="number" id="calcUitInput" class="form-input" value="5350" min="1000" step="50">
+          <label for="calcUitInput">UIT 2026 (S/)</label>
+          <input type="number" id="calcUitInput" class="form-input" value="5500" min="1000" step="50">
         </div>
       </div>
       <div style="background:rgba(234,179,8,0.05);border:1px dashed var(--border-gold);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:14px;">
@@ -994,7 +1017,7 @@ body::before {
     <div class="service-cards">
       <div class="service-card gold reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" alt="Defensa Penal" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" alt="Defensa Penal" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'DEFENSA PENAL')">
           <div class="service-card-icon"><i data-lucide="scale" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">PENAL</span>
         </div>
@@ -1010,7 +1033,7 @@ body::before {
       </div>
       <div class="service-card gold reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Litigio SUNAFIL" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Litigio SUNAFIL" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'SUNAFIL')">
           <div class="service-card-icon"><i data-lucide="file-x" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">SUNAFIL</span>
         </div>
@@ -1026,7 +1049,7 @@ body::before {
       </div>
       <div class="service-card gold reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Auditoría SST" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Auditoría SST" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'AUDITORIA SST')">
           <div class="service-card-icon"><i data-lucide="clipboard-check" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">PREVENTIVO</span>
         </div>
@@ -1042,7 +1065,7 @@ body::before {
       </div>
       <div class="service-card gold reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="Asesoría Laboral" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="Asesoría Laboral" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'ASESORIA LABORAL')">
           <div class="service-card-icon"><i data-lucide="briefcase" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">LABORAL</span>
         </div>
@@ -1100,7 +1123,7 @@ body::before {
     <div class="service-cards">
       <div class="service-card cyan reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="Auditoría Tributaria" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="Auditoría Tributaria" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'TRIBUTARIO')">
           <div class="service-card-icon"><i data-lucide="file-text" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">TRIBUTARIO</span>
         </div>
@@ -1116,7 +1139,7 @@ body::before {
       </div>
       <div class="service-card cyan reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Planillas" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Planillas" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'PLANILLAS')">
           <div class="service-card-icon"><i data-lucide="users" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">PLANILLAS</span>
         </div>
@@ -1132,7 +1155,7 @@ body::before {
       </div>
       <div class="service-card cyan reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="SIRE" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="SIRE" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'SIRE SUNAT')">
           <div class="service-card-icon"><i data-lucide="line-chart" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">SIRE SUNAT</span>
         </div>
@@ -1148,7 +1171,7 @@ body::before {
       </div>
       <div class="service-card cyan reveal">
         <div class="service-card-media">
-          <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=800&q=80" alt="Consultoría Financiera" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=800&q=80" alt="Consultoría Financiera" loading="lazy" onerror="SVGGraphics.handleImgError(this, 'FINANZAS')">
           <div class="service-card-icon"><i data-lucide="trending-up" style="width:26px;height:26px;"></i></div>
           <span class="service-card-badge">FINANCIERO</span>
         </div>
@@ -1179,6 +1202,10 @@ body::before {
     <div class="favorites-header" id="favoritesHeader" style="display:none;">
       <div class="favorites-badge"><i data-lucide="bookmark" style="width:14px;height:14px;"></i> <span id="favoritesCount">0</span> videos guardados</div>
       <button type="button" class="btn btn-ghost btn-sm" id="showFavoritesBtn" onclick="PublicVideos.toggleFavoritesView()"><i data-lucide="eye" style="width:14px;height:14px;"></i> <span id="showFavoritesLabel">Ver solo mis favoritos</span></button>
+    </div>
+
+    <div style="max-width:480px;margin:0 auto 18px;">
+      <input type="text" id="publicVideoSearch" class="form-input" placeholder="🔍 Buscar video por tema (ej. NFPA, SUNAFIL, IPERC...)" aria-label="Buscar video">
     </div>
 
     <div id="publicVideoFilters" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:24px;">
@@ -1308,19 +1335,19 @@ body::before {
     <div class="sheet-header">
       <span class="sheet-tag">// TRAZABILIDAD OFICIAL</span>
       <h2 class="sheet-title">Verificar Certificado</h2>
-      <p class="sheet-desc">Consulta autenticidad por código o con la cámara.</p>
+      <p class="sheet-desc">Consulta autenticidad ingresando el código del certificado, el DNI (8 dígitos) o con la cámara QR.</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr;gap:20px;">
       <div class="card-surface reveal">
-        <h3 style="font-size:1.05rem;margin-bottom:8px;">Validar por Código</h3>
-        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">Toca uno de prueba o digita el código impreso en el certificado:</p>
+        <h3 style="font-size:1.05rem;margin-bottom:8px;">Validar por Código o DNI</h3>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">Toca uno de prueba o digita el código o DNI:</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
           <button type="button" class="btn btn-ghost btn-sm" data-demo-code="DAGAT-2025-00101">00101</button>
           <button type="button" class="btn btn-ghost btn-sm" data-demo-code="DAGAT-2025-00102">00102</button>
           <button type="button" class="btn btn-ghost btn-sm" data-demo-code="DAGAT-2025-00103">00103</button>
         </div>
         <div style="display:flex;gap:8px;margin-bottom:14px;flex-direction:column;">
-          <input type="text" id="certSearchInput" class="form-input" placeholder="DAGAT-2026-00001" style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;" autocomplete="off" spellcheck="false" autocapitalize="characters" aria-label="Código de certificado">
+          <input type="text" id="certSearchInput" class="form-input" placeholder="Ej: DAGAT-2026-00001 o DNI 45892011" style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;" autocomplete="off" spellcheck="false" autocapitalize="characters" aria-label="Código o DNI">
           <button type="button" class="btn btn-fire btn-block" id="btnExecuteSearch"><i data-lucide="search" style="width:16px;height:16px;"></i> Verificar</button>
         </div>
         <div style="background:var(--bg);border:1px dashed var(--border-strong);border-radius:var(--radius);padding:14px;text-align:center;">
@@ -1416,7 +1443,8 @@ body::before {
     <div class="data-actions reveal">
       <button class="btn btn-ghost btn-sm" id="btnExportJson" style="flex:1;"><i data-lucide="download" style="width:14px;height:14px;"></i> Exportar respaldo</button>
       <button class="btn btn-ghost btn-sm" id="btnImportJson" style="flex:1;"><i data-lucide="upload" style="width:14px;height:14px;"></i> Importar respaldo</button>
-      <button class="btn btn-ghost btn-sm" id="btnBatchUpload" style="flex:1;"><i data-lucide="file-spreadsheet" style="width:14px;height:14px;"></i> Carga masiva CSV</button>
+      <button class="btn btn-ghost btn-sm" id="btnDownloadCsvTemplate" style="flex:1;"><i data-lucide="file-down" style="width:14px;height:14px;"></i> Plantilla CSV</button>
+      <button class="btn btn-ghost btn-sm" id="btnBatchUpload" style="flex:1;"><i data-lucide="file-spreadsheet" style="width:14px;height:14px;"></i> Subir CSV</button>
       <input type="file" id="fileImportJson" accept=".json" style="display:none;">
       <input type="file" id="fileBatchCsv" accept=".csv" style="display:none;">
       <button type="button" class="btn btn-danger btn-sm" id="btnLogoutAdmin"><i data-lucide="log-out" style="width:14px;height:14px;"></i> Cerrar Sesión</button>
@@ -1513,6 +1541,18 @@ body::before {
 </section>
 
 </main>
+
+<!-- FOOTER CORPORATIVO -->
+<footer class="corp-footer">
+  <div class="corp-footer-inner">
+    <div>
+      <strong style="color:var(--text);">DAGAT SAC & DAGAT LAW</strong> · RUC 20601573267 · Ate, Lima — Perú
+    </div>
+    <div>
+      <span>info@dagatgroup.com · +51 942 714 141 · © 2026 Todos los derechos reservados</span>
+    </div>
+  </div>
+</footer>
 
 <!-- MODALES -->
 <div class="app-modal" id="normModal">
@@ -1623,7 +1663,6 @@ body::before {
   {"id":"DAGAT-2025-00103","student_name":"CARLOS ALBERTO MENDOZA QUISPE","student_dni":"41982310","course_name":"Trabajo en Altura y Plataformas Elevadoras","course_hours":16,"issue_date":"2025-03-10","expiry_date":"2026-03-10","cert_type":"Técnico","issued_by":"DAGAT SAC"}
 ]
 </script>
-
 <script>
 'use strict';
 
@@ -1634,8 +1673,7 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, 
   auth: { persistSession: true, autoRefreshToken: true }
 });
 
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+const $ = (sel, ctx = document) => ctx.querySelector(sel); const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 const escapeHTML = (str) => {
   if (typeof str !== 'string') return '';
@@ -1656,7 +1694,7 @@ const getSeedCerts = () => {
 };
 
 const APP_DATA = {
-  UIT_VALUE: 5350,
+  UIT_VALUE: 5500,
   WHATSAPP: '51942714141',
   DOMAIN: 'https://www.dagatgroup.com',
   get PRELOADED_CERTS() { return getSeedCerts(); },
@@ -1708,6 +1746,7 @@ const Toast = {
   },
   fire(msg) { return this.show(msg, 'fire'); },
   gold(msg) { return this.show(msg, 'gold'); },
+  info(msg) { return this.show(msg, 'gold'); },
   emerald(msg) { return this.show(msg, 'emerald'); },
   danger(msg) { return this.show(msg, 'danger', 5500); }
 };
@@ -1854,36 +1893,12 @@ const Reveal = {
   observer: null,
   init() {
     if (!('IntersectionObserver' in window)) {
-      $$('.reveal').forEach(el => el.classList.add('visible'));
-      return;
-    }
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 60);
-          this.observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    $$('.reveal').forEach(el => this.observer.observe(el));
+      $$('.reveal').forEach(el => el.classList.add('visible')); return; } this.observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); this.observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }); $$
+('.reveal').forEach(el => this.observer.observe(el));
   },
   check() {
-    $$('.reveal:not(.visible)').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) el.classList.add('visible');
-    });
-  }
-};
-
-const Counters = {
-  init() {
-    if (!('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { this.animate(entry.target); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.3 });
-    $$('.stat-counter').forEach(el => io.observe(el));
+    $$('.reveal:not(.visible)').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight && rect.bottom > 0) el.classList.add('visible'); }); } };  const Counters = { init() { if (!('IntersectionObserver' in window)) return; const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { this.animate(entry.target); io.unobserve(entry.target); } }); }, { threshold: 0.3 }); $$
+('.stat-counter').forEach(el => io.observe(el));
   },
   animate(el) {
     const target = parseInt(el.dataset.count, 10);
@@ -1999,8 +2014,7 @@ const Subscribers = {
         if (this.selectedCategories.has(cat)) { this.selectedCategories.delete(cat); chip.classList.remove('active'); } 
         else { this.selectedCategories.add(cat); chip.classList.add('active'); }
       });
-    });
-    $('#subscribeForm')?.addEventListener('submit', (e) => { e.preventDefault(); this.subscribe(); });
+    });$('#subscribeForm')?.addEventListener('submit', (e) => { e.preventDefault(); this.subscribe(); });
   },
   async subscribe() {
     const name = ($('#subName')?.value || '').trim();
@@ -2024,50 +2038,13 @@ const Subscribers = {
     finally { btn.innerHTML = orig; btn.disabled = false; if (window.lucide) try { window.lucide.createIcons(); } catch(e) {} }
   }
 };
-
-/* WATCH TRACKER */
-const WatchTracker = {
-  currentSession: null,
-  intervalId: null,
-  start(videoId, estimatedDurationSec = 300) {
-    this.stop();
-    this.currentSession = { videoId, startedAt: Date.now(), estimatedDuration: estimatedDurationSec };
-    this.intervalId = setInterval(() => this.flush(), 10000);
-    window.addEventListener('beforeunload', () => this.flush());
-    document.addEventListener('visibilitychange', () => { if (document.hidden) this.flush(); });
-  },
-  flush() {
-    if (!this.currentSession) return;
-    const elapsed = Math.floor((Date.now() - this.currentSession.startedAt) / 1000);
-    if (elapsed < 3) return;
-    const session = this.currentSession;
-    this.currentSession = { ...session, startedAt: Date.now() };
-    try {
-      supabaseClient.from('video_analytics').insert({
-        video_id: session.videoId, event_type: 'watch', visitor_id: VisitorID.get(),
-        watch_seconds: elapsed, video_duration_seconds: session.estimatedDuration,
-        completed: elapsed >= session.estimatedDuration * 0.9,
-        device_type: /Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
-        user_agent: navigator.userAgent.substring(0, 200)
-      }).then(() => {});
-    } catch (e) {}
-  },
-  stop() {
-    this.flush();
-    if (this.intervalId) { clearInterval(this.intervalId); this.intervalId = null; }
-    this.currentSession = null;
-  }
-};
-
-/* VIDEO INTERACTIONS */
+ /* WATCH TRACKER (Sin fuga de listeners) */
+const WatchTracker = { currentSession: null, intervalId: null, boundListeners: false, init() { if (this.boundListeners) return; this.boundListeners = true; window.addEventListener('beforeunload', () => this.flush()); document.addEventListener('visibilitychange', () => { if (document.hidden) this.flush(); }); }, start(videoId, estimatedDurationSec = 300) { this.init(); this.stop(); this.currentSession = { videoId, startedAt: Date.now(), estimatedDuration: estimatedDurationSec }; this.intervalId = setInterval(() => this.flush(), 10000); }, flush() { if (!this.currentSession) return; const elapsed = Math.floor((Date.now() - this.currentSession.startedAt) / 1000); if (elapsed < 3) return; const session = this.currentSession; this.currentSession = { ...session, startedAt: Date.now() }; try { supabaseClient.from('video_analytics').insert({ video_id: session.videoId, event_type: 'watch', visitor_id: VisitorID.get(), watch_seconds: elapsed, video_duration_seconds: session.estimatedDuration, completed: elapsed >= session.estimatedDuration * 0.9, device_type: /Android\vert{}iPhone\vert{}iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop', user_agent: navigator.userAgent.substring(0, 200) }).then(() => {}); } catch (e) {} }, stop() { this.flush(); if (this.intervalId) { clearInterval(this.intervalId); this.intervalId = null; } this.currentSession = null; } };
+ /* VIDEO INTERACTIONS */
 const VideoInteractions = {
   userLikes: new Set(),
   async init() {
-    try {
-      const visitorId = VisitorID.get();
-      const { data } = await supabaseClient.from('video_likes').select('video_id').eq('visitor_id', visitorId);
-      if (data) data.forEach(l => this.userLikes.add(String(l.video_id)));
-    } catch (e) {}
+    try { const visitorId = VisitorID.get(); const { data } = await supabaseClient.from('video_likes').select('video_id').eq('visitor_id', visitorId); if (data) data.forEach(l => this.userLikes.add(String(l.video_id))); } catch (e) {}
     document.addEventListener('click', (e) => {
       const likeBtn = e.target.closest('[data-action="like"]');
       if (likeBtn) { e.preventDefault(); this.toggleLike(likeBtn.dataset.videoId); }
@@ -2084,12 +2061,12 @@ const VideoInteractions = {
       if (isLiked) {
         await supabaseClient.from('video_likes').delete().eq('video_id', videoId).eq('visitor_id', visitorId);
         this.userLikes.delete(idStr);
-        await supabaseClient.rpc('increment_video_like_count', { vid: videoId, delta: -1 });
+        try { await supabaseClient.rpc('increment_video_like_count', { vid: videoId, delta: -1 }); } catch(e) {}
         Toast.info('Like eliminado');
       } else {
         await supabaseClient.from('video_likes').insert({ video_id: videoId, visitor_id: visitorId });
         this.userLikes.add(idStr);
-        await supabaseClient.rpc('increment_video_like_count', { vid: videoId, delta: 1 });
+        try { await supabaseClient.rpc('increment_video_like_count', { vid: videoId, delta: 1 }); } catch(e) {}
         Toast.emerald('¡Te gusta!');
       }
       this.refreshLikeUI(videoId);
@@ -2112,7 +2089,6 @@ const VideoInteractions = {
     const video = PublicVideos.allVideos.find(v => String(v.id) === String(videoId));
     if (!video) return;
     const shareUrl = `${APP_DATA.DOMAIN}/#videos-publicos?video=${video.id}`;
-    const shareTitle = `${video.title} — DAGAT SAC`;
     const shareText = `Mira este video gratis de DAGAT SAC: ${video.title}`;
     const modal = document.createElement('div');
     modal.className = 'app-modal active';
@@ -2141,7 +2117,7 @@ const VideoInteractions = {
     `;
     document.body.appendChild(modal);
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
-    supabaseClient.rpc('increment_video_share_count', { vid: video.id }).then(() => {}).catch(() => {});
+    try { supabaseClient.rpc('increment_video_share_count', { vid: video.id }).then(() => {}); } catch(e) {}
   },
   async trackEvent(videoId, eventType) {
     try { await supabaseClient.from('video_analytics').insert({ video_id: videoId, event_type: eventType, visitor_id: VisitorID.get(), referrer: document.referrer || null, user_agent: navigator.userAgent.substring(0, 200) }); } catch (e) {}
@@ -2162,7 +2138,7 @@ const VideoInteractions = {
       }
       const { error } = await supabaseClient.from('video_comments').insert({ video_id: videoId, visitor_name: name.substring(0, 100), visitor_email: email ? email.toLowerCase().substring(0, 200) : null, content: content.substring(0, 1000), is_approved: false, visitor_badge: currentBadge, visitor_visitor_id: VisitorID.get() });
       if (error) throw error;
-      await supabaseClient.rpc('increment_video_comment_count', { vid: videoId });
+      try { await supabaseClient.rpc('increment_video_comment_count', { vid: videoId }); } catch(e) {}
       this.trackEvent(videoId, 'comment');
       Toast.emerald('Comentario enviado. Se publicará tras revisión.');
       return true;
@@ -2181,19 +2157,41 @@ const VideoInteractions = {
   }
 };
 
-/* PUBLIC VIDEOS */
+/* PUBLIC VIDEOS (Con buscador en vivo y listener de comentarios corregido) */
 const PublicVideos = {
-  allVideos: [], currentFilter: 'all', currentVideo: null, showingFavorites: false,
+  allVideos: [], currentFilter: 'all', searchTerm: '', currentVideo: null, showingFavorites: false,
   init() {
     this.loadVideos();
     $$('[data-filter]').forEach(btn => {
       btn.addEventListener('click', () => {
         this.currentFilter = btn.dataset.filter;
-        $$('[data-filter]').forEach(b => { b.classList.remove('active-filter'); });
+        $$('[data-filter]').forEach(b => b.classList.remove('active-filter'));
         btn.classList.add('active-filter');
         this.render();
       });
     });
+
+    const searchInput = $('#publicVideoSearch');
+    if (searchInput) {
+      searchInput.addEventListener('input', debounce(() => {
+        this.searchTerm = searchInput.value.trim().toLowerCase();
+        this.render();
+      }, 200));
+    }
+
+    const form = $('#publicCommentForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!this.currentVideo) return;
+        const name = $('#commentName').value.trim();
+        const email = $('#commentEmail').value.trim();
+        const content = $('#commentContent').value.trim();
+        const ok = await VideoInteractions.submitComment(this.currentVideo.id, name, email, content);
+        if (ok) form.reset();
+      });
+    }
+
     $('#closeVideoModal')?.addEventListener('click', () => this.closeModal());
     $('#publicVideoModal')?.addEventListener('click', (e) => { if (e.target.id === 'publicVideoModal') this.closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') this.closeModal(); });
@@ -2240,6 +2238,13 @@ const PublicVideos = {
     let filtered = this.allVideos;
     if (this.showingFavorites) filtered = filtered.filter(v => Favorites.userFavorites.has(String(v.id)));
     if (this.currentFilter !== 'all') filtered = filtered.filter(v => (v.category || 'Seguridad') === this.currentFilter);
+    if (this.searchTerm) {
+      filtered = filtered.filter(v =>
+        (v.title || '').toLowerCase().includes(this.searchTerm) ||
+        (v.description || '').toLowerCase().includes(this.searchTerm) ||
+        (v.tag || '').toLowerCase().includes(this.searchTerm)
+      );
+    }
 
     if (filtered.length === 0) {
       grid.innerHTML = '';
@@ -2337,19 +2342,6 @@ const PublicVideos = {
     const commentCount = $('#publicCommentCount');
     if (commentCount) commentCount.textContent = `(${comments.length})`;
 
-    const form = $('#publicCommentForm');
-    if (form && !form.dataset.bound) {
-      form.dataset.bound = 'true';
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const name = $('#commentName').value.trim();
-        const email = $('#commentEmail').value.trim();
-        const content = $('#commentContent').value.trim();
-        const ok = await VideoInteractions.submitComment(video.id, name, email, content);
-        if (ok) form.reset();
-      });
-    }
-
     $('#publicVideoModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 
@@ -2406,7 +2398,17 @@ const CampusManager = {
     $('#btnCampusLogout')?.addEventListener('click', () => this.logout());
     $('#adminStudentForm')?.addEventListener('submit', (e) => { e.preventDefault(); this.createStudent(); });
     $('#adminVideoForm')?.addEventListener('submit', (e) => { e.preventDefault(); this.createVideo(); });
-    $('#adminStudentList')?.addEventListener('click', (e) => { const del = e.target.closest('[data-del-student]'); if (del) this.deleteStudent(del.dataset.delStudent); });
+    $('#adminStudentList')?.addEventListener('click', (e) => {
+      const del = e.target.closest('[data-del-student]');
+      if (del) { this.deleteStudent(del.dataset.delStudent); return; }
+      const wa = e.target.closest('[data-wa-student]');
+      if (wa) {
+        const name = wa.dataset.waName || 'Alumno';
+        const dni = wa.dataset.waStudent;
+        const msg = `Hola ${name}, bienvenido al Campus Virtual de DAGAT SAC. Ingresa en ${APP_DATA.DOMAIN}/#campus con tu Usuario (DNI): ${dni}`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+      }
+    });
     $('#adminVideoList')?.addEventListener('click', (e) => { const del = e.target.closest('[data-del-video]'); if (del) this.deleteVideo(del.dataset.delVideo); });
     this.loadVideos();
   },
@@ -2569,7 +2571,7 @@ const CampusManager = {
     if (!list) return;
     const { data, error } = await supabaseClient.from('students').select('*').order('name', { ascending: true });
     if (error || !data || data.length === 0) { list.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;padding:20px;text-align:center;grid-column:1/-1;">No hay alumnos.</p>'; return; }
-    list.innerHTML = data.map(u => `<div class="admin-cert-card"><h5>${escapeHTML(u.name)}</h5><span class="cert-id">DNI: ${escapeHTML(u.dni)}</span><p class="cert-meta">${escapeHTML(u.program)}</p><p class="cert-meta" style="font-size:0.75rem;"><strong>Progreso:</strong> ${u.progress_pct || 0}% · <strong>Videos:</strong> ${(u.watched_videos || []).length}</p>${u.last_login ? `<p class="cert-meta" style="font-size:0.72rem;color:var(--text-dim);">Último acceso: ${formatDate(u.last_login)}</p>` : ''}<div class="cert-actions"><button type="button" class="btn btn-danger btn-sm" data-del-student="${escapeHTML(u.dni)}" style="width:100%;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i> Eliminar</button></div></div>`).join('');
+    list.innerHTML = data.map(u => `<div class="admin-cert-card"><h5>${escapeHTML(u.name)}</h5><span class="cert-id">DNI: ${escapeHTML(u.dni)}</span><p class="cert-meta">${escapeHTML(u.program)}</p><p class="cert-meta" style="font-size:0.75rem;"><strong>Progreso:</strong> ${u.progress_pct || 0}% · <strong>Videos:</strong> ${(u.watched_videos || []).length}</p>${u.last_login ? `<p class="cert-meta" style="font-size:0.72rem;color:var(--text-dim);">Último acceso: ${formatDate(u.last_login)}</p>` : ''}<div class="cert-actions"><button type="button" class="btn btn-ghost btn-sm" data-wa-student="${escapeHTML(u.dni)}" data-wa-name="${escapeHTML(u.name)}" style="flex:1;"><i data-lucide="message-circle" style="width:12px;height:12px;"></i> WhatsApp</button><button type="button" class="btn btn-danger btn-sm" data-del-student="${escapeHTML(u.dni)}" style="min-width:44px;padding:8px;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button></div></div>`).join('');
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
   },
   async createVideo() {
@@ -2613,7 +2615,7 @@ const CampusManager = {
   }
 };
 
-/* CERT MANAGER */
+/* CERT MANAGER (Con búsqueda dual: por Código o por DNI de 8 dígitos) */
 const CertManager = {
   activeCert: null, scanner: null,
   init() {
@@ -2632,12 +2634,21 @@ const CertManager = {
   async search() {
     const input = $('#certSearchInput');
     const code = (input?.value || '').trim().toUpperCase();
-    if (!code) { Toast.danger('Ingresa un código.'); return; }
+    if (!code) { Toast.danger('Ingresa un código o DNI de 8 dígitos.'); return; }
     const display = $('#certCardDisplay');
     display.style.display = 'block';
     $('#certCardRows').innerHTML = '<div class="skeleton"></div><div class="skeleton" style="width:80%;"></div>';
-    let { data } = await supabaseClient.from('certificates').select('*').eq('id', code).maybeSingle();
-    if (!data) { const seedMatch = APP_DATA.PRELOADED_CERTS.find(c => c.id === code); if (seedMatch) data = seedMatch; }
+
+    let data = null;
+    if (/^\d{8}$/.test(code)) {
+      const { data: dniRows } = await supabaseClient.from('certificates').select('*').eq('student_dni', code).order('issue_date', { ascending: false });
+      if (dniRows && dniRows.length > 0) data = dniRows[0];
+      else data = APP_DATA.PRELOADED_CERTS.find(c => c.student_dni === code) || null;
+    } else {
+      const { data: idRow } = await supabaseClient.from('certificates').select('*').eq('id', code).maybeSingle();
+      data = idRow || APP_DATA.PRELOADED_CERTS.find(c => c.id === code) || null;
+    }
+
     if (data) { this.activeCert = data; this.renderValidCert(data); Toast.emerald('Certificado autenticado'); } 
     else { this.activeCert = null; this.renderInvalidCert(code); Toast.danger('No encontrado'); }
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
@@ -2667,7 +2678,7 @@ const CertManager = {
     icon.style.background = 'rgba(239,68,68,0.15)';
     icon.innerHTML = '<i data-lucide="alert-triangle" style="width:22px;height:22px;"></i>';
     $('#certCardTitle').textContent = 'No Encontrado';
-    $('#certCardSub').textContent = 'Código no válido';
+    $('#certCardSub').textContent = 'Código o DNI no válido';
     $('#certCardRows').innerHTML = `<p style="font-size:0.85rem;color:var(--text-muted);padding:8px 0;">No se halló <strong style="font-family:JetBrains Mono,monospace;color:var(--brand-fire);">${escapeHTML(code)}</strong></p>`;
     $('#btnDownloadDiplomaPdf').style.display = 'none';
   },
@@ -2701,7 +2712,6 @@ const CertManager = {
       Toast.emerald('PDF descargado');
     } catch (e) { console.error(e); Toast.danger('Error al generar PDF.'); }
   },
-  
   async _renderPdfToDoc(doc, cert, LOGO_URL) {
     const w = doc.internal.pageSize.getWidth();
     const h = doc.internal.pageSize.getHeight();
@@ -2728,7 +2738,6 @@ const CertManager = {
     doc.line(12, h - 12, 12 + cS, h - 12); doc.line(12, h - 12, 12, h - 12 - cS);
     doc.line(w - 12, h - 12, w - 12 - cS, h - 12); doc.line(w - 12, h - 12, w - 12, h - 12 - cS);
     
-    // LOGO GRANDE (35mm) DENTRO DEL MARCO
     if (logo) { 
       try { 
         const lSize = 35; 
@@ -2764,25 +2773,21 @@ const CertManager = {
 
     const totalContentHeight = titleHeight + titleToLine + lineToCert + certTitleHeight + certToIntro + introHeight + introToName + nameHeight + nameToDni + dniHeight + dniToCourseIntro + courseIntroHeight + courseIntroToCourse + courseHeight + courseToHours + hoursHeight + hoursToDate + dateHeight + (cert.expiry_date ? dateToExpiry + expiryHeight : 0);
 
-    // Empezar debajo del logo (y=65) y centrar hacia abajo
     const availableTop = 65; 
     const availableBottom = h - 50;
     const startY = availableTop + ((availableBottom - availableTop) - totalContentHeight) / 2;
 
     let y = startY;
     
-    // Título "DAGAT SAC" (ahora dentro del marco)
     doc.setFont('helvetica', 'bold'); doc.setFontSize(26); doc.setTextColor(6, 9, 25);
     doc.text('DAGAT SAC', w / 2, y, { align: 'center' });
     y += titleHeight + titleToLine;
 
-    // Línea dorada
     doc.setDrawColor(212, 160, 60); doc.setLineWidth(0.6);
     doc.line(w / 2 - 55, y, w / 2 + 55, y);
     doc.setFillColor(212, 160, 60); doc.circle(w / 2, y, 1.2, 'F');
     y += lineToCert;
 
-    // "CERTIFICADO" (SIN charSpace, centrado perfecto con la línea)
     doc.setFont('helvetica', 'bold'); doc.setFontSize(22); doc.setTextColor(6, 9, 25);
     doc.text('CERTIFICADO', w / 2, y, { align: 'center' });
     y += certTitleHeight + certToIntro;
@@ -2974,6 +2979,7 @@ const AdminPanel = {
       if (mail) { this.sendEmail(mail.dataset.emailCert); }
     });
     $('#btnExportJson')?.addEventListener('click', () => this.exportJson());
+    $('#btnDownloadCsvTemplate')?.addEventListener('click', () => this.downloadCsvTemplate());
     const importBtn = $('#btnImportJson');
     const fileInput = $('#fileImportJson');
     if (importBtn && fileInput) { importBtn.addEventListener('click', () => fileInput.click()); fileInput.addEventListener('change', (e) => this.importJson(e.target.files[0])); }
@@ -2987,6 +2993,21 @@ const AdminPanel = {
     if (box && msgEl) { msgEl.textContent = msg; box.style.display = 'block'; }
   },
   hideDiagnostic() { const box = $('#supabaseDiagnosticBox'); if (box) box.style.display = 'none'; },
+  downloadCsvTemplate() {
+    const csv = [
+      'nombre,dni,curso,horas,fecha_emision,vencimiento,tipo',
+      'JUAN CARLOS PEREZ RAMOS,45892011,Lucha Contra Incendios NFPA 10,8,2026-04-20,2027-04-20,NFPA',
+      'MARIA ELENA GOMEZ RUIZ,70123456,Seguridad y Salud en el Trabajo Ley 29783,12,2026-04-20,2027-04-20,SST'
+    ].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'plantilla-certificados-dagat.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+    Toast.emerald('Plantilla CSV descargada');
+  },
   async renderDashboard() {
     const container = $('#adminDashboard');
     if (!container) return;
@@ -3120,7 +3141,12 @@ const AdminPanel = {
       this.hideDiagnostic();
       const id = await this.generateNextCertId();
       const cert = { id, student_name: studentName, student_dni: studentDni, course_name: courseName, course_hours: courseHours, issue_date: issueDate, expiry_date: expiryDate, cert_type: certType, issued_by: 'DAGAT SAC', issued_to_email: issueToEmail || null };
-      const { error } = await supabaseClient.from('certificates').insert([cert]);
+      let { error } = await supabaseClient.from('certificates').insert([cert]);
+      if (error && (error.message.includes('column') || error.code === 'PGRST204')) {
+        const fallbackCert = { id, student_name: studentName, student_dni: studentDni, course_name: courseName, course_hours: courseHours, issue_date: issueDate, expiry_date: expiryDate, cert_type: certType, issued_by: 'DAGAT SAC' };
+        const retry = await supabaseClient.from('certificates').insert([fallbackCert]);
+        error = retry.error;
+      }
       if (error) { this.showDiagnostic(`Error: "${error.message}"`); Toast.danger('Error: ' + error.message); return; }
       Toast.emerald(`Certificado ${id} guardado`);
       this.celebrate();
@@ -3380,7 +3406,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }, 1500);
 
-  console.log('%c DAGAT SAC v12.0 ', 'background:linear-gradient(135deg,#ff5722,#eab308,#10b981);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  console.log('%c DAGAT SAC v12.1 PRO ', 'background:linear-gradient(135deg,#ff5722,#eab308,#10b981);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
 });
 
 window.Router = Router;
