@@ -1654,6 +1654,40 @@ body::before {
   </div>
 </div>
 
+<!-- MODAL DE ENVÍO DE CORREO -->
+<div class="app-modal" id="emailModal">
+  <div class="app-modal-box" style="max-width:540px;">
+    <div class="modal-handle"></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+      <div>
+        <span class="sheet-tag gold">// ENVIAR CORREO</span>
+        <h3 style="font-size:1.15rem;margin-top:8px;color:var(--text);">Enviar Certificado</h3>
+      </div>
+      <button class="icon-btn" onclick="document.getElementById('emailModal').classList.remove('active');document.body.style.overflow='';" aria-label="Cerrar"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
+    </div>
+
+    <div class="form-group">
+      <label for="emailDestinatario" style="font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:6px;">Correo del Alumno *</label>
+      <input type="email" id="emailDestinatario" class="form-input" placeholder="alumno@email.com">
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:10px;">Selecciona cómo deseas enviarlo:</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button class="btn btn-fire btn-block" id="btnSendGmail" style="justify-content:flex-start;">
+          <i data-lucide="mail" style="width:18px;height:18px;"></i> Abrir Gmail en el navegador
+        </button>
+        <button class="btn btn-ghost btn-block" id="btnSendOutlook" style="justify-content:flex-start;">
+          <i data-lucide="mail" style="width:18px;height:18px;"></i> Abrir Outlook en el navegador
+        </button>
+        <button class="btn btn-ghost btn-block" id="btnCopyEmail" style="justify-content:flex-start;">
+          <i data-lucide="copy" style="width:18px;height:18px;"></i> Copiar texto y enviar manualmente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <a href="https://wa.me/51942714141?text=Hola%20DAGAT" class="wa-bubble-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:26px;height:26px;"></i></a>
 
 <!-- Semilla demo -->
@@ -3041,7 +3075,7 @@ const AdminPanel = {
       const dl = e.target.closest('[data-download-cert]');
       if (dl) { this.downloadCert(dl.dataset.downloadCert); return; }
       const mail = e.target.closest('[data-email-cert]');
-      if (mail) { this.sendEmail(mail.dataset.emailCert); }
+      if (mail) { this.prepareEmail(mail.dataset.emailCert); }
     });
     $('#btnExportJson')?.addEventListener('click', () => this.exportJson());
     $('#btnDownloadCsvTemplate')?.addEventListener('click', () => this.downloadCsvTemplate());
@@ -3051,6 +3085,11 @@ const AdminPanel = {
     const batchBtn = $('#btnBatchUpload');
     const batchFile = $('#fileBatchCsv');
     if (batchBtn && batchFile) { batchBtn.addEventListener('click', () => batchFile.click()); batchFile.addEventListener('change', (e) => this.processBatch(e.target.files[0])); }
+
+    // Eventos del modal de email
+    $('#btnSendGmail')?.addEventListener('click', () => this.openWebEmail('gmail'));
+    $('#btnSendOutlook')?.addEventListener('click', () => this.openWebEmail('outlook'));
+    $('#btnCopyEmail')?.addEventListener('click', () => this.copyEmailText());
   },
   showDiagnostic(msg) {
     const box = $('#supabaseDiagnosticBox');
@@ -3254,31 +3293,58 @@ const AdminPanel = {
     if (data) CertManager.generatePdf(data);
   },
   
-  // ENVIAR POR EMAIL NATIVO (mailto)
-  sendEmail(certId) {
-    // Encontrar el certificado en la lista actual (buscando en el HTML renderizado o en Supabase)
-    // Como el botón solo tiene el ID, haremos una búsqueda rápida o usaremos el email que ya esté guardado.
-    // Para simplificar, pediremos el correo si no está en los datos del botón, pero lo ideal es que ya esté.
-    supabaseClient.from('certificates').select('*').eq('id', certId).maybeSingle().then(({data: cert}) => {
-      if (!cert) { Toast.danger('Certificado no encontrado.'); return; }
-      
-      let email = cert.issued_to_email || prompt(`Ingresa el correo del alumno (${cert.student_name}):`, '');
-      if (!email || !email.includes('@')) { Toast.danger('Email inválido.'); return; }
+  // PREPARAR EL MODAL DE EMAIL
+  async prepareEmail(certId) {
+    const { data: cert } = await supabaseClient.from('certificates').select('*').eq('id', certId).maybeSingle();
+    if (!cert) { Toast.danger('Certificado no encontrado.'); return; }
 
-      const subject = `Certificado DAGAT SAC — ${cert.course_name}`;
-      const body = `Hola ${cert.student_name},\n\nAdjunto a este correo encontrarás tu certificado oficial emitido por DAGAT SAC por haber completado el curso: "${cert.course_name}".\n\nCódigo de verificación: ${cert.id}\n\nPuedes validar su autenticidad en: ${APP_DATA.DOMAIN}/#certificados?code=${cert.id}\n\nSaludos,\nEquipo DAGAT SAC`;
-      
-      // Abrir cliente de correo nativo
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      Toast.emerald('Abriendo aplicación de correo...');
-      
-      // Actualizar en Supabase que se envió
-      if (!cert.issued_to_email) {
-        supabaseClient.from('certificates').update({ issued_to_email: email, email_sent: true }).eq('id', certId);
-      } else {
-        supabaseClient.from('certificates').update({ email_sent: true }).eq('id', certId);
-      }
-    });
+    $('#emailDestinatario').value = cert.issued_to_email || '';
+    $('#emailModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Guardar los datos temporalmente en el botón para usarlos luego
+    window._currentEmailCert = cert;
+    if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
+  },
+
+  // ABRIR GMAIL / OUTLOOK WEB
+  openWebEmail(provider) {
+    const cert = window._currentEmailCert;
+    const email = $('#emailDestinatario').value.trim();
+    if (!cert || !email || !email.includes('@')) { Toast.danger('Ingresa un correo válido.'); return; }
+
+    const subject = `Certificado DAGAT SAC — ${cert.course_name}`;
+    const body = `Hola ${cert.student_name},\n\nAdjunto a este correo encontrarás tu certificado oficial emitido por DAGAT SAC por haber completado el curso: "${cert.course_name}".\n\nCódigo de verificación: ${cert.id}\n\nPuedes validar su autenticidad en: ${APP_DATA.DOMAIN}/#certificados?code=${cert.id}\n\nSaludos,\nEquipo DAGAT SAC`;
+    
+    let url = '';
+    if (provider === 'gmail') {
+      url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else if (provider === 'outlook') {
+      url = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    window.open(url, '_blank');
+    Toast.emerald('Abriendo correo... Recuerda adjuntar el PDF.');
+    $('#emailModal').classList.remove('active');
+    document.body.style.overflow = '';
+    
+    // Actualizar en Supabase que se envió
+    supabaseClient.from('certificates').update({ issued_to_email: email, email_sent: true }).eq('id', cert.id);
+  },
+
+  // COPIAR TEXTO
+  copyEmailText() {
+    const cert = window._currentEmailCert;
+    if (!cert) return;
+
+    const subject = `Certificado DAGAT SAC — ${cert.course_name}`;
+    const body = `Hola ${cert.student_name},\n\nAdjunto a este correo encontrarás tu certificado oficial emitido por DAGAT SAC por haber completado el curso: "${cert.course_name}".\n\nCódigo de verificación: ${cert.id}\n\nPuedes validar su autenticidad en: ${APP_DATA.DOMAIN}/#certificados?code=${cert.id}\n\nSaludos,\nEquipo DAGAT SAC`;
+    
+    navigator.clipboard.writeText(`Asunto: ${subject}\n\n${body}`).then(() => {
+      Toast.emerald('Texto copiado. Pégalo en tu correo y adjunta el PDF.');
+      $('#emailModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }).catch(() => Toast.danger('No se pudo copiar.'));
   },
 
   async renderList() {
@@ -3488,7 +3554,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }, 1500);
 
-  console.log('%c DAGAT SAC v13.0 NATIVO ', 'background:linear-gradient(135deg,#ff5722,#eab308,#10b981);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  console.log('%c DAGAT SAC v13.1 NATIVO ', 'background:linear-gradient(135deg,#ff5722,#eab308,#10b981);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
 });
 
 window.Router = Router;
