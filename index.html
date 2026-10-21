@@ -3253,18 +3253,34 @@ const AdminPanel = {
     const { data } = await supabaseClient.from('certificates').select('*').eq('id', id).maybeSingle();
     if (data) CertManager.generatePdf(data);
   },
-  async sendEmail(certId) {
-    const { data: cert } = await supabaseClient.from('certificates').select('*').eq('id', certId).maybeSingle();
-    if (!cert) { Toast.danger('No encontrado.'); return; }
-    const email = prompt('Email:', cert.issued_to_email || '');
-    if (!email || !email.includes('@')) { Toast.danger('Email inválido.'); return; }
-    try {
-      const { error } = await supabaseClient.functions.invoke('send-certificate', { body: { cert_id: cert.id, email } });
-      if (error) throw error;
-      Toast.emerald(`Enviado a ${email}`);
-      await supabaseClient.from('certificates').update({ email_sent: true }).eq('id', cert.id);
-    } catch (e) { Toast.danger('No se pudo enviar.'); }
+  
+  // ENVIAR POR EMAIL NATIVO (mailto)
+  sendEmail(certId) {
+    // Encontrar el certificado en la lista actual (buscando en el HTML renderizado o en Supabase)
+    // Como el botón solo tiene el ID, haremos una búsqueda rápida o usaremos el email que ya esté guardado.
+    // Para simplificar, pediremos el correo si no está en los datos del botón, pero lo ideal es que ya esté.
+    supabaseClient.from('certificates').select('*').eq('id', certId).maybeSingle().then(({data: cert}) => {
+      if (!cert) { Toast.danger('Certificado no encontrado.'); return; }
+      
+      let email = cert.issued_to_email || prompt(`Ingresa el correo del alumno (${cert.student_name}):`, '');
+      if (!email || !email.includes('@')) { Toast.danger('Email inválido.'); return; }
+
+      const subject = `Certificado DAGAT SAC — ${cert.course_name}`;
+      const body = `Hola ${cert.student_name},\n\nAdjunto a este correo encontrarás tu certificado oficial emitido por DAGAT SAC por haber completado el curso: "${cert.course_name}".\n\nCódigo de verificación: ${cert.id}\n\nPuedes validar su autenticidad en: ${APP_DATA.DOMAIN}/#certificados?code=${cert.id}\n\nSaludos,\nEquipo DAGAT SAC`;
+      
+      // Abrir cliente de correo nativo
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      Toast.emerald('Abriendo aplicación de correo...');
+      
+      // Actualizar en Supabase que se envió
+      if (!cert.issued_to_email) {
+        supabaseClient.from('certificates').update({ issued_to_email: email, email_sent: true }).eq('id', certId);
+      } else {
+        supabaseClient.from('certificates').update({ email_sent: true }).eq('id', certId);
+      }
+    });
   },
+
   async renderList() {
     const list = $('#adminCertList');
     if (!list) return;
@@ -3277,7 +3293,7 @@ const AdminPanel = {
     if (term) filtered = all.filter(c => (c.student_name || '').toLowerCase().includes(term) || (c.student_dni || '').includes(term) || String(c.id || '').toLowerCase().includes(term));
     $('#adminCertCount').textContent = `(${filtered.length})`;
     if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:var(--text-dim);">Sin resultados.</p>'; return; }
-    list.innerHTML = filtered.map(c => `<div class="admin-cert-card"><h5>${escapeHTML(c.student_name)}</h5><span class="cert-id">${escapeHTML(String(c.id))}</span><p class="cert-meta">${escapeHTML(c.course_name)}</p><p class="cert-meta"><strong>DNI:</strong> ${escapeHTML(c.student_dni)} · ${escapeHTML(String(c.course_hours))}h</p>${c.email_sent ? '<p class="cert-meta" style="font-size:0.72rem;color:var(--brand-emerald);">✉ Email enviado</p>' : ''}<div class="cert-actions"><button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(String(c.id))}" style="flex:1;"><i data-lucide="download" style="width:12px;height:12px;"></i> PDF</button><button class="btn btn-ghost btn-sm" data-email-cert="${escapeHTML(String(c.id))}" style="min-width:44px;padding:8px;"><i data-lucide="mail" style="width:12px;height:12px;"></i></button><button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(String(c.id))}" style="min-width:44px;padding:8px;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button></div></div>`).join('');
+    list.innerHTML = filtered.map(c => `<div class="admin-cert-card"><h5>${escapeHTML(c.student_name)}</h5><span class="cert-id">${escapeHTML(String(c.id))}</span><p class="cert-meta">${escapeHTML(c.course_name)}</p><p class="cert-meta"><strong>DNI:</strong> ${escapeHTML(c.student_dni)} · ${escapeHTML(String(c.course_hours))}h</p>${c.email_sent ? '<p class="cert-meta" style="font-size:0.72rem;color:var(--brand-emerald);">✉ Email enviado</p>' : ''}<div class="cert-actions"><button class="btn btn-fire btn-sm" data-download-cert="${escapeHTML(String(c.id))}" style="flex:1;"><i data-lucide="download" style="width:12px;height:12px;"></i> PDF</button><button class="btn btn-ghost btn-sm" data-email-cert="${escapeHTML(String(c.id))}" style="min-width:44px;padding:8px;" title="Enviar por Email"><i data-lucide="mail" style="width:12px;height:12px;"></i></button><button class="btn btn-danger btn-sm" data-delete-cert="${escapeHTML(String(c.id))}" style="min-width:44px;padding:8px;"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button></div></div>`).join('');
     if (window.lucide) try { window.lucide.createIcons(); } catch(e) {}
   },
   async processBatch(file) {
@@ -3472,7 +3488,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }, 1500);
 
-  console.log('%c DAGAT SAC v12.1 PRO ', 'background:linear-gradient(135deg,#ff5722,#eab308,#10b981);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
+  console.log('%c DAGAT SAC v13.0 NATIVO ', 'background:linear-gradient(135deg,#ff5722,#eab308,#10b981);color:white;padding:4px 10px;border-radius:6px;font-weight:bold;');
 });
 
 window.Router = Router;
